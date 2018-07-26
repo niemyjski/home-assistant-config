@@ -1,0 +1,3 @@
+secrets.yaml
+deps/
+**/__pycache__/
