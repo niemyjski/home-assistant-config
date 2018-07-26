@@ -1,3 +1,6 @@
+*
+!*.yaml
+!scenes
+!.gitignore
 secrets.yaml
-deps/
-**/__pycache__/
+known_devices.yaml
