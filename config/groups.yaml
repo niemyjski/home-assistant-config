@@ -1,0 +1,114 @@
+default_view:
+  view: yes
+  name: Home
+  icon: mdi:home
+
+#---------
+# Basement
+#---------
+guestbathroom:
+  view: yes
+  name: Guest Bathroom
+  icon: mdi:sofa
+
+guestbedroom:
+  view: yes
+  name: Guest Bedroom
+  icon: mdi:sofa
+
+utilityroom:
+  view: yes
+  name: Utility Room
+  icon: mdi:sofa
+
+exerciseroom:
+  view: yes
+  name: Exercise Room
+  icon: mdi:sofa
+
+familyroom:
+  view: yes
+  name: Family Room
+  icon: mdi:sofa
+
+storageroom:
+  view: yes
+  name: Stroage room
+  icon: mdi:sofa
+
+#---------
+# First floor
+#---------
+foyer:
+  view: yes
+  name: Foyer
+  icon: mdi:sofa
+
+livingroom:
+  view: yes
+  name: Living room
+  icon: mdi:sofa
+
+den:
+  view: yes
+  name: Den
+  icon: mdi:sofa
+
+kitchen:
+  view: yes
+  name: Kitchen
+  icon: mdi:sofa
+
+laundryroom:
+  view: yes
+  name: Laundry room
+  icon: mdi:sofa
+
+office:
+  view: yes
+  name: Office
+  icon: mdi:desk-lamp
+
+bathroom:
+  view: yes
+  name: Bathroom
+  icon: mdi:hotel
+
+#---------
+# Second floor
+#---------
+masterbedroom:
+  view: yes
+  name: Master Bedroom
+  icon: mdi:hotel
+
+masterbathroom:
+  view: yes
+  name: Master Bathroom
+  icon: mdi:hotel
+
+kid1bedroom:
+  view: yes
+  name: Kid 1 Bedroom
+  icon: mdi:desk-lamp
+
+kid2bedroom:
+  view: yes
+  name: Kid 2 Bedroom
+  icon: mdi:desk-lamp
+
+kidsbathroom:
+  view: yes
+  name: Kids Bathroom
+  icon: mdi:hotel
+
+# ------------------
+# System
+# ------------------
+system:
+  view: yes
+  name: System
+  icon: mdi:settings
+  entities:
+    - group.raspberry
+    - group.speedtest

@@ -1,0 +1,14 @@
+language: python
+
+python: "3.6.4"
+
+before_install:
+  - touch fake.pem
+  - mv .build/secrets_redacted.yaml secrets.yaml
+
+install: pip3 install homeassistant
+
+script: hass -c . --script check_config --info all
+
+notifications:
+  email: false

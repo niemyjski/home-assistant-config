@@ -1,77 +1,34 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
-  latitude: !secret home_latitude
-  longitude: !secret home_longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: !secret home_elevation
-  # metric for Metric, imperial for Imperial
+
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+
+  time_zone: !secret time_zone
   unit_system: imperial
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: America/Chicago
-  # Customization file
-  customize: !include customize.yaml
+  temperature_unit: F
 
-# Show links to resources in log and frontend
-#introduction:
+  packages: !include_dir_named packages
 
-# Enables the frontend
-frontend:
+# Includes
+group: !include config/groups.yaml
+http: !include config/http.yaml
+logger: !include config/logger.yaml
+zone: !include config/zones.yaml
+panel_iframe: !include config/panel_iframes.yaml
+tts: !include config/tts.yaml
+weather: !include config/weather.yaml
 
-# Enables configuration UI
-config:
-
-http:
-  # Secrets are defined in the file secrets.yaml
-  api_password: !secret http_password
-  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
-  # base_url: example.duckdns.org:8123
-
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
-
-# Discover some devices automatically
-discovery:
-
-# Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
-
-# Enables support for tracking state changes over time
-history:
-
-# View all events in a logbook
-logbook:
-
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
-# Weather prediction
-sensor:
-  - platform: yr
-
-# Text to speech
-tts:
-  - platform: google
-
-# Cloud
+# Base configuration
 cloud:
-
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
-
-panel_iframe:
-  configurator:
-    title: Cloud9 IDE
-    icon: mdi:wrench
-    url: http://hassio.local:8321/ide.html
+config:
+conversation:
+discovery:
+frontend:
+hassio:
+history:
+logbook:
+map:
+sun:
+updater:

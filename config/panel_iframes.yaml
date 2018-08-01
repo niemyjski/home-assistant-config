@@ -1,0 +1,12 @@
+router:
+  title: 'Unify'
+  icon: mdi:router-wireless
+  url: !secret router_panel_url
+configurator:
+  title: Cloud9 IDE
+  icon: mdi:wrench
+  url: !secret ide_panel_url
+terminal:
+    title: Terminal
+    icon: mdi:console
+    url: !secret terminal_panel_url

@@ -1,0 +1,55 @@
+#---------
+# GROUPS
+#---------
+group:
+  raspberry:
+    name: Raspberry
+    view: no
+    entities:
+      - sensor.processor_use
+      - sensor.memory_free
+      - sensor.last_boot
+
+  speedtest:
+    name: Speedtest
+    view: no
+    entities:
+      - sensor.speedtest_ping
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+
+#---------
+# Sensors
+#---------
+sensor:
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: systemmonitor
+    resources:
+      - type: processor_use
+      - type: memory_free
+      - type: last_boot
+
+#---------
+# Customize
+#---------
+homeassistant:
+  customize:
+    sensor.cpu_use:
+      icon: mdi:speedometer
+    sensor.ram_free:
+      icon: mdi:poll
+    sensor.last_boot:
+      icon: mdi:clock-start
+    sensor.speedtest_ping:
+      icon: mdi:clock
+      friendly_name: "Ping"
+    sensor.speedtest_download:
+      icon: mdi:arrow-down
+      friendly_name: "Download"
+    sensor.speedtest_upload:
+      icon: mdi:arrow-up
+      friendly_name: "Upload"
