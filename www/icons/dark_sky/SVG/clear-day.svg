@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 13.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
+<svg version="1.2" baseProfile="tiny" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="128px" height="128px" viewBox="0 0 128 128" xml:space="preserve">
+<g>
+	<rect fill="#6699FF" width="128" height="128"/>
+	<g>
+		<circle fill="#FFF100" cx="64.002" cy="64.001" r="25.681"/>
+		<g>
+			<polygon fill="#FFF100" points="60.581,32.749 45.63,19.647 44.324,39.483 			"/>
+			<polygon fill="#FFF100" points="83.68,88.518 82.373,108.354 67.424,95.25 			"/>
+		</g>
+		<g>
+			<polygon fill="#FFF100" points="83.678,39.482 82.373,19.648 67.424,32.75 			"/>
+			<polygon fill="#FFF100" points="60.579,95.25 45.63,108.354 44.324,88.519 			"/>
+		</g>
+		<g>
+			<polygon fill="#FFF100" points="95.252,60.579 108.352,45.63 88.518,44.322 			"/>
+			<polygon fill="#FFF100" points="39.484,83.68 19.647,82.371 32.751,67.422 			"/>
+		</g>
+		<g>
+			<polygon fill="#FFF100" points="88.518,83.678 108.352,82.373 95.252,67.422 			"/>
+			<polygon fill="#FFF100" points="32.751,60.578 19.647,45.628 39.483,44.323 			"/>
+		</g>
+	</g>
+</g>
+</svg>

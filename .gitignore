@@ -1,3 +1,5 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
+
+*.DS_Store

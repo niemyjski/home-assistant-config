@@ -102,6 +102,18 @@ kidsbathroom:
   name: Kids Bathroom
   icon: mdi:hotel
 
+cameras:
+  name: Cameras
+  view: yes
+  icon: mdi:cctv
+  entities:
+    - group.camera_living_room
+
+camera_living_room:
+    name: Living Room Camera
+    entities:
+      - camera.living_room
+
 # ------------------
 # System
 # ------------------

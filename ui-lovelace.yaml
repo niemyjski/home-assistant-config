@@ -12,3 +12,21 @@ views:
       - type: custom:weather-card
         entity_weather: weather.yweather
         entity_sun: sun.sun
+      - type: entities
+        title: Weather
+        entities:
+          - sensor.dark_sky_cloud_coverage
+          - sensor.dark_sky_hourly_summary
+          - sensor.dark_sky_daily_summary
+      - type: picture-entity
+        entity: camera.wunderground_radar
+      - type: iframe
+        aspect_ratio: 90%
+        url: https://embed.windy.com/embed2.html?rain,44.5133,-88.0133,10
+
+  - icon: mdi:cctv
+    id: cameras
+    title: Cameras
+    cards:
+      - type: picture-entity
+        entity: camera.living_room
