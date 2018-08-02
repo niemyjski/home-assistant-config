@@ -19,7 +19,8 @@ zone: !include config/zones.yaml
 panel_iframe: !include config/panel_iframes.yaml
 tts: !include config/tts.yaml
 weather: !include config/weather.yaml
-camera: !include_dir_list cameras/
+camera: !include_dir_list config/cameras/
+amcrest: !include config/amcrest.yaml
 
 # Base configuration
 cloud:

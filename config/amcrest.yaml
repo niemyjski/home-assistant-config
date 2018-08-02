@@ -1,0 +1,8 @@
+- host: !secret camera_amcrest_living_room_ip
+  name: Living Room
+  username: !secret camera_username
+  password: !secret camera_password
+  stream_source: snapshot
+  sensors:
+    - motion_detector
+    - sdcard

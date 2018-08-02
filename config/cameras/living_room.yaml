@@ -1,6 +1,0 @@
-platform: amcrest
-host: !secret camera_amcrest_living_room_ip
-username: !secret camera_username
-password: !secret camera_password
-stream_source: snapshot
-name: Living Room
