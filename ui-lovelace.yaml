@@ -1,0 +1,14 @@
+title: Home
+
+resources:
+  - url: /local/custom_ui/weather-card.js
+    type: js
+
+views:
+  - icon: mdi:weather-cloudy
+    id: weather
+    title: Weather
+    cards:
+      - type: custom:weather-card
+        entity_weather: weather.yweather
+        entity_sun: sun.sun
