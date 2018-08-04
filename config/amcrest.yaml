@@ -2,7 +2,7 @@
   name: Living Room
   username: !secret camera_username
   password: !secret camera_password
-  stream_source: snapshot
+  stream_source: mjpeg
   sensors:
     - motion_detector
     - sdcard

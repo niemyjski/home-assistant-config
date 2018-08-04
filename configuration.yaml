@@ -12,15 +12,16 @@ homeassistant:
   packages: !include_dir_named packages
 
 # Includes
+amcrest: !include config/amcrest.yaml
+camera: !include_dir_list config/cameras/
 group: !include config/groups.yaml
 http: !include config/http.yaml
 logger: !include config/logger.yaml
-zone: !include config/zones.yaml
 panel_iframe: !include config/panel_iframes.yaml
 tts: !include config/tts.yaml
 weather: !include config/weather.yaml
-camera: !include_dir_list config/cameras/
-amcrest: !include config/amcrest.yaml
+zone: !include config/zones.yaml
+zwave: !include config/zwave.yaml
 
 # Base configuration
 cloud:
