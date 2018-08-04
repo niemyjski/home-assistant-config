@@ -14,6 +14,7 @@ homeassistant:
 # Includes
 amcrest: !include config/amcrest.yaml
 camera: !include_dir_list config/cameras/
+ecobee: !include config/ecobee.yaml
 group: !include config/groups.yaml
 http: !include config/http.yaml
 logger: !include config/logger.yaml
