@@ -19,6 +19,7 @@ group: !include config/groups.yaml
 http: !include config/http.yaml
 logger: !include config/logger.yaml
 panel_iframe: !include config/panel_iframes.yaml
+shell_command: !include config/shell_command.yaml
 tts: !include config/tts.yaml
 weather: !include config/weather.yaml
 zone: !include config/zones.yaml
