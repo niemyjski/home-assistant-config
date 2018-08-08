@@ -29,7 +29,6 @@ views:
     cards:
       - type: entities
         title: Doors
-        show_header_toggle: true
         entities:
           - lock.unknown_id033f_unknown_type0001_id0001_locked
           - cover.house_left_garage_door_opener
