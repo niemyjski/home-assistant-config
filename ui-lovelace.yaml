@@ -24,6 +24,24 @@ views:
         aspect_ratio: 90%
         url: https://embed.windy.com/embed2.html?rain,44.5133,-88.0133,10
 
+  - icon: mdi:security-home
+    name: Security
+    cards:
+      - type: entities
+        title: Doors
+        show_header_toggle: true
+        entities:
+          - lock.unknown_id033f_unknown_type0001_id0001_locked
+          - cover.house_left_garage_door_opener
+          - cover.house_right_garage_door_opener
+      - type: entities
+        title: Motion
+        entities:
+          - sensor.living_room_motion_detected
+          - binary_sensor.front_door_camera_motion_detected
+          - binary_sensor.front_door_camera_person_detected
+          - binary_sensor.front_door_camera_sound_detected
+
   - icon: mdi:cctv
     id: cameras
     title: Cameras
