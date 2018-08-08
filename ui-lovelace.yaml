@@ -29,4 +29,6 @@ views:
     title: Cameras
     cards:
       - type: picture-entity
+        entity: camera.front_door
+      - type: picture-entity
         entity: camera.living_room
