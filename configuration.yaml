@@ -36,6 +36,7 @@ discovery:
 frontend:
 hassio:
 history:
+ios:
 logbook:
 map:
 sun:

@@ -15,9 +15,15 @@ views:
       - type: entities
         title: Weather
         entities:
+          - sun.sun
           - sensor.dark_sky_cloud_coverage
           - sensor.dark_sky_hourly_summary
           - sensor.dark_sky_daily_summary
+          - sensor.dark_sky_visibility
+          - sensor.dark_sky_wind_bearing
+          - sensor.dark_sky_wind_speed
+          - sensor.allergy_index_today
+          - sensor.us_air_pollution_level
       - type: picture-entity
         entity: camera.wunderground_radar
       - type: iframe
