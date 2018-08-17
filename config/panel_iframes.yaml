@@ -1,8 +1,12 @@
+logger:
+    title: Logs
+    icon: mdi:history
+    url: !secret logs_panel_url
 router:
   title: 'Unify'
   icon: mdi:router-wireless
   url: !secret router_panel_url
-configurator:
+ide:
   title: Cloud9 IDE
   icon: mdi:wrench
   url: !secret ide_panel_url
