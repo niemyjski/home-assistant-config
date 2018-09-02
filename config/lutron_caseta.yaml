@@ -1,0 +1,4 @@
+host: !secret lutron_caseta_host
+keyfile: caseta.key
+certfile: caseta.crt
+ca_certs: caseta-bridge.crt
