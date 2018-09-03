@@ -1,0 +1,3 @@
+username: !secret nuheat_username
+password: !secret nuheat_password
+devices: !secret nuheat_devices

@@ -22,6 +22,7 @@ ifttt: !include config/ifttt.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 nest: !include config/nest.yaml
+nuheat: !include config/nuheat.yaml
 panel_iframe: !include config/panel_iframes.yaml
 shell_command: !include config/shell_command.yaml
 tts: !include config/tts.yaml
