@@ -153,6 +153,7 @@ sensor:
           {%- else -%}
             Odd Week (Week# {{ as_timestamp(today) | timestamp_custom('%U', true) }})
           {%- endif -%}
+
 ###############################################################################
 # Trash  - Pickup schedule is EVERY week.
 # Set the day to a day before the actual day leaving time for reminders
@@ -171,6 +172,7 @@ sensor:
           {%- else -%}
             no
           {%- endif -%}
+
 ###############################################################################
 # Recycle - Pickup schedule is every other week.
 # Set the day to a day before the actual day leaving time for reminders
@@ -222,6 +224,7 @@ sensor:
           {%- endif -%}
           {%- endmacro -%}
           {{- is_it_today() -}}
+
 ###############################################################################
 #                               Automations
 ###############################################################################
@@ -328,7 +331,7 @@ automation:
             entity_id: sensor.recycle_day
             state: 'yes'
     action:
-      - service: notify.trent
+      - service: notify.garbage
         data_template:
           title: >
             {% if is_state("sensor.trash_day", "yes") and is_state("sensor.recycle_day", "yes") %}
@@ -353,6 +356,7 @@ automation:
             - action: TRASH_REMIND_LATER
               title: Remind Later
       - service: script.speech_processing
+
         data_template:
           speech_message: >
             {% if is_state("sensor.trash_day", "yes") and is_state("sensor.recycle_day", "yes") %}
@@ -364,6 +368,7 @@ automation:
               Attention!: Tomorrow is the Recycle Pickup day.
               Please don't forget to put the recycle bin outside tonight!
             {% endif %}
+
   - alias: Trash and Recycle Bin Left Outside Already
     initial_state: true
     hide_entity: true
@@ -373,7 +378,7 @@ automation:
       event_data:
         action: TRASH_LEFT
     action:
-      - service: notify.trent
+      - service: notify.garbage
         data:
           message: "Great job, Thank you!"
       - service: input_boolean.turn_off
@@ -388,7 +393,7 @@ automation:
       event_data:
         action: TRASH_REMIND_LATER
     action:
-      - service: notify.trent
+      - service: notify.garbage
         data:
           message: "Will remind you again in an hour!"
       - service: input_boolean.turn_on

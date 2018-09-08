@@ -23,6 +23,7 @@ logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
+notify: !include config/notify.yaml
 nuheat: !include config/nuheat.yaml
 panel_iframe: !include config/panel_iframes.yaml
 shell_command: !include config/shell_command.yaml

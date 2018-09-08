@@ -1,0 +1,8 @@
+  - name: home
+    platform: group
+    services:
+      - service: html5
+  - name: garbage
+    platform: group
+    services:
+      - service: html5

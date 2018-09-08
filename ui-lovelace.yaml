@@ -11,7 +11,8 @@ views:
     cards:
       - type: entity-filter
         entities:
-          - device_tracker.*_iphone
+          - !secret person_1_device_tracker_id
+          - !secret person_2_device_tracker_id
         state_filter:
           - home
           - !secret zone_1_name
@@ -21,20 +22,11 @@ views:
           show_state: false
           show_name: false
       - type: entities
-        title: Trash Schedule
+        title: Trash & Recycling Schedule
         entities:
           - sensor.trash_day
-          - sensor.trash_pickup_day
-          - input_select.trash_pickup_day
-      - type: entities
-        title: Recycle Schedule
-        entities:
           - sensor.recycle_day
-          - sensor.recycle_pickup_day
-          - sensor.recycle_pickup_week
-          - input_select.recycle_pickup_day
-          - sensor.current_week
-          - input_select.recycle_pickup_week
+
   - icon: mdi:weather-cloudy
     id: weather
     title: Weather
@@ -85,3 +77,23 @@ views:
         entity: camera.front_door
       - type: picture-entity
         entity: camera.living_room
+
+  - icon: mdi:settings
+    id: settings
+    title: settings
+    cards:
+      - type: entities
+        title: Trash Schedule
+        entities:
+          - sensor.trash_day
+          - sensor.trash_pickup_day
+          - input_select.trash_pickup_day
+      - type: entities
+        title: Recycle Schedule
+        entities:
+          - sensor.recycle_day
+          - sensor.recycle_pickup_day
+          - sensor.recycle_pickup_week
+          - input_select.recycle_pickup_day
+          - sensor.current_week
+          - input_select.recycle_pickup_week
