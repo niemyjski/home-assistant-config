@@ -85,6 +85,7 @@ input_select:
      - Friday
      - Saturday
      - Sunday
+     - unknown
     icon: mdi:delete-variant
   recycle_pickup_day:
     name: Current Recycle Pickup Day (Every Other Week)
@@ -96,12 +97,14 @@ input_select:
      - Friday
      - Saturday
      - Sunday
+     - unknown
     icon: mdi:recycle
   recycle_pickup_week:
     name: Select Recycle Pickup Week based on Current Week above
     options:
      - Even Weeks
      - Odd Weeks
+     - unknown
     icon: mdi:recycle
 input_boolean:
   trash_reminders:
