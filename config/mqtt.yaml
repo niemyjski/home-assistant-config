@@ -1,0 +1,3 @@
+broker: core-mosquitto
+username: !secret mqtt_username
+password: !secret mqtt_password

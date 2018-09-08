@@ -21,6 +21,7 @@ http: !include config/http.yaml
 ifttt: !include config/ifttt.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
+mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
 nuheat: !include config/nuheat.yaml
 panel_iframe: !include config/panel_iframes.yaml
