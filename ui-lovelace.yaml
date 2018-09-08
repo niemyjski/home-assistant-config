@@ -20,7 +20,7 @@ views:
           type: glance
           title: Who is Home?
           show_state: false
-          show_name: false
+          show_name: true
       - type: entities
         title: Trash & Recycling Schedule
         entities:
