@@ -118,12 +118,12 @@ input_boolean:
 sensor:
   - platform: time_date
     display_options:
-      - 'time'
-      - 'date'
-      - 'date_time'
-      - 'time_date'
-      - 'time_utc'
-      - 'beat'
+      - time
+      - date
+      - date_time
+      - time_date
+      - time_utc
+      - beat
   - platform: mqtt
     state_topic: "/home/trashpickupday"
     name: "Trash Pickup Day"
