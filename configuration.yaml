@@ -27,6 +27,7 @@ nest: !include config/nest.yaml
 notify: !include config/notify.yaml
 nuheat: !include config/nuheat.yaml
 panel_iframe: !include config/panel_iframes.yaml
+recorder: !include config/recorder.yaml
 shell_command: !include config/shell_command.yaml
 tts: !include config/tts.yaml
 weather: !include config/weather.yaml
