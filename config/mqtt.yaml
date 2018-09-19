@@ -1,4 +1,4 @@
 broker: !secret mqtt_broker
-port: 8883
+#port: 8883
 username: !secret mqtt_username
 password: !secret mqtt_password
