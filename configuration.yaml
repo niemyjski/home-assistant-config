@@ -30,7 +30,7 @@ panel_iframe: !include config/panel_iframes.yaml
 recorder: !include config/recorder.yaml
 shell_command: !include config/shell_command.yaml
 tts: !include config/tts.yaml
-usps: !include config/usps.yaml
+#usps: !include config/usps.yaml
 weather: !include config/weather.yaml
 zone: !include config/zones.yaml
 zwave: !include config/zwave.yaml
