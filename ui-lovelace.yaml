@@ -26,6 +26,32 @@ views:
         entities:
           - sensor.trash_day
           - sensor.recycle_day
+      - type: entities
+        title: Climate Control
+        entities:
+          - type: thermostat
+            entity: climate.downstairs
+          - type: thermostat
+            entity: climate.master_water_closet_floor
+      - type: entities
+        title: Lighting
+        entities:
+          - group.all_lights
+          - light.*
+      - type: entities
+        title: Fans
+        entities:
+          - group.all_fans
+          - fan.*
+      - type: entities
+        title: Switches
+        entities:
+          - group.all_switches
+          - switch.*
+      - type: entities
+        title: Media
+        entities:
+          - media_player.*
 
   - icon: mdi:weather-cloudy
     id: weather
