@@ -37,21 +37,21 @@ views:
             - domain: climate
       - type: custom:monster-card
         card:
-          type: glance
+          type: entities
           title: Lighting
         filter:
           include:
             - domain: light
       - type: custom:monster-card
         card:
-          type: glance
+          type: entities
           title: Fans
         filter:
           include:
             - domain: fan
       - type: custom:monster-card
         card:
-          type: glance
+          type: entities
           title: Switches
         filter:
           include:
