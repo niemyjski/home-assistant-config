@@ -30,7 +30,7 @@ views:
           - sensor.recycle_day
       - type: custom:monster-card
         card:
-          type: thermostat
+          type: entities
           title: Climate Control
         filter:
           include:
