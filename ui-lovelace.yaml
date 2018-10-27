@@ -3,6 +3,8 @@ title: Home
 resources:
   - url: /local/custom_ui/weather-card.js
     type: js
+  - url: /local/custom_ui/monster-card.js
+    type: js
 
 views:
   - icon: mdi:home
@@ -26,32 +28,41 @@ views:
         entities:
           - sensor.trash_day
           - sensor.recycle_day
-      - type: entities
-        title: Climate Control
-        entities:
-          - type: thermostat
-            entity: climate.downstairs
-          - type: thermostat
-            entity: climate.master_water_closet_floor
-      - type: entities
-        title: Lighting
-        entities:
-          - group.all_lights
-          - light.*
-      - type: entities
-        title: Fans
-        entities:
-          - group.all_fans
-          - fan.*
-      - type: entities
-        title: Switches
-        entities:
-          - group.all_switches
-          - switch.*
-      - type: entities
-        title: Media
-        entities:
-          - media_player.*
+      - type: custom:monster-card
+        card:
+          type: thermostat
+          title: Climate Control
+        filter:
+          include:
+            - domain: climate
+      - type: custom:monster-card
+        card:
+          type: glance
+          title: Lighting
+        filter:
+          include:
+            - domain: light
+      - type: custom:monster-card
+        card:
+          type: glance
+          title: Fans
+        filter:
+          include:
+            - domain: fan
+      - type: custom:monster-card
+        card:
+          type: glance
+          title: Switches
+        filter:
+          include:
+            - domain: switch
+      - type: custom:monster-card
+        card:
+          type: entities
+          title: Media
+        filter:
+          include:
+            - domain: media_player
 
   - icon: mdi:weather-cloudy
     id: weather
