@@ -11,18 +11,18 @@ views:
     id: home
     title: home
     cards:
-#      - type: entity-filter
-#        entities:
-#          - !secret person_1_device_tracker_id
-#          - !secret person_2_device_tracker_id
-#        state_filter:
-#          - home
-#          - !secret zone_1_name
-#        card:
-#          type: glance
-#          title: Who is Home?
-#          show_state: false
-#          show_name: true
+      - type: entity-filter
+        entities:
+          - !secret person_1_device_tracker_id
+          - !secret person_2_device_tracker_id
+        state_filter:
+          - home
+          - !secret zone_1_name
+        card:
+          type: glance
+          title: Who is Home?
+          show_state: false
+          show_name: true
       - type: entities
         title: Trash & Recycling Schedule
         entities:

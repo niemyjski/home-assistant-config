@@ -18,6 +18,7 @@ cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
 group: !include config/groups.yaml
 http: !include config/http.yaml
+hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
@@ -32,6 +33,7 @@ shell_command: !include config/shell_command.yaml
 tts: !include config/tts.yaml
 #usps: !include config/usps.yaml
 weather: !include config/weather.yaml
+wemo: !include config/wemo.yaml
 zone: !include config/zones.yaml
 zwave: !include config/zwave.yaml
 
