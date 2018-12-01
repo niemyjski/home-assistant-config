@@ -5,7 +5,6 @@ resources:
     type: js
   - url: /local/custom_ui/monster-card.js
     type: js
-    resources:
   - url: /local/surveillance-card.js?v=0
     type: module
 
