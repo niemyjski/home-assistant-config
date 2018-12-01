@@ -93,16 +93,16 @@ views:
           - sensor.dark_sky_temperature
           - sensor.dark_sky_humidity
           - sensor.basement_temperature
-          - binary_sensor.basement_humidity
+          - sensor.basement_humidity
           - sensor.main_floor_temperature
-          - binary_sensor.main_floor_humidity
+          - sensor.main_floor_humidity
           - sensor.living_room_temperature
           - sensor.entertainment_room_temperature
           - sensor.laundry_room_temperature
           - sensor.office_temperature
-          - binary_sensor.office_humidity
+          - sensor.office_humidity
           - sensor.upstairs_temperature
-          - binary_sensor.upstairs_humidity
+          - sensor.upstairs_humidity
           - sensor.bedroom_temperature
           - sensor.kids_room_one_temperature
           - sensor.kids_room_two_temperature
