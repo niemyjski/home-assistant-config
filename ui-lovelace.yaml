@@ -5,6 +5,9 @@ resources:
     type: js
   - url: /local/custom_ui/monster-card.js
     type: js
+    resources:
+  - url: /local/surveillance-card.js?v=0
+    type: module
 
 views:
   - icon: mdi:home
@@ -140,11 +143,16 @@ views:
   - icon: mdi:cctv
     id: cameras
     title: Cameras
+    panel: true
     cards:
-      - type: picture-entity
-        entity: camera.front_door
-      - type: picture-entity
-        entity: camera.living_room
+      - type: custom:surveillance-card
+        thumb_interval: 2.5
+        update_interval: 0.5
+        cameras:
+          - entity: camera.front_door
+            motion_entity: binary_sensor.front_door_camera_motion_detected
+          - entity: camera.living_room
+            motion_entity: sensor.living_room_motion_detected
 
   - icon: mdi:settings
     id: settings
