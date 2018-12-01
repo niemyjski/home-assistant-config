@@ -126,9 +126,9 @@ views:
         title: Motion
         entities:
           - binary_sensor.basement_occupancy
-          - sensor.main_floor_occupancy
+          - binary_sensor.main_floor_occupancy
           - sensor.living_room_motion_detected
-          - sensor.living_room_occupancy
+          - binary_sensor.living_room_occupancy
           - binary_sensor.front_door_camera_motion_detected
           - binary_sensor.front_door_camera_person_detected
           - binary_sensor.front_door_camera_sound_detected
