@@ -21,6 +21,7 @@ http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
 logger: !include config/logger.yaml
+lovelace: !include config/lovelace.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 media_player: !include config/media_player.yaml
 mqtt: !include config/mqtt.yaml
