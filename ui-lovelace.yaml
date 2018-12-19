@@ -117,7 +117,7 @@ views:
       - type: entities
         title: Doors
         entities:
-          - lock.unknown_id033f_unknown_type0001_id0001_locked
+          - lock.august_smart_lock_gen3_front_door_locked
           - cover.house_left_garage_door_opener
           - cover.house_right_garage_door_opener
           - cover.left_garage_door

@@ -16,7 +16,6 @@ amcrest: !include config/amcrest.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
-group: !include config/groups.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
