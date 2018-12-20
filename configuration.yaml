@@ -16,9 +16,11 @@ amcrest: !include config/amcrest.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
+group: !include config/group.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
+input_boolean: !include_dir_merge_named config/input_boolean/
 logger: !include config/logger.yaml
 lovelace: !include config/lovelace.yaml
 lutron_caseta: !include config/lutron_caseta.yaml

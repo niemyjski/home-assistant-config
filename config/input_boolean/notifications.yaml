@@ -1,0 +1,19 @@
+arriving_home_notifications:
+  name: Notify when someone arrives home
+  icon: mdi:car
+
+speech_notifications:
+  name: Speech Notifications
+  icon: mdi:speaker-wireless
+
+text_notifications:
+  name: Text Notifications
+  icon: mdi:cellphone-wireless
+
+weather_notifications:
+  name: Weather Notifications
+  icon: mdi:weather-lightning
+
+welcome_notifications:
+  name: Welcome people when they arrive
+  icon: mdi:speaker-wireless

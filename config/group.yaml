@@ -1,0 +1,8 @@
+christmas_lights:
+  view: yes
+  name: Christmas Lights
+  icon: mdi:pine-tree
+  entities:
+    - switch.front_north_outside_outlets_switch
+    - switch.living_room_west_outlets_switch
+    - switch.living_room_top_mantle_receptacle

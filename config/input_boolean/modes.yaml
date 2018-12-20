@@ -1,0 +1,15 @@
+guest_mode:
+  name: Guest Mode
+  icon: mdi:hotel
+
+do_not_disturb:
+  name: Do Not Disturb
+  icon: mdi:bell-off
+
+vacation_mode:
+  name: Vacation Mode
+  icon: mdi:beach
+
+facial_recognition:
+  name: Facial Recognition
+  icon: mdi:face-profile
