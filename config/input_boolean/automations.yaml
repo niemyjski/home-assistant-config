@@ -1,3 +1,7 @@
+automation_enable:
+  name: Enable Automations
+  icon: mdi:home-automation
+
 automation_master_bedroom_fan:
   name: Automation - Master Bedroom Fan
   icon: mdi:fan
