@@ -5,3 +5,19 @@ automation_enable:
 automation_master_bedroom_fan:
   name: Automation - Master Bedroom Fan
   icon: mdi:fan
+
+automation_outside_front_lights_on_motion:
+  name: Automation - Outside Front Lights (Motion)
+  icon: mdi:lightbulb-on
+
+automation_outside_front_lights:
+  name: Automation - Outside Front Lights
+  icon: mdi:lightbulb-on
+
+automation_outside_front_can_lights:
+  name: Automation - Outside Front Can Lights
+  icon: mdi:lightbulb-on
+
+automation_outside_back_lights:
+  name: Automation - Outside Back Lights
+  icon: mdi:lightbulb-on
