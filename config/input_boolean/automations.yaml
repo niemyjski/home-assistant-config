@@ -2,6 +2,10 @@ automation_enable:
   name: Enable Automations
   icon: mdi:home-automation
 
+automation_bathroom_fans:
+  name: Automation - Automatically Turn On/Off Bathroom Fans
+  icon: mdi:fan
+
 automation_master_bedroom_fan:
   name: Automation - Master Bedroom Fan
   icon: mdi:fan
