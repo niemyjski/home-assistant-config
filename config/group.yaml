@@ -3,7 +3,7 @@
 #---------
 automations:
   view: yes
-  name: Autoamtions
+  name: Automations
   icon: mdi:home-automation
   entities:
     - input_boolean.automation_enable
@@ -12,24 +12,31 @@ automations:
     - input_boolean.automation_outside_back_lights
     - input_boolean.automation_outside_front_lights_on_motion
     - input_boolean.automation_outside_front_lights
-    - input_boolean.automation_christmas_lights
     - input_boolean.automation_outside_front_can_lights
-    - input_boolean.do_not_disturb
+    - input_boolean.automation_inside_lights_on_motion
+    - input_boolean.automation_christmas_lights
+
+automations:
+  view: yes
+  name: Modes
+  icon: mdi:home-automation
+  entities:
+    - input_boolean.do_not_disturb_mode
     - input_boolean.vacation_mode
-    - input_boolean.facial_recognition
     - input_boolean.guest_mode
+    - input_boolean.facial_recognition_mode
 
 notifications:
   view: yes
   name: Notifications
   icon: mdi:bell
   entities:
-    - input_boolean.trash_reminders
     - input_boolean.accessibility_notifications
+    - input_boolean.automation_notifications
     - input_boolean.arriving_home_notifications
     - input_boolean.speech_notifications
     - input_boolean.text_notifications
-    - input_boolean.facial_recognition
+    - input_boolean.trash_reminders
     - input_boolean.weather_notifications
     - input_boolean.welcome_notifications
 

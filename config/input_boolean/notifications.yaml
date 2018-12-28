@@ -1,3 +1,7 @@
+automation_notifications:
+  name: Notify when an automation is triggered
+  icon: mdi:home-automation
+
 arriving_home_notifications:
   name: Notify when someone arrives home
   icon: mdi:car

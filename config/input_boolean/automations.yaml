@@ -11,7 +11,7 @@ automation_master_bedroom_fan:
   icon: mdi:fan
 
 automation_outside_front_lights_on_motion:
-  name: Automation - Outside Front Lights (Motion)
+  name: Automation - Turn On/Off Outside Front Lights (Motion)
   icon: mdi:lightbulb-on
 
 automation_outside_front_lights:
@@ -25,3 +25,7 @@ automation_outside_front_can_lights:
 automation_outside_back_lights:
   name: Automation - Outside Back Lights
   icon: mdi:lightbulb-on
+
+  automation_inside_lights_on_motion:
+  name: Automation - Turn On/Off Inside Lights (Motion)
+  icon: mdi:fan
