@@ -265,6 +265,40 @@ kitchen:
     - media_player.kitchen_dash_wand
     - media_player.main_floor_ecobee4
 
+backfoyer:
+  view: yes
+  name: Back Foyer
+  icon: mdi:walk
+  entities:
+    - media_player.back_foyer_ecobee_switch
+
+bathroom:
+  view: yes
+  name: Bathroom
+  icon: mdi:toilet
+  entities:
+    - switch.first_floor_bathroom_exhaust_fan
+    - media_player.first_floor_bathroom_ecobee_switch
+
+backhallway:
+  view: yes
+  name: Back Hallway
+  icon: mdi:walk
+  entities:
+    - binary_sensor.hallway_nest_protect_online
+    - sensor.hallway_nest_protect_battery_health
+    - sensor.hallway_nest_protect_smoke_status
+    - sensor.hallway_nest_protect_co_status
+    - sensor.hallway_nest_protect_color_status
+    - switch.back_hallway_bathroom_switch
+    - switch.back_hallway_picture_switch
+    - light.back_hallway_picture_hue_color
+    - switch.back_hallway_motion_switch
+    - sensor.back_hallway_motion_switch_alarm_level
+    - sensor.back_hallway_motion_switch_alarm_type
+    - sensor.back_hallway_motion_switch_burglar
+    - sensor.back_hallway_motion_switch_sourcenodeid
+
 laundryroom:
   view: yes
   name: Laundry room
@@ -295,41 +329,6 @@ office:
     - media_player.office_echo_plus
     - media_player.office_ecobee4
     - media_player.office_ecobee_switch
-
-bathroom:
-  view: yes
-  name: Bathroom
-  icon: mdi:toilet
-  entities:
-    - input_boolean.automation_bathroom_fans
-    - switch.first_floor_bathroom_exhaust_fan
-    - media_player.first_floor_bathroom_ecobee_switch
-
-backhallway:
-  view: yes
-  name: Back Hallway
-  icon: mdi:walk
-  entities:
-    - binary_sensor.hallway_nest_protect_online
-    - sensor.hallway_nest_protect_battery_health
-    - sensor.hallway_nest_protect_smoke_status
-    - sensor.hallway_nest_protect_co_status
-    - sensor.hallway_nest_protect_color_status
-    - switch.back_hallway_bathroom_switch
-    - switch.back_hallway_picture_switch
-    - light.back_hallway_hue_color
-    - switch.back_hallway_motion_switch
-    - sensor.back_hallway_motion_switch_alarm_level
-    - sensor.back_hallway_motion_switch_alarm_type
-    - sensor.back_hallway_motion_switch_burglar
-    - sensor.back_hallway_motion_switch_sourcenodeid
-
-backfoyer:
-  view: yes
-  name: Back Foyer
-  icon: mdi:walk
-  entities:
-    - media_player.back_foyer_ecobee_switch
 
 #---------
 # Second floor
@@ -373,7 +372,6 @@ masterbedroom:
   name: Master Bedroom
   icon: mdi:hotel
   entities:
-    - input_boolean.automation_master_bedroom_fan
     - binary_sensor.master_bedroom_nest_protect_online
     - sensor.master_bedroom_nest_protect_battery_health
     - sensor.master_bedroom_nest_protect_smoke_status
@@ -400,7 +398,6 @@ masterbathroom:
   name: Master Bathroom
   icon: mdi:shower
   entities:
-    - input_boolean.automation_bathroom_fans
     - light.master_bathroom_shower_lights
     - light.master_bathroom_tub_lights
     - switch.master_bathroom_shower
@@ -413,7 +410,6 @@ masterwatercloset:
   name: Master Water Closet
   icon: mdi:toilet
   entities:
-    - input_boolean.automation_bathroom_fans
     - climate.master_water_closet_floor
     - switch.master_bathroom_water_closet
     - media_player.master_water_closet_ecobee_switch
@@ -457,7 +453,6 @@ kidsbathroom:
   name: Kids Bathroom
   icon: mdi:toilet
   entities:
-    - input_boolean.automation_bathroom_fans
     - light.kids_bathroom_tub_lights
     - switch.kids_bathroom_exhaust_fan
     - media_player.kids_bathroom_ecobee_switch
