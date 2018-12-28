@@ -2,6 +2,10 @@ automation_enable:
   name: Enable Automations
   icon: mdi:home-automation
 
+automation_normalize_audio:
+  name: Automation - Automatically Normalize Audio throughout the day
+  icon: mdi:volume-high
+
 automation_bathroom_fans:
   name: Automation - Automatically Turn On/Off Bathroom Fans
   icon: mdi:fan

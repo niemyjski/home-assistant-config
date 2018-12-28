@@ -14,6 +14,7 @@ automations:
     - input_boolean.automation_outside_front_lights
     - input_boolean.automation_outside_front_can_lights
     - input_boolean.automation_inside_lights_on_motion
+    - input_boolean.automation_normalize_audio
     - input_boolean.automation_christmas_lights
 
 modes:
