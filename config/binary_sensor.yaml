@@ -120,3 +120,198 @@
       entity_id: sensor.upstairs_hallway_motion_switch_burglar
       friendly_name: 'Upstairs Hallway Occupancy'
       value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
+
+
+- platform: template
+  sensors:
+    basement_utility_room_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.basement_utility_room_nest_protect_battery_health
+      friendly_name: 'Utility Room Nest Battery'
+      value_template: "{{ not is_state('sensor.basement_utility_room_nest_protect_battery_health', 'Ok') }}"
+
+    basement_utility_room_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.basement_utility_room_nest_protect_smoke_status
+      friendly_name: 'Utility Room Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.basement_utility_room_nest_protect_smoke_status', 'Ok') }}"
+
+    basement_utility_room_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.basement_utility_room_nest_protect_co_status
+      friendly_name: 'Utility Room Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.basement_utility_room_nest_protect_co_status', 'Ok') }}"
+
+    basement_utility_room_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.basement_utility_room_nest_protect_color_status
+      friendly_name: 'Utility Room Nest Status'
+      value_template: "{{ not is_state('sensor.basement_utility_room_nest_protect_color_status', 'green') }}"
+
+    hallway_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.hallway_nest_protect_battery_health
+      friendly_name: 'Back Hallway Nest Battery'
+      value_template: "{{ not is_state('sensor.hallway_nest_protect_battery_health', 'Ok') }}"
+
+    hallway_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.hallway_nest_protect_smoke_status
+      friendly_name: 'Back Hallway Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.hallway_nest_protect_smoke_status', 'Ok') }}"
+
+    hallway_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.hallway_nest_protect_co_status
+      friendly_name: 'Back Hallway Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.hallway_nest_protect_co_status', 'Ok') }}"
+
+    hallway_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.hallway_nest_protect_color_status
+      friendly_name: 'Office Nest Status'
+      value_template: "{{ not is_state('sensor.hallway_nest_protect_color_status', 'green') }}"
+
+    office_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.office_nest_protect_battery_health
+      friendly_name: 'Office Nest Battery'
+      value_template: "{{ not is_state('sensor.office_nest_protect_battery_health', 'Ok') }}"
+
+    office_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.office_nest_protect_smoke_status
+      friendly_name: 'Office Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.office_nest_protect_smoke_status', 'Ok') }}"
+
+    office_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.office_nest_protect_co_status
+      friendly_name: 'Office Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.office_nest_protect_co_status', 'Ok') }}"
+
+    office_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.office_nest_protect_color_status
+      friendly_name: 'Office Nest Status'
+      value_template: "{{ not is_state('sensor.office_nest_protect_color_status', 'green') }}"
+
+    upstairs_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.upstairs_nest_protect_battery_health
+      friendly_name: 'Upstairs Nest Battery'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_battery_health', 'Ok') }}"
+
+    upstairs_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.upstairs_nest_protect_smoke_status
+      friendly_name: 'Upstairs Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_smoke_status', 'Ok') }}"
+
+    upstairs_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.upstairs_nest_protect_co_status
+      friendly_name: 'Upstairs Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_co_status', 'Ok') }}"
+
+    upstairs_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.upstairs_nest_protect_color_status
+      friendly_name: 'Upstairs Nest Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_color_status', 'green') }}"
+
+    upstairs_nest_protect_battery_health_2:
+      device_class: battery
+      entity_id: sensor.upstairs_nest_protect_battery_health_2
+      friendly_name: 'Upstairs Nest Battery'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_battery_health_2', 'Ok') }}"
+
+    upstairs_nest_protect_smoke_status_2:
+      device_class: smoke
+      entity_id: sensor.upstairs_nest_protect_smoke_status_2
+      friendly_name: 'Upstairs Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_smoke_status_2', 'Ok') }}"
+
+    upstairs_nest_protect_co_status_2:
+      device_class: gas
+      entity_id: sensor.upstairs_nest_protect_co_status_2
+      friendly_name: 'Upstairs Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_co_status_2', 'Ok') }}"
+
+    upstairs_nest_protect_status_2:
+      device_class: problem
+      entity_id: sensor.upstairs_nest_protect_color_status_2
+      friendly_name: 'Upstairs Nest Status'
+      value_template: "{{ not is_state('sensor.upstairs_nest_protect_color_status_2', 'green') }}"
+
+    master_bedroom_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.master_bedroom_nest_protect_battery_health
+      friendly_name: 'Master Bedroom Nest Battery'
+      value_template: "{{ not is_state('sensor.master_bedroom_nest_protect_battery_health', 'Ok') }}"
+
+    master_bedroom_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.master_bedroom_nest_protect_smoke_status
+      friendly_name: 'Master Bedroom Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.master_bedroom_nest_protect_smoke_status', 'Ok') }}"
+
+    master_bedroom_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.master_bedroom_nest_protect_co_status
+      friendly_name: 'Master Bedroom Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.master_bedroom_nest_protect_co_status', 'Ok') }}"
+
+    master_bedroom_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.master_bedroom_nest_protect_color_status
+      friendly_name: 'Master Bedroom Nest Status'
+      value_template: "{{ not is_state('sensor.master_bedroom_nest_protect_color_status', 'green') }}"
+
+    kids_bedroom_one_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.kids_bedroom_one_nest_protect_battery_health
+      friendly_name: 'Kid 1 Bedroom Nest Battery'
+      value_template: "{{ not is_state('sensor.kids_bedroom_one_nest_protect_battery_health', 'Ok') }}"
+
+    kids_bedroom_one_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.kids_bedroom_one_nest_protect_smoke_status
+      friendly_name: 'Kid 1 Bedroom Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_one_nest_protect_smoke_status', 'Ok') }}"
+
+    kids_bedroom_one_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.kids_bedroom_one_nest_protect_co_status
+      friendly_name: 'Kid 1 Bedroom Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_one_nest_protect_co_status', 'Ok') }}"
+
+    kids_bedroom_one_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.kids_bedroom_one_nest_protect_color_status
+      friendly_name: 'Kid 1 Bedroom Nest Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_one_nest_protect_color_status', 'green') }}"
+
+    kids_bedroom_two_nest_protect_battery_health:
+      device_class: battery
+      entity_id: sensor.kids_bedroom_two_nest_protect_battery_health
+      friendly_name: 'Kid 2 Bedroom Nest Battery'
+      value_template: "{{ not is_state('sensor.kids_bedroom_two_nest_protect_battery_health', 'Ok') }}"
+
+    kids_bedroom_two_nest_protect_smoke_status:
+      device_class: smoke
+      entity_id: sensor.kids_bedroom_two_nest_protect_smoke_status
+      friendly_name: 'Kid 2 Bedroom Nest Smoke Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_two_nest_protect_smoke_status', 'Ok') }}"
+
+    kids_bedroom_two_nest_protect_co_status:
+      device_class: gas
+      entity_id: sensor.kids_bedroom_two_nest_protect_co_status
+      friendly_name: 'Kid 2 Bedroom Nest Carbon Monoxide Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_two_nest_protect_co_status', 'Ok') }}"
+
+    kids_bedroom_two_nest_protect_status:
+      device_class: problem
+      entity_id: sensor.kids_bedroom_two_nest_protect_color_status
+      friendly_name: 'Kid 2 Bedroom Nest Status'
+      value_template: "{{ not is_state('sensor.kids_bedroom_two_nest_protect_color_status', 'green') }}"
