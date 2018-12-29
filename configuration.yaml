@@ -9,6 +9,7 @@ homeassistant:
   unit_system: imperial
   temperature_unit: F
 
+  customize: !include customize.yaml
   packages: !include_dir_named packages
 
 # Includes
