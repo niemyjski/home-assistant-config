@@ -35,7 +35,7 @@
       device_class: occupancy
       entity_id: sensor.back_hallway_motion_switch_burglar
       friendly_name: 'Back Hallway Occupancy'
-      value_template: "{{ is_state('sensor.back_hallway_motion_switch_burglar', '8') or is_state('sensor.back_hallway_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.back_hallway_motion_switch_burglar', '8') }}"
 
     front_door_can_motion_switch_motion:
       device_class: motion
@@ -47,7 +47,7 @@
       device_class: occupancy
       entity_id: sensor.front_door_can_motion_switch_burglar
       friendly_name: 'Front Door Can Occupancy'
-      value_template: "{{ is_state('sensor.front_door_can_motion_switch_burglar', '8') or is_state('sensor.front_door_can_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.front_door_can_motion_switch_burglar', '8') }}"
 
     front_foyer_motion_switch_motion:
       device_class: motion
@@ -59,7 +59,7 @@
       device_class: occupancy
       entity_id: sensor.front_foyer_motion_switch_burglar
       friendly_name: 'Front Foyer Occupancy'
-      value_template: "{{ is_state('sensor.front_foyer_motion_switch_burglar', '8') or is_state('sensor.front_foyer_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.front_foyer_motion_switch_burglar', '8') }}"
 
     front_foyer_right_closet_motion_switch_motion:
       device_class: motion
@@ -71,7 +71,7 @@
       device_class: occupancy
       entity_id: sensor.front_foyer_right_closet_motion_switch_burglar
       friendly_name: 'Front Foyer Right Closet Occupancy'
-      value_template: "{{ is_state('sensor.front_foyer_right_closet_motion_switch_burglar', '8') or is_state('sensor.front_foyer_right_closet_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.front_foyer_right_closet_motion_switch_burglar', '8') }}"
 
     kitchen_main_lights_motion_switch_motion:
       device_class: motion
@@ -83,7 +83,7 @@
       device_class: occupancy
       entity_id: sensor.kitchen_main_lights_motion_switch_burglar
       friendly_name: 'Kitchen Main Lights Occupancy'
-      value_template: "{{ is_state('sensor.kitchen_main_lights_motion_switch_burglar', '8') or is_state('sensor.kitchen_main_lights_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.kitchen_main_lights_motion_switch_burglar', '8') }}"
 
     kitchen_sink_lights_motion_switch_motion:
       device_class: motion
@@ -95,7 +95,7 @@
       device_class: occupancy
       entity_id: sensor.kitchen_sink_lights_motion_dimmer_burglar
       friendly_name: 'Kitchen Sink Lights Occupancy'
-      value_template: "{{ is_state('sensor.kitchen_sink_lights_motion_dimmer_burglar', '8') or is_state('sensor.kitchen_sink_lights_motion_dimmer_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.kitchen_sink_lights_motion_dimmer_burglar', '8') }}"
 
     master_bedroom_closet_motion_switch_motion:
       device_class: motion
@@ -107,7 +107,7 @@
       device_class: occupancy
       entity_id: sensor.master_bedroom_closet_motion_switch_burglar
       friendly_name: 'Master Bedroom Closet Occupancy'
-      value_template: "{{ is_state('sensor.master_bedroom_closet_motion_switch_burglar', '8') or is_state('sensor.master_bedroom_closet_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.master_bedroom_closet_motion_switch_burglar', '8') }}"
 
     upstairs_hallway_motion_switch_motion:
       device_class: motion
@@ -119,4 +119,4 @@
       device_class: occupancy
       entity_id: sensor.upstairs_hallway_motion_switch_burglar
       friendly_name: 'Upstairs Hallway Occupancy'
-      value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') or is_state('sensor.upstairs_hallway_motion_switch_burglar', '254') }}"
+      value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
