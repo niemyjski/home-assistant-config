@@ -187,6 +187,8 @@ frontfoyer:
   icon: mdi:sofa
   entities:
     - lock.august_smart_lock_gen3_front_door_locked
+    - binary_sensor.august_smart_lock_gen3_front_door_battery_level
+    - binary_sensor.august_smart_lock_gen3_front_door_locked
     - sensor.august_smart_lock_gen3_front_door_access_control
     - sensor.august_smart_lock_gen3_front_door_alarm_level
     - sensor.august_smart_lock_gen3_front_door_alarm_type
@@ -195,16 +197,22 @@ frontfoyer:
     - binary_sensor.front_door_camera_motion_detected
     - binary_sensor.front_door_camera_person_detected
     - binary_sensor.front_door_camera_sound_detected
+    - binary_sensor.front_foyer_motion_switch_motion
+    - binary_sensor.front_foyer_motion_switch_occupancy
     - switch.front_foyer_motion_switch
     - sensor.front_foyer_motion_switch_alarm_level
     - sensor.front_foyer_motion_switch_alarm_type
     - sensor.front_foyer_motion_switch_burglar
     - sensor.front_foyer_motion_switch_sourcenodeid
+    - binary_sensor.front_foyer_right_closet_motion_switch_motion
+    - binary_sensor.front_foyer_right_closet_motion_switch_occupancy
     - switch.front_foyer_right_closet_motion_switch
     - sensor.front_foyer_right_closet_motion_switch_alarm_level
     - sensor.front_foyer_right_closet_motion_switch_alarm_type
     - sensor.front_foyer_right_closet_motion_switch_burglar
     - sensor.front_foyer_right_closet_motion_switch_sourcenodeid
+    - binary_sensor.front_door_can_motion_switch_motion
+    - binary_sensor.front_door_can_motion_switch_occupancy
     - switch.front_door_can_motion_switch
     - sensor.front_door_can_motion_switch_alarm_level
     - sensor.front_door_can_motion_switch_alarm_type
@@ -257,11 +265,20 @@ kitchen:
     - sensor.main_floor_humidity
     - climate.main_floor
     - switch.kitchen_bar_lights_switch
+    - binary_sensor.kitchen_main_lights_motion_switch_motion
+    - binary_sensor.kitchen_main_lights_motion_switch_occupancy
     - switch.kitchen_main_lights_motion_switch
     - sensor.kitchen_main_lights_motion_switch_alarm_level
     - sensor.kitchen_main_lights_motion_switch_alarm_type
     - sensor.kitchen_main_lights_motion_switch_burglar
     - sensor.kitchen_main_lights_motion_switch_sourcenodeid
+    - binary_sensor.kitchen_sink_lights_motion_switch_motion
+    - binary_sensor.kitchen_sink_lights_motion_switch_occupancy
+    - light.kitchen_sink_lights_motion_dimmer_level
+    - sensor.kitchen_sink_lights_motion_dimmer_alarm_level
+    - sensor.kitchen_sink_lights_motion_dimmer_alarm_type
+    - sensor.kitchen_sink_lights_motion_dimmer_burglar
+    - sensor.kitchen_sink_lights_motion_dimmer_sourcenodeid
     - media_player.kitchen_echo_plus
     - media_player.kitchen_dash_wand
     - media_player.main_floor_ecobee4
@@ -294,6 +311,8 @@ backhallway:
     - switch.back_hallway_bathroom_switch
     - switch.back_hallway_picture_switch
     - light.back_hallway_picture_hue_color
+    - binary_sensor.back_hallway_motion_switch_motion
+    - binary_sensor.back_hallway_motion_switch_occupancy
     - switch.back_hallway_motion_switch
     - sensor.back_hallway_motion_switch_alarm_level
     - sensor.back_hallway_motion_switch_alarm_type
@@ -362,6 +381,8 @@ upstairshallway:
     - sensor.upstairs_nest_protect_co_status_2
     - sensor.upstairs_nest_protect_color_status
     - sensor.upstairs_nest_protect_color_status_2
+    - binary_sensor.upstairs_hallway_motion_switch_motion
+    - binary_sensor.upstairs_hallway_motion_switch_occupancy
     - switch.upstairs_hallway_motion_switch
     - sensor.upstairs_hallway_motion_switch_alarm_level
     - sensor.upstairs_hallway_motion_switch_alarm_type
@@ -386,6 +407,8 @@ masterbedroom:
     - light.master_bedroom_main_lights
     - light.left_hue_color_lamp
     - light.right_hue_color_lamp
+    - binary_sensor.master_bedroom_closet_motion_switch_motion
+    - binary_sensor.master_bedroom_closet_motion_switch_occupancy
     - light.master_bedroom_closet_motion_dimmer_level
     - sensor.master_bedroom_closet_motion_dimmer_alarm_level
     - sensor.master_bedroom_closet_motion_dimmer_alarm_type

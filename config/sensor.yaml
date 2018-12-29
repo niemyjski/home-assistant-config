@@ -1,39 +1,5 @@
 - platform: template
   sensors:
-    august_front_door:
-      friendly_name: 'Front Door Lock'
-      value_template: >
-        {{ states.lock.unknown_id033f_unknown_type0001_id0001_locked.state }}
-      icon_template: >
-        {% if is_state('lock.unknown_id033f_unknown_type0001_id0001_locked', 'locked') %}
-          mdi:lock
-        {% elif is_state('lock.unknown_id033f_unknown_type0001_id0001_locked', 'unlocked') %}
-          mdi:lock-open
-        {% else %}
-          mdi:timer-sand
-        {% endif %}
-    battery_august:
-      friendly_name: 'Front Door August Smart Lock Pro'
-      unit_of_measurement: '%'
-      value_template: >
-        {{ states.zwave.unknown_id033f_unknown_type0001_id0001.attributes.battery_level }}
-      icon_template: >
-        {% if states.zwave.unknown_id033f_unknown_type0001_id0001.attributes.battery_level is defined %}
-          {% set level = states.zwave.unknown_id033f_unknown_type0001_id0001.attributes.battery_level %}
-          {% if level | float == 100 %}
-            mdi:battery
-          {% elif level | float < 10 %}
-            mdi:battery-outline
-          {% else %}
-            {% set icon_level = (level / 10) | int * 10 %}
-            mdi:battery-{{ icon_level }}
-          {% endif %}
-        {% else %}
-          mdi:battery
-        {% endif %}
-
-- platform: template
-  sensors:
       packages_in_transit:
         friendly_name: "Packages in Transit"
         value_template: >

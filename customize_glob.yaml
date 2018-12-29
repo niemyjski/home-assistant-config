@@ -1,0 +1,15 @@
+# Z Wave Stuff
+'sensor.*_access_control*':
+  hidden: true
+'sensor.*_alarm_level*':
+  hidden: true
+'sensor.*_alarm_type*':
+  hidden: true
+'sensor.*_burglar*':
+  hidden: true
+'sensor.*_sourcenodeid*':
+  hidden: true
+'sensor.ge*':
+  hidden: true
+'switch.ge*':
+  hidden: true
