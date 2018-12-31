@@ -1,81 +1,405 @@
-title: Home
-
 resources:
-  - url: /local/custom_ui/weather-card.js
-    type: js
-  - url: /local/custom_ui/monster-card.js
-    type: js
-  - url: /local/custom_ui/surveillance-card.js?v=0
-    type: module
-
+  - type: js
+    url: /local/custom_ui/weather-card.js
+  - type: js
+    url: /local/custom_ui/monster-card.js
+  - type: module
+    url: /local/custom_ui/surveillance-card.js?v=0
+title: Home
 views:
-  - icon: mdi:home
-    id: home
-    title: home
+  - badges: []
     cards:
-      - type: entity-filter
+      - card:
+          show_name: true
+          show_state: false
+          title: Who is Home?
+          type: glance
         entities:
-          - !secret person_1_device_tracker_id
-          - !secret person_2_device_tracker_id
+          - entity: !secret person_1_device_tracker_id
+          - entity: !secret person_2_device_tracker_id
         state_filter:
           - home
           - !secret zone_1_name
-        card:
-          type: glance
-          title: Who is Home?
-          show_state: false
-          show_name: true
-      - type: entities
+        type: entity-filter
+      - entities:
+          - entity: sensor.trash_day
+          - entity: sensor.recycle_day
+        show_header_toggle: false
         title: Trash & Recycling Schedule
-        entities:
-          - sensor.trash_day
-          - sensor.recycle_day
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: Climate Control
-        filter:
-          include:
-            - domain: climate
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: Lighting
-        filter:
-          include:
-            - domain: light
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: Fans
-        filter:
-          include:
-            - domain: fan
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: Switches
-        filter:
-          include:
-            - domain: switch
-      - type: custom:monster-card
-        card:
-          type: entities
-          title: Media
-        filter:
-          include:
-            - domain: media_player
-
-  - icon: mdi:weather-cloudy
-    id: weather
-    title: Weather
+        type: entities
+      - entities:
+          - entity: climate.basement
+          - entity: climate.main_floor
+          - entity: climate.office
+          - entity: climate.master_water_closet_floor
+          - entity: climate.upstairs
+        show_header_toggle: false
+        title: Climate Control
+        type: entities
+    icon: 'mdi:home'
+    id: home
+    path: home
+    title: home
+  - badges: []
     cards:
-      - type: custom:weather-card
-        entity_weather: weather.yweather
-        entity_sun: sun.sun
+      - entity: camera.front_door
+        show_state: false
+        type: picture-entity
+      - entities:
+          - light.living_room_spot_lights
+          - media_player.living_room_ecobee_switch
+        title: Outside
+        type: entities
       - type: entities
-        title: Weather
         entities:
+          - entity: switch.front_north_outside_outlets_switch
+          - entity: camera.front_door
+          - entity: binary_sensor.front_door_camera_motion_detected
+          - entity: binary_sensor.front_door_camera_person_detected
+          - entity: binary_sensor.front_door_camera_sound_detected
+          - entity: switch.front_door_can_motion_switch
+          - entity: binary_sensor.front_door_can_motion_switch_motion
+          - entity: binary_sensor.front_door_can_motion_switch_occupancy
+          - entity: media_player.foyer_ecobee_switch
+        title: Front Outside
+    icon: 'mdi:tree'
+    path: outside
+    title: Outside
+  - badges: []
+    cards:
+      - entity: climate.basement
+        type: thermostat
+      - entities:
+          - binary_sensor.bedroom_occupancy
+          - sensor.bedroom_temperature
+          - media_player.basement_bedroom_ecobee_switch
+        title: Guest Bedroom
+        type: entities
+      - entities: []
+        title: Guest Bathroom
+        type: entities
+      - type: entities
+        entities:
+          - entity: binary_sensor.basement_utility_room_nest_protect_online
+          - entity: binary_sensor.basement_utility_room_nest_protect_battery_health
+          - entity: binary_sensor.basement_utility_room_nest_protect_smoke_status
+          - entity: binary_sensor.basement_utility_room_nest_protect_co_status
+          - entity: binary_sensor.basement_utility_room_nest_protect_status
+        title: Utility Room
+      - entities:
+          - binary_sensor.basement_occupancy
+          - sensor.basement_temperature
+          - sensor.basement_humidity
+          - climate.basement
+          - media_player.basement_ecobee4
+          - media_player.basement_window_echo
+        title: Exercise Room
+        type: entities
+      - entities: []
+        title: Family Room
+        type: entities
+      - entities: []
+        title: Storage Room
+        type: entities
+    icon: 'mdi:floor-plan'
+    path: basement
+    title: Basement
+  - badges: []
+    cards:
+      - entity: climate.main_floor
+        type: thermostat
+      - entities:
+          - entity: lock.august_smart_lock_gen3_front_door_locked
+          - entity: binary_sensor.august_smart_lock_gen3_front_door_battery_level
+          - entity: camera.front_door
+          - entity: binary_sensor.front_door_camera_motion_detected
+          - entity: binary_sensor.front_door_camera_person_detected
+          - entity: binary_sensor.front_door_camera_sound_detected
+          - entity: switch.front_foyer_motion_switch
+          - entity: binary_sensor.front_foyer_motion_switch_motion
+          - entity: binary_sensor.front_foyer_motion_switch_occupancy
+          - entity: switch.front_foyer_right_closet_motion_switch
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_motion
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_occupancy
+          - entity: switch.front_door_can_motion_switch
+          - entity: binary_sensor.front_door_can_motion_switch_motion
+          - entity: binary_sensor.front_door_can_motion_switch_occupancy
+          - entity: media_player.foyer_ecobee_switch
+        title: Front Foyer
+        type: entities
+      - entity: climate.office
+        type: thermostat
+      - entities:
+          - binary_sensor.living_room_occupancy
+          - sensor.living_room_temperature
+          - fan.living_room_fan_control_switch_level
+          - light.living_room_spot_lights
+          - light.living_room_main_lights_inner
+          - light.living_room_main_lights_outter
+          - light.living_room_table_dimmer_level
+          - switch.living_room_top_mantle_receptacle
+          - switch.living_room_bottom_mantle_receptacle
+          - switch.living_room_top_wet_bar_switch
+          - switch.living_room_bottom_wet_bar_switch
+          - switch.living_room_west_outlets_switch
+          - switch.front_north_outside_outlets_switch
+          - camera.living_room
+          - sensor.living_room_motion_detected
+          - sensor.living_room_sd_used
+          - media_player.living_room_ecobee_switch
+          - media_player.living_room_echo_dot
+        title: Living room
+        type: entities
+      - entity: camera.living_room
+        show_state: false
+        type: picture-entity
+      - entities:
+          - entity: binary_sensor.main_floor_occupancy
+          - entity: sensor.main_floor_temperature
+          - entity: sensor.main_floor_humidity
+          - entity: climate.main_floor
+          - entity: switch.kitchen_bar_lights_switch
+          - entity: switch.kitchen_main_lights_motion_switch
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_occupancy
+          - entity: light.kitchen_sink_lights_motion_dimmer_level
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_occupancy
+          - entity: media_player.kitchen_echo_plus
+          - entity: media_player.kitchen_dash_wand
+          - entity: media_player.main_floor_ecobee4
+        title: Kitchen
+        type: entities
+      - entities:
+          - binary_sensor.entertainment_room_occupancy
+          - sensor.entertainment_room_temperature
+          - switch.entertainment_room_receptacle
+          - switch.aeotec_zw080_siren_gen5_switch
+          - media_player.entertainment_room_ecobee_switch
+        title: Entertainment Room
+        type: entities
+      - entities:
+          - media_player.back_foyer_ecobee_switch
+        title: Back Foyer
+        type: entities
+      - entities:
+          - entity: switch.first_floor_bathroom_exhaust_fan
+          - entity: media_player.first_floor_bathroom_ecobee_switch
+        title: Bathroom
+        type: entities
+      - type: entities
+        entities:
+          - entity: binary_sensor.hallway_nest_protect_online
+          - entity: binary_sensor.hallway_nest_protect_battery_health
+          - entity: binary_sensor.hallway_nest_protect_smoke_status
+          - entity: binary_sensor.hallway_nest_protect_co_status
+          - entity: binary_sensor.hallway_nest_protect_status
+          - entity: switch.back_hallway_bathroom_switch
+          - entity: switch.back_hallway_picture_switch
+          - entity: light.back_hallway_picture_hue_color
+          - entity: switch.back_hallway_motion_switch
+          - entity: binary_sensor.back_hallway_motion_switch_motion
+          - entity: binary_sensor.back_hallway_motion_switch_occupancy
+        title: Back Hallway
+      - entities:
+          - binary_sensor.laundry_room_occupancy
+          - sensor.laundry_room_temperature
+          - media_player.laundry_room_ecobee_switch
+        title: Laundry Room
+        type: entities
+      - entities:
+          - binary_sensor.office_occupancy
+          - sensor.office_temperature
+          - sensor.office_humidity
+          - climate.office
+          - fan.office_fan_control_switch_level
+          - binary_sensor.office_nest_protect_online
+          - binary_sensor.office_nest_protect_battery_health
+          - binary_sensor.office_nest_protect_smoke_status
+          - binary_sensor.office_nest_protect_co_status
+          - binary_sensor.office_nest_protect_status
+          - light.office_hue_lightstrip_plus
+          - switch.office_closet_main_lights
+          - switch.office__wemo
+          - media_player.office_echo_plus
+          - media_player.office_ecobee4
+          - media_player.office_ecobee_switch
+        title: Office
+        type: entities
+    icon: 'mdi:floor-plan'
+    path: first-floor
+    title: First Floor
+  - badges: []
+    cards:
+      - entity: climate.upstairs
+        type: thermostat
+      - entities:
+          - entity: binary_sensor.master_bedroom_nest_protect_online
+          - entity: binary_sensor.master_bedroom_nest_protect_battery_health
+          - entity: binary_sensor.master_bedroom_nest_protect_smoke_status
+          - entity: binary_sensor.master_bedroom_nest_protect_co_status
+          - entity: binary_sensor.master_bedroom_nest_protect_status
+          - entity: binary_sensor.upstairs_occupancy
+          - entity: sensor.upstairs_temperature
+          - entity: sensor.upstairs_humidity
+          - entity: climate.upstairs
+          - entity: fan.master_bedroom_fan_control_switch_level
+          - entity: light.master_bedroom_main_lights
+          - entity: light.left_hue_color_lamp
+          - entity: light.right_hue_color_lamp
+          - entity: light.master_bedroom_closet_motion_dimmer_level
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_motion
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_occupancy
+          - entity: media_player.master_bedroom_echo_plus
+          - entity: media_player.upstairs_ecobee4
+        title: Master Bedroom
+        type: entities
+      - entity: climate.master_water_closet_floor
+        type: thermostat
+      - entities:
+          - entity: light.master_bathroom_shower_lights
+          - entity: light.master_bathroom_tub_lights
+          - entity: switch.master_bathroom_shower
+          - entity: media_player.master_bathroom_ecobee_switch
+          - entity: media_player.master_bathroom_left_mirror
+          - entity: media_player.master_bathroom_right_mirror
+        title: Master Bathroom
+        type: entities
+      - entities:
+          - entity: climate.master_water_closet_floor
+          - entity: switch.master_bathroom_water_closet
+          - entity: media_player.master_water_closet_ecobee_switch
+        title: Master Water Closet
+        type: entities
+      - entities:
+          - entity: light.kids_bathroom_tub_lights
+          - entity: switch.kids_bathroom_exhaust_fan
+          - entity: media_player.kids_bathroom_ecobee_switch
+        title: Kid Bathroom
+        type: entities
+      - entities:
+          - binary_sensor.kids_room_one_occupancy
+          - sensor.kids_room_one_temperature
+          - fan.kids_room_one_fan_control_switch
+          - switch.kids_room_one_closet_main_lights
+          - binary_sensor.kids_bedroom_one_nest_protect_online
+          - binary_sensor.kids_bedroom_one_nest_protect_battery_health
+          - binary_sensor.kids_bedroom_one_nest_protect_smoke_status
+          - binary_sensor.kids_bedroom_one_nest_protect_co_status
+          - binary_sensor.kids_bedroom_one_nest_protect_status
+          - media_player.kids_bedroom_one_ecobee_switch
+        title: Kid 1 Bedroom
+        type: entities
+      - entities:
+          - binary_sensor.kids_room_two_occupancy
+          - sensor.kids_room_two_temperature
+          - fan.kids_room_two_fan_control_switch
+          - switch.kids_room_two_closet_main_lights
+          - light.left_hue_white_lamp
+          - light.right_hue_white_lamp
+          - binary_sensor.kids_bedroom_two_nest_protect_online
+          - binary_sensor.kids_bedroom_two_nest_protect_battery_health
+          - binary_sensor.kids_bedroom_two_nest_protect_smoke_status
+          - binary_sensor.kids_bedroom_two_nest_protect_co_status
+          - binary_sensor.kids_bedroom_two_nest_protect_status
+          - media_player.kids_bedroom_two_ecobee_switch
+        title: Kid 2 Bedroom
+        type: entities
+      - entities:
+          - entity: binary_sensor.upstairs_nest_protect_online
+          - entity: binary_sensor.upstairs_nest_protect_online_2
+          - entity: binary_sensor.upstairs_nest_protect_battery_health
+          - entity: binary_sensor.upstairs_nest_protect_battery_health_2
+          - entity: binary_sensor.upstairs_nest_protect_smoke_status
+          - entity: binary_sensor.upstairs_nest_protect_smoke_status_2
+          - entity: binary_sensor.upstairs_nest_protect_co_status
+          - entity: binary_sensor.upstairs_nest_protect_co_status_2
+          - entity: binary_sensor.upstairs_nest_protect_status
+          - entity: binary_sensor.upstairs_nest_protect_status_2
+          - entity: switch.upstairs_hallway_motion_switch
+          - entity: binary_sensor.upstairs_hallway_motion_switch_motion
+          - entity: binary_sensor.upstairs_hallway_motion_switch_occupancy
+          - entity: sensor.upstairs_hallway_motion_switch_burglar
+        title: Upstairs Hallway
+        type: entities
+    icon: 'mdi:floor-plan'
+    path: second-floor
+    title: Second Floor
+  - badges: []
+    cards:
+      - entity: media_player.spotify
+        type: media-control
+      - entity: media_player.back_foyer_ecobee_switch
+        type: media-control
+      - entity: media_player.basement_bedroom_ecobee_switch
+        type: media-control
+      - entity: media_player.basement_echo
+        type: media-control
+      - entity: media_player.basement_ecobee4
+        type: media-control
+      - entity: media_player.basement_window_echo
+        type: media-control
+      - entity: media_player.entertainment_room_ecobee_switch
+        type: media-control
+      - entity: media_player.everywhere
+        type: media-control
+      - entity: media_player.first_floor_bathroom_ecobee_switch
+        type: media-control
+      - entity: media_player.foyer_ecobee_switch
+        type: media-control
+      - entity: media_player.game_room_2
+        type: media-control
+      - entity: media_player.garage_echo_plus
+        type: media-control
+      - entity: media_player.kids_bathroom_ecobee_switch
+        type: media-control
+      - entity: media_player.kids_bedroom_one_ecobee_switch
+        type: media-control
+      - entity: media_player.kids_bedroom_two_ecobee_switch
+        type: media-control
+      - entity: media_player.kitchen_dash_wand
+        type: media-control
+      - entity: media_player.kitchen_echo_plus
+        type: media-control
+      - entity: media_player.laundry_room_ecobee_switch
+        type: media-control
+      - entity: media_player.living_room_2
+        type: media-control
+      - entity: media_player.living_room_echo_dot
+        type: media-control
+      - entity: media_player.living_room_ecobee_switch
+        type: media-control
+      - entity: media_player.main_floor_ecobee4
+        type: media-control
+      - entity: media_player.master_bathroom_ecobee_switch
+        type: media-control
+      - entity: media_player.master_bathroom_left_mirror
+        type: media-control
+      - entity: media_player.master_bathroom_right_mirror
+        type: media-control
+      - entity: media_player.master_bedroom_echo_plus
+        type: media-control
+      - entity: media_player.master_water_closet_ecobee_switch
+        type: media-control
+      - entity: media_player.office_echo_plus
+        type: media-control
+      - entity: media_player.office_ecobee4
+        type: media-control
+      - entity: media_player.office_ecobee_switch
+        type: media-control
+      - entity: media_player.this_device
+        type: media-control
+      - entity: media_player.upstairs_ecobee4
+        type: media-control
+    icon: 'mdi:play-pause'
+    path: media
+    title: Media
+  - badges: []
+    cards:
+      - entity_sun: sun.sun
+        entity_weather: weather.yweather
+        type: 'custom:weather-card'
+      - entities:
           - sun.sun
           - sensor.season
           - sensor.dark_sky_cloud_coverage
@@ -86,9 +410,10 @@ views:
           - sensor.dark_sky_wind_speed
           - sensor.allergy_index_today
           - sensor.chinese_air_pollution_level_2
-      - type: entities
-        title: Tempature & Humidity
-        entities:
+        show_header_toggle: false
+        title: Weather
+        type: entities
+      - entities:
           - sensor.dark_sky_temperature
           - sensor.dark_sky_humidity
           - sensor.basement_temperature
@@ -105,70 +430,270 @@ views:
           - sensor.bedroom_temperature
           - sensor.kids_room_one_temperature
           - sensor.kids_room_two_temperature
-      - type: picture-entity
-        entity: camera.wunderground_radar
-      - type: iframe
-        aspect_ratio: 90%
-        url: https://embed.windy.com/embed2.html?rain,44.5133,-88.0133,10
-
-  - icon: mdi:security-home
-    name: Security
+        show_header_toggle: false
+        title: Tempature & Humidity
+        type: entities
+      - entity: camera.wunderground_radar
+        type: picture-entity
+      - aspect_ratio: 90%
+        type: iframe
+        url: 'https://embed.windy.com/embed2.html?rain,44.5133,-88.0133,10'
+    icon: 'mdi:weather-cloudy'
+    id: weather
+    path: weather
+    title: Weather
+  - badges: []
     cards:
-      - type: entities
-        title: Doors
-        entities:
+      - entities:
           - lock.august_smart_lock_gen3_front_door_locked
           - cover.house_left_garage_door_opener
           - cover.house_right_garage_door_opener
           - cover.left_garage_door
-      - type: entities
+        show_header_toggle: false
+        title: Doors
+        type: entities
+      - entities:
+          - entity: binary_sensor.basement_occupancy
+          - entity: binary_sensor.main_floor_occupancy
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_occupancy
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_occupancy
+          - entity: sensor.living_room_motion_detected
+          - entity: binary_sensor.living_room_occupancy
+          - entity: binary_sensor.front_foyer_motion_switch_motion
+          - entity: binary_sensor.front_foyer_motion_switch_occupancy
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_motion
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_occupancy
+          - entity: binary_sensor.front_door_can_motion_switch_motion
+          - entity: binary_sensor.front_door_can_motion_switch_occupancy
+          - entity: binary_sensor.front_door_camera_motion_detected
+          - entity: binary_sensor.front_door_camera_person_detected
+          - entity: binary_sensor.front_door_camera_sound_detected
+          - entity: binary_sensor.entertainment_room_occupancy
+          - entity: binary_sensor.back_hallway_motion_switch_motion
+          - entity: binary_sensor.back_hallway_motion_switch_occupancy
+          - entity: binary_sensor.laundry_room_occupancy
+          - entity: binary_sensor.office_occupancy
+          - entity: binary_sensor.upstairs_occupancy
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_motion
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_occupancy
+          - entity: binary_sensor.bedroom_occupancy
+          - entity: binary_sensor.kids_room_one_occupancy
+          - entity: binary_sensor.kids_room_two_occupancy
+          - entity: binary_sensor.upstairs_hallway_motion_switch_motion
+          - entity: binary_sensor.upstairs_hallway_motion_switch_occupancy
+        show_header_toggle: false
         title: Motion
-        entities:
-          - binary_sensor.basement_occupancy
-          - binary_sensor.main_floor_occupancy
-          - sensor.living_room_motion_detected
-          - binary_sensor.living_room_occupancy
-          - binary_sensor.front_door_camera_motion_detected
-          - binary_sensor.front_door_camera_person_detected
-          - binary_sensor.front_door_camera_sound_detected
-          - binary_sensor.entertainment_room_occupancy
-          - binary_sensor.laundry_room_occupancy
-          - binary_sensor.office_occupancy
-          - binary_sensor.upstairs_occupancy
-          - binary_sensor.bedroom_occupancy
-          - binary_sensor.kids_room_one_occupancy
-          - binary_sensor.kids_room_two_occupancy
-
-  - icon: mdi:cctv
-    id: cameras
-    title: Cameras
-    panel: true
+        type: entities
+      - entity: switch.aeotec_zw080_siren_gen5_switch
+        type: entity-button
+    icon: 'mdi:security-home'
+    name: Security
+    path: security
+    title: Security
+  - badges: []
     cards:
-      - type: custom:surveillance-card
-        thumb_interval: 2.5
-        update_interval: 0.5
-        cameras:
+      - cameras:
           - entity: camera.front_door
             motion_entity: binary_sensor.front_door_camera_motion_detected
           - entity: camera.living_room
             motion_entity: sensor.living_room_motion_detected
-
-  - icon: mdi:settings
-    id: settings
-    title: settings
+        thumb_interval: 2.5
+        type: 'custom:surveillance-card'
+        update_interval: 0.5
+    icon: 'mdi:cctv'
+    id: cameras
+    panel: true
+    path: cameras
+    title: Cameras
+  - badges: []
     cards:
-      - type: entities
-        title: Trash Schedule
-        entities:
+      - entities:
           - sensor.trash_day
           - sensor.trash_pickup_day
           - input_select.trash_pickup_day
-      - type: entities
-        title: Recycle Schedule
-        entities:
+        show_header_toggle: false
+        title: Trash Schedule
+        type: entities
+      - entities:
           - sensor.recycle_day
           - sensor.recycle_pickup_day
           - sensor.recycle_pickup_week
           - input_select.recycle_pickup_day
           - sensor.current_week
           - input_select.recycle_pickup_week
+        show_header_toggle: false
+        title: Recycle Schedule
+        type: entities
+      - entities:
+          - entity: input_boolean.automation_enable
+          - entity: input_boolean.automation_bathroom_fans
+          - entity: input_boolean.automation_master_bedroom_fan
+          - entity: input_boolean.automation_outside_back_lights
+          - entity: input_boolean.automation_outside_front_lights_on_motion
+          - entity: input_boolean.automation_outside_front_lights
+          - entity: input_boolean.automation_outside_front_can_lights
+          - entity: input_boolean.automation_inside_lights_on_motion
+          - entity: input_boolean.automation_outside_front_lights_on_motion
+          - entity: input_boolean.automation_normalize_volume
+          - entity: input_boolean.automation_christmas_lights
+        show_header_toggle: false
+        title: Automations
+        type: entities
+      - entities:
+          - entity: input_boolean.do_not_disturb_mode
+          - entity: input_boolean.vacation_mode
+          - entity: input_boolean.guest_mode
+          - entity: input_boolean.facial_recognition_mode
+        show_header_toggle: false
+        title: Modes
+        type: entities
+      - entities:
+          - entity: input_boolean.accessibility_notifications
+          - entity: input_boolean.automation_notifications
+          - entity: input_boolean.arriving_home_notifications
+          - entity: input_boolean.speech_notifications
+          - entity: input_boolean.text_notifications
+          - entity: input_boolean.trash_reminders
+          - entity: automation.reset_trash_reminders
+          - entity: input_boolean.weather_notifications
+          - entity: input_boolean.welcome_notifications
+        show_header_toggle: false
+        title: Notifications
+        type: entities
+    icon: 'mdi:settings'
+    id: settings
+    path: settings
+    title: settings
+  - badges: []
+    cards:
+      - entities:
+          - entity: climate.basement
+          - entity: climate.main_floor
+          - entity: climate.office
+          - entity: climate.master_water_closet_floor
+          - entity: climate.upstairs
+        show_header_toggle: false
+        title: Climate Control
+        type: entities
+      - card:
+          entities:
+            - entity: light.back_hallway_picture_hue_color
+            - entity: light.ge_26933_smart_motion_dimmer_level_4
+            - entity: light.kids_bathroom_tub_lights
+            - entity: light.left_hue_color_lamp
+            - entity: light.left_hue_white_lamp
+            - entity: light.living_room_main_lights_inner
+            - entity: light.living_room_main_lights_outter
+            - entity: light.living_room_spot_lights
+            - entity: light.living_room_table_dimmer_level
+            - entity: light.master_bathroom_shower_lights
+            - entity: light.master_bathroom_tub_lights
+            - entity: light.master_bedroom_closet_motion_dimmer_level
+            - entity: light.master_bedroom_main_lights
+            - entity: light.office_hue_lightstrip_plus
+            - entity: light.right_hue_color_lamp
+            - entity: light.right_hue_white_lamp
+          title: Lighting
+          type: entities
+        filter:
+          include:
+            - domain: light
+        type: 'custom:monster-card'
+      - card:
+          entities:
+            - entity: fan.kids_room_one_fan_control_switch
+            - entity: fan.kids_room_two_fan_control_switch
+            - entity: fan.living_room_fan_control_switch_level
+            - entity: fan.master_bedroom_fan_control_switch_level
+            - entity: fan.office_fan_control_switch_level
+          title: Fans
+          type: entities
+        filter:
+          include:
+            - domain: fan
+        type: 'custom:monster-card'
+      - card:
+          entities:
+            - entity: switch.aeotec_zw080_siren_gen5_switch
+            - entity: switch.back_hallway_bathroom_switch
+            - entity: switch.back_hallway_motion_switch
+            - entity: switch.back_hallway_picture_switch
+            - entity: switch.entertainment_room_receptacle
+            - entity: switch.first_floor_bathroom_exhaust_fan
+            - entity: switch.front_door_can_motion_switch
+            - entity: switch.front_foyer_motion_switch
+            - entity: switch.front_foyer_right_closet_motion_switch
+            - entity: switch.front_north_outside_outlets_switch
+            - entity: switch.ge_26931_smart_motion_switch_switch_10
+            - entity: switch.ge_26931_smart_motion_switch_switch_12
+            - entity: switch.ge_26931_smart_motion_switch_switch_2
+            - entity: switch.ge_26931_smart_motion_switch_switch_4
+            - entity: switch.ge_26931_smart_motion_switch_switch_6
+            - entity: switch.ge_26931_smart_motion_switch_switch_8
+            - entity: switch.kids_bathroom_exhaust_fan
+            - entity: switch.kids_room_one_closet_main_lights
+            - entity: switch.kids_room_two_closet_main_lights
+            - entity: switch.kitchen_bar_lights_switch
+            - entity: switch.kitchen_main_lights_motion_switch
+            - entity: switch.living_room_bottom_mantle_receptacle
+            - entity: switch.living_room_bottom_wet_bar_switch
+            - entity: switch.living_room_top_mantle_receptacle
+            - entity: switch.living_room_top_wet_bar_switch
+            - entity: switch.living_room_west_outlets_switch
+            - entity: switch.master_bathroom_shower
+            - entity: switch.master_bathroom_water_closet
+            - entity: switch.office__wemo
+            - entity: switch.office_closet_main_lights
+            - entity: switch.upstairs_hallway_motion_switch
+          title: Switches
+          type: entities
+        filter:
+          include:
+            - domain: switch
+        type: 'custom:monster-card'
+      - card:
+          entities:
+            - entity: media_player.back_foyer_ecobee_switch
+            - entity: media_player.basement_bedroom_ecobee_switch
+            - entity: media_player.basement_echo
+            - entity: media_player.basement_ecobee4
+            - entity: media_player.basement_window_echo
+            - entity: media_player.entertainment_room_ecobee_switch
+            - entity: media_player.everywhere
+            - entity: media_player.first_floor_bathroom_ecobee_switch
+            - entity: media_player.foyer_ecobee_switch
+            - entity: media_player.game_room_2
+            - entity: media_player.garage_echo_plus
+            - entity: media_player.kids_bathroom_ecobee_switch
+            - entity: media_player.kids_bedroom_one_ecobee_switch
+            - entity: media_player.kids_bedroom_two_ecobee_switch
+            - entity: media_player.kitchen_dash_wand
+            - entity: media_player.kitchen_echo_plus
+            - entity: media_player.laundry_room_ecobee_switch
+            - entity: media_player.living_room_2
+            - entity: media_player.living_room_echo_dot
+            - entity: media_player.living_room_ecobee_switch
+            - entity: media_player.main_floor_ecobee4
+            - entity: media_player.master_bathroom_ecobee_switch
+            - entity: media_player.master_bathroom_left_mirror
+            - entity: media_player.master_bathroom_right_mirror
+            - entity: media_player.master_bedroom_echo_plus
+            - entity: media_player.master_water_closet_ecobee_switch
+            - entity: media_player.office_echo_plus
+            - entity: media_player.office_ecobee4
+            - entity: media_player.office_ecobee_switch
+            - entity: media_player.spotify
+            - entity: media_player.this_device
+            - entity: media_player.upstairs_ecobee4
+          title: Media
+          type: entities
+        filter:
+          include:
+            - domain: media_player
+        type: 'custom:monster-card'
+    icon: 'mdi:all-inclusive'
+    id: all
+    path: all
+    title: All

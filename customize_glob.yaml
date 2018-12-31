@@ -16,6 +16,18 @@
 'light.ge_*':
   hidden: true
 
+# nest
+#'sensor.*_protect_online':
+#  hidden: true
+#'sensor.*_co_status':
+#  hidden: true
+#'sensor.*_battery_health':
+#  hidden: true
+#'sensor.*_color_status':
+#  hidden: true
+#'sensor.*_smoke_status':
+#  hidden: true
+
 # Weather
 'sensor.dark_sky_*':
    hidden: true

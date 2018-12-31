@@ -19,6 +19,7 @@ binary_sensor: !include config/binary_sensor.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
+discovery: !include config/discovery.yaml
 group: !include config/group.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
@@ -46,7 +47,6 @@ zwave: !include config/zwave.yaml
 cloud:
 config:
 conversation:
-discovery:
 frontend:
 hassio:
 history:

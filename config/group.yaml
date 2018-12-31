@@ -86,6 +86,8 @@ frontoutside:
     - binary_sensor.front_door_camera_motion_detected
     - binary_sensor.front_door_camera_person_detected
     - binary_sensor.front_door_camera_sound_detected
+    - binary_sensor.front_door_can_motion_switch_motion
+    - binary_sensor.front_door_can_motion_switch_occupancy
     - switch.front_door_can_motion_switch
     - sensor.front_door_can_motion_switch_alarm_level
     - sensor.front_door_can_motion_switch_alarm_type
@@ -136,6 +138,10 @@ utilityroom:
   icon: mdi:wrench
   entities:
     - binary_sensor.basement_utility_room_nest_protect_online
+    - binary_sensor.basement_utility_room_nest_protect_battery_health
+    - binary_sensor.basement_utility_room_nest_protect_smoke_status
+    - binary_sensor.basement_utility_room_nest_protect_co_status
+    - binary_sensor.basement_utility_room_nest_protect_status
     - sensor.basement_utility_room_nest_protect_battery_health
     - sensor.basement_utility_room_nest_protect_smoke_status
     - sensor.basement_utility_room_nest_protect_co_status
@@ -304,6 +310,10 @@ backhallway:
   icon: mdi:walk
   entities:
     - binary_sensor.hallway_nest_protect_online
+    - binary_sensor.hallway_nest_protect_battery_health
+    - binary_sensor.hallway_nest_protect_smoke_status
+    - binary_sensor.hallway_nest_protect_co_status
+    - binary_sensor.hallway_nest_protect_status
     - sensor.hallway_nest_protect_battery_health
     - sensor.hallway_nest_protect_smoke_status
     - sensor.hallway_nest_protect_co_status
@@ -339,6 +349,10 @@ office:
     - climate.office
     - fan.office_fan_control_switch_level
     - binary_sensor.office_nest_protect_online
+    - binary_sensor.office_nest_protect_battery_health
+    - binary_sensor.office_nest_protect_smoke_status
+    - binary_sensor.office_nest_protect_co_status
+    - binary_sensor.office_nest_protect_status
     - sensor.office_nest_protect_battery_health
     - sensor.office_nest_protect_smoke_status
     - sensor.office_nest_protect_co_status
@@ -373,6 +387,14 @@ upstairshallway:
   entities:
     - binary_sensor.upstairs_nest_protect_online
     - binary_sensor.upstairs_nest_protect_online_2
+    - binary_sensor.upstairs_nest_protect_battery_health
+    - binary_sensor.upstairs_nest_protect_battery_health_2
+    - binary_sensor.upstairs_nest_protect_smoke_status
+    - binary_sensor.upstairs_nest_protect_smoke_status_2
+    - binary_sensor.upstairs_nest_protect_co_status
+    - binary_sensor.upstairs_nest_protect_co_status_2
+    - binary_sensor.upstairs_nest_protect_status
+    - binary_sensor.upstairs_nest_protect_status_2
     - sensor.upstairs_nest_protect_battery_health
     - sensor.upstairs_nest_protect_battery_health_2
     - sensor.upstairs_nest_protect_smoke_status
@@ -395,6 +417,10 @@ masterbedroom:
   icon: mdi:hotel
   entities:
     - binary_sensor.master_bedroom_nest_protect_online
+    - binary_sensor.master_bedroom_nest_protect_battery_health
+    - binary_sensor.master_bedroom_nest_protect_smoke_status
+    - binary_sensor.master_bedroom_nest_protect_co_status
+    - binary_sensor.master_bedroom_nest_protect_status
     - sensor.master_bedroom_nest_protect_battery_health
     - sensor.master_bedroom_nest_protect_smoke_status
     - sensor.master_bedroom_nest_protect_co_status
@@ -448,6 +474,10 @@ kid1bedroom:
     - fan.kids_room_one_fan_control_switch
     - switch.kids_room_one_closet_main_lights
     - binary_sensor.kids_bedroom_one_nest_protect_online
+    - binary_sensor.kids_bedroom_one_nest_protect_battery_health
+    - binary_sensor.kids_bedroom_one_nest_protect_smoke_status
+    - binary_sensor.kids_bedroom_one_nest_protect_co_status
+    - binary_sensor.kids_bedroom_one_nest_protect_status
     - sensor.kids_bedroom_one_nest_protect_battery_health
     - sensor.kids_bedroom_one_nest_protect_smoke_status
     - sensor.kids_bedroom_one_nest_protect_co_status
@@ -466,6 +496,10 @@ kid2bedroom:
     - light.left_hue_white_lamp
     - light.right_hue_white_lamp
     - binary_sensor.kids_bedroom_two_nest_protect_online
+    - binary_sensor.kids_bedroom_two_nest_protect_battery_health
+    - binary_sensor.kids_bedroom_two_nest_protect_smoke_status
+    - binary_sensor.kids_bedroom_two_nest_protect_co_status
+    - binary_sensor.kids_bedroom_two_nest_protect_status
     - sensor.kids_bedroom_two_nest_protect_battery_health
     - sensor.kids_bedroom_two_nest_protect_smoke_status
     - sensor.kids_bedroom_two_nest_protect_co_status
