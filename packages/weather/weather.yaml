@@ -38,6 +38,9 @@ sensor:
       - visibility
     update_interval:
       minutes: 5
+  - platform: illuminance
+    name: Dark Sky Illuminance
+    entity_id: sensor.dark_sky_icon
   - platform: season
   - platform: template
     sensors:

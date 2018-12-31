@@ -1,3 +1,4 @@
+# Hold state about current conditions of washer and dryer thats updated via IFTTT
 samsung_dryer:
   name: Dryer
   icon: mdi:tumble-dryer
