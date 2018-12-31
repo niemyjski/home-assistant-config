@@ -26,3 +26,7 @@
             {% endif %}
           {% endmacro %}
           {{delivered(states.sensor.ups)|int}}
+
+ - platform: illuminance
+    name: Dark Sky Illuminance
+    entity_id: sensor.dark_sky_icon
