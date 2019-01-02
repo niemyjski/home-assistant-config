@@ -1,0 +1,3 @@
+platform: switch
+name: Christmas Tree Lights
+entity_id: switch.living_room_west_outlets_switch
