@@ -18,6 +18,13 @@ sensor:
       - icon
       - daily_summary
       - hourly_summary
+
+      # - Added for dashboard
+      - humidity
+      - temperature
+      - wind_bearing
+      - wind_speed
+      - visibility
     update_interval:
-      minutes: 20
+      minutes: 5
   - platform: season
