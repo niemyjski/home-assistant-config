@@ -11,13 +11,13 @@ sensor:
       - allergy_index_yesterday
       - disease_average_forecasted
   - platform: darksky
-     api_key: !secret darksky_key
-     monitored_conditions:
-       - summary
-       - cloud_cover
-       - icon
-       - daily_summary
-       - hourly_summary
-     update_interval:
-       minutes: 20
+    api_key: !secret darksky_key
+    monitored_conditions:
+      - summary
+      - cloud_cover
+      - icon
+      - daily_summary
+      - hourly_summary
+    update_interval:
+      minutes: 20
    - platform: season
