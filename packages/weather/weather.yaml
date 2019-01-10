@@ -20,4 +20,4 @@ sensor:
       - hourly_summary
     update_interval:
       minutes: 20
-   - platform: season
+  - platform: season
