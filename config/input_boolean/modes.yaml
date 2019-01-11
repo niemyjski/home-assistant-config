@@ -10,6 +10,10 @@ vacation_mode:
   name: Vacation Mode
   icon: mdi:beach
 
+emergency_mode:
+  name: Emergency Mode
+  icon: mdi:exit-run
+
 facial_recognition_mode:
   name: Use Facial Recognition
   icon: mdi:face-profile

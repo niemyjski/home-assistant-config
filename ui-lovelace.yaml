@@ -1,10 +1,10 @@
 resources:
   - type: js
     url: /local/custom_ui/weather-card.js
-  - type: js
-    url: /local/custom_ui/monster-card.js
   - type: module
-    url: /local/custom_ui/surveillance-card.js?v=0
+    url: /local/custom_ui/monster-card.js?v=1
+  - type: module
+    url: /local/custom_ui/surveillance-card.js?v=0.1
 title: Home
 views:
   - badges: []
@@ -21,6 +21,14 @@ views:
           - home
           - !secret zone_1_name
         type: entity-filter
+      - entities:
+          - lock.august_smart_lock_gen3_front_door_locked
+          - cover.house_left_garage_door_opener
+          - cover.house_right_garage_door_opener
+          - cover.left_garage_door
+        show_header_toggle: false
+        title: Doors
+        type: entities
       - entities:
           - entity: sensor.trash_day
           - entity: sensor.recycle_day
@@ -46,22 +54,19 @@ views:
         show_state: false
         type: picture-entity
       - entities:
-          - light.living_room_spot_lights
-          - media_player.living_room_ecobee_switch
+          - entity: light.living_room_spot_lights
+          - entity: sensor.dark_sky_illuminance
         title: Outside
         type: entities
-      - type: entities
-        entities:
+      - entities:
           - entity: switch.front_north_outside_outlets_switch
           - entity: camera.front_door
           - entity: binary_sensor.front_door_camera_motion_detected
           - entity: binary_sensor.front_door_camera_person_detected
           - entity: binary_sensor.front_door_camera_sound_detected
           - entity: switch.front_door_can_motion_switch
-          - entity: binary_sensor.front_door_can_motion_switch_motion
-          - entity: binary_sensor.front_door_can_motion_switch_occupancy
-          - entity: media_player.foyer_ecobee_switch
         title: Front Outside
+        type: entities
     icon: 'mdi:tree'
     path: outside
     title: Outside
@@ -75,17 +80,6 @@ views:
           - media_player.basement_bedroom_ecobee_switch
         title: Guest Bedroom
         type: entities
-      - entities: []
-        title: Guest Bathroom
-        type: entities
-      - type: entities
-        entities:
-          - entity: binary_sensor.basement_utility_room_nest_protect_online
-          - entity: binary_sensor.basement_utility_room_nest_protect_battery_health
-          - entity: binary_sensor.basement_utility_room_nest_protect_smoke_status
-          - entity: binary_sensor.basement_utility_room_nest_protect_co_status
-          - entity: binary_sensor.basement_utility_room_nest_protect_status
-        title: Utility Room
       - entities:
           - binary_sensor.basement_occupancy
           - sensor.basement_temperature
@@ -94,6 +88,17 @@ views:
           - media_player.basement_ecobee4
           - media_player.basement_window_echo
         title: Exercise Room
+        type: entities
+      - entities:
+          - entity: binary_sensor.basement_utility_room_nest_protect_online
+          - entity: binary_sensor.basement_utility_room_nest_protect_battery_health
+          - entity: binary_sensor.basement_utility_room_nest_protect_smoke_status
+          - entity: binary_sensor.basement_utility_room_nest_protect_co_status
+          - entity: binary_sensor.basement_utility_room_nest_protect_status
+        title: Utility Room
+        type: entities
+      - entities: []
+        title: Guest Bathroom
         type: entities
       - entities: []
         title: Family Room
@@ -107,6 +112,8 @@ views:
   - badges: []
     cards:
       - entity: climate.main_floor
+        type: thermostat
+      - entity: climate.office
         type: thermostat
       - entities:
           - entity: lock.august_smart_lock_gen3_front_door_locked
@@ -127,8 +134,9 @@ views:
           - entity: media_player.foyer_ecobee_switch
         title: Front Foyer
         type: entities
-      - entity: climate.office
-        type: thermostat
+      - entity: camera.living_room
+        show_state: false
+        type: picture-entity
       - entities:
           - binary_sensor.living_room_occupancy
           - sensor.living_room_temperature
@@ -150,9 +158,6 @@ views:
           - media_player.living_room_echo_dot
         title: Living room
         type: entities
-      - entity: camera.living_room
-        show_state: false
-        type: picture-entity
       - entities:
           - entity: binary_sensor.main_floor_occupancy
           - entity: sensor.main_floor_temperature
@@ -187,8 +192,7 @@ views:
           - entity: media_player.first_floor_bathroom_ecobee_switch
         title: Bathroom
         type: entities
-      - type: entities
-        entities:
+      - entities:
           - entity: binary_sensor.hallway_nest_protect_online
           - entity: binary_sensor.hallway_nest_protect_battery_health
           - entity: binary_sensor.hallway_nest_protect_smoke_status
@@ -201,10 +205,13 @@ views:
           - entity: binary_sensor.back_hallway_motion_switch_motion
           - entity: binary_sensor.back_hallway_motion_switch_occupancy
         title: Back Hallway
+        type: entities
       - entities:
-          - binary_sensor.laundry_room_occupancy
-          - sensor.laundry_room_temperature
-          - media_player.laundry_room_ecobee_switch
+          - entity: binary_sensor.laundry_room_occupancy
+          - entity: sensor.laundry_room_temperature
+          - entity: media_player.laundry_room_ecobee_switch
+          - entity: input_boolean.samsung_dryer
+          - entity: input_boolean.samsung_washer
         title: Laundry Room
         type: entities
       - entities:
@@ -233,6 +240,8 @@ views:
     cards:
       - entity: climate.upstairs
         type: thermostat
+      - entity: climate.master_water_closet_floor
+        type: thermostat
       - entities:
           - entity: binary_sensor.master_bedroom_nest_protect_online
           - entity: binary_sensor.master_bedroom_nest_protect_battery_health
@@ -254,8 +263,6 @@ views:
           - entity: media_player.upstairs_ecobee4
         title: Master Bedroom
         type: entities
-      - entity: climate.master_water_closet_floor
-        type: thermostat
       - entities:
           - entity: light.master_bathroom_shower_lights
           - entity: light.master_bathroom_tub_lights
@@ -339,6 +346,8 @@ views:
         type: media-control
       - entity: media_player.basement_window_echo
         type: media-control
+      - entity: media_player.blakes_alexa_apps
+        type: media-control
       - entity: media_player.entertainment_room_ecobee_switch
         type: media-control
       - entity: media_player.everywhere
@@ -363,7 +372,7 @@ views:
         type: media-control
       - entity: media_player.laundry_room_ecobee_switch
         type: media-control
-      - entity: media_player.living_room_2
+      - entity: media_player.living_room
         type: media-control
       - entity: media_player.living_room_echo_dot
         type: media-control
@@ -396,8 +405,7 @@ views:
     title: Media
   - badges: []
     cards:
-      - entity_sun: sun.sun
-        entity_weather: weather.yweather
+      - entity: weather.dark_sky
         type: 'custom:weather-card'
       - entities:
           - sun.sun
@@ -581,7 +589,9 @@ views:
           entities:
             - entity: light.back_hallway_picture_hue_color
             - entity: light.ge_26933_smart_motion_dimmer_level_4
+            - entity: light.ge_26933_smart_motion_dimmer_level_5
             - entity: light.kids_bathroom_tub_lights
+            - entity: light.kitchen_sink_lights_motion_dimmer_level
             - entity: light.left_hue_color_lamp
             - entity: light.left_hue_white_lamp
             - entity: light.living_room_main_lights_inner
@@ -660,6 +670,7 @@ views:
             - entity: media_player.basement_echo
             - entity: media_player.basement_ecobee4
             - entity: media_player.basement_window_echo
+            - entity: media_player.blakes_alexa_apps
             - entity: media_player.entertainment_room_ecobee_switch
             - entity: media_player.everywhere
             - entity: media_player.first_floor_bathroom_ecobee_switch
@@ -672,7 +683,6 @@ views:
             - entity: media_player.kitchen_dash_wand
             - entity: media_player.kitchen_echo_plus
             - entity: media_player.laundry_room_ecobee_switch
-            - entity: media_player.living_room_2
             - entity: media_player.living_room_echo_dot
             - entity: media_player.living_room_ecobee_switch
             - entity: media_player.main_floor_ecobee4

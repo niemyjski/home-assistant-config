@@ -10,6 +10,10 @@ speech_notifications:
   name: Speech Notifications
   icon: mdi:speaker-wireless
 
+emergency_notifications:
+  name: Emergency Notifications
+  icon: mdi:speaker-wireless
+
 text_notifications:
   name: Text Notifications
   icon: mdi:cellphone-wireless

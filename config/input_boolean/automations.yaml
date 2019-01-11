@@ -6,14 +6,6 @@ automation_normalize_volume:
   name: Automation - Automatically Normalize Volume throughout the day
   icon: mdi:volume-high
 
-automation_bathroom_fans:
-  name: Automation - Automatically Turn On/Off Bathroom Fans
-  icon: mdi:fan
-
-automation_master_bedroom_fan:
-  name: Automation - Master Bedroom Fan
-  icon: mdi:fan
-
 automation_outside_front_lights_on_motion:
   name: Automation - Turn On/Off Outside Front Lights (Motion)
   icon: mdi:lightbulb-on
@@ -33,3 +25,39 @@ automation_outside_back_lights:
 automation_inside_lights_on_motion:
   name: Automation - Turn On/Off Inside Lights (Motion)
   icon: mdi:lightbulb-on
+
+automation_inside_closet_lights:
+  name: Automation - Turn Off Lights closet lights
+  icon: mdi:lightbulb-on
+
+automation_inside_turn_off_lights_inactivity:
+  name: Automation - Turn Off Lights on inactivity.
+  icon: mdi:lightbulb-on
+
+automation_inside_fireplace:
+  name: Automation - Automatically Turn On/Off Fireplace
+  icon: mdi:fire
+
+automation_inside_bathroom_fans:
+  name: Automation - Automatically Turn On/Off Bathroom Fans
+  icon: mdi:fan
+
+automation_inside_master_bedroom_fan:
+  name: Automation - Master Bedroom Fan
+  icon: mdi:fan
+
+automation_emergency_lights_on:
+  name: Turn on Lights during emergency
+  icon: mdi:alarm-light
+
+automation_emergency_siren_on:
+  name: Open garage door during emergency
+  icon: mdi:speaker-wireless
+
+automation_emergency_garage_door_open:
+  name: Open garage door during emergency
+  icon: mdi:door-open
+
+automation_emergency_unlock_doors:
+  name: Open garage door during emergency
+  icon: mdi:door-open
