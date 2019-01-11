@@ -1,0 +1,4023 @@
+[
+  {
+    "id": "2cd3c43d.f6d84c",
+    "type": "tab",
+    "label": "Christmas",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "799d79fb.77ee38",
+    "type": "tab",
+    "label": "Master Bedroom",
+    "disabled": false,
+    "info": "Master Bedroom Automations"
+  },
+  {
+    "id": "f67c7a34.9bcde",
+    "type": "tab",
+    "label": "Outside",
+    "disabled": false,
+    "info": "Automations that run outside\n"
+  },
+  {
+    "id": "74ac8f9a.f9fa3",
+    "type": "tab",
+    "label": "Bathroom Fans",
+    "disabled": false,
+    "info": "Controls Automations for the Bathroom Fans\n"
+  },
+  {
+    "id": "3c07a459.ce903c",
+    "type": "tab",
+    "label": "Normalize Audio",
+    "disabled": false,
+    "info": "Normalize All Audio"
+  },
+  {
+    "id": "7dca484b.45ae",
+    "type": "tab",
+    "label": "Subflows",
+    "disabled": false,
+    "info": "Reusable Subflows\n"
+  },
+  {
+    "id": "5bb10f4e.f7bd8",
+    "type": "tab",
+    "label": "Laundry Room",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "cd444af.6970f38",
+    "type": "tab",
+    "label": "Closet Lights",
+    "disabled": false,
+    "info": ""
+  },
+  {
+    "id": "7a62a2d3.c0f4a4",
+    "type": "subflow",
+    "name": "Send Automation Speech Notification",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 140,
+        "y": 60,
+        "wires": [
+          {
+            "id": "89300b1.595bcf8"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "974adda.d2ea92",
+    "type": "subflow",
+    "name": "Set Volume Level",
+    "info": "Set Volume Level",
+    "category": "",
+    "in": [
+      {
+        "x": 80,
+        "y": 120,
+        "wires": [
+          {
+            "id": "4c86fd47.0875e4"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "76be143e.dbb0e4",
+    "type": "subflow",
+    "name": "Set Volume Level on All Media Devices",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 100,
+        "y": 60,
+        "wires": [
+          {
+            "id": "642c5f33.bd92a8"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "af0c5464.36789",
+    "type": "subflow",
+    "name": "Turn On/Off Switch With Notification",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 80,
+        "y": 160,
+        "wires": [
+          {
+            "id": "7b55b409.713bdc"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "6325f627.09e548",
+    "type": "subflow",
+    "name": "Turn Fan On/Off With Notifications",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 80,
+        "y": 140,
+        "wires": [
+          {
+            "id": "aec6edc3.91bb2"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "bafd53de.69711",
+    "type": "subflow",
+    "name": "Turn Light On/Off With Notifications",
+    "info": "",
+    "category": "",
+    "in": [
+      {
+        "x": 140,
+        "y": 660,
+        "wires": [
+          {
+            "id": "c6d3f892.6f2528"
+          }
+        ]
+      }
+    ],
+    "out": []
+  },
+  {
+    "id": "61956bd4.93df44",
+    "type": "server",
+    "z": "",
+    "name": "Home Assistant"
+  },
+  {
+    "id": "ee567272.118848",
+    "type": "server",
+    "z": "",
+    "name": "Home Assistant"
+  },
+  {
+    "id": "a7b53d40.832918",
+    "type": "inject",
+    "z": "799d79fb.77ee38",
+    "name": "",
+    "topic": "",
+    "payload": "on",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 140,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ]
+    ]
+  },
+  {
+    "id": "fc3c12d6.355eb8",
+    "type": "inject",
+    "z": "799d79fb.77ee38",
+    "name": "",
+    "topic": "",
+    "payload": "off",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 180,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ]
+    ]
+  },
+  {
+    "id": "b4bc7fe7.6ac66",
+    "type": "bigtimer",
+    "z": "799d79fb.77ee38",
+    "outtopic": "",
+    "outpayload1": "on",
+    "outpayload2": "off",
+    "name": "Bedroom Fan",
+    "comment": "Turn on at 9:00pm and off at 9:00am",
+    "lat": "44.62617737045897",
+    "lon": "-88.03619097769018",
+    "starttime": "1260",
+    "endtime": "480",
+    "startoff": "0",
+    "endoff": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": "240",
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": 0,
+    "xmonth1": 0,
+    "xday2": 0,
+    "xmonth2": 0,
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": true,
+    "atstart": true,
+    "odd": false,
+    "even": false,
+    "x": 340,
+    "y": 160,
+    "wires": [
+      [
+        "62c4cac9.de4d7c"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "28aa99c9.8b6e8e",
+    "type": "inject",
+    "z": "799d79fb.77ee38",
+    "name": "",
+    "topic": "",
+    "payload": "auto",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 220,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ]
+    ]
+  },
+  {
+    "id": "5c9c9852.6ecc8",
+    "type": "api-current-state",
+    "z": "799d79fb.77ee38",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "a6188fac.e0fa18"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "a6188fac.e0fa18",
+    "type": "api-current-state",
+    "z": "799d79fb.77ee38",
+    "name": "Master Bedroom Fan Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_master_bedroom_fan",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 430,
+    "y": 80,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      null
+    ]
+  },
+  {
+    "id": "4e282e0f.3d0c78",
+    "type": "api-current-state",
+    "z": "f67c7a34.9bcde",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 120,
+    "y": 80,
+    "wires": [
+      [
+        "7b5360fd.0c62d"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "7b5360fd.0c62d",
+    "type": "api-current-state",
+    "z": "f67c7a34.9bcde",
+    "name": "Outside Front Lights On Motion Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_outside_front_lights_on_motion",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 440,
+    "y": 80,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "fdc2811b.6677c",
+    "type": "inject",
+    "z": "f67c7a34.9bcde",
+    "name": "",
+    "topic": "",
+    "payload": "on",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 140,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ]
+  },
+  {
+    "id": "c63bf66a.b8161",
+    "type": "inject",
+    "z": "f67c7a34.9bcde",
+    "name": "",
+    "topic": "",
+    "payload": "off",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 180,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ]
+  },
+  {
+    "id": "c7425af2.f1b6e8",
+    "type": "bigtimer",
+    "z": "f67c7a34.9bcde",
+    "outtopic": "",
+    "outpayload1": "on",
+    "outpayload2": "off",
+    "name": "Outside Front Light",
+    "comment": "Turn on Outside Front Lights at Sunset and turn off at 10pm",
+    "lat": "44.62617737045897",
+    "lon": "-88.03619097769018",
+    "starttime": "5004",
+    "endtime": "10120",
+    "startoff": "0",
+    "endoff": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": "240",
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": "21",
+    "xmonth1": "12",
+    "xday2": "24",
+    "xmonth2": "12",
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": true,
+    "atstart": true,
+    "odd": false,
+    "even": false,
+    "x": 330,
+    "y": 160,
+    "wires": [
+      [
+        "886ea402.c9e02"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "ae5cc571.a4be68",
+    "type": "inject",
+    "z": "f67c7a34.9bcde",
+    "name": "",
+    "topic": "",
+    "payload": "auto",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 220,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ]
+  },
+  {
+    "id": "1da28034.4b4418",
+    "type": "inject",
+    "z": "f67c7a34.9bcde",
+    "name": "",
+    "topic": "",
+    "payload": "manual",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 90,
+    "y": 260,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ]
+  },
+  {
+    "id": "9462d5b.b882228",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 380,
+    "y": 40,
+    "wires": [
+      [
+        "2c865b99.b709fc"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "2c865b99.b709fc",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Bathroom Fans Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_bathroom_fans",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 650,
+    "y": 40,
+    "wires": [
+      [
+        "ec9a7b3a.18fb28"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "cbe89c61.187578",
+    "type": "inject",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 180,
+    "wires": [
+      [
+        "64bb5f39.4610d"
+      ]
+    ]
+  },
+  {
+    "id": "ee0b92c2.059fd8",
+    "type": "inject",
+    "z": "799d79fb.77ee38",
+    "name": "",
+    "topic": "",
+    "payload": "manual",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 260,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ]
+    ]
+  },
+  {
+    "id": "9e10eaf1.2846d",
+    "type": "server-state-changed",
+    "z": "74ac8f9a.f9fa3",
+    "name": "First Floor Exhaust Fan",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.first_floor_bathroom_exhaust_fan",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 140,
+    "y": 40,
+    "wires": [
+      [
+        "9462d5b.b882228"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "64bb5f39.4610d",
+    "type": "stoptimer",
+    "z": "74ac8f9a.f9fa3",
+    "duration": "60",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 300,
+    "y": 120,
+    "wires": [
+      [
+        "cd7937db.ba5d28"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "ec9a7b3a.18fb28",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Fan Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.first_floor_bathroom_exhaust_fan",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 120,
+    "wires": [
+      [
+        "64bb5f39.4610d"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "a9669035.881a28",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 260,
+    "wires": [
+      [
+        "f53aed41.295838"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "f53aed41.295838",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Bathroom Fans Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_bathroom_fans",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 690,
+    "y": 260,
+    "wires": [
+      [
+        "9b84981b.c669b"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "6698260c.6de65",
+    "type": "inject",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 400,
+    "wires": [
+      [
+        "41595ef1.c39598"
+      ]
+    ]
+  },
+  {
+    "id": "b850b3.6495af5",
+    "type": "server-state-changed",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Kids Bathroom Exhaust Fan",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.kids_bathroom_exhaust_fan",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 160,
+    "y": 260,
+    "wires": [
+      [
+        "a9669035.881a28"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "41595ef1.c39598",
+    "type": "stoptimer",
+    "z": "74ac8f9a.f9fa3",
+    "duration": "60",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 300,
+    "y": 340,
+    "wires": [
+      [
+        "8e11c2de.4e658"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "9b84981b.c669b",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Fan Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.kids_bathroom_exhaust_fan",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 340,
+    "wires": [
+      [
+        "41595ef1.c39598"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "145ebf02.48d239",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 480,
+    "wires": [
+      [
+        "c7d7f88c.ecafd8"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "c7d7f88c.ecafd8",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Bathroom Fans Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_bathroom_fans",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 690,
+    "y": 480,
+    "wires": [
+      [
+        "6b605f3e.9bfa1"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "66046398.5493a4",
+    "type": "inject",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 620,
+    "wires": [
+      [
+        "84bf3219.1c857"
+      ]
+    ]
+  },
+  {
+    "id": "c8cd32af.bbd888",
+    "type": "server-state-changed",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Master Bathroom Exhaust Fan",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.master_bathroom_shower",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 160,
+    "y": 480,
+    "wires": [
+      [
+        "145ebf02.48d239"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "84bf3219.1c857",
+    "type": "stoptimer",
+    "z": "74ac8f9a.f9fa3",
+    "duration": "60",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 300,
+    "y": 560,
+    "wires": [
+      [
+        "a231129a.d24d6"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "6b605f3e.9bfa1",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Fan Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.master_bathroom_shower",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 560,
+    "wires": [
+      [
+        "84bf3219.1c857"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "7a8081b7.4a989",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 440,
+    "y": 700,
+    "wires": [
+      [
+        "cfcadd62.0f1b88"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "cfcadd62.0f1b88",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Bathroom Fans Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_bathroom_fans",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 730,
+    "y": 700,
+    "wires": [
+      [
+        "c958e204.f1ba"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "b085ef50.e313e",
+    "type": "inject",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 840,
+    "wires": [
+      [
+        "761e84c7.e32b5c"
+      ]
+    ]
+  },
+  {
+    "id": "db271ddf.9bc9e",
+    "type": "server-state-changed",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Master Watercloset Exhaust Fan",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.master_bathroom_water_closet",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 170,
+    "y": 700,
+    "wires": [
+      [
+        "7a8081b7.4a989"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "761e84c7.e32b5c",
+    "type": "stoptimer",
+    "z": "74ac8f9a.f9fa3",
+    "duration": "15",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 320,
+    "y": 780,
+    "wires": [
+      [
+        "61b14f2e.97f7"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c958e204.f1ba",
+    "type": "api-current-state",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Fan Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.master_bathroom_water_closet",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 780,
+    "wires": [
+      [
+        "761e84c7.e32b5c"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "e949c86f.c9ca9",
+    "type": "api-current-state",
+    "z": "3c07a459.ce903c",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "ec5308f5.aefff"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "ec5308f5.aefff",
+    "type": "api-current-state",
+    "z": "3c07a459.ce903c",
+    "name": "Normalize Audio Levels?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_normalize_volume",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 370,
+    "y": 80,
+    "wires": [
+      [
+        "4608374e.2fd4d8"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "dbf47096.3a7dc",
+    "type": "inject",
+    "z": "3c07a459.ce903c",
+    "name": "",
+    "topic": "",
+    "payload": "on",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 160,
+    "wires": [
+      [
+        "4608374e.2fd4d8"
+      ]
+    ]
+  },
+  {
+    "id": "6eace9df.a5aa68",
+    "type": "inject",
+    "z": "3c07a459.ce903c",
+    "name": "",
+    "topic": "",
+    "payload": "off",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 200,
+    "wires": [
+      [
+        "4608374e.2fd4d8"
+      ]
+    ]
+  },
+  {
+    "id": "4608374e.2fd4d8",
+    "type": "bigtimer",
+    "z": "3c07a459.ce903c",
+    "outtopic": "",
+    "outpayload1": ".3",
+    "outpayload2": ".1",
+    "name": "Normalize Audio",
+    "comment": "Set audio to 40% from 9am to 9:30pm, otherwise set to 20%",
+    "lat": "44.62617737045897",
+    "lon": "-88.03619097769018",
+    "starttime": "540",
+    "endtime": "1170",
+    "startoff": "0",
+    "endoff": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": "240",
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": true,
+    "mar": true,
+    "apr": true,
+    "may": true,
+    "jun": true,
+    "jul": true,
+    "aug": true,
+    "sep": true,
+    "oct": true,
+    "nov": true,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": "21",
+    "xmonth1": "12",
+    "xday2": "24",
+    "xmonth2": "12",
+    "xday3": 0,
+    "xmonth3": 0,
+    "xday4": 0,
+    "xmonth4": 0,
+    "xday5": 0,
+    "xmonth5": 0,
+    "xday6": 0,
+    "xmonth6": 0,
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": true,
+    "atstart": true,
+    "odd": false,
+    "even": false,
+    "x": 340,
+    "y": 180,
+    "wires": [
+      [
+        "bde48ad8.814ac"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "418865ec.975eec",
+    "type": "inject",
+    "z": "3c07a459.ce903c",
+    "name": "",
+    "topic": "",
+    "payload": "auto",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 240,
+    "wires": [
+      [
+        "4608374e.2fd4d8"
+      ]
+    ]
+  },
+  {
+    "id": "e314dd72.39afe",
+    "type": "inject",
+    "z": "3c07a459.ce903c",
+    "name": "",
+    "topic": "",
+    "payload": "manual",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 280,
+    "wires": [
+      [
+        "4608374e.2fd4d8"
+      ]
+    ]
+  },
+  {
+    "id": "89300b1.595bcf8",
+    "type": "function",
+    "z": "7a62a2d3.c0f4a4",
+    "name": "Set Speech Payload",
+    "func": "const entity = (msg.payload && msg.payload.entity_id) || \"media_player.office_echo_plus\";\nconst message = (msg.payload && msg.payload.message) || \"Automation provided no message\";\n\nconst playload = {\n    data: { \n        entity_id: entity,\n        message: message \n    }\n};\n\nflow.set(\"speech_payload\", playload);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 320,
+    "y": 60,
+    "wires": [
+      [
+        "6add9bc6.4c3624"
+      ]
+    ]
+  },
+  {
+    "id": "3aff0264.75f63e",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "{\"entity_id\":\"media_player.office_echo_plus\",\"message\":\"test\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 60,
+    "wires": [
+      [
+        "620542cf.f6445c"
+      ]
+    ]
+  },
+  {
+    "id": "d44cc51a.be0668",
+    "type": "api-call-service",
+    "z": "7a62a2d3.c0f4a4",
+    "name": "Send Speech Notification",
+    "server": "61956bd4.93df44",
+    "service_domain": "media_player",
+    "service": "alexa_tts",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 1010,
+    "y": 60,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "6add9bc6.4c3624",
+    "type": "api-current-state",
+    "z": "7a62a2d3.c0f4a4",
+    "name": "Speech Notifications?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_notifications",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 560,
+    "y": 60,
+    "wires": [
+      [
+        "a928caf.9ae70b8"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "a928caf.9ae70b8",
+    "type": "change",
+    "z": "7a62a2d3.c0f4a4",
+    "name": "",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload",
+        "pt": "msg",
+        "to": "speech_payload",
+        "tot": "flow"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 780,
+    "y": 60,
+    "wires": [
+      [
+        "d44cc51a.be0668"
+      ]
+    ]
+  },
+  {
+    "id": "bd00a3a6.4710b",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Reads entity_id and message from the flow and sends the message",
+    "info": "",
+    "x": 300,
+    "y": 20,
+    "wires": []
+  },
+  {
+    "id": "620542cf.f6445c",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "7dca484b.45ae",
+    "name": "Send Automation Speech Notification",
+    "x": 370,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "563c252e.ce31e4",
+    "type": "function",
+    "z": "974adda.d2ea92",
+    "name": "Set Volume Level Payload",
+    "func": "const entity = msg.payload && msg.payload.entity_id;\nconst attributes = msg.data && msg.data.attributes\nif (!entity || !attributes) {\n    return [null, null];\n}\n\nconst desired_volume_level = msg.payload.volume_level || 0;\nif (desired_volume_level < 0.0 || desired_volume_level > 1.0) {\n    node.error(\"Volume level must be between 0 and 1.\");\n    return [null, { \n        payload: {\n            entity_id: entity,\n            message: \"Volume level must be between 0 and 1.\" \n        }\n    }];\n}\n\nif (desired_volume_level === attributes.volume_level) {\n    node.log(\"Volume level is already at the desired level.\");\n    return [null, { \n        payload: {\n            entity_id: entity,\n            message: \"Volume level is already at the desired level.\" \n        }\n    }];\n}\n\nconst volumePayload = { \n    payload: {\n        data: {\n            entity_id: entity,\n            volume_level: desired_volume_level\n        } \n    }\n};\n\nconst speechPayload = { \n    payload: {\n        entity_id: entity,\n        message: \"Setting Volume Level to \" + (desired_volume_level * 100) + \" percent.\" \n    }\n};\n\nreturn [volumePayload, speechPayload];",
+    "outputs": 2,
+    "noerr": 0,
+    "x": 510,
+    "y": 120,
+    "wires": [
+      [
+        "263d05a1.5b6672"
+      ],
+      [
+        "b41308c0.f41e9"
+      ]
+    ],
+    "inputLabels": [
+      "Volume Percentage"
+    ],
+    "outputLabels": [
+      "Volume Level Payload",
+      "Speech Notification Payload"
+    ]
+  },
+  {
+    "id": "1f05212c.31d307",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "{\"entity_id\":\"media_player.office_echo_plus\",\"volume_level\":0.4}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 160,
+    "wires": [
+      [
+        "62b0285a.e99958"
+      ]
+    ]
+  },
+  {
+    "id": "263d05a1.5b6672",
+    "type": "api-call-service",
+    "z": "974adda.d2ea92",
+    "name": "Set Volume Level",
+    "server": "61956bd4.93df44",
+    "service_domain": "media_player",
+    "service": "volume_set",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 770,
+    "y": 60,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "b41308c0.f41e9",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "974adda.d2ea92",
+    "name": "",
+    "x": 830,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "62b0285a.e99958",
+    "type": "subflow:974adda.d2ea92",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "x": 310,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "1c9baf90.4f6c98",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Reads entity_id and volume_level from the flow and sets the volume level and sends a notification",
+    "info": "",
+    "x": 390,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "4c86fd47.0875e4",
+    "type": "api-current-state",
+    "z": "974adda.d2ea92",
+    "name": "Get Current Volume Level",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": false,
+    "override_data": true,
+    "entity_id": "",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 250,
+    "y": 120,
+    "wires": [
+      [
+        "563c252e.ce31e4"
+      ]
+    ]
+  },
+  {
+    "id": "f467a711.24ca3",
+    "type": "ha-get-entities",
+    "z": "76be143e.dbb0e4",
+    "server": "61956bd4.93df44",
+    "name": "Get All Media Players",
+    "rules": [
+      {
+        "property": "attributes.supported_features",
+        "logic": "is",
+        "value": "23357",
+        "valueType": "num"
+      },
+      {
+        "property": "attributes.available",
+        "logic": "is",
+        "value": "true",
+        "valueType": "bool"
+      }
+    ],
+    "output_type": "split",
+    "output_empty_results": true,
+    "output_location_type": "msg",
+    "output_location": "payload",
+    "output_results_count": 1,
+    "x": 500,
+    "y": 60,
+    "wires": [
+      [
+        "1fe46c89.0e0543"
+      ]
+    ]
+  },
+  {
+    "id": "1fe46c89.0e0543",
+    "type": "change",
+    "z": "76be143e.dbb0e4",
+    "name": "Set Volume Level",
+    "rules": [
+      {
+        "t": "set",
+        "p": "payload.volume_level",
+        "pt": "msg",
+        "to": "volume_level",
+        "tot": "flow"
+      }
+    ],
+    "action": "",
+    "property": "",
+    "from": "",
+    "to": "",
+    "reg": false,
+    "x": 730,
+    "y": 60,
+    "wires": [
+      [
+        "15d5ddae.8f64c2"
+      ]
+    ]
+  },
+  {
+    "id": "642c5f33.bd92a8",
+    "type": "function",
+    "z": "76be143e.dbb0e4",
+    "name": "Set Volume Level",
+    "func": "flow.set(\"volume_level\", parseFloat(msg.payload));\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 270,
+    "y": 60,
+    "wires": [
+      [
+        "f467a711.24ca3"
+      ]
+    ]
+  },
+  {
+    "id": "43b5f55b.765934",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "0.4",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 260,
+    "wires": [
+      [
+        "f79c5d4a.d345a"
+      ]
+    ]
+  },
+  {
+    "id": "15d5ddae.8f64c2",
+    "type": "subflow:974adda.d2ea92",
+    "z": "76be143e.dbb0e4",
+    "name": "",
+    "x": 950,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "f79c5d4a.d345a",
+    "type": "subflow:76be143e.dbb0e4",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "x": 370,
+    "y": 260,
+    "wires": []
+  },
+  {
+    "id": "c25481f6.b2293",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Reads decimal value and sets the volume level and sends a notification to all media devices",
+    "info": "",
+    "x": 380,
+    "y": 220,
+    "wires": []
+  },
+  {
+    "id": "bde48ad8.814ac",
+    "type": "rbe",
+    "z": "3c07a459.ce903c",
+    "name": "Only allow changed values",
+    "func": "rbei",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 580,
+    "y": 180,
+    "wires": [
+      [
+        "4173c48c.381f84"
+      ]
+    ]
+  },
+  {
+    "id": "4173c48c.381f84",
+    "type": "subflow:76be143e.dbb0e4",
+    "z": "3c07a459.ce903c",
+    "name": "",
+    "x": 890,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "d45759b3.b76fe8",
+    "type": "comment",
+    "z": "3c07a459.ce903c",
+    "name": "Set volume to 30% at 9am to 9:30pm, otherwise set to 10%",
+    "info": "",
+    "x": 260,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "f921f00.4443b1",
+    "type": "comment",
+    "z": "f67c7a34.9bcde",
+    "name": "Turn on front outside lights for two hours after sunset",
+    "info": "",
+    "x": 220,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "40282bde.949efc",
+    "type": "server-state-changed",
+    "z": "f67c7a34.9bcde",
+    "name": "Switch Turned On/Off?",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.front_door_can_motion_switch",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "x": 120,
+    "y": 320,
+    "wires": [
+      [
+        "c7425af2.f1b6e8"
+      ]
+    ]
+  },
+  {
+    "id": "ec23d317.74325",
+    "type": "server-state-changed",
+    "z": "799d79fb.77ee38",
+    "name": "Switch Turned On/Off?",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "fan.master_bedroom_fan_control_switch_level",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "x": 140,
+    "y": 320,
+    "wires": [
+      [
+        "b4bc7fe7.6ac66"
+      ]
+    ]
+  },
+  {
+    "id": "490acbf2.0a1bcc",
+    "type": "comment",
+    "z": "799d79fb.77ee38",
+    "name": "Turn on master bedroom fan from 9pm till 8am",
+    "info": "",
+    "x": 220,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "f9c1dfcd.af5168",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Turns On or Off a device with notifications",
+    "info": "",
+    "x": 220,
+    "y": 320,
+    "wires": []
+  },
+  {
+    "id": "ec8c016d.181ff8",
+    "type": "function",
+    "z": "af0c5464.36789",
+    "name": "Set Switch Payload",
+    "func": "const entity = msg.payload && msg.payload.entity_id;\nconst attributes = msg.data && msg.data.attributes\nif (!entity || !attributes) {\n    return [null, null, null];\n}\n\nconst desired_state = msg.payload.state;\nif (!desired_state) {\n    node.error(\"Invalid State\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Invalid Switch State\" \n        }\n    }];\n}\n\nif (desired_state === msg.data.state) {\n    node.log(\"Switch is already at the desired state.\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Switch is already at the desired state.\" \n        }\n    }];\n}\n\nconst turningOn = desired_state === \"on\";\nconst speechEntity = msg.payload.speech_entity_id;\nconst switchPayload = { \n    payload: {\n        data: {\n            entity_id: entity\n        } \n    }\n};\n\nconst speechPayload = { \n    payload: {\n        entity_id: speechEntity,\n        message: \"Turning \" + (turningOn ? \"on\" : \"off\") + \" \" + attributes.friendly_name\n    }\n};\n\nreturn [turningOn ? switchPayload : null, !turningOn ? switchPayload : null, speechPayload];",
+    "outputs": 3,
+    "noerr": 0,
+    "x": 470,
+    "y": 160,
+    "wires": [
+      [
+        "6aaaebf.24cf914"
+      ],
+      [
+        "474efe46.a70ec"
+      ],
+      [
+        "bbe7c02e.559dd"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload",
+      "Switch Off Payload",
+      "Speech Notification Payload"
+    ]
+  },
+  {
+    "id": "bbe7c02e.559dd",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "af0c5464.36789",
+    "name": "",
+    "x": 790,
+    "y": 180,
+    "wires": []
+  },
+  {
+    "id": "7b55b409.713bdc",
+    "type": "api-current-state",
+    "z": "af0c5464.36789",
+    "name": "Get Current State",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": false,
+    "override_data": true,
+    "entity_id": "",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 250,
+    "y": 160,
+    "wires": [
+      [
+        "ec8c016d.181ff8"
+      ]
+    ]
+  },
+  {
+    "id": "971fc69b.91697",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn On",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.kitchen_echo_plus\",\"entity_id\":\"switch.front_door_can_motion_switch\",\"state\":\"on\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 360,
+    "wires": [
+      [
+        "423d7204.86312c"
+      ]
+    ]
+  },
+  {
+    "id": "c21352ed.ac008",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn Off",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.kitchen_echo_plus\",\"entity_id\":\"switch.front_door_can_motion_switch\",\"state\":\"off\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 400,
+    "wires": [
+      [
+        "423d7204.86312c"
+      ]
+    ]
+  },
+  {
+    "id": "6aaaebf.24cf914",
+    "type": "api-call-service",
+    "z": "af0c5464.36789",
+    "name": "Turning On Switch",
+    "server": "61956bd4.93df44",
+    "service_domain": "switch",
+    "service": "turn_on",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 730,
+    "y": 60,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "474efe46.a70ec",
+    "type": "api-call-service",
+    "z": "af0c5464.36789",
+    "name": "Turning Off Switch",
+    "server": "61956bd4.93df44",
+    "service_domain": "switch",
+    "service": "turn_off",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 730,
+    "y": 120,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "423d7204.86312c",
+    "type": "subflow:af0c5464.36789",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "x": 410,
+    "y": 380,
+    "wires": []
+  },
+  {
+    "id": "a5d8642e.ab5b48",
+    "type": "inject",
+    "z": "2cd3c43d.f6d84c",
+    "name": "",
+    "topic": "",
+    "payload": "on",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 140,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ]
+  },
+  {
+    "id": "3084e561.2d89d2",
+    "type": "inject",
+    "z": "2cd3c43d.f6d84c",
+    "name": "",
+    "topic": "",
+    "payload": "off",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 180,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ]
+  },
+  {
+    "id": "f465b006.960778",
+    "type": "bigtimer",
+    "z": "2cd3c43d.f6d84c",
+    "outtopic": "",
+    "outpayload1": "on",
+    "outpayload2": "off",
+    "name": "Christmas Lights",
+    "comment": "Turn on 15 minutes before dusk and turn off at 11pm",
+    "lat": "44.62617737045897",
+    "lon": "-88.03619097769018",
+    "starttime": "5004",
+    "endtime": "1320",
+    "startoff": "0",
+    "endoff": 0,
+    "offs": 0,
+    "outtext1": "",
+    "outtext2": "",
+    "timeout": "240",
+    "sun": true,
+    "mon": true,
+    "tue": true,
+    "wed": true,
+    "thu": true,
+    "fri": true,
+    "sat": true,
+    "jan": true,
+    "feb": false,
+    "mar": false,
+    "apr": false,
+    "may": false,
+    "jun": false,
+    "jul": false,
+    "aug": false,
+    "sep": false,
+    "oct": false,
+    "nov": false,
+    "dec": true,
+    "day1": 0,
+    "month1": 0,
+    "day2": 0,
+    "month2": 0,
+    "day3": 0,
+    "month3": 0,
+    "day4": 0,
+    "month4": 0,
+    "day5": 0,
+    "month5": 0,
+    "day6": 0,
+    "month6": 0,
+    "d1": 0,
+    "w1": 0,
+    "d2": 0,
+    "w2": 0,
+    "d3": 0,
+    "w3": 0,
+    "d4": 0,
+    "w4": 0,
+    "d5": 0,
+    "w5": 0,
+    "d6": 0,
+    "w6": 0,
+    "xday1": "",
+    "xmonth1": "",
+    "xday2": "",
+    "xmonth2": "",
+    "xday3": "",
+    "xmonth3": "",
+    "xday4": "",
+    "xmonth4": "",
+    "xday5": "",
+    "xmonth5": "",
+    "xday6": "",
+    "xmonth6": "",
+    "xd1": 0,
+    "xw1": 0,
+    "xd2": 0,
+    "xw2": 0,
+    "xd3": 0,
+    "xw3": 0,
+    "xd4": 0,
+    "xw4": 0,
+    "xd5": 0,
+    "xw5": 0,
+    "xd6": 0,
+    "xw6": 0,
+    "suspend": false,
+    "random": false,
+    "repeat": true,
+    "atstart": true,
+    "odd": false,
+    "even": false,
+    "x": 310,
+    "y": 160,
+    "wires": [
+      [
+        "a2c4af1c.903b58"
+      ],
+      [],
+      []
+    ]
+  },
+  {
+    "id": "64363f0c.ba157",
+    "type": "inject",
+    "z": "2cd3c43d.f6d84c",
+    "name": "",
+    "topic": "",
+    "payload": "auto",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 220,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ]
+  },
+  {
+    "id": "6fcafdf4.faee1c",
+    "type": "api-current-state",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 140,
+    "y": 80,
+    "wires": [
+      [
+        "848ea1c9.6013c"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "848ea1c9.6013c",
+    "type": "api-current-state",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Christmas Lights Automation Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_christmas_lights",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 80,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "ba4baf8c.7002e8",
+    "type": "inject",
+    "z": "2cd3c43d.f6d84c",
+    "name": "",
+    "topic": "",
+    "payload": "manual",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 110,
+    "y": 260,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ]
+  },
+  {
+    "id": "a8c3b550.7d2f5",
+    "type": "server-state-changed",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Switch Turned On/Off?",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "group.christmas_lights",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "x": 160,
+    "y": 320,
+    "wires": [
+      [
+        "f465b006.960778"
+      ]
+    ]
+  },
+  {
+    "id": "a2c4af1c.903b58",
+    "type": "rbe",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Only allow changed values",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 560,
+    "y": 160,
+    "wires": [
+      [
+        "fa2da87e.edc718"
+      ]
+    ]
+  },
+  {
+    "id": "e1f9119f.4a9478",
+    "type": "subflow:af0c5464.36789",
+    "z": "2cd3c43d.f6d84c",
+    "name": "",
+    "x": 1070,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "3644e153.5e85ae",
+    "type": "comment",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Turn on Christmas lights from sunset till 10pm",
+    "info": "",
+    "x": 210,
+    "y": 40,
+    "wires": []
+  },
+  {
+    "id": "fa2da87e.edc718",
+    "type": "function",
+    "z": "2cd3c43d.f6d84c",
+    "name": "Configure Lights",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kitchen_echo_plus\",\n        entity_id: \"group.christmas_lights\",\n        state: msg.payload\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 800,
+    "y": 160,
+    "wires": [
+      [
+        "e1f9119f.4a9478"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "62c4cac9.de4d7c",
+    "type": "rbe",
+    "z": "799d79fb.77ee38",
+    "name": "Only allow changed values",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 580,
+    "y": 160,
+    "wires": [
+      [
+        "e9a908d2.917bb"
+      ]
+    ]
+  },
+  {
+    "id": "e9a908d2.917bb",
+    "type": "function",
+    "z": "799d79fb.77ee38",
+    "name": "Configure Lights",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.master_bedroom_echo_plus\",\n        entity_id: \"fan.master_bedroom_fan_control_switch_level\",\n        speed: \"medium\",\n        state: msg.payload\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 160,
+    "wires": [
+      [
+        "b0ce4d14.406ec8"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "886ea402.c9e02",
+    "type": "rbe",
+    "z": "f67c7a34.9bcde",
+    "name": "Only allow changed values",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 580,
+    "y": 160,
+    "wires": [
+      [
+        "25292edd.82bf32"
+      ]
+    ]
+  },
+  {
+    "id": "4209d677.7a2c68",
+    "type": "subflow:af0c5464.36789",
+    "z": "f67c7a34.9bcde",
+    "name": "",
+    "x": 1090,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "25292edd.82bf32",
+    "type": "function",
+    "z": "f67c7a34.9bcde",
+    "name": "Configure Lights",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kitchen_echo_plus\",\n        entity_id: \"switch.front_door_can_motion_switch\",\n        state: msg.payload\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 820,
+    "y": 160,
+    "wires": [
+      [
+        "4209d677.7a2c68"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "e88079b1.74dd98",
+    "type": "subflow:af0c5464.36789",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "x": 810,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "61b14f2e.97f7",
+    "type": "function",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Configure Fan",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.master_water_closet_ecobee_switch\",\n        entity_id: \"switch.master_bathroom_water_closet\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 780,
+    "wires": [
+      [
+        "e88079b1.74dd98"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "154896b6.bde641",
+    "type": "subflow:af0c5464.36789",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "x": 770,
+    "y": 560,
+    "wires": []
+  },
+  {
+    "id": "a231129a.d24d6",
+    "type": "function",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Configure Fan",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.master_bathroom_ecobee_switch\",\n        entity_id: \"switch.master_bathroom_shower\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 500,
+    "y": 560,
+    "wires": [
+      [
+        "154896b6.bde641"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "9be33e26.1a6e5",
+    "type": "subflow:af0c5464.36789",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "x": 770,
+    "y": 340,
+    "wires": []
+  },
+  {
+    "id": "8e11c2de.4e658",
+    "type": "function",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Configure Fan",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kids_bathroom_ecobee_switch\",\n        entity_id: \"switch.kids_bathroom_exhaust_fan\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 500,
+    "y": 340,
+    "wires": [
+      [
+        "9be33e26.1a6e5"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "bd4ecf6b.865d4",
+    "type": "subflow:af0c5464.36789",
+    "z": "74ac8f9a.f9fa3",
+    "name": "",
+    "x": 770,
+    "y": 120,
+    "wires": []
+  },
+  {
+    "id": "cd7937db.ba5d28",
+    "type": "function",
+    "z": "74ac8f9a.f9fa3",
+    "name": "Configure Fan",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.first_floor_bathroom_ecobee_switch\",\n        entity_id: \"switch.first_floor_bathroom_exhaust_fan\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 500,
+    "y": 120,
+    "wires": [
+      [
+        "bd4ecf6b.865d4"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "ff627b07.ecb988",
+    "type": "function",
+    "z": "6325f627.09e548",
+    "name": "Set Switch Payload",
+    "func": "const entity = msg.payload && msg.payload.entity_id;\nconst attributes = msg.data && msg.data.attributes\nif (!entity || !attributes) {\n    return [null, null, null];\n}\n\nconst desired_state = msg.payload.state;\nif (!desired_state) {\n    node.error(\"Invalid State\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Invalid Fan State\" \n        }\n    }];\n}\n\nif (desired_state === msg.data.state) {\n    node.log(\"Fan is already at the desired state.\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Fan is already at the desired state.\" \n        }\n    }];\n}\n\nconst switchPayload = { \n    payload: {\n        data: {\n            entity_id: entity\n        } \n    }\n};\n\nconst speechPayload = { \n    payload: {\n        entity_id: msg.payload.speech_entity_id\n    }\n};\n\nif (desired_state === \"on\") {\n    const speed = msg.payload.speed || \"medium\";\n    switchPayload.payload.data.speed = speed;\n    speechPayload.payload.message = \"Turning on \" + attributes.friendly_name + \" \" + speed + \" speed\";\n    \n    return [switchPayload, null, speechPayload];\n} else {\n    speechPayload.payload.message = \"Turning off \" + attributes.friendly_name;\n    \n    return [null, switchPayload, speechPayload];\n}",
+    "outputs": 3,
+    "noerr": 0,
+    "x": 470,
+    "y": 140,
+    "wires": [
+      [
+        "758f438a.0ca1d4"
+      ],
+      [
+        "e1cd27f0.559aa"
+      ],
+      [
+        "296a90d4.769178"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload",
+      "Switch Off Payload",
+      "Speech Notification Payload"
+    ]
+  },
+  {
+    "id": "296a90d4.769178",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "6325f627.09e548",
+    "name": "",
+    "x": 790,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "aec6edc3.91bb2",
+    "type": "api-current-state",
+    "z": "6325f627.09e548",
+    "name": "Get Current State",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": false,
+    "override_data": true,
+    "entity_id": "",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 250,
+    "y": 140,
+    "wires": [
+      [
+        "ff627b07.ecb988"
+      ]
+    ]
+  },
+  {
+    "id": "758f438a.0ca1d4",
+    "type": "api-call-service",
+    "z": "6325f627.09e548",
+    "name": "Turning On Fan",
+    "server": "61956bd4.93df44",
+    "service_domain": "fan",
+    "service": "turn_on",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 720,
+    "y": 40,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "e1cd27f0.559aa",
+    "type": "api-call-service",
+    "z": "6325f627.09e548",
+    "name": "Turning Off Fan",
+    "server": "61956bd4.93df44",
+    "service_domain": "fan",
+    "service": "turn_off",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 720,
+    "y": 100,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "29d94031.ce1478",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Turns On or Off a device with notifications",
+    "info": "",
+    "x": 220,
+    "y": 460,
+    "wires": []
+  },
+  {
+    "id": "db6e22d1.91bb4",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn On",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.office_echo_plus\",\"entity_id\":\"fan.office_fan_control_switch_level\",\"state\":\"on\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 500,
+    "wires": [
+      [
+        "4ab8cd93.8df4d4"
+      ]
+    ]
+  },
+  {
+    "id": "9089beb.642624",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn Off",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.office_echo_plus\",\"entity_id\":\"fan.office_fan_control_switch_level\",\"state\":\"off\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 540,
+    "wires": [
+      [
+        "4ab8cd93.8df4d4"
+      ]
+    ]
+  },
+  {
+    "id": "4ab8cd93.8df4d4",
+    "type": "subflow:6325f627.09e548",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "x": 400,
+    "y": 520,
+    "wires": []
+  },
+  {
+    "id": "b0ce4d14.406ec8",
+    "type": "subflow:6325f627.09e548",
+    "z": "799d79fb.77ee38",
+    "name": "",
+    "x": 1080,
+    "y": 160,
+    "wires": []
+  },
+  {
+    "id": "15a6bc16.d544dc",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 160,
+    "y": 860,
+    "wires": [
+      [
+        "e8c26c4c.91fbc"
+      ]
+    ]
+  },
+  {
+    "id": "e8c26c4c.91fbc",
+    "type": "api-current-state",
+    "z": "7dca484b.45ae",
+    "name": "zwave.master_bedroom_closet_motion_dimmer",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "zwave.master_bedroom_closet_motion_dimmer",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 440,
+    "y": 860,
+    "wires": [
+      [
+        "d6ab8388.d6b07"
+      ]
+    ]
+  },
+  {
+    "id": "d6ab8388.d6b07",
+    "type": "debug",
+    "z": "7dca484b.45ae",
+    "name": "zwave.master_bedroom_closet_motion_dimmer",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 820,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "a151a6a4.6db608",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 160,
+    "y": 920,
+    "wires": [
+      [
+        "10afbda8.2fac0a"
+      ]
+    ]
+  },
+  {
+    "id": "10afbda8.2fac0a",
+    "type": "api-current-state",
+    "z": "7dca484b.45ae",
+    "name": "sensor.master_bedroom_closet_motion_dimmer_burglar",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "sensor.master_bedroom_closet_motion_dimmer_burglar",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 470,
+    "y": 920,
+    "wires": [
+      [
+        "332ca293.1f9aa6"
+      ]
+    ]
+  },
+  {
+    "id": "332ca293.1f9aa6",
+    "type": "debug",
+    "z": "7dca484b.45ae",
+    "name": "sensor.master_bedroom_closet_motion_dimmer_burglar",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 970,
+    "y": 920,
+    "wires": []
+  },
+  {
+    "id": "b6d13790.27ec9",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "topic": "",
+    "payload": "",
+    "payloadType": "date",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 160,
+    "y": 980,
+    "wires": [
+      [
+        "74ae1692.450828"
+      ]
+    ]
+  },
+  {
+    "id": "74ae1692.450828",
+    "type": "api-current-state",
+    "z": "7dca484b.45ae",
+    "name": "sensor.august_smart_lock_gen3_front_door_access_control",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "sensor.august_smart_lock_gen3_front_door_access_control",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 480,
+    "y": 980,
+    "wires": [
+      [
+        "75ac9684.3cc3f"
+      ]
+    ]
+  },
+  {
+    "id": "75ac9684.3cc3f",
+    "type": "debug",
+    "z": "7dca484b.45ae",
+    "name": "sensor.august_smart_lock_gen3_front_door_access_control",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 960,
+    "y": 980,
+    "wires": []
+  },
+  {
+    "id": "492fbd80.120b44",
+    "type": "server-state-changed",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "event.ifttt_webhook_received",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 1,
+    "x": 270,
+    "y": 760,
+    "wires": [
+      [
+        "1f45fdce.1cee22"
+      ]
+    ]
+  },
+  {
+    "id": "1f45fdce.1cee22",
+    "type": "debug",
+    "z": "7dca484b.45ae",
+    "name": "",
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "x": 560,
+    "y": 780,
+    "wires": []
+  },
+  {
+    "id": "8b49cee1.fddc9",
+    "type": "api-current-state",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 400,
+    "y": 60,
+    "wires": [
+      [
+        "f8cbd2c0.6f419"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "a4dfce13.6627d",
+    "type": "server-state-changed",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Washing Machine",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "input_boolean.samsung_washer",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 170,
+    "y": 60,
+    "wires": [
+      [
+        "8b49cee1.fddc9"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "f8cbd2c0.6f419",
+    "type": "rbe",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Only allow changed values",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 280,
+    "y": 140,
+    "wires": [
+      [
+        "73459173.276d7"
+      ]
+    ]
+  },
+  {
+    "id": "2e626a8f.8e3db6",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "5bb10f4e.f7bd8",
+    "name": "",
+    "x": 810,
+    "y": 140,
+    "wires": []
+  },
+  {
+    "id": "73459173.276d7",
+    "type": "function",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Set Switch Payload",
+    "func": "const turningOn = msg.payload && msg.payload.state === \"on\";\nreturn { \n    payload: {\n        entity_id: \"media_player.laundry_room_ecobee_switch\",\n        message: \"Turning \" + (turningOn ? \"on\" : \"off\") + \" \" + attributes.friendly_name\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 530,
+    "y": 140,
+    "wires": [
+      [
+        "2e626a8f.8e3db6"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "aac7a879.4b3068",
+    "type": "api-current-state",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 400,
+    "y": 200,
+    "wires": [
+      [
+        "1f9dbfe6.ee65"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "465d60a8.4b85c",
+    "type": "server-state-changed",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Dryer",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "input_boolean.samsung_dryer",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 130,
+    "y": 200,
+    "wires": [
+      [
+        "aac7a879.4b3068"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "1f9dbfe6.ee65",
+    "type": "rbe",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Only allow changed values",
+    "func": "rbe",
+    "gap": "",
+    "start": "",
+    "inout": "out",
+    "property": "payload",
+    "x": 280,
+    "y": 280,
+    "wires": [
+      [
+        "da077a17.4658c8"
+      ]
+    ]
+  },
+  {
+    "id": "ce0a9d2f.c6d27",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "5bb10f4e.f7bd8",
+    "name": "",
+    "x": 810,
+    "y": 280,
+    "wires": []
+  },
+  {
+    "id": "da077a17.4658c8",
+    "type": "function",
+    "z": "5bb10f4e.f7bd8",
+    "name": "Set Switch Payload",
+    "func": "const turningOn = msg.payload && msg.payload.state === \"on\";\nreturn { \n    payload: {\n        entity_id: \"media_player.laundry_room_ecobee_switch\",\n        message: \"Turning \" + (turningOn ? \"on\" : \"off\") + \" \" + attributes.friendly_name\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 530,
+    "y": 280,
+    "wires": [
+      [
+        "ce0a9d2f.c6d27"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "4e95be49.15fe7",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 360,
+    "y": 120,
+    "wires": [
+      [
+        "3f0b5548.321332"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "3f0b5548.321332",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Turn off Closet Lights?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_closet_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 600,
+    "y": 120,
+    "wires": [
+      [
+        "5d804156.c59b88"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "87079489.46a32",
+    "type": "inject",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 260,
+    "wires": [
+      [
+        "e06034d2.01243"
+      ]
+    ]
+  },
+  {
+    "id": "a3d7963d.500a",
+    "type": "server-state-changed",
+    "z": "cd444af.6970f38",
+    "name": "Office Closet Lights",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.office_closet_main_lights",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 130,
+    "y": 120,
+    "wires": [
+      [
+        "4e95be49.15fe7"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "e06034d2.01243",
+    "type": "stoptimer",
+    "z": "cd444af.6970f38",
+    "duration": "15",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 320,
+    "y": 200,
+    "wires": [
+      [
+        "d66f6327.7c9e2"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "5d804156.c59b88",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Light Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.office_closet_main_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 200,
+    "wires": [
+      [
+        "e06034d2.01243"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "7bcadb48.cc2fac",
+    "type": "subflow:af0c5464.36789",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "x": 810,
+    "y": 200,
+    "wires": []
+  },
+  {
+    "id": "d66f6327.7c9e2",
+    "type": "function",
+    "z": "cd444af.6970f38",
+    "name": "Configure Light",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.office_echo_plus\",\n        entity_id: \"switch.office_closet_main_lights\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 200,
+    "wires": [
+      [
+        "7bcadb48.cc2fac"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "fded526d.230b68",
+    "type": "comment",
+    "z": "cd444af.6970f38",
+    "name": "Automatically Turn off Closet Lights after 15 minutes",
+    "info": "",
+    "x": 230,
+    "y": 60,
+    "wires": []
+  },
+  {
+    "id": "93f8da04.fcf1",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 560,
+    "wires": [
+      [
+        "2e07e00d.dc767"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "2e07e00d.dc767",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Turn off Closet Lights?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_closet_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 660,
+    "y": 560,
+    "wires": [
+      [
+        "c6222c92.3df43"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "9cfcfec4.497718",
+    "type": "inject",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 700,
+    "wires": [
+      [
+        "255f5cae.a4f20c"
+      ]
+    ]
+  },
+  {
+    "id": "55e49e16.d753e",
+    "type": "server-state-changed",
+    "z": "cd444af.6970f38",
+    "name": "Kids Room One Closet Lights",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.kids_room_one_closet_main_lights",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 160,
+    "y": 560,
+    "wires": [
+      [
+        "93f8da04.fcf1"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "255f5cae.a4f20c",
+    "type": "stoptimer",
+    "z": "cd444af.6970f38",
+    "duration": "15",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 320,
+    "y": 640,
+    "wires": [
+      [
+        "cbe37a42.5200a8"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c6222c92.3df43",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Light Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.kids_room_one_closet_main_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 640,
+    "wires": [
+      [
+        "255f5cae.a4f20c"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "c006a7db.4387b",
+    "type": "subflow:af0c5464.36789",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "x": 810,
+    "y": 640,
+    "wires": []
+  },
+  {
+    "id": "cbe37a42.5200a8",
+    "type": "function",
+    "z": "cd444af.6970f38",
+    "name": "Configure Light",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kids_bedroom_one_ecobee_switch\",\n        entity_id: \"switch.kids_room_one_closet_main_lights\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 640,
+    "wires": [
+      [
+        "c006a7db.4387b"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "7ab2c5fa.a059f4",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 780,
+    "wires": [
+      [
+        "a0da0324.a5a71"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "a0da0324.a5a71",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Turn off Closet Lights?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_closet_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 660,
+    "y": 780,
+    "wires": [
+      [
+        "640de76b.e28e98"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "1ee9684a.785d28",
+    "type": "inject",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 920,
+    "wires": [
+      [
+        "1534f4cc.943853"
+      ]
+    ]
+  },
+  {
+    "id": "1067debf.d44f31",
+    "type": "server-state-changed",
+    "z": "cd444af.6970f38",
+    "name": "Kids Room two Closet Lights",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "switch.kids_room_two_closet_main_lights",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 160,
+    "y": 780,
+    "wires": [
+      [
+        "7ab2c5fa.a059f4"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "1534f4cc.943853",
+    "type": "stoptimer",
+    "z": "cd444af.6970f38",
+    "duration": "15",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 320,
+    "y": 860,
+    "wires": [
+      [
+        "77134e6b.f0628"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "640de76b.e28e98",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Light Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "switch.kids_room_two_closet_main_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 860,
+    "wires": [
+      [
+        "1534f4cc.943853"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "101ab1cc.f13136",
+    "type": "subflow:af0c5464.36789",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "x": 810,
+    "y": 860,
+    "wires": []
+  },
+  {
+    "id": "77134e6b.f0628",
+    "type": "function",
+    "z": "cd444af.6970f38",
+    "name": "Configure Light",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kids_bedroom_two_ecobee_switch\",\n        entity_id: \"switch.kids_room_two_closet_main_lights\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 860,
+    "wires": [
+      [
+        "101ab1cc.f13136"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "b78302a9.f3714",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Automations Enabled?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_enable",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 420,
+    "y": 340,
+    "wires": [
+      [
+        "f00cbb26.eaec2"
+      ]
+    ],
+    "outputLabels": [
+      "enabled"
+    ]
+  },
+  {
+    "id": "f00cbb26.eaec2",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Turn off Closet Lights?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "input_boolean.automation_inside_closet_lights",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 660,
+    "y": 340,
+    "wires": [
+      [
+        "3c0885bd.5620c2"
+      ],
+      []
+    ],
+    "outputLabels": [
+      "enabled",
+      ""
+    ]
+  },
+  {
+    "id": "ce9d55d4.a0acf",
+    "type": "inject",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "topic": "",
+    "payload": "stop",
+    "payloadType": "str",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 480,
+    "wires": [
+      [
+        "e561d1d9.dd7c6"
+      ]
+    ]
+  },
+  {
+    "id": "ef2da4c8.fb1448",
+    "type": "server-state-changed",
+    "z": "cd444af.6970f38",
+    "name": "Master Bedroom Closet Lights",
+    "server": "61956bd4.93df44",
+    "entityidfilter": "light.master_bedroom_closet_motion_dimmer_level",
+    "entityidfiltertype": "exact",
+    "outputinitially": false,
+    "state_type": "str",
+    "haltifstate": "off",
+    "halt_if_type": "",
+    "halt_if_compare": "is",
+    "outputs": 2,
+    "x": 170,
+    "y": 340,
+    "wires": [
+      [
+        "b78302a9.f3714"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "e561d1d9.dd7c6",
+    "type": "stoptimer",
+    "z": "cd444af.6970f38",
+    "duration": "35",
+    "units": "Minute",
+    "payloadtype": "num",
+    "payloadval": "0",
+    "name": "",
+    "x": 320,
+    "y": 420,
+    "wires": [
+      [
+        "19d3c1da.87cede"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "3c0885bd.5620c2",
+    "type": "api-current-state",
+    "z": "cd444af.6970f38",
+    "name": "Light Off?",
+    "server": "61956bd4.93df44",
+    "halt_if": "off",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": true,
+    "override_data": true,
+    "entity_id": "light.master_bedroom_closet_motion_dimmer_level",
+    "state_type": "str",
+    "outputs": 2,
+    "x": 120,
+    "y": 420,
+    "wires": [
+      [
+        "e561d1d9.dd7c6"
+      ],
+      []
+    ]
+  },
+  {
+    "id": "19d3c1da.87cede",
+    "type": "function",
+    "z": "cd444af.6970f38",
+    "name": "Configure Light",
+    "func": "return { \n    payload: {\n        speech_entity_id: \"media_player.kids_bedroom_one_ecobee_switch\",\n        entity_id: \"light.master_bedroom_closet_motion_dimmer_level\",\n        state: \"off\"\n    }\n};\n",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 540,
+    "y": 420,
+    "wires": [
+      [
+        "e037badf.2431f"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload"
+    ]
+  },
+  {
+    "id": "b552312d.93ee18",
+    "type": "function",
+    "z": "bafd53de.69711",
+    "name": "Set Switch Payload",
+    "func": "const entity = msg.payload && msg.payload.entity_id;\nconst attributes = msg.data && msg.data.attributes\nif (!entity || !attributes) {\n    return [null, null, null];\n}\n\nconst desired_state = msg.payload.state;\nif (!desired_state) {\n    node.error(\"Invalid State\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Invalid Light State\" \n        }\n    }];\n}\n\nif (desired_state === msg.data.state) {\n    node.log(\"Light is already at the desired state.\");\n    return [null, null, { \n        payload: {\n            entity_id: entity,\n            message: \"Light is already at the desired state.\" \n        }\n    }];\n}\n\nconst turningOn = desired_state === \"on\";\nconst speechEntity = msg.payload.speech_entity_id;\nconst switchPayload = { \n    payload: {\n        data: {\n            entity_id: entity\n        } \n    }\n};\n\nconst speechPayload = { \n    payload: {\n        entity_id: speechEntity,\n        message: \"Turning \" + (turningOn ? \"on\" : \"off\") + \" \" + attributes.friendly_name\n    }\n};\n\nreturn [turningOn ? switchPayload : null, !turningOn ? switchPayload : null, speechPayload];",
+    "outputs": 3,
+    "noerr": 0,
+    "x": 530,
+    "y": 660,
+    "wires": [
+      [
+        "a90f2ebc.50003"
+      ],
+      [
+        "e94b9746.e44b8"
+      ],
+      [
+        "cd216534.820718"
+      ]
+    ],
+    "inputLabels": [
+      "Swtich State"
+    ],
+    "outputLabels": [
+      "Switch On Payload",
+      "Switch Off Payload",
+      "Speech Notification Payload"
+    ]
+  },
+  {
+    "id": "cd216534.820718",
+    "type": "subflow:7a62a2d3.c0f4a4",
+    "z": "bafd53de.69711",
+    "name": "",
+    "x": 850,
+    "y": 680,
+    "wires": []
+  },
+  {
+    "id": "c6d3f892.6f2528",
+    "type": "api-current-state",
+    "z": "bafd53de.69711",
+    "name": "Get Current State",
+    "server": "61956bd4.93df44",
+    "halt_if": "",
+    "halt_if_type": "str",
+    "halt_if_compare": "is",
+    "override_topic": true,
+    "override_payload": false,
+    "override_data": true,
+    "entity_id": "",
+    "state_type": "str",
+    "outputs": 1,
+    "x": 310,
+    "y": 660,
+    "wires": [
+      [
+        "b552312d.93ee18"
+      ]
+    ]
+  },
+  {
+    "id": "a90f2ebc.50003",
+    "type": "api-call-service",
+    "z": "bafd53de.69711",
+    "name": "Turning On Switch",
+    "server": "61956bd4.93df44",
+    "service_domain": "light",
+    "service": "turn_on",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 790,
+    "y": 560,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "e94b9746.e44b8",
+    "type": "api-call-service",
+    "z": "bafd53de.69711",
+    "name": "Turning Off Switch",
+    "server": "61956bd4.93df44",
+    "service_domain": "light",
+    "service": "turn_off",
+    "data": "",
+    "render_data": true,
+    "mergecontext": "",
+    "output_location": "payload",
+    "output_location_type": "msg",
+    "x": 790,
+    "y": 620,
+    "wires": [
+      []
+    ]
+  },
+  {
+    "id": "a87a4c12.54694",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn On",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.office_echo_plus\",\"entity_id\":\"light.master_bedroom_closet_motion_dimmer_level\",\"state\":\"on\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 640,
+    "wires": [
+      [
+        "8def0c3d.76eb48"
+      ]
+    ]
+  },
+  {
+    "id": "5ab37aec.ddcc1c",
+    "type": "inject",
+    "z": "7dca484b.45ae",
+    "name": "Turn Off",
+    "topic": "",
+    "payload": "{\"speech_entity_id\":\"media_player.office_echo_plus\",\"entity_id\":\"light.master_bedroom_closet_motion_dimmer_level\",\"state\":\"off\"}",
+    "payloadType": "json",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "x": 130,
+    "y": 680,
+    "wires": [
+      [
+        "8def0c3d.76eb48"
+      ]
+    ]
+  },
+  {
+    "id": "8def0c3d.76eb48",
+    "type": "subflow:bafd53de.69711",
+    "z": "7dca484b.45ae",
+    "name": "Turn Light On/Off With Notifications",
+    "x": 380,
+    "y": 660,
+    "wires": []
+  },
+  {
+    "id": "54972408.01e4a4",
+    "type": "comment",
+    "z": "7dca484b.45ae",
+    "name": "Turns On or Off a device with notifications",
+    "info": "",
+    "x": 220,
+    "y": 600,
+    "wires": []
+  },
+  {
+    "id": "e037badf.2431f",
+    "type": "subflow:bafd53de.69711",
+    "z": "cd444af.6970f38",
+    "name": "",
+    "x": 800,
+    "y": 420,
+    "wires": []
+  }
+]
