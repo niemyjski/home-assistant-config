@@ -25,15 +25,12 @@ homeassistant:
     sensor.trash_pickup_day:
       friendly_name: Trash Pickup Day
       icon: mdi:calendar-today
-      hidden: true
     sensor.recycle_pickup_day:
       friendly_name: Recycle Pickup Day
       icon: mdi:calendar-today
-      hidden: true
     sensor.recycle_pickup_week:
       friendly_name: Recycle Pickup Week
       icon: mdi:calendar-today
-      hidden: true
     sensor.current_week:
       friendly_name: Current Week is
       icon: mdi:calendar-question

@@ -1,1 +1,2 @@
-- platform: yweather
+- platform: darksky
+  api_key: !secret darksky_key
