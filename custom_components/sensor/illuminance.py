@@ -16,8 +16,12 @@ import voluptuous as vol
 
 from homeassistant.components.sensor import (
     DOMAIN as SENSOR_DOMAIN, PLATFORM_SCHEMA, SCAN_INTERVAL)
-from homeassistant.components.sensor.darksky import (
-    ATTRIBUTION as DSS_ATTRIBUTION)
+try:
+    from homeassistant.components.sensor.darksky import (
+        ATTRIBUTION as DSS_ATTRIBUTION)
+except ImportError:
+    from homeassistant.components.sensor.darksky import (
+        CONF_ATTRIBUTION as DSS_ATTRIBUTION)
 from homeassistant.components.sensor.yr import (
     CONF_ATTRIBUTION as YRS_ATTRIBUTION)
 from homeassistant.components.weather.darksky import (
@@ -34,33 +38,33 @@ from homeassistant.helpers.event import (
 from homeassistant.helpers.sun import get_astral_event_date
 import homeassistant.util.dt as dt_util
 
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 
 DEFAULT_NAME = 'Illuminance'
 MIN_SCAN_INTERVAL = dt.timedelta(minutes=5)
 DEFAULT_SCAN_INTERVAL = dt.timedelta(minutes=5)
 
 WU_MAPPING = (
-    (200, ('tstorms',)),
-    (1000, ('cloudy', 'fog', 'rain', 'sleet', 'snow', 'flurries',
-            'chanceflurries', 'chancerain', 'chancesleet',
-            'chancesnow', 'chancetstorms')),
-    (2500, ('mostlycloudy',)),
-    (7500, ('partlysunny', 'partlycloudy', 'mostlysunny', 'hazy')),
+    (  200, ('tstorms',)),
+    ( 1000, ('cloudy', 'fog', 'rain', 'sleet', 'snow', 'flurries',
+             'chanceflurries', 'chancerain', 'chancesleet',
+             'chancesnow','chancetstorms')),
+    ( 2500, ('mostlycloudy',)),
+    ( 7500, ('partlysunny', 'partlycloudy', 'mostlysunny', 'hazy')),
     (10000, ('sunny', 'clear')))
 YR_MAPPING = (
-    (200, (6, 11, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
-           33, 34)),
-    (1000, (5, 7, 8, 9, 10, 12, 13, 15, 40, 41, 42, 43, 44, 45, 46, 47, 48,
-            49, 50)),
-    (2500, (4, )),
-    (7500, (2, 3)),
+    (  200, (6, 11, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32,
+             33, 34)),
+    ( 1000, (5, 7, 8, 9, 10, 12, 13, 15, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+             49, 50)),
+    ( 2500, (4, )),
+    ( 7500, (2, 3)),
     (10000, (1, )))
 DARKSKY_MAPPING = (
-    (200, ('hail', 'lightning')),
-    (1000, ('fog', 'rainy', 'snowy', 'snowy-rainy')),
-    (2500, ('cloudy', )),
-    (7500, ('partlycloudy', )),
+    (  200, ('hail', 'lightning')),
+    ( 1000, ('fog', 'rainy', 'snowy', 'snowy-rainy')),
+    ( 2500, ('cloudy', )),
+    ( 7500, ('partlycloudy', )),
     (10000, ('clear-night', 'sunny', 'windy')))
 
 CONF_QUERY = 'query'
@@ -88,7 +92,6 @@ _WU_API_URL = 'http://api.wunderground.com/api/'\
 _20_MIN = dt.timedelta(minutes=20)
 _40_MIN = dt.timedelta(minutes=40)
 
-
 async def _async_get_wu_data(hass, session, api_key, features, query):
     try:
         with async_timeout.timeout(9, loop=hass.loop):
@@ -105,7 +108,6 @@ async def _async_get_wu_data(hass, session, api_key, features, query):
 
     return resp
 
-
 async def async_setup_platform(hass, config, async_add_entities,
                                discovery_info=None):
     using_wu = CONF_API_KEY in config
@@ -117,7 +119,6 @@ async def async_setup_platform(hass, config, async_add_entities,
             return False
 
     async_add_entities([IlluminanceSensor(using_wu, config, session)], True)
-
 
 class IlluminanceSensor(Entity):
     def __init__(self, using_wu, config, session):

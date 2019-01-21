@@ -10,7 +10,7 @@
             {% if 'delivered' in sensor.attributes %}
               {{sensor.attributes.delivered}}
             {% else %}
-               0
+                0
             {% endif %}
           {% endmacro %}
           {{in_transit(states.sensor.ups)|int}}
@@ -22,7 +22,7 @@
             {% if 'delivered' in sensor.attributes %}
               {{sensor.attributes.delivered}}
             {% else %}
-               0
+                0
             {% endif %}
           {% endmacro %}
           {{delivered(states.sensor.ups)|int}}
