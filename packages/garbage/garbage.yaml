@@ -62,8 +62,8 @@ group:
       - sensor.time
       - sensor.date
       - sensor.time_utc
-      - sensor.date__time
-      - sensor.time__date
+      - sensor.date_time
+      - sensor.time_date
 
 ###############################################################################
 #  UI Elements
@@ -136,9 +136,9 @@ sensor:
     sensors:
       current_week:
         value_template: >-
-          {% set year = states.sensor.date__time.state.split(',')[0].split('-')[0] %}
-          {% set month = states.sensor.date__time.state.split(',')[0].split('-')[1] %}
-          {% set date = states.sensor.date__time.state.split(',')[0].split('-')[2] %}
+          {% set year = states.sensor.date_time.state.split(',')[0].split('-')[0] %}
+          {% set month = states.sensor.date_time.state.split(',')[0].split('-')[1] %}
+          {% set date = states.sensor.date_time.state.split(',')[0].split('-')[2] %}
           {% set today = strptime(year ~ '-' ~ month ~ '-' ~ date , '%Y-%m-%d') %}
           {%- if (as_timestamp(today) | timestamp_custom('%U', true) | int ) % 2 == 0 -%}
             Even Week (Week# {{ as_timestamp(today) | timestamp_custom('%U', true) }})
@@ -154,9 +154,9 @@ sensor:
     sensors:
       trash_day:
         value_template: >-
-          {% set year = states.sensor.date__time.state.split(',')[0].split('-')[0] %}
-          {% set month = states.sensor.date__time.state.split(',')[0].split('-')[1] %}
-          {% set date = states.sensor.date__time.state.split(',')[0].split('-')[2] %}
+          {% set year = states.sensor.date_time.state.split(',')[0].split('-')[0] %}
+          {% set month = states.sensor.date_time.state.split(',')[0].split('-')[1] %}
+          {% set date = states.sensor.date_time.state.split(',')[0].split('-')[2] %}
           {% set today = strptime(year ~ '-' ~ month ~ '-' ~ date , '%Y-%m-%d') %}
           {%- set pickupDay = states.sensor.trash_pickup_day.state | lower -%}
           {%- if as_timestamp(today)| timestamp_custom('%A', true) | lower == pickupDay -%}
@@ -173,9 +173,9 @@ sensor:
     sensors:
       recycle_day:
         value_template: >-
-          {% set year = states.sensor.date__time.state.split(',')[0].split('-')[0] %}
-          {% set month = states.sensor.date__time.state.split(',')[0].split('-')[1] %}
-          {% set date = states.sensor.date__time.state.split(',')[0].split('-')[2] %}
+          {% set year = states.sensor.date_time.state.split(',')[0].split('-')[0] %}
+          {% set month = states.sensor.date_time.state.split(',')[0].split('-')[1] %}
+          {% set date = states.sensor.date_time.state.split(',')[0].split('-')[2] %}
           {% set today = strptime(year ~ '-' ~ month ~ '-' ~ date , '%Y-%m-%d') %}
           {%- set pickupDay = states.sensor.recycle_pickup_day.state | lower -%}
           {% if states.input_select.recycle_pickup_week.state | lower == "even weeks" %}
