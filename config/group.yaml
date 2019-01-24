@@ -359,7 +359,7 @@ office:
     - sensor.office_nest_protect_color_status
     - light.office_hue_lightstrip_plus
     - switch.office_closet_main_lights
-    - switch.office__wemo
+    - switch.office_wemo
     - media_player.office_echo_plus
     - media_player.office_ecobee4
     - media_player.office_ecobee_switch
