@@ -1,10 +1,8 @@
 resources:
-  - type: js
-    url: /local/custom_ui/weather-card.js
   - type: module
     url: /local/custom_ui/monster-card.js?v=1
   - type: module
-    url: /local/custom_ui/surveillance-card.js?v=0.1
+    url: /local/custom_ui/surveillance-card.js?v=0
 title: Home
 views:
   - badges: []
@@ -44,6 +42,11 @@ views:
         show_header_toggle: false
         title: Climate Control
         type: entities
+      - type: map
+        entities:
+          - entity: !secret person_1_device_tracker_id
+          - entity: !secret person_2_device_tracker_id
+        title: Location
     icon: 'mdi:home'
     id: home
     path: home
@@ -215,22 +218,22 @@ views:
         title: Laundry Room
         type: entities
       - entities:
-          - binary_sensor.office_occupancy
-          - sensor.office_temperature
-          - sensor.office_humidity
-          - climate.office
-          - fan.office_fan_control_switch_level
-          - binary_sensor.office_nest_protect_online
-          - binary_sensor.office_nest_protect_battery_health
-          - binary_sensor.office_nest_protect_smoke_status
-          - binary_sensor.office_nest_protect_co_status
-          - binary_sensor.office_nest_protect_status
-          - light.office_hue_lightstrip_plus
-          - switch.office_closet_main_lights
-          - switch.office__wemo
-          - media_player.office_echo_plus
-          - media_player.office_ecobee4
-          - media_player.office_ecobee_switch
+          - entity: binary_sensor.office_occupancy
+          - entity: sensor.office_temperature
+          - entity: sensor.office_humidity
+          - entity: climate.office
+          - entity: fan.office_fan_control_switch_level
+          - entity: binary_sensor.office_nest_protect_online
+          - entity: binary_sensor.office_nest_protect_battery_health
+          - entity: binary_sensor.office_nest_protect_smoke_status
+          - entity: binary_sensor.office_nest_protect_co_status
+          - entity: binary_sensor.office_nest_protect_status
+          - entity: light.office_hue_lightstrip_plus
+          - entity: switch.office_closet_main_lights
+          - entity: switch.office_wemo
+          - entity: media_player.office_echo_plus
+          - entity: media_player.office_ecobee4
+          - entity: media_player.office_ecobee_switch
         title: Office
         type: entities
     icon: 'mdi:floor-plan'
@@ -356,7 +359,7 @@ views:
         type: media-control
       - entity: media_player.foyer_ecobee_switch
         type: media-control
-      - entity: media_player.game_room_2
+      - entity: media_player.game_room
         type: media-control
       - entity: media_player.garage_echo_plus
         type: media-control
@@ -406,7 +409,8 @@ views:
   - badges: []
     cards:
       - entity: weather.dark_sky
-        type: 'custom:weather-card'
+        name: Forecast
+        type: weather-forecast
       - entities:
           - sun.sun
           - sensor.season
@@ -536,8 +540,11 @@ views:
         type: entities
       - entities:
           - entity: input_boolean.automation_enable
-          - entity: input_boolean.automation_bathroom_fans
-          - entity: input_boolean.automation_master_bedroom_fan
+          - entity: input_boolean.automation_inside_bathroom_fans
+          - entity: input_boolean.automation_inside_master_bedroom_fan
+          - entity: input_boolean.automation_inside_closet_lights
+          - entity: input_boolean.automation_inside_turn_off_lights_inactivity
+          - entity: input_boolean.automation_inside_fireplace
           - entity: input_boolean.automation_outside_back_lights
           - entity: input_boolean.automation_outside_front_lights_on_motion
           - entity: input_boolean.automation_outside_front_lights
@@ -546,6 +553,10 @@ views:
           - entity: input_boolean.automation_outside_front_lights_on_motion
           - entity: input_boolean.automation_normalize_volume
           - entity: input_boolean.automation_christmas_lights
+          - entity: input_boolean.automation_emergency_lights_on
+          - entity: input_boolean.automation_emergency_siren_on
+          - entity: input_boolean.automation_emergency_garage_door_open
+          - entity: input_boolean.automation_emergency_unlock_doors
         show_header_toggle: false
         title: Automations
         type: entities
@@ -553,6 +564,7 @@ views:
           - entity: input_boolean.do_not_disturb_mode
           - entity: input_boolean.vacation_mode
           - entity: input_boolean.guest_mode
+          - entity: input_boolean.emergency_mode
           - entity: input_boolean.facial_recognition_mode
         show_header_toggle: false
         title: Modes
@@ -562,8 +574,8 @@ views:
           - entity: input_boolean.automation_notifications
           - entity: input_boolean.arriving_home_notifications
           - entity: input_boolean.speech_notifications
+          - entity: input_boolean.emergency_notifications
           - entity: input_boolean.text_notifications
-          - entity: input_boolean.trash_reminders
           - entity: automation.reset_trash_reminders
           - entity: input_boolean.weather_notifications
           - entity: input_boolean.welcome_notifications
@@ -588,6 +600,7 @@ views:
       - card:
           entities:
             - entity: light.back_hallway_picture_hue_color
+            - entity: light.christmas_tree_lights
             - entity: light.ge_26933_smart_motion_dimmer_level_4
             - entity: light.ge_26933_smart_motion_dimmer_level_5
             - entity: light.kids_bathroom_tub_lights

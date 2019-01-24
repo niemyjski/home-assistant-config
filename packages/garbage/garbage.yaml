@@ -7,15 +7,6 @@
 homeassistant:
   customize:
 
-    group.date_time:
-      order: 9
-    group.trash_schedule:
-      order: 10
-    group.recycle_schedule:
-      order: 11
-    group.trash_and_recycle_automations:
-      order: 12
-
     sensor.trash_day:
       friendly_name: Is it Trash Day today?
       icon: mdi:delete-variant
@@ -37,8 +28,11 @@ homeassistant:
     sensor.current_week:
       friendly_name: Current Week is
       icon: mdi:calendar-question
-    group.trash__recycle:
-      friendly_name: Trash & Recycle
+    group.trash_schedule:
+      friendly_name: Trash Schedule
+      icon: mdi:delete-variant
+    group.recycle_schedule:
+      friendly_name: Recycle Schedule
       icon: mdi:recycle
 
 group:
