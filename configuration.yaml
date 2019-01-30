@@ -25,6 +25,7 @@ group: !include config/group.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
+influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
 logger: !include config/logger.yaml
