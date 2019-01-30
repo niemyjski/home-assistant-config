@@ -3,7 +3,7 @@ Support to interface with Alexa Devices.
 
 For more details about this platform, please refer to the documentation at
 https://community.home-assistant.io/t/echo-devices-alexa-as-media-player-testers-needed/58639
-VERSION 0.9.6
+VERSION 0.10.1
 """
 import logging
 
@@ -62,8 +62,10 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Required(CONF_PASSWORD): cv.string,
     vol.Required(CONF_URL): cv.string,
     vol.Optional(CONF_DEBUG, default=False): cv.boolean,
-    vol.Optional(CONF_INCLUDE_DEVICES, default=[]): vol.All(cv.ensure_list, [cv.string]),
-    vol.Optional(CONF_EXCLUDE_DEVICES, default=[]): vol.All(cv.ensure_list, [cv.string]),
+    vol.Optional(CONF_INCLUDE_DEVICES, default=[]):
+        vol.All(cv.ensure_list, [cv.string]),
+    vol.Optional(CONF_EXCLUDE_DEVICES, default=[]):
+        vol.All(cv.ensure_list, [cv.string]),
 })
 
 
@@ -103,8 +105,8 @@ def request_configuration(hass, config, setup_platform_callback,
             "Alexa Media Player - Verification Method", configuration_callback,
             description=('Please select the verification method. '
                          '(e.g., sms or email).<br />{}').format(
-                options
-            ),
+                         options
+                         ),
             submit_caption="Confirm",
             fields=[{'id': 'claimsoption', 'name': 'Option'}]
         )
@@ -147,7 +149,7 @@ def setup_platform(hass, config, add_devices_callback,
 
     async def setup_platform_callback(callback_data):
         _LOGGER.debug(("Status: {} got captcha: {} securitycode: {}"
-                       " Claimsoption: {} VerificationCode: {}").format(
+                      " Claimsoption: {} VerificationCode: {}").format(
             login.status,
             callback_data.get('captcha'),
             callback_data.get('securitycode'),
@@ -277,6 +279,8 @@ class AlexaClient(MediaPlayerDevice):
         # Class info
         self.alexa_api = AlexaAPI(self, session, url)
         self.auth = authentication
+        self.alexa_api_session = session
+        self.alexa_api_url = url
 
         # Logged in info
         self._authenticated = None
@@ -312,6 +316,8 @@ class AlexaClient(MediaPlayerDevice):
         self._source = None
         self._source_list = []
         self.refresh(device)
+        # Last Device
+        self._last_called = None
 
     def _clear_media_details(self):
         """Set all Media Items to None."""
@@ -349,6 +355,7 @@ class AlexaClient(MediaPlayerDevice):
         self._source = self._get_source()
         self._source_list = self._get_source_list()
         session = self.alexa_api.get_state()
+        self._last_called = self._get_last_called()
 
         self._clear_media_details()
         # update the session if it exists; not doing relogin here
@@ -436,6 +443,11 @@ class AlexaClient(MediaPlayerDevice):
             for devices in self._bluetooth_state['pairedDeviceList']:
                 sources.append(devices['friendlyName'])
         return ['Local Speaker'] + sources
+
+    def _get_last_called(self):
+        if self._device_serial_number == self.alexa_api.get_last_device_serial():
+            return True
+        return False
 
     @property
     def available(self):
@@ -615,6 +627,7 @@ class AlexaClient(MediaPlayerDevice):
         """Return the scene state attributes."""
         attr = {
             'available': self._available,
+            'last_called': self._last_called
         }
         return attr
 
@@ -817,7 +830,7 @@ class AlexaLogin():
             securitycode,
             claimsoption,
             verificationcode
-        ))
+            ))
         if (captcha is not None and 'guess' in self._data):
             self._data['guess'] = captcha.encode('utf-8')
         if (securitycode is not None and 'otpCode' in self._data):
@@ -926,7 +939,7 @@ class AlexaLogin():
             _LOGGER.debug("Captcha/2FA not requested; confirming login.")
             if self.test_loggedin():
                 _LOGGER.debug("Login confirmed; saving cookie to {}".format(
-                    self._cookiefile))
+                        self._cookiefile))
                 status['login_successful'] = True
                 with open(self._cookiefile, 'wb') as myfile:
                     try:
@@ -977,6 +990,24 @@ class AlexaAPI():
             message = template.format(type(ex).__name__, ex.args)
             _LOGGER.error("An error occured accessing the API: {}".format(
                 message))
+            return None
+
+    def get_last_device_serial(self):
+        """Identify the last device's serial number."""
+        try:
+            response = self._get_request('/api/activities?startTime=&size=1&offset=1')
+            last_activity = response.json()['activities'][0]
+        except Exception as ex:
+            template = ("An exception of type {0} occurred."
+                        " Arguments:\n{1!r}")
+            message = template.format(type(ex).__name__, ex.args)
+            _LOGGER.debug("An error occured accessing the API: {}".format(message))
+            return None
+
+        # Ignore discarded activity records
+        if last_activity['activityStatus'][0] != 'DISCARDED_NON_DEVICE_DIRECTED_INTENT':
+            return last_activity['sourceDeviceIds'][0]['serialNumber']
+        else:
             return None
 
     def play_music(self, provider_id, search_phrase, customer_id=None):
