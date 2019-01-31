@@ -9,12 +9,12 @@
 #  hidden: true
 #'sensor.*_sourcenodeid*':
 #  hidden: true
-'sensor.ge_*':
-  hidden: true
-'switch.ge_*':
-  hidden: true
-'light.ge_*':
-  hidden: true
+#'sensor.ge_*':
+#  hidden: true
+#'switch.ge_*':
+#  hidden: true
+#'light.ge_*':
+#  hidden: true
 
 # nest
 #'sensor.*_protect_online':
