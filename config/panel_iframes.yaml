@@ -10,6 +10,10 @@ ide:
   title: Cloud9 IDE
   icon: mdi:wrench
   url: !secret ide_panel_url
+glances:
+    title: Glances
+    icon: mdi:speedometer
+    url: !secret glances_panel_url
 terminal:
     title: Terminal
     icon: mdi:console
