@@ -5,6 +5,9 @@
     - 'memory_use_percent'
     - 'processor_load'
 
+- platform: co2signal
+  token: secret co2signal_token
+
 - platform: template
   sensors:
     last_alexa:
