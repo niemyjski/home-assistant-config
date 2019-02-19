@@ -39,6 +39,7 @@ panel_iframe: !include config/panel_iframes.yaml
 recorder: !include config/recorder.yaml
 sensor: !include config/sensor.yaml
 shell_command: !include config/shell_command.yaml
+speedtestdotnet: !include config/speedtestdotnet.yaml
 tts: !include config/tts.yaml
 #usps: !include config/usps.yaml
 weather: !include config/weather.yaml

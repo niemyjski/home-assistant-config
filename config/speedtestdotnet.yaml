@@ -1,0 +1,4 @@
+monitored_conditions:
+  - ping
+update_interval:
+  minutes: 1
