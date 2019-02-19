@@ -1,4 +1,5 @@
 - platform: glances
+  host: !secret glances_host
   version: 3
   resources:
     - 'disk_use_percent'
@@ -6,7 +7,7 @@
     - 'processor_load'
 
 - platform: co2signal
-  token: secret co2signal_token
+  token: !secret co2signal_token
 
 - platform: template
   sensors:

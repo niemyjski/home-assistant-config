@@ -25,7 +25,7 @@ sensor:
       - wind_bearing
       - wind_speed
       - visibility
-    update_interval:
+    scan_interval:
       minutes: 5
   - platform: illuminance
     name: Dark Sky Illuminance

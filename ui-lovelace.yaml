@@ -513,7 +513,7 @@ views:
             motion_entity: sensor.living_room_motion_detected
         thumb_interval: 2.5
         type: 'custom:surveillance-card'
-        update_interval: 0.5
+        scan_interval: 0.5
     icon: 'mdi:cctv'
     id: cameras
     panel: true
