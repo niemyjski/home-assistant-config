@@ -19,21 +19,6 @@ group:
       - sensor.speedtest_upload
 
 #---------
-# Sensors
-#---------
-sensor:
-  - platform: speedtest
-    monitored_conditions:
-      - ping
-      - download
-      - upload
-  - platform: systemmonitor
-    resources:
-      - type: processor_use
-      - type: memory_free
-      - type: last_boot
-
-#---------
 # Customize
 #---------
 homeassistant:

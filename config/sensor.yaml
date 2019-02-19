@@ -11,6 +11,18 @@
 - platform: co2signal
   token: !secret co2signal_token
 
+- platform: speedtest
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+- platform: systemmonitor
+  resources:
+    - type: processor_use
+    - type: memory_free
+    - type: last_boot
+
 - platform: template
   sensors:
     last_alexa:
