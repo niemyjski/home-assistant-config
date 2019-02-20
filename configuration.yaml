@@ -13,6 +13,11 @@ homeassistant:
   customize_glob: !include customize_glob.yaml
   packages: !include_dir_named packages
 
+# Base configuration
+default_config:
+hassio:
+ios:
+
 # Includes
 automation: !include config/automation.yaml
 amcrest: !include config/amcrest.yaml
@@ -46,17 +51,3 @@ weather: !include config/weather.yaml
 wemo: !include config/wemo.yaml
 zone: !include config/zones.yaml
 zwave: !include config/zwave.yaml
-
-# Base configuration
-cloud:
-config:
-conversation:
-frontend:
-hassio:
-history:
-ios:
-logbook:
-map:
-sun:
-system_health:
-updater:
