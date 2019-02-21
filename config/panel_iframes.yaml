@@ -10,15 +10,15 @@ ide:
   title: Cloud9 IDE
   icon: mdi:wrench
   url: !secret ide_panel_url
-glances:
-    title: Glances
-    icon: mdi:speedometer
-    url: !secret glances_panel_url
+#glances:
+#    title: Glances
+#    icon: mdi:speedometer
+#    url: !secret glances_panel_url
 terminal:
     title: Terminal
     icon: mdi:console
     url: !secret terminal_panel_url
-influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: !secret influxdb_panel_url
+#influxdb:
+#    title: InfluxDB
+#    icon: mdi:chart-areaspline
+#    url: !secret influxdb_panel_url

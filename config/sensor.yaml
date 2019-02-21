@@ -1,12 +1,12 @@
-- platform: glances
-  host: !secret glances_host
-  username: !secret glances_username
-  password: !secret glances_password
-  version: 3
-  resources:
-    - 'disk_use_percent'
-    - 'memory_use_percent'
-    - 'processor_load'
+#- platform: glances
+#  host: !secret glances_host
+#  username: !secret glances_username
+#  password: !secret glances_password
+#  version: 3
+#  resources:
+#    - 'disk_use_percent'
+#    - 'memory_use_percent'
+#    - 'processor_load'
 
 - platform: opensky
   radius: 5
