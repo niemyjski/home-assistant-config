@@ -1,5 +1,5 @@
-- host: !secret camera_amcrest_living_room_ip
-  name: Living Room
+- host: !secret camera_amcrest_ip
+  name: !secret camera_amcrest_name
   username: !secret camera_username
   password: !secret camera_password
   resolution: high

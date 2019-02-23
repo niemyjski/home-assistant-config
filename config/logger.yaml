@@ -1,1 +1,5 @@
 default: info
+logs:
+  homeassistant.components.homekit_controller: debug
+  custom_components.custom_updater: debug
+  pyupdate: debug

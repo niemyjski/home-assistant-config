@@ -1,8 +1,12 @@
 resources:
   - type: module
-    url: /local/custom_ui/monster-card.js?v=1
+    url: /customcards/github/custom-cards/tracker-card.js?track=true
   - type: module
-    url: /local/custom_ui/surveillance-card.js?v=0
+    url: /customcards/github/custom-cards/mini-graph-card-bundle.js?track=true
+  - type: module
+    url: /customcards/github/custom-cards/monster-card.js?track=true
+  - type: module
+    url: /customcards/github/custom-cards/surveillance-card.js?track=true
 title: Home
 views:
   - badges: []
@@ -27,6 +31,42 @@ views:
         show_header_toggle: false
         title: Doors
         type: entities
+      - card:
+          default_zoom: 14
+          entities:
+            - !secret person_1_device_tracker_id
+          title: Person1's Location
+          type: map
+        conditions:
+          - entity: !secret person_1_device_tracker_id
+            state_not: home
+          - entity: !secret person_1_device_tracker_id
+            state_not: !secret zone_1_name
+        type: conditional
+      - card:
+          default_zoom: 14
+          entities:
+            - !secret person_2_device_tracker_id
+          title: Person2's Location
+          type: map
+        conditions:
+          - entity: !secret person_2_device_tracker_id
+            state_not: home
+          - entity: !secret person_1_device_tracker_id
+            state_not: !secret zone_1_name
+        type: conditional
+      - card:
+          entities:
+            - sensor.packages_in_transit
+          show_header_toggle: false
+          title: Arriving Packages
+          type: entities
+        conditions:
+          - entity: sensor.packages_in_transit
+            state_not: '0'
+          - entity: sensor.packages_in_transit
+            state_not: Unknown
+        type: conditional
       - entities:
           - entity: sensor.trash_day
           - entity: sensor.recycle_day
@@ -42,11 +82,15 @@ views:
         show_header_toggle: false
         title: Climate Control
         type: entities
-      - type: map
-        entities:
-          - entity: !secret person_1_device_tracker_id
-          - entity: !secret person_2_device_tracker_id
-        title: Location
+      - entities:
+          - entity: sensor.basement_temperature
+          - entity: sensor.main_floor_temperature
+          - entity: sensor.office_temperature
+          - entity: sensor.master_water_closet_floor_temperature
+          - entity: sensor.upstairs_temperature
+        hours_to_show: 96
+        title: Zone Temperatures
+        type: history-graph
     icon: 'mdi:home'
     id: home
     path: home
@@ -58,7 +102,6 @@ views:
         type: picture-entity
       - entities:
           - entity: light.living_room_spot_lights
-          - entity: sensor.dark_sky_illuminance
         title: Outside
         type: entities
       - entities:
@@ -70,6 +113,13 @@ views:
           - entity: switch.front_door_can_motion_switch
         title: Front Outside
         type: entities
+      - detail: 4
+        entity: sensor.illuminance
+        icon: 'mdi:weather-sunny'
+        type: sensor
+      - entity: sensor.dark_sky_temperature
+        name: Outside Temperature
+        type: sensor
     icon: 'mdi:tree'
     path: outside
     title: Outside
@@ -219,6 +269,7 @@ views:
         type: entities
       - entities:
           - entity: binary_sensor.office_occupancy
+          - entity: binary_sensor.office_motion
           - entity: sensor.office_temperature
           - entity: sensor.office_humidity
           - entity: climate.office
@@ -230,6 +281,7 @@ views:
           - entity: binary_sensor.office_nest_protect_status
           - entity: light.office_hue_lightstrip_plus
           - entity: switch.office_closet_main_lights
+          - entity: switch.office_switch
           - entity: switch.office_wemo
           - entity: media_player.office_echo_plus
           - entity: media_player.office_ecobee4
@@ -349,7 +401,7 @@ views:
         type: media-control
       - entity: media_player.basement_window_echo
         type: media-control
-      - entity: media_player.blakes_alexa_apps
+      - entity: media_player.Person1s_alexa_apps
         type: media-control
       - entity: media_player.entertainment_room_ecobee_switch
         type: media-control
@@ -358,8 +410,6 @@ views:
       - entity: media_player.first_floor_bathroom_ecobee_switch
         type: media-control
       - entity: media_player.foyer_ecobee_switch
-        type: media-control
-      - entity: media_player.game_room
         type: media-control
       - entity: media_player.garage_echo_plus
         type: media-control
@@ -374,8 +424,6 @@ views:
       - entity: media_player.kitchen_echo_plus
         type: media-control
       - entity: media_player.laundry_room_ecobee_switch
-        type: media-control
-      - entity: media_player.living_room
         type: media-control
       - entity: media_player.living_room_echo_dot
         type: media-control
@@ -412,16 +460,15 @@ views:
         name: Forecast
         type: weather-forecast
       - entities:
-          - sun.sun
-          - sensor.season
-          - sensor.dark_sky_cloud_coverage
-          - sensor.dark_sky_hourly_summary
-          - sensor.dark_sky_daily_summary
-          - sensor.dark_sky_visibility
-          - sensor.dark_sky_wind_bearing
-          - sensor.dark_sky_wind_speed
-          - sensor.allergy_index_today
-          - sensor.chinese_air_pollution_level_2
+          - entity: sun.sun
+          - entity: sensor.dark_sky_cloud_coverage
+          - entity: sensor.dark_sky_hourly_summary
+          - entity: sensor.dark_sky_daily_summary
+          - entity: sensor.dark_sky_visibility
+          - entity: sensor.dark_sky_wind_bearing
+          - entity: sensor.dark_sky_wind_speed
+          - entity: sensor.allergy_index_today
+          - entity: sensor.chinese_air_pollution_level
         show_header_toggle: false
         title: Weather
         type: entities
@@ -487,6 +534,7 @@ views:
           - entity: binary_sensor.back_hallway_motion_switch_occupancy
           - entity: binary_sensor.laundry_room_occupancy
           - entity: binary_sensor.office_occupancy
+          - entity: binary_sensor.office_motion
           - entity: binary_sensor.upstairs_occupancy
           - entity: binary_sensor.master_bedroom_closet_motion_switch_motion
           - entity: binary_sensor.master_bedroom_closet_motion_switch_occupancy
@@ -500,7 +548,7 @@ views:
         type: entities
       - entity: switch.aeotec_zw080_siren_gen5_switch
         type: entity-button
-    icon: 'mdi:security-home'
+    icon: 'mdi:shield-home'
     name: Security
     path: security
     title: Security
@@ -513,7 +561,7 @@ views:
             motion_entity: sensor.living_room_motion_detected
         thumb_interval: 2.5
         type: 'custom:surveillance-card'
-        scan_interval: 0.5
+        update_interval: 0.5
     icon: 'mdi:cctv'
     id: cameras
     panel: true
@@ -521,6 +569,30 @@ views:
     title: Cameras
   - badges: []
     cards:
+      - entity: sensor.memory_free
+        max: 1024
+        min: 0
+        name: Memory Free
+        severity:
+          green: 512
+          red: 128
+          yellow: 256
+        theme: default
+        type: gauge
+      - entity: sensor.processor_use
+        max: 100
+        min: 0
+        name: Processor Use
+        severity:
+          green: 0
+          red: 90
+          yellow: 75
+        theme: default
+        type: gauge
+      - entities:
+          - entity: sensor.processor_use
+          - entity: sensor.memory_free
+        type: history-graph
       - entities:
           - sensor.trash_day
           - sensor.trash_pickup_day
@@ -582,6 +654,7 @@ views:
         show_header_toggle: false
         title: Notifications
         type: entities
+      - type: 'custom:tracker-card'
     icon: 'mdi:settings'
     id: settings
     path: settings
@@ -683,7 +756,7 @@ views:
             - entity: media_player.basement_echo
             - entity: media_player.basement_ecobee4
             - entity: media_player.basement_window_echo
-            - entity: media_player.blakes_alexa_apps
+            - entity: media_player.Person1s_alexa_apps
             - entity: media_player.entertainment_room_ecobee_switch
             - entity: media_player.everywhere
             - entity: media_player.first_floor_bathroom_ecobee_switch
