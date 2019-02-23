@@ -28,6 +28,5 @@ sensor:
     scan_interval:
       minutes: 5
   - platform: illuminance
-    name: Dark Sky Illuminance
-    entity_id: sensor.dark_sky_icon
-  - platform: season
+    name: Illuminance
+    entity_id: weather.dark_sky

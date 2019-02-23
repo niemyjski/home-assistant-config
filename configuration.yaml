@@ -24,6 +24,7 @@ amcrest: !include config/amcrest.yaml
 binary_sensor: !include config/binary_sensor.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
+custom_updater: !include config/custom_updater.yaml
 ecobee: !include config/ecobee.yaml
 discovery: !include config/discovery.yaml
 group: !include config/group.yaml
