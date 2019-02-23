@@ -20,6 +20,7 @@ ios:
 
 # Includes
 automation: !include config/automation.yaml
+alexa_media: !include config/alexa_media.yaml
 amcrest: !include config/amcrest.yaml
 binary_sensor: !include config/binary_sensor.yaml
 camera: !include_dir_list config/cameras/
