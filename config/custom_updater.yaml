@@ -1,4 +1,3 @@
-mode: storage
 show_installable: true
 track:
   - cards
