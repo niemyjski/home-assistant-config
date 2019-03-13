@@ -22,6 +22,10 @@ automation_outside_back_lights:
   name: Automation - Outside Back Lights
   icon: mdi:lightbulb-on
 
+automation_inside_lamp_lights:
+  name: Automation - Turn On/Off Inside Lamp Lights
+  icon: mdi:lightbulb-on
+
 automation_inside_lights_on_motion:
   name: Automation - Turn On/Off Inside Lights (Motion)
   icon: mdi:lightbulb-on

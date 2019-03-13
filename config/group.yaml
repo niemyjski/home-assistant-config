@@ -13,6 +13,7 @@ automations:
     - input_boolean.automation_outside_front_lights_on_motion
     - input_boolean.automation_outside_front_lights
     - input_boolean.automation_outside_front_can_lights
+    - input_boolean.automation_inside_lamp_lights
     - input_boolean.automation_inside_lights_on_motion
     - input_boolean.automation_normalize_volume
     - input_boolean.automation_christmas_lights
@@ -64,6 +65,27 @@ packages:
     - sensor.packages_in_transit
     - sensor.deliveries_today
     - sensor.fedex
+
+#---------
+# Garage
+#---------
+outside:
+  view: yes
+  name: Garage
+  icon: mdi:gamepad
+  entities:
+    - group.gameroom
+    - cover.left_garage_door
+
+gameroom:
+  view: yes
+  name: Game Room
+  icon: mdi:garage
+  entities:
+    - camera.game_room
+    - sensor.game_room_motion_detected
+    - sensor.game_room_sd_used
+    - media_player.garage_echo_plus
 
 #---------
 # Outside
@@ -163,6 +185,8 @@ familyroom:
   view: yes
   name: Family Room
   icon: mdi:television
+  entities:
+    - light.family_room_lamp
 
 storageroom:
   view: yes

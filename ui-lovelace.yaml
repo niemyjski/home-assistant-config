@@ -621,6 +621,7 @@ views:
           - entity: input_boolean.automation_outside_front_lights_on_motion
           - entity: input_boolean.automation_outside_front_lights
           - entity: input_boolean.automation_outside_front_can_lights
+          - entity: input_boolean.automation_inside_lamp_lights
           - entity: input_boolean.automation_inside_lights_on_motion
           - entity: input_boolean.automation_outside_front_lights_on_motion
           - entity: input_boolean.automation_normalize_volume
