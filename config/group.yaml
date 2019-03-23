@@ -69,7 +69,7 @@ packages:
 #---------
 # Garage
 #---------
-outside:
+garage:
   view: yes
   name: Garage
   icon: mdi:gamepad
@@ -115,6 +115,7 @@ frontoutside:
     - sensor.front_door_can_motion_switch_alarm_type
     - sensor.front_door_can_motion_switch_burglar
     - sensor.front_door_can_motion_switch_sourcenodeid
+    - sensor.foyer_temperature
     - media_player.foyer_ecobee_switch
 
 backoutside:
@@ -152,6 +153,7 @@ guestbedroom:
   entities:
     - binary_sensor.bedroom_occupancy
     - sensor.bedroom_temperature
+    - sensor.basement_bedroom_temperature
     - media_player.basement_bedroom_ecobee_switch
 
 utilityroom:
@@ -318,6 +320,7 @@ backfoyer:
   name: Back Foyer
   icon: mdi:walk
   entities:
+    - sensor.back_foyer_temperature
     - media_player.back_foyer_ecobee_switch
 
 bathroom:
@@ -326,6 +329,7 @@ bathroom:
   icon: mdi:toilet
   entities:
     - switch.first_floor_bathroom_exhaust_fan
+    - sensor.first_floor_bathroom_temperature
     - media_player.first_floor_bathroom_ecobee_switch
 
 backhallway:
@@ -360,6 +364,16 @@ laundryroom:
   entities:
     - binary_sensor.laundry_room_occupancy
     - sensor.laundry_room_temperature
+    - switch.dryer
+    - sensor.dryer_completion_time
+    - sensor.dryer_job_state
+    - sensor.dryer_machine_state
+    - sensor.dryer_mode
+    - switch.washer
+    - sensor.washer_completion_time
+    - sensor.washer_job_state
+    - sensor.washer_machine_state
+    - sensor.washer_mode
     - media_player.laundry_room_ecobee_switch
 
 office:
@@ -368,6 +382,7 @@ office:
   icon: mdi:desk-lamp
   entities:
     - binary_sensor.office_occupancy
+    - binary_sensor.office_motion
     - sensor.office_temperature
     - sensor.office_humidity
     - climate.office
@@ -383,6 +398,9 @@ office:
     - sensor.office_nest_protect_color_status
     - light.office_hue_lightstrip_plus
     - switch.office_closet_main_lights
+    - switch.office_switch
+    - sensor.office_switch_light_level
+    - sensor.office_switch_temperature
     - switch.office_wemo
     - media_player.office_echo_plus
     - media_player.office_ecobee4
@@ -537,4 +555,5 @@ kidsbathroom:
   entities:
     - light.kids_bathroom_tub_lights
     - switch.kids_bathroom_exhaust_fan
+    - sensor.kids_bathroom_temperature
     - media_player.kids_bathroom_ecobee_switch

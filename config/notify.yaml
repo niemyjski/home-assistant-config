@@ -6,3 +6,5 @@
     platform: group
     services:
       - service: html5
+  - name: ecobee
+    platform: ecobee
