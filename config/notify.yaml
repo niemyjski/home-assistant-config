@@ -8,3 +8,5 @@
       - service: html5
   - name: ecobee
     platform: ecobee
+  - platform: alexa_media
+    name: alexa_media

@@ -12,6 +12,13 @@ To install one of these custom components or Python scripts for the first time, 
 }
 ```
 
+#### Alexa Media
+```
+{
+  "element": "alexa_media"
+}
+```
+
 #### Required Lovelace components
 1. monster-card
 2. surveillance-card
