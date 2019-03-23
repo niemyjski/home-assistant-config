@@ -152,6 +152,7 @@ guestbedroom:
   icon: mdi:hotel
   entities:
     - binary_sensor.bedroom_occupancy
+    - binary_sensor.basement_bedroom_occupancy
     - sensor.bedroom_temperature
     - sensor.basement_bedroom_temperature
     - media_player.basement_bedroom_ecobee_switch
@@ -188,12 +189,17 @@ familyroom:
   name: Family Room
   icon: mdi:television
   entities:
+    - binary_sensor.family_room_occupancy
+    - sensor.family_room_temperature
     - light.family_room_lamp
 
 storageroom:
   view: yes
   name: Stroage room
   icon: mdi:wrench
+  entities:
+    - binary_sensor.storage_room_occupancy
+    - sensor.storage_room_temperature
 
 #---------
 # First floor
@@ -250,6 +256,9 @@ frontfoyer:
     - sensor.front_door_can_motion_switch_alarm_type
     - sensor.front_door_can_motion_switch_burglar
     - sensor.front_door_can_motion_switch_sourcenodeid
+    - sensor.fireplace_temperature
+    - binary_sensor.fireplace_occupancy
+    - binary_sensor.foyer_occupancy
     - media_player.foyer_ecobee_switch
 
 livingroom:
@@ -259,6 +268,7 @@ livingroom:
   entities:
     - binary_sensor.living_room_occupancy
     - sensor.living_room_temperature
+    - sensor.fireplace_temperature
     - fan.living_room_fan_control_switch_level
     - light.living_room_spot_lights
     - light.living_room_main_lights_inner
@@ -320,6 +330,7 @@ backfoyer:
   name: Back Foyer
   icon: mdi:walk
   entities:
+    - binary_sensor.back_foyer_occupancy
     - sensor.back_foyer_temperature
     - media_player.back_foyer_ecobee_switch
 
@@ -329,6 +340,7 @@ bathroom:
   icon: mdi:toilet
   entities:
     - switch.first_floor_bathroom_exhaust_fan
+    - binary_sensor.first_floor_bathroom_occupancy
     - sensor.first_floor_bathroom_temperature
     - media_player.first_floor_bathroom_ecobee_switch
 
@@ -382,8 +394,10 @@ office:
   icon: mdi:desk-lamp
   entities:
     - binary_sensor.office_occupancy
+    - binary_sensor.office_occupancy_2
     - binary_sensor.office_motion
     - sensor.office_temperature
+    - sensor.office_temperature_2
     - sensor.office_humidity
     - climate.office
     - fan.office_fan_control_switch_level
@@ -490,6 +504,8 @@ masterbathroom:
   name: Master Bathroom
   icon: mdi:shower
   entities:
+    - binary_sensor.master_bathroom_occupancy
+    - sensor.master_bathroom_temperature
     - light.master_bathroom_shower_lights
     - light.master_bathroom_tub_lights
     - switch.master_bathroom_shower
@@ -502,6 +518,8 @@ masterwatercloset:
   name: Master Water Closet
   icon: mdi:toilet
   entities:
+    - binary_sensor.master_water_closet_occupancy
+    - sensor.master_water_closet_temperature
     - climate.master_water_closet_floor
     - switch.master_bathroom_water_closet
     - media_player.master_water_closet_ecobee_switch
@@ -555,5 +573,6 @@ kidsbathroom:
   entities:
     - light.kids_bathroom_tub_lights
     - switch.kids_bathroom_exhaust_fan
+    - binary_sensor.kids_bathroom_occupancy
     - sensor.kids_bathroom_temperature
     - media_player.kids_bathroom_ecobee_switch

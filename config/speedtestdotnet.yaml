@@ -1,4 +1,9 @@
 monitored_conditions:
   - ping
-update_interval:
+server_id: 17462
+scan_interval:
+  days: 0
+  hours: 0
   minutes: 1
+  seconds: 0
+  milliseconds: 0
