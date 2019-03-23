@@ -1,4 +1,4 @@
 platform: generic
-# still_image_url: !secret camera1_still_image_url
+still_image_url: !secret camera1_still_image_url
 stream_source: !secret camera1_stream_source
 name: !secret camera1_name
