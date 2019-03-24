@@ -120,6 +120,11 @@ views:
       - entity: sensor.dark_sky_temperature
         name: Outside Temperature
         type: sensor
+      - detail: 4
+        entity: sensor.opensky
+        icon: 'mdi:airplane'
+        name: Nearby Aircraft
+        type: sensor
     icon: 'mdi:tree'
     path: outside
     title: Outside
@@ -127,9 +132,14 @@ views:
     cards:
       - entity: climate.basement
         type: thermostat
+      - entity: camera.utility_room
+        show_state: false
+        type: picture-entity
       - entities:
+          - binary_sensor.basement_bedroom_occupancy
           - binary_sensor.bedroom_occupancy
           - sensor.bedroom_temperature
+          - sensor.basement_bedroom_temperature
           - media_player.basement_bedroom_ecobee_switch
         title: Guest Bedroom
         type: entities
@@ -153,10 +163,15 @@ views:
       - entities: []
         title: Guest Bathroom
         type: entities
-      - entities: []
+      - entities:
+          - entity: binary_sensor.family_room_occupancy
+          - entity: sensor.family_room_temperature
+          - entity: light.family_room_lamp
         title: Family Room
         type: entities
-      - entities: []
+      - entities:
+          - entity: binary_sensor.storage_room_occupancy
+          - entity: sensor.storage_room_temperature
         title: Storage Room
         type: entities
     icon: 'mdi:floor-plan'
@@ -166,6 +181,9 @@ views:
     cards:
       - entity: climate.main_floor
         type: thermostat
+      - entity: camera.living_room
+        show_state: false
+        type: picture-entity
       - entity: climate.office
         type: thermostat
       - entities:
@@ -184,31 +202,28 @@ views:
           - entity: switch.front_door_can_motion_switch
           - entity: binary_sensor.front_door_can_motion_switch_motion
           - entity: binary_sensor.front_door_can_motion_switch_occupancy
+          - entity: sensor.foyer_temperature
           - entity: media_player.foyer_ecobee_switch
         title: Front Foyer
         type: entities
-      - entity: camera.living_room
-        show_state: false
-        type: picture-entity
       - entities:
-          - binary_sensor.living_room_occupancy
-          - sensor.living_room_temperature
-          - fan.living_room_fan_control_switch_level
-          - light.living_room_spot_lights
-          - light.living_room_main_lights_inner
-          - light.living_room_main_lights_outter
-          - light.living_room_table_dimmer_level
-          - switch.living_room_top_mantle_receptacle
-          - switch.living_room_bottom_mantle_receptacle
-          - switch.living_room_top_wet_bar_switch
-          - switch.living_room_bottom_wet_bar_switch
-          - switch.living_room_west_outlets_switch
-          - switch.front_north_outside_outlets_switch
-          - camera.living_room
-          - sensor.living_room_motion_detected
-          - sensor.living_room_sd_used
-          - media_player.living_room_ecobee_switch
-          - media_player.living_room_echo_dot
+          - entity: binary_sensor.living_room_occupancy
+          - entity: binary_sensor.fireplace_occupancy
+          - entity: sensor.living_room_temperature
+          - entity: sensor.fireplace_temperature
+          - entity: fan.living_room_fan_control_switch_level
+          - entity: light.living_room_spot_lights
+          - entity: light.living_room_main_lights_inner
+          - entity: light.living_room_main_lights_outter
+          - entity: light.living_room_table_dimmer_level
+          - entity: switch.living_room_top_mantle_receptacle
+          - entity: switch.living_room_bottom_mantle_receptacle
+          - entity: switch.living_room_top_wet_bar_switch
+          - entity: switch.living_room_bottom_wet_bar_switch
+          - entity: switch.living_room_west_outlets_switch
+          - entity: switch.front_north_outside_outlets_switch
+          - entity: media_player.living_room_ecobee_switch
+          - entity: media_player.living_room_echo_dot
         title: Living room
         type: entities
       - entities:
@@ -237,11 +252,15 @@ views:
         title: Entertainment Room
         type: entities
       - entities:
+          - binary_sensor.back_foyer_occupancy
+          - sensor.back_foyer_temperature
           - media_player.back_foyer_ecobee_switch
         title: Back Foyer
         type: entities
       - entities:
           - entity: switch.first_floor_bathroom_exhaust_fan
+          - entity: binary_sensor.first_floor_bathroom_occupancy
+          - entity: sensor.first_floor_bathroom_temperature
           - entity: media_player.first_floor_bathroom_ecobee_switch
         title: Bathroom
         type: entities
@@ -263,14 +282,24 @@ views:
           - entity: binary_sensor.laundry_room_occupancy
           - entity: sensor.laundry_room_temperature
           - entity: media_player.laundry_room_ecobee_switch
-          - entity: input_boolean.samsung_dryer
-          - entity: input_boolean.samsung_washer
+          - entity: switch.dryer
+          - entity: sensor.dryer_completion_time
+          - entity: sensor.dryer_job_state
+          - entity: sensor.dryer_machine_state
+          - entity: sensor.dryer_mode
+          - entity: switch.washer
+          - entity: sensor.washer_completion_time
+          - entity: sensor.washer_job_state
+          - entity: sensor.washer_machine_state
+          - entity: sensor.washer_mode
         title: Laundry Room
         type: entities
       - entities:
           - entity: binary_sensor.office_occupancy
+          - entity: binary_sensor.office_occupancy_2
           - entity: binary_sensor.office_motion
           - entity: sensor.office_temperature
+          - entity: sensor.office_temperature_2
           - entity: sensor.office_humidity
           - entity: climate.office
           - entity: fan.office_fan_control_switch_level
@@ -282,6 +311,8 @@ views:
           - entity: light.office_hue_lightstrip_plus
           - entity: switch.office_closet_main_lights
           - entity: switch.office_switch
+          - entity: sensor.office_switch_light_level
+          - entity: sensor.office_switch_temperature
           - entity: switch.office_wemo
           - entity: media_player.office_echo_plus
           - entity: media_player.office_ecobee4
@@ -319,6 +350,8 @@ views:
         title: Master Bedroom
         type: entities
       - entities:
+          - entity: binary_sensor.master_bathroom_occupancy
+          - entity: sensor.master_bathroom_temperature
           - entity: light.master_bathroom_shower_lights
           - entity: light.master_bathroom_tub_lights
           - entity: switch.master_bathroom_shower
@@ -328,6 +361,8 @@ views:
         title: Master Bathroom
         type: entities
       - entities:
+          - entity: binary_sensor.master_water_closet_occupancy
+          - entity: sensor.master_water_closet_temperature
           - entity: climate.master_water_closet_floor
           - entity: switch.master_bathroom_water_closet
           - entity: media_player.master_water_closet_ecobee_switch
@@ -336,6 +371,8 @@ views:
       - entities:
           - entity: light.kids_bathroom_tub_lights
           - entity: switch.kids_bathroom_exhaust_fan
+          - entity: binary_sensor.kids_bathroom_occupancy
+          - entity: sensor.kids_bathroom_temperature
           - entity: media_player.kids_bathroom_ecobee_switch
         title: Kid Bathroom
         type: entities
@@ -389,6 +426,29 @@ views:
     title: Second Floor
   - badges: []
     cards:
+      - entity: camera.game_room
+        show_state: false
+        type: picture-entity
+      - entity: media_player.garage_echo_plus
+        type: media-control
+      - entities:
+          - entity: camera.game_room
+          - entity: sensor.game_room_motion_detected
+          - entity: sensor.game_room_sd_used
+          - entity: media_player.garage_echo_plus
+        show_header_toggle: false
+        title: Gaming room
+        type: entities
+      - entities:
+          - entity: cover.left_garage_door
+        show_header_toggle: false
+        title: Garage Doors
+        type: entities
+    icon: 'mdi:garage'
+    path: garage
+    title: garage
+  - badges: []
+    cards:
       - entity: media_player.spotify
         type: media-control
       - entity: media_player.back_foyer_ecobee_switch
@@ -401,7 +461,7 @@ views:
         type: media-control
       - entity: media_player.basement_window_echo
         type: media-control
-      - entity: media_player.Person1s_alexa_apps
+      - entity: media_player.blakes_alexa_apps
         type: media-control
       - entity: media_player.entertainment_room_ecobee_switch
         type: media-control
@@ -456,6 +516,68 @@ views:
     title: Media
   - badges: []
     cards:
+      - entities:
+          - lock.august_smart_lock_gen3_front_door_locked
+          - cover.house_left_garage_door_opener
+          - cover.house_right_garage_door_opener
+          - cover.left_garage_door
+        show_header_toggle: false
+        title: Doors
+        type: entities
+      - entities:
+          - entity: binary_sensor.basement_occupancy
+          - entity: binary_sensor.family_room_occupancy
+          - entity: binary_sensor.bedroom_occupancy
+          - entity: binary_sensor.basement_bedroom_occupancy
+          - entity: binary_sensor.storage_room_occupancy
+          - entity: binary_sensor.main_floor_occupancy
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_main_lights_motion_switch_occupancy
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_motion
+          - entity: binary_sensor.kitchen_sink_lights_motion_switch_occupancy
+          - entity: sensor.game_room_motion_detected
+          - entity: binary_sensor.living_room_occupancy
+          - entity: binary_sensor.fireplace_occupancy
+          - entity: binary_sensor.foyer_occupancy
+          - entity: binary_sensor.front_foyer_motion_switch_motion
+          - entity: binary_sensor.front_foyer_motion_switch_occupancy
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_motion
+          - entity: binary_sensor.front_foyer_right_closet_motion_switch_occupancy
+          - entity: binary_sensor.front_door_can_motion_switch_motion
+          - entity: binary_sensor.front_door_can_motion_switch_occupancy
+          - entity: binary_sensor.front_door_camera_motion_detected
+          - entity: binary_sensor.front_door_camera_person_detected
+          - entity: binary_sensor.front_door_camera_sound_detected
+          - entity: binary_sensor.entertainment_room_occupancy
+          - entity: binary_sensor.back_foyer_occupancy
+          - entity: binary_sensor.back_hallway_motion_switch_motion
+          - entity: binary_sensor.back_hallway_motion_switch_occupancy
+          - entity: binary_sensor.first_floor_bathroom_occupancy
+          - entity: binary_sensor.laundry_room_occupancy
+          - entity: binary_sensor.office_occupancy
+          - entity: binary_sensor.office_occupancy_2
+          - entity: binary_sensor.office_motion
+          - entity: binary_sensor.upstairs_occupancy
+          - entity: binary_sensor.master_bathroom_occupancy
+          - entity: binary_sensor.master_water_closet_occupancy
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_motion
+          - entity: binary_sensor.master_bedroom_closet_motion_switch_occupancy
+          - entity: binary_sensor.kids_bathroom_occupancy
+          - entity: binary_sensor.kids_room_one_occupancy
+          - entity: binary_sensor.kids_room_two_occupancy
+          - entity: binary_sensor.upstairs_hallway_motion_switch_motion
+          - entity: binary_sensor.upstairs_hallway_motion_switch_occupancy
+        show_header_toggle: false
+        title: Motion
+        type: entities
+      - entity: switch.aeotec_zw080_siren_gen5_switch
+        type: entity-button
+    icon: 'mdi:shield-home'
+    name: Security
+    path: security
+    title: Security
+  - badges: []
+    cards:
       - entity: weather.dark_sky
         name: Forecast
         type: weather-forecast
@@ -477,16 +599,28 @@ views:
           - sensor.dark_sky_humidity
           - sensor.basement_temperature
           - sensor.basement_humidity
+          - sensor.storage_room_temperature
+          - sensor.bedroom_temperature
+          - sensor.basement_bedroom_temperature
+          - sensor.family_room_temperature
+          - sensor.basement_bedroom_temperature
           - sensor.main_floor_temperature
           - sensor.main_floor_humidity
           - sensor.living_room_temperature
+          - sensor.fireplace_temperature
+          - sensor.foyer_temperature
           - sensor.entertainment_room_temperature
+          - sensor.back_foyer_temperature
+          - sensor.first_floor_bathroom_temperature
           - sensor.laundry_room_temperature
           - sensor.office_temperature
+          - sensor.office_temperature_2
           - sensor.office_humidity
           - sensor.upstairs_temperature
           - sensor.upstairs_humidity
-          - sensor.bedroom_temperature
+          - sensor.master_bathroom_temperature
+          - sensor.master_water_closet_temperature
+          - sensor.kids_bathroom_temperature
           - sensor.kids_room_one_temperature
           - sensor.kids_room_two_temperature
         show_header_toggle: false
@@ -503,62 +637,13 @@ views:
     title: Weather
   - badges: []
     cards:
-      - entities:
-          - lock.august_smart_lock_gen3_front_door_locked
-          - cover.house_left_garage_door_opener
-          - cover.house_right_garage_door_opener
-          - cover.left_garage_door
-        show_header_toggle: false
-        title: Doors
-        type: entities
-      - entities:
-          - entity: binary_sensor.basement_occupancy
-          - entity: binary_sensor.main_floor_occupancy
-          - entity: binary_sensor.kitchen_main_lights_motion_switch_motion
-          - entity: binary_sensor.kitchen_main_lights_motion_switch_occupancy
-          - entity: binary_sensor.kitchen_sink_lights_motion_switch_motion
-          - entity: binary_sensor.kitchen_sink_lights_motion_switch_occupancy
-          - entity: sensor.living_room_motion_detected
-          - entity: binary_sensor.living_room_occupancy
-          - entity: binary_sensor.front_foyer_motion_switch_motion
-          - entity: binary_sensor.front_foyer_motion_switch_occupancy
-          - entity: binary_sensor.front_foyer_right_closet_motion_switch_motion
-          - entity: binary_sensor.front_foyer_right_closet_motion_switch_occupancy
-          - entity: binary_sensor.front_door_can_motion_switch_motion
-          - entity: binary_sensor.front_door_can_motion_switch_occupancy
-          - entity: binary_sensor.front_door_camera_motion_detected
-          - entity: binary_sensor.front_door_camera_person_detected
-          - entity: binary_sensor.front_door_camera_sound_detected
-          - entity: binary_sensor.entertainment_room_occupancy
-          - entity: binary_sensor.back_hallway_motion_switch_motion
-          - entity: binary_sensor.back_hallway_motion_switch_occupancy
-          - entity: binary_sensor.laundry_room_occupancy
-          - entity: binary_sensor.office_occupancy
-          - entity: binary_sensor.office_motion
-          - entity: binary_sensor.upstairs_occupancy
-          - entity: binary_sensor.master_bedroom_closet_motion_switch_motion
-          - entity: binary_sensor.master_bedroom_closet_motion_switch_occupancy
-          - entity: binary_sensor.bedroom_occupancy
-          - entity: binary_sensor.kids_room_one_occupancy
-          - entity: binary_sensor.kids_room_two_occupancy
-          - entity: binary_sensor.upstairs_hallway_motion_switch_motion
-          - entity: binary_sensor.upstairs_hallway_motion_switch_occupancy
-        show_header_toggle: false
-        title: Motion
-        type: entities
-      - entity: switch.aeotec_zw080_siren_gen5_switch
-        type: entity-button
-    icon: 'mdi:shield-home'
-    name: Security
-    path: security
-    title: Security
-  - badges: []
-    cards:
       - cameras:
           - entity: camera.front_door
             motion_entity: binary_sensor.front_door_camera_motion_detected
           - entity: camera.living_room
-            motion_entity: sensor.living_room_motion_detected
+          - entity: camera.utility_room
+          - entity: camera.game_room
+            motion_entity: sensor.game_room_motion_detected
         thumb_interval: 2.5
         type: 'custom:surveillance-card'
         update_interval: 0.5
@@ -589,6 +674,9 @@ views:
           yellow: 75
         theme: default
         type: gauge
+      - entity: sensor.speedtest_ping
+        name: Network Latency
+        type: sensor
       - entities:
           - entity: sensor.processor_use
           - entity: sensor.memory_free
@@ -757,7 +845,7 @@ views:
             - entity: media_player.basement_echo
             - entity: media_player.basement_ecobee4
             - entity: media_player.basement_window_echo
-            - entity: media_player.Person1s_alexa_apps
+            - entity: media_player.blakes_alexa_apps
             - entity: media_player.entertainment_room_ecobee_switch
             - entity: media_player.everywhere
             - entity: media_player.first_floor_bathroom_ecobee_switch

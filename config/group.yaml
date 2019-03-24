@@ -156,12 +156,14 @@ guestbedroom:
     - sensor.bedroom_temperature
     - sensor.basement_bedroom_temperature
     - media_player.basement_bedroom_ecobee_switch
+    - switch.basement_bedroom_closet_main_lights
 
 utilityroom:
   view: yes
   name: Utility Room
   icon: mdi:wrench
   entities:
+    - camera.utility_room
     - binary_sensor.basement_utility_room_nest_protect_online
     - binary_sensor.basement_utility_room_nest_protect_battery_health
     - binary_sensor.basement_utility_room_nest_protect_smoke_status
@@ -192,6 +194,13 @@ familyroom:
     - binary_sensor.family_room_occupancy
     - sensor.family_room_temperature
     - light.family_room_lamp
+    - switch.family_room_motion_switch
+    - binary_sensor.family_room_motion_switch_motion
+    - binary_sensor.family_room_motion_switch_occupancy
+    - sensor.family_room_motion_switch_alarm_level
+    - sensor.family_room_motion_switch_alarm_type
+    - sensor.family_room_motion_switch_burglar
+    - sensor.family_room_motion_switch_sourcenodeid
 
 storageroom:
   view: yes
@@ -200,6 +209,13 @@ storageroom:
   entities:
     - binary_sensor.storage_room_occupancy
     - sensor.storage_room_temperature
+    - switch.storage_room_motion_switch
+    - binary_sensor.storage_room_motion_switch_motion
+    - binary_sensor.storage_room_motion_switch_occupancy
+    - sensor.storage_room_motion_switch_alarm_level
+    - sensor.storage_room_motion_switch_alarm_type
+    - sensor.storage_room_motion_switch_burglar
+    - sensor.storage_room_motion_switch_sourcenodeid
 
 #---------
 # First floor
@@ -266,6 +282,7 @@ livingroom:
   name: Living room
   icon: mdi:walk
   entities:
+    - camera.living_room
     - binary_sensor.living_room_occupancy
     - sensor.living_room_temperature
     - sensor.fireplace_temperature
