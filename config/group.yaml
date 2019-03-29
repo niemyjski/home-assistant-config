@@ -85,6 +85,8 @@ gameroom:
     - camera.game_room
     - sensor.game_room_motion_detected
     - sensor.game_room_sd_used
+    - climate.game_room
+    - light.game_room_thermostat
     - media_player.garage_echo_plus
 
 #---------
@@ -145,6 +147,8 @@ guestbathroom:
   view: yes
   name: Guest Bathroom
   icon: mdi:toilet
+  entities:
+    - switch.guest_bathroom_exhaust_fan
 
 guestbedroom:
   view: yes
@@ -560,6 +564,7 @@ kid1bedroom:
     - sensor.kids_bedroom_one_nest_protect_co_status
     - sensor.kids_bedroom_one_nest_protect_color_status
     - media_player.kids_bedroom_one_ecobee_switch
+    - media_player.kids_bathroom_mirror
 
 kid2bedroom:
   view: yes
