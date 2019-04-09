@@ -283,7 +283,7 @@ frontfoyer:
 
 livingroom:
   view: yes
-  name: Living room
+  name: Living Room
   icon: mdi:walk
   entities:
     - camera.living_room
@@ -309,13 +309,12 @@ livingroom:
 
 entertainmentroom:
   view: yes
-  name: Den
+  name: Entertainment Room
   icon: mdi:television
   entities:
     - binary_sensor.entertainment_room_occupancy
     - sensor.entertainment_room_temperature
     - switch.entertainment_room_receptacle
-    - switch.aeotec_zw080_siren_gen5_switch
     - media_player.entertainment_room_ecobee_switch
 
 kitchen:
@@ -328,6 +327,7 @@ kitchen:
     - sensor.main_floor_humidity
     - climate.main_floor
     - switch.kitchen_bar_lights_switch
+    - switch.kitchen_east_outside_outlets_switch
     - binary_sensor.kitchen_main_lights_motion_switch_motion
     - binary_sensor.kitchen_main_lights_motion_switch_occupancy
     - switch.kitchen_main_lights_motion_switch
