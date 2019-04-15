@@ -11,8 +11,8 @@
 - platform: opensky
   radius: 5
 
-- platform: co2signal
-  token: !secret co2signal_token
+#- platform: co2signal
+#  token: !secret co2signal_token
 
 - platform: systemmonitor
   resources:
