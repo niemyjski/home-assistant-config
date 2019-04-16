@@ -64,7 +64,7 @@ packages:
   entities:
     - sensor.packages_in_transit
     - sensor.deliveries_today
-    - sensor.fedex
+#    - sensor.fedex
 
 #---------
 # Garage
