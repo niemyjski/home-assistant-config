@@ -22,8 +22,24 @@ automation_outside_back_lights:
   name: Automation - Outside Back Lights
   icon: mdi:lightbulb-on
 
+automation_outside_lights_on_garage_door_activity:
+  name: Automation - Turn On/Off Outside Lights on Garage Door Activity
+  icon: mdi:lightbulb-on
+
 automation_inside_lamp_lights:
   name: Automation - Turn On/Off Inside Lamp Lights
+  icon: mdi:lightbulb-on
+
+automation_inside_unlock_doors_on_garage_door_open:
+  name: Automation - Automatically Unlock/Lock doors Garage Door Open
+  icon: mdi:lock-open
+
+automation_inside_lock_doors_on_garage_door_close:
+  name: Automation - Automatically Unlock/Lock doors Garage Door Close
+  icon: mdi:lock
+
+automation_inside_lights_on_garage_door_activity:
+  name: Automation - Turn On/Off Inside Lights on Garage Door Activity
   icon: mdi:lightbulb-on
 
 automation_inside_lights_on_motion:

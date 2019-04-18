@@ -554,6 +554,10 @@ masterwatercloset:
   name: Master Water Closet
   icon: mdi:toilet
   entities:
+    - binary_sensor.master_water_closet_motion
+    - switch.master_water_closet
+    - sensor.master_water_closet_light_level
+    - sensor.master_water_closet_temperature_2
     - binary_sensor.master_water_closet_occupancy
     - sensor.master_water_closet_temperature
     - climate.master_water_closet_floor
