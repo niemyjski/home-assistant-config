@@ -1,27 +1,61 @@
 - platform: template
   sensors:
-    august_smart_lock_gen3_front_door_battery_level:
+    front_door_locked_battery_level:
       device_class: battery
-      entity_id: zwave.august_smart_lock_gen3_front_door
+      entity_id: zwave.front_door_lock
       friendly_name: 'Front Door Lock Battery Level'
       value_template: >
-        {% if states.zwave.august_smart_lock_gen3_front_door.attributes.battery_level is defined %}
-          {{ states.zwave.august_smart_lock_gen3_front_door.attributes.battery_level|float <= 15 }}
+        {% if states.zwave.front_door_lock.attributes.battery_level is defined %}
+          {{ states.zwave.front_door_lock.attributes.battery_level|float <= 15 }}
         {% else %}
           false
         {% endif %}
 
-    august_smart_lock_gen3_front_door_locked:
+    front_door_locked:
       device_class: lock
-      entity_id: lock.august_smart_lock_gen3_front_door_locked
+      entity_id: lock.front_door_locked
       friendly_name: 'Front Door Locked'
-      value_template: "{{ is_state('lock.august_smart_lock_gen3_front_door_locked', 'unlocked') }}"
+      value_template: "{{ is_state('lock.front_door_locked', 'unlocked') }}"
 
 #    house_front_door:
 #      device_class: door
-#      entity_id: sensor.august_smart_lock_gen3_front_door_access_control
+#      entity_id: sensor.front_door_lock_access_control
 #      friendly_name: 'Front Door Lock Battery Level'
-#      value_template: "{{ is_state('sensor.august_smart_lock_gen3_front_door_access_control', '2') }}"
+#      value_template: "{{ is_state('sensor.front_door_lock_access_control', '2') }}"
+
+    back_foyer_door_locked_battery_level:
+      device_class: battery
+      entity_id: zwave.back_foyer_door_lock
+      friendly_name: 'Back Foyer Door Lock Battery Level'
+      value_template: >
+        {% if states.zwave.back_foyer_door_lock.attributes.battery_level is defined %}
+          {{ states.zwave.back_foyer_door_lock.attributes.battery_level|float <= 15 }}
+        {% else %}
+          false
+        {% endif %}
+
+    back_foyer_door_locked:
+      device_class: lock
+      entity_id: lock.back_foyer_door_locked
+      friendly_name: 'Back Foyer Door Locked'
+      value_template: "{{ is_state('lock.back_foyer_door_locked', 'unlocked') }}"
+
+    exercise_room_door_locked_battery_level:
+      device_class: battery
+      entity_id: zwave.exercise_room_door_lock
+      friendly_name: 'Exercise Room Door Lock Battery Level'
+      value_template: >
+        {% if states.zwave.exercise_room_door_lock.attributes.battery_level is defined %}
+          {{ states.zwave.exercise_room_door_lock.attributes.battery_level|float <= 15 }}
+        {% else %}
+          false
+        {% endif %}
+
+    exercise_room_door_locked:
+      device_class: lock
+      entity_id: lock.exersize_room_door_locked
+      friendly_name: 'Exercise Room Door Locked'
+      value_template: "{{ is_state('lock.exersize_room_door_locked', 'unlocked') }}"
 
 - platform: template
   sensors:

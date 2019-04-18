@@ -183,6 +183,13 @@ exerciseroom:
   name: Exercise Room
   icon: mdi:dumbbell
   entities:
+    - lock.exersize_room_door_locked
+    - binary_sensor.exercise_room_door_locked_battery_level
+    - binary_sensor.exercise_room_door_locked
+    - sensor.exersize_room_door_lock_access_control
+    - sensor.exersize_room_door_lock_alarm_level
+    - sensor.exersize_room_door_lock_alarm_type
+    - sensor.exersize_room_door_lock_sourcenodeid
     - binary_sensor.basement_occupancy
     - sensor.basement_temperature
     - sensor.basement_humidity
@@ -244,13 +251,13 @@ frontfoyer:
   name: Foyer
   icon: mdi:sofa
   entities:
-    - lock.august_smart_lock_gen3_front_door_locked
-    - binary_sensor.august_smart_lock_gen3_front_door_battery_level
-    - binary_sensor.august_smart_lock_gen3_front_door_locked
-    - sensor.august_smart_lock_gen3_front_door_access_control
-    - sensor.august_smart_lock_gen3_front_door_alarm_level
-    - sensor.august_smart_lock_gen3_front_door_alarm_type
-    - sensor.august_smart_lock_gen3_front_door_sourcenodeid
+    - lock.front_door_locked
+    - binary_sensor.front_door_locked_battery_level
+    - binary_sensor.front_door_locked
+    - sensor.front_door_lock_access_control
+    - sensor.front_door_lock_alarm_level
+    - sensor.front_door_lock_alarm_type
+    - sensor.front_door_lock_sourcenodeid
     - camera.front_door
     - binary_sensor.front_door_camera_motion_detected
     - binary_sensor.front_door_camera_person_detected
@@ -287,6 +294,7 @@ livingroom:
   icon: mdi:walk
   entities:
     - camera.living_room
+    - binary_sensor.living_room_door_sensor
     - binary_sensor.living_room_occupancy
     - sensor.living_room_temperature
     - sensor.fireplace_temperature
@@ -351,6 +359,13 @@ backfoyer:
   name: Back Foyer
   icon: mdi:walk
   entities:
+    - lock.back_foyer_door_locked
+    - binary_sensor.back_foyer_door_locked_battery_level
+    - binary_sensor.back_foyer_door_locked
+    - sensor.back_foyer_door_lock_access_control
+    - sensor.back_foyer_door_lock_alarm_level
+    - sensor.back_foyer_door_lock_alarm_type
+    - sensor.back_foyer_door_lock_sourcenodeid
     - binary_sensor.back_foyer_occupancy
     - sensor.back_foyer_temperature
     - media_player.back_foyer_ecobee_switch
