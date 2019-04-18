@@ -183,13 +183,13 @@ exerciseroom:
   name: Exercise Room
   icon: mdi:dumbbell
   entities:
-    - lock.exercize_room_door_locked
+    - lock.exercise_room_door_locked
     - binary_sensor.exercise_room_door_locked_battery_level
     - binary_sensor.exercise_room_door_locked
-    - sensor.exercize_room_door_lock_access_control
-    - sensor.exercize_room_door_lock_alarm_level
-    - sensor.exercize_room_door_lock_alarm_type
-    - sensor.exercize_room_door_lock_sourcenodeid
+    - sensor.exercise_room_door_lock_access_control
+    - sensor.exercise_room_door_lock_alarm_level
+    - sensor.exercise_room_door_lock_alarm_type
+    - sensor.exercise_room_door_lock_sourcenodeid
     - binary_sensor.basement_occupancy
     - sensor.basement_temperature
     - sensor.basement_humidity
