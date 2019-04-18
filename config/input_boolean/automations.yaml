@@ -31,11 +31,11 @@ automation_inside_lamp_lights:
   icon: mdi:lightbulb-on
 
 automation_inside_unlock_doors_on_garage_door_open:
-  name: Automation - Automatically Unlock/Lock doors Garage Door Open
+  name: Automation - Automatically Unlock doors Garage Door Open
   icon: mdi:lock-open
 
 automation_inside_lock_doors_on_garage_door_close:
-  name: Automation - Automatically Unlock/Lock doors Garage Door Close
+  name: Automation - Automatically Lock doors Garage Door Close
   icon: mdi:lock
 
 automation_inside_lights_on_garage_door_activity:
