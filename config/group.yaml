@@ -155,6 +155,10 @@ guestbedroom:
   name: Guest Bedroom
   icon: mdi:hotel
   entities:
+    - binary_sensor.basement_bedroom_motion
+    - switch.basement_bedroom
+    - sensor.basement_bedroom_light_level
+    - sensor.basement_bedroom_temperature_2
     - binary_sensor.bedroom_occupancy
     - binary_sensor.basement_bedroom_occupancy
     - sensor.bedroom_temperature
@@ -295,6 +299,10 @@ livingroom:
   entities:
     - camera.living_room
     - binary_sensor.living_room_door_sensor
+    - sensor.living_room_door_sensor_access_control
+    - sensor.living_room_door_sensor_alarm_level
+    - sensor.living_room_door_sensor_alarm_type
+    - sensor.living_room_door_sensor_sourcenodeid
     - binary_sensor.living_room_occupancy
     - sensor.living_room_temperature
     - sensor.fireplace_temperature
@@ -320,6 +328,10 @@ entertainmentroom:
   name: Entertainment Room
   icon: mdi:television
   entities:
+    - binary_sensor.entertainment_room_motion
+    - switch.entertainment_room
+    - sensor.entertainment_room_light_level
+    - sensor.entertainment_room_temperature_2
     - binary_sensor.entertainment_room_occupancy
     - sensor.entertainment_room_temperature
     - switch.entertainment_room_receptacle
@@ -366,6 +378,10 @@ backfoyer:
     - sensor.back_foyer_door_lock_alarm_level
     - sensor.back_foyer_door_lock_alarm_type
     - sensor.back_foyer_door_lock_sourcenodeid
+    - binary_sensor.back_foyer_motion
+    - switch.back_foyer
+    - sensor.back_foyer_light_level
+    - sensor.back_foyer_temperature_2
     - binary_sensor.back_foyer_occupancy
     - sensor.back_foyer_temperature
     - media_player.back_foyer_ecobee_switch
@@ -375,6 +391,10 @@ bathroom:
   name: Bathroom
   icon: mdi:toilet
   entities:
+    - binary_sensor.first_floor_bathroom_motion
+    - switch.first_floor_bathroom
+    - sensor.first_floor_bathroom_light_level
+    - sensor.first_floor_bathroom_temperature_2
     - switch.first_floor_bathroom_exhaust_fan
     - binary_sensor.first_floor_bathroom_occupancy
     - sensor.first_floor_bathroom_temperature
@@ -410,6 +430,10 @@ laundryroom:
   name: Laundry room
   icon: mdi:washing-machine
   entities:
+    - binary_sensor.laundry_room_motion
+    - switch.laundry_room
+    - sensor.laundry_room_light_level
+    - sensor.laundry_room_temperature_2
     - binary_sensor.laundry_room_occupancy
     - sensor.laundry_room_temperature
     - switch.dryer
@@ -540,6 +564,10 @@ masterbathroom:
   name: Master Bathroom
   icon: mdi:shower
   entities:
+    - binary_sensor.master_bathroom_motion
+    - switch.master_bathroom
+    - sensor.master_bathroom_light_level
+    - sensor.master_bathroom_temperature_2
     - binary_sensor.master_bathroom_occupancy
     - sensor.master_bathroom_temperature
     - light.master_bathroom_shower_lights
@@ -569,6 +597,10 @@ kid1bedroom:
   name: Kid 1 Bedroom
   icon: mdi:desk-lamp
   entities:
+    - binary_sensor.kids_room_one_motion
+    - switch.kids_room_one
+    - sensor.kids_room_one_light_level
+    - sensor.kids_room_one_temperature_2
     - binary_sensor.kids_room_one_occupancy
     - sensor.kids_room_one_temperature
     - fan.kids_room_one_fan_control_switch
@@ -612,6 +644,10 @@ kidsbathroom:
   name: Kids Bathroom
   icon: mdi:toilet
   entities:
+    - binary_sensor.kids_bathroom_motion
+    - switch.kids_bathroom
+    - sensor.kids_bathroom_light_level
+    - sensor.kids_bathroom_temperature_2
     - light.kids_bathroom_tub_lights
     - switch.kids_bathroom_exhaust_fan
     - binary_sensor.kids_bathroom_occupancy
