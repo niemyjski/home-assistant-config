@@ -1,24 +1,4 @@
-logger:
-    title: Logs
-    icon: mdi:history
-    url: !secret logs_panel_url
-nodered:
-  title: Node-RED
-  icon: mdi:sitemap
-  url: !secret nodered_panel_url
 ide:
   title: Cloud9 IDE
   icon: mdi:wrench
   url: !secret ide_panel_url
-#glances:
-#    title: Glances
-#    icon: mdi:speedometer
-#    url: !secret glances_panel_url
-terminal:
-    title: Terminal
-    icon: mdi:console
-    url: !secret terminal_panel_url
-#influxdb:
-#    title: InfluxDB
-#    icon: mdi:chart-areaspline
-#    url: !secret influxdb_panel_url
