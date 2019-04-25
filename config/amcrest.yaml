@@ -4,6 +4,10 @@
   password: !secret camera_password
   resolution: high
   stream_source: rtsp
+  binary_sensors:
+    - motion_detected
   sensors:
-    - motion_detector
     - sdcard
+  switches:
+    - motion_detection
+    - motion_recording
