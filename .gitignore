@@ -1,5 +1,23 @@
 !.gitignore
 secrets.yaml
 known_devices.yaml
+.*
 
-*.DS_Store
+# folders
+custom_components
+deps
+glances
+node-red
+www/github/custom-cards/*
+
+# files
+*.pickle
+customize.yaml
+ecobee.conf
+home-assistant*.*
+options.xml
+OZW_Log.txt
+*.sqlite
+zwave_device_config.yaml
+zwcfg_0xc9ca9ef3.xml
+zwscene.xml

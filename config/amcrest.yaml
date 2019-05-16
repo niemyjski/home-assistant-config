@@ -8,6 +8,3 @@
     - motion_detected
   sensors:
     - sdcard
-  switches:
-    - motion_detection
-    - motion_recording

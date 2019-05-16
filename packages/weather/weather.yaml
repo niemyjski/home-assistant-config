@@ -1,15 +1,6 @@
 sensor:
   - platform: airvisual
     api_key: !secret airvisual_api_key
-  - platform: pollen
-    zip_code: !secret zip_code
-    monitored_conditions:
-      - allergy_average_forecasted
-      - allergy_average_historical
-      - allergy_index_today
-      - allergy_index_tomorrow
-      - allergy_index_yesterday
-      - disease_average_forecasted
   - platform: darksky
     api_key: !secret darksky_key
     monitored_conditions:

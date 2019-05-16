@@ -1,4 +1,0 @@
-ide:
-  title: Cloud9 IDE
-  icon: mdi:wrench
-  url: !secret ide_panel_url

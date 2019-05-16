@@ -35,6 +35,7 @@ ifttt: !include config/ifttt.yaml
 #influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
+iqvia: !include config/iqvia.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 media_player: !include config/media_player.yaml
