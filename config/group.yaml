@@ -83,7 +83,6 @@ gameroom:
   icon: mdi:garage
   entities:
     - camera.game_room
-    - sensor.game_room_motion_detected
     - sensor.game_room_sd_used
     - climate.game_room
     - light.game_room_thermostat
@@ -318,8 +317,6 @@ livingroom:
     - switch.living_room_west_outlets_switch
     - switch.front_north_outside_outlets_switch
     - camera.living_room
-    - sensor.living_room_motion_detected
-    - sensor.living_room_sd_used
     - media_player.living_room_ecobee_switch
     - media_player.living_room_echo_dot
 
@@ -622,6 +619,10 @@ kid2bedroom:
   name: Kid 2 Bedroom
   icon: mdi:desk-lamp
   entities:
+    - binary_sensor.kids_room_two_motion
+    - switch.kids_room_two
+    - sensor.kids_room_two_light_level
+    - sensor.kids_room_two_temperature_2
     - binary_sensor.kids_room_two_occupancy
     - sensor.kids_room_two_temperature
     - fan.kids_room_two_fan_control_switch
