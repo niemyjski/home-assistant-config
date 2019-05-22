@@ -373,3 +373,8 @@
       entity_id: sensor.kids_bedroom_two_nest_protect_color_status
       friendly_name: 'Kid 2 Bedroom Nest Status'
       value_template: "{{ not is_state('sensor.kids_bedroom_two_nest_protect_color_status', 'green') }}"
+
+- platform: octoprint
+  monitored_conditions:
+    - Printing
+    - Printing Error

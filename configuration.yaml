@@ -43,6 +43,7 @@ mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
 notify: !include config/notify.yaml
 nuheat: !include config/nuheat.yaml
+octoprint: !include config/octoprint.yaml
 panel_iframe: !include config/panel_iframes.yaml
 recorder: !include config/recorder.yaml
 scene: !include_dir_list config/scene/

@@ -66,6 +66,11 @@ packages:
     - sensor.deliveries_today
 #    - sensor.fedex
 
+printer:
+  view: yes
+  name: 3D Printer
+  icon: mdi:printer-3d
+
 #---------
 # Garage
 #---------
@@ -77,16 +82,16 @@ garage:
     - group.gameroom
     - cover.left_garage_door
 
-gameroom:
+game_room:
   view: yes
   name: Game Room
   icon: mdi:garage
   entities:
-    - camera.game_room
-    - sensor.game_room_sd_used
-    - climate.game_room
+#    - camera.game_room
+#    - sensor.game_room_sd_used
+#    - climate.game_room
     - light.game_room_thermostat
-    - media_player.garage_echo_plus
+#    - media_player.garage_echo_plus
 
 #---------
 # Outside
@@ -99,33 +104,33 @@ outside:
     - group.frontoutside
     - group.backoutside
 
-frontoutside:
+front_outside:
   view: yes
   name: Front Outside
   icon: mdi:tree
   entities:
     - switch.front_north_outside_outlets_switch
-    - camera.front_door
-    - binary_sensor.front_door_camera_motion_detected
-    - binary_sensor.front_door_camera_person_detected
-    - binary_sensor.front_door_camera_sound_detected
-    - binary_sensor.front_door_can_motion_switch_motion
-    - binary_sensor.front_door_can_motion_switch_occupancy
+#    - camera.front_door
+#    - binary_sensor.front_door_camera_motion_detected
+#    - binary_sensor.front_door_camera_person_detected
+#    - binary_sensor.front_door_camera_sound_detected
+#    - binary_sensor.front_door_can_motion_switch_motion
+#    - binary_sensor.front_door_can_motion_switch_occupancy
     - switch.front_door_can_motion_switch
-    - sensor.front_door_can_motion_switch_alarm_level
-    - sensor.front_door_can_motion_switch_alarm_type
-    - sensor.front_door_can_motion_switch_burglar
-    - sensor.front_door_can_motion_switch_sourcenodeid
-    - sensor.foyer_temperature
-    - media_player.foyer_ecobee_switch
+#    - sensor.front_door_can_motion_switch_alarm_level
+#    - sensor.front_door_can_motion_switch_alarm_type
+#    - sensor.front_door_can_motion_switch_burglar
+#    - sensor.front_door_can_motion_switch_sourcenodeid
+#    - sensor.foyer_temperature
+#    - media_player.foyer_ecobee_switch
 
-backoutside:
+back_outside:
   view: yes
   name: Outside
   icon: mdi:tree
   entities:
     - light.living_room_spot_lights
-    - media_player.living_room_ecobee_switch
+#    - media_player.living_room_ecobee_switch
 
 #---------
 # Basement
@@ -135,101 +140,101 @@ basement:
   name: Basement
   icon: mdi:floor-plan
   entities:
-    - group.guestbathroom
-    - group.guestbedroom
-    - group.utilityroom
-    - group.exerciseroom
-    - group.familyroom
-    - group.storageroom
+    - group.guest_bathroom
+    - group.guest_bedroom
+    - group.utility_room
+    - group.exercise_room
+    - group.family_room
+    - group.storage_room
 
-guestbathroom:
+guest_bathroom:
   view: yes
   name: Guest Bathroom
   icon: mdi:toilet
   entities:
     - switch.guest_bathroom_exhaust_fan
 
-guestbedroom:
+guest_bedroom:
   view: yes
   name: Guest Bedroom
   icon: mdi:hotel
   entities:
-    - binary_sensor.basement_bedroom_motion
+#    - binary_sensor.basement_bedroom_motion
     - switch.basement_bedroom
-    - sensor.basement_bedroom_light_level
-    - sensor.basement_bedroom_temperature_2
-    - binary_sensor.bedroom_occupancy
-    - binary_sensor.basement_bedroom_occupancy
-    - sensor.bedroom_temperature
-    - sensor.basement_bedroom_temperature
-    - media_player.basement_bedroom_ecobee_switch
+#    - sensor.basement_bedroom_light_level
+#    - sensor.basement_bedroom_temperature_2
+#    - binary_sensor.bedroom_occupancy
+#    - binary_sensor.basement_bedroom_occupancy
+#    - sensor.bedroom_temperature
+#    - sensor.basement_bedroom_temperature
+#    - media_player.basement_bedroom_ecobee_switch
     - switch.basement_bedroom_closet_main_lights
 
-utilityroom:
+utility_room:
   view: yes
   name: Utility Room
   icon: mdi:wrench
   entities:
-    - camera.utility_room
-    - binary_sensor.basement_utility_room_nest_protect_online
-    - binary_sensor.basement_utility_room_nest_protect_battery_health
-    - binary_sensor.basement_utility_room_nest_protect_smoke_status
-    - binary_sensor.basement_utility_room_nest_protect_co_status
-    - binary_sensor.basement_utility_room_nest_protect_status
-    - sensor.basement_utility_room_nest_protect_battery_health
-    - sensor.basement_utility_room_nest_protect_smoke_status
-    - sensor.basement_utility_room_nest_protect_co_status
-    - sensor.basement_utility_room_nest_protect_color_status
+#    - camera.utility_room
+#    - binary_sensor.basement_utility_room_nest_protect_online
+#    - binary_sensor.basement_utility_room_nest_protect_battery_health
+#    - binary_sensor.basement_utility_room_nest_protect_smoke_status
+#    - binary_sensor.basement_utility_room_nest_protect_co_status
+#    - binary_sensor.basement_utility_room_nest_protect_status
+#    - sensor.basement_utility_room_nest_protect_battery_health
+#    - sensor.basement_utility_room_nest_protect_smoke_status
+#    - sensor.basement_utility_room_nest_protect_co_status
+#    - sensor.basement_utility_room_nest_protect_color_status
 
-exerciseroom:
+exercise_room:
   view: yes
   name: Exercise Room
   icon: mdi:dumbbell
   entities:
-    - lock.exercise_room_door_locked
-    - binary_sensor.exercise_room_door_locked_battery_level
-    - binary_sensor.exercise_room_door_locked
-    - sensor.exercise_room_door_lock_access_control
-    - sensor.exercise_room_door_lock_alarm_level
-    - sensor.exercise_room_door_lock_alarm_type
-    - sensor.exercise_room_door_lock_sourcenodeid
-    - binary_sensor.basement_occupancy
-    - sensor.basement_temperature
-    - sensor.basement_humidity
-    - climate.basement
-    - media_player.basement_ecobee4
-    - media_player.basement_window_echo
+#    - lock.exercise_room_door_locked
+#    - binary_sensor.exercise_room_door_locked_battery_level
+#    - binary_sensor.exercise_room_door_locked
+#    - sensor.exercise_room_door_lock_access_control
+#    - sensor.exercise_room_door_lock_alarm_level
+#    - sensor.exercise_room_door_lock_alarm_type
+#    - sensor.exercise_room_door_lock_sourcenodeid
+#    - binary_sensor.basement_occupancy
+#    - sensor.basement_temperature
+#    - sensor.basement_humidity
+#    - climate.basement
+#    - media_player.basement_ecobee4
+#    - media_player.basement_window_echo
 
-familyroom:
+family_room:
   view: yes
   name: Family Room
   icon: mdi:television
   entities:
-    - binary_sensor.family_room_occupancy
-    - sensor.family_room_temperature
+#    - binary_sensor.family_room_occupancy
+#    - sensor.family_room_temperature
     - light.family_room_lamp
     - switch.family_room_motion_switch
-    - binary_sensor.family_room_motion_switch_motion
-    - binary_sensor.family_room_motion_switch_occupancy
-    - sensor.family_room_motion_switch_alarm_level
-    - sensor.family_room_motion_switch_alarm_type
-    - sensor.family_room_motion_switch_burglar
-    - sensor.family_room_motion_switch_sourcenodeid
+#    - binary_sensor.family_room_motion_switch_motion
+#    - binary_sensor.family_room_motion_switch_occupancy
+#    - sensor.family_room_motion_switch_alarm_level
+#    - sensor.family_room_motion_switch_alarm_type
+#    - sensor.family_room_motion_switch_burglar
+#    - sensor.family_room_motion_switch_sourcenodeid
 
-storageroom:
+storage_room:
   view: yes
   name: Stroage room
   icon: mdi:wrench
   entities:
-    - binary_sensor.storage_room_occupancy
-    - sensor.storage_room_temperature
+#    - binary_sensor.storage_room_occupancy
+#    - sensor.storage_room_temperature
     - switch.storage_room_motion_switch
-    - binary_sensor.storage_room_motion_switch_motion
-    - binary_sensor.storage_room_motion_switch_occupancy
-    - sensor.storage_room_motion_switch_alarm_level
-    - sensor.storage_room_motion_switch_alarm_type
-    - sensor.storage_room_motion_switch_burglar
-    - sensor.storage_room_motion_switch_sourcenodeid
+#    - binary_sensor.storage_room_motion_switch_motion
+#    - binary_sensor.storage_room_motion_switch_occupancy
+#    - sensor.storage_room_motion_switch_alarm_level
+#    - sensor.storage_room_motion_switch_alarm_type
+#    - sensor.storage_room_motion_switch_burglar
+#    - sensor.storage_room_motion_switch_sourcenodeid
 
 #---------
 # First floor
@@ -239,418 +244,418 @@ firstfloor:
   name: First Floor
   icon: mdi:floor-plan
   entities:
-    - group.frontfoyer
-    - group.livingroom
-    - group.entertainmentroom
+    - group.front_foyer
+    - group.living_room
+    - group.entertainment_room
     - group.kitchen
-    - group.laundryroom
+    - group.laundry_room
     - group.office
     - group.bathroom
-    - group.backhallway
-    - group.backfoyer
+    - group.back_hallway
+    - group.back_foyer
 
-frontfoyer:
+front_foyer:
   view: yes
   name: Foyer
   icon: mdi:sofa
   entities:
-    - lock.front_door_locked
-    - binary_sensor.front_door_locked_battery_level
-    - binary_sensor.front_door_locked
-    - sensor.front_door_lock_access_control
-    - sensor.front_door_lock_alarm_level
-    - sensor.front_door_lock_alarm_type
-    - sensor.front_door_lock_sourcenodeid
-    - camera.front_door
-    - binary_sensor.front_door_camera_motion_detected
-    - binary_sensor.front_door_camera_person_detected
-    - binary_sensor.front_door_camera_sound_detected
-    - binary_sensor.front_foyer_motion_switch_motion
-    - binary_sensor.front_foyer_motion_switch_occupancy
+#    - lock.front_door_locked
+#    - binary_sensor.front_door_locked_battery_level
+#    - binary_sensor.front_door_locked
+#    - sensor.front_door_lock_access_control
+#    - sensor.front_door_lock_alarm_level
+#    - sensor.front_door_lock_alarm_type
+#    - sensor.front_door_lock_sourcenodeid
+#    - camera.front_door
+#    - binary_sensor.front_door_camera_motion_detected
+#    - binary_sensor.front_door_camera_person_detected
+#    - binary_sensor.front_door_camera_sound_detected
+#    - binary_sensor.front_foyer_motion_switch_motion
+#    - binary_sensor.front_foyer_motion_switch_occupancy
     - switch.front_foyer_motion_switch
-    - sensor.front_foyer_motion_switch_alarm_level
-    - sensor.front_foyer_motion_switch_alarm_type
-    - sensor.front_foyer_motion_switch_burglar
-    - sensor.front_foyer_motion_switch_sourcenodeid
-    - binary_sensor.front_foyer_right_closet_motion_switch_motion
-    - binary_sensor.front_foyer_right_closet_motion_switch_occupancy
+#    - sensor.front_foyer_motion_switch_alarm_level
+#    - sensor.front_foyer_motion_switch_alarm_type
+#    - sensor.front_foyer_motion_switch_burglar
+#    - sensor.front_foyer_motion_switch_sourcenodeid
+#    - binary_sensor.front_foyer_right_closet_motion_switch_motion
+#    - binary_sensor.front_foyer_right_closet_motion_switch_occupancy
     - switch.front_foyer_right_closet_motion_switch
-    - sensor.front_foyer_right_closet_motion_switch_alarm_level
-    - sensor.front_foyer_right_closet_motion_switch_alarm_type
-    - sensor.front_foyer_right_closet_motion_switch_burglar
-    - sensor.front_foyer_right_closet_motion_switch_sourcenodeid
-    - binary_sensor.front_door_can_motion_switch_motion
-    - binary_sensor.front_door_can_motion_switch_occupancy
+#    - sensor.front_foyer_right_closet_motion_switch_alarm_level
+#    - sensor.front_foyer_right_closet_motion_switch_alarm_type
+#    - sensor.front_foyer_right_closet_motion_switch_burglar
+#    - sensor.front_foyer_right_closet_motion_switch_sourcenodeid
+#    - binary_sensor.front_door_can_motion_switch_motion
+#    - binary_sensor.front_door_can_motion_switch_occupancy
     - switch.front_door_can_motion_switch
-    - sensor.front_door_can_motion_switch_alarm_level
-    - sensor.front_door_can_motion_switch_alarm_type
-    - sensor.front_door_can_motion_switch_burglar
-    - sensor.front_door_can_motion_switch_sourcenodeid
-    - sensor.fireplace_temperature
-    - binary_sensor.fireplace_occupancy
-    - binary_sensor.foyer_occupancy
-    - media_player.foyer_ecobee_switch
+#    - sensor.front_door_can_motion_switch_alarm_level
+#    - sensor.front_door_can_motion_switch_alarm_type
+#    - sensor.front_door_can_motion_switch_burglar
+#    - sensor.front_door_can_motion_switch_sourcenodeid
+#    - sensor.fireplace_temperature
+#    - binary_sensor.fireplace_occupancy
+#    - binary_sensor.foyer_occupancy
+#    - media_player.foyer_ecobee_switch
 
-livingroom:
+living_room:
   view: yes
   name: Living Room
   icon: mdi:walk
   entities:
-    - camera.living_room
-    - binary_sensor.living_room_door_sensor
-    - sensor.living_room_door_sensor_access_control
-    - sensor.living_room_door_sensor_alarm_level
-    - sensor.living_room_door_sensor_alarm_type
-    - sensor.living_room_door_sensor_sourcenodeid
-    - binary_sensor.living_room_occupancy
-    - sensor.living_room_temperature
-    - sensor.fireplace_temperature
-    - fan.living_room_fan_control_switch_level
+#    - camera.living_room
+#    - binary_sensor.living_room_door_sensor
+#    - sensor.living_room_door_sensor_access_control
+#    - sensor.living_room_door_sensor_alarm_level
+#    - sensor.living_room_door_sensor_alarm_type
+#    - sensor.living_room_door_sensor_sourcenodeid
+#    - binary_sensor.living_room_occupancy
+#    - sensor.living_room_temperature
+#    - sensor.fireplace_temperature
+#    - fan.living_room_fan_control_switch_level
     - light.living_room_spot_lights
     - light.living_room_main_lights_inner
     - light.living_room_main_lights_outter
     - light.living_room_table_dimmer_level
-    - switch.living_room_top_mantle_receptacle
-    - switch.living_room_bottom_mantle_receptacle
+#    - switch.living_room_top_mantle_receptacle
+#    - switch.living_room_bottom_mantle_receptacle
     - switch.living_room_top_wet_bar_switch
     - switch.living_room_bottom_wet_bar_switch
     - switch.living_room_west_outlets_switch
     - switch.front_north_outside_outlets_switch
-    - camera.living_room
-    - media_player.living_room_ecobee_switch
-    - media_player.living_room_echo_dot
+#    - camera.living_room
+#    - media_player.living_room_ecobee_switch
+#    - media_player.living_room_echo_dot
 
-entertainmentroom:
+entertainment_room:
   view: yes
   name: Entertainment Room
   icon: mdi:television
   entities:
-    - binary_sensor.entertainment_room_motion
+#    - binary_sensor.entertainment_room_motion
     - switch.entertainment_room
-    - sensor.entertainment_room_light_level
-    - sensor.entertainment_room_temperature_2
-    - binary_sensor.entertainment_room_occupancy
-    - sensor.entertainment_room_temperature
-    - switch.entertainment_room_receptacle
-    - media_player.entertainment_room_ecobee_switch
+#    - sensor.entertainment_room_light_level
+#    - sensor.entertainment_room_temperature_2
+#    - binary_sensor.entertainment_room_occupancy
+#    - sensor.entertainment_room_temperature
+#    - switch.entertainment_room_receptacle
+#    - media_player.entertainment_room_ecobee_switch
 
 kitchen:
   view: yes
   name: Kitchen
   icon: mdi:fridge-outline
   entities:
-    - binary_sensor.main_floor_occupancy
-    - sensor.main_floor_temperature
-    - sensor.main_floor_humidity
-    - climate.main_floor
+#    - binary_sensor.main_floor_occupancy
+#    - sensor.main_floor_temperature
+#    - sensor.main_floor_humidity
+#    - climate.main_floor
     - switch.kitchen_bar_lights_switch
     - switch.kitchen_east_outside_outlets_switch
-    - binary_sensor.kitchen_main_lights_motion_switch_motion
-    - binary_sensor.kitchen_main_lights_motion_switch_occupancy
+#    - binary_sensor.kitchen_main_lights_motion_switch_motion
+#    - binary_sensor.kitchen_main_lights_motion_switch_occupancy
     - switch.kitchen_main_lights_motion_switch
-    - sensor.kitchen_main_lights_motion_switch_alarm_level
-    - sensor.kitchen_main_lights_motion_switch_alarm_type
-    - sensor.kitchen_main_lights_motion_switch_burglar
-    - sensor.kitchen_main_lights_motion_switch_sourcenodeid
-    - binary_sensor.kitchen_sink_lights_motion_switch_motion
-    - binary_sensor.kitchen_sink_lights_motion_switch_occupancy
+#    - sensor.kitchen_main_lights_motion_switch_alarm_level
+#    - sensor.kitchen_main_lights_motion_switch_alarm_type
+#    - sensor.kitchen_main_lights_motion_switch_burglar
+#    - sensor.kitchen_main_lights_motion_switch_sourcenodeid
+#    - binary_sensor.kitchen_sink_lights_motion_switch_motion
+#    - binary_sensor.kitchen_sink_lights_motion_switch_occupancy
     - light.kitchen_sink_lights_motion_dimmer_level
-    - sensor.kitchen_sink_lights_motion_dimmer_alarm_level
-    - sensor.kitchen_sink_lights_motion_dimmer_alarm_type
-    - sensor.kitchen_sink_lights_motion_dimmer_burglar
-    - sensor.kitchen_sink_lights_motion_dimmer_sourcenodeid
-    - media_player.kitchen_echo_plus
-    - media_player.kitchen_dash_wand
-    - media_player.main_floor_ecobee4
+#    - sensor.kitchen_sink_lights_motion_dimmer_alarm_level
+#    - sensor.kitchen_sink_lights_motion_dimmer_alarm_type
+#    - sensor.kitchen_sink_lights_motion_dimmer_burglar
+#    - sensor.kitchen_sink_lights_motion_dimmer_sourcenodeid
+#    - media_player.kitchen_echo_plus
+#    - media_player.kitchen_dash_wand
+#    - media_player.main_floor_ecobee4
 
-backfoyer:
+back_foyer:
   view: yes
   name: Back Foyer
   icon: mdi:walk
   entities:
-    - lock.back_foyer_door_locked
-    - binary_sensor.back_foyer_door_locked_battery_level
-    - binary_sensor.back_foyer_door_locked
-    - sensor.back_foyer_door_lock_access_control
-    - sensor.back_foyer_door_lock_alarm_level
-    - sensor.back_foyer_door_lock_alarm_type
-    - sensor.back_foyer_door_lock_sourcenodeid
-    - binary_sensor.back_foyer_motion
+#    - lock.back_foyer_door_locked
+#    - binary_sensor.back_foyer_door_locked_battery_level
+#    - binary_sensor.back_foyer_door_locked
+#    - sensor.back_foyer_door_lock_access_control
+#    - sensor.back_foyer_door_lock_alarm_level
+#    - sensor.back_foyer_door_lock_alarm_type
+#    - sensor.back_foyer_door_lock_sourcenodeid
+#    - binary_sensor.back_foyer_motion
     - switch.back_foyer
-    - sensor.back_foyer_light_level
-    - sensor.back_foyer_temperature_2
-    - binary_sensor.back_foyer_occupancy
-    - sensor.back_foyer_temperature
-    - media_player.back_foyer_ecobee_switch
+#    - sensor.back_foyer_light_level
+#    - sensor.back_foyer_temperature_2
+#    - binary_sensor.back_foyer_occupancy
+#    - sensor.back_foyer_temperature
+#    - media_player.back_foyer_ecobee_switch
 
 bathroom:
   view: yes
   name: Bathroom
   icon: mdi:toilet
   entities:
-    - binary_sensor.first_floor_bathroom_motion
+#    - binary_sensor.first_floor_bathroom_motion
     - switch.first_floor_bathroom
-    - sensor.first_floor_bathroom_light_level
-    - sensor.first_floor_bathroom_temperature_2
+#    - sensor.first_floor_bathroom_light_level
+#    - sensor.first_floor_bathroom_temperature_2
     - switch.first_floor_bathroom_exhaust_fan
-    - binary_sensor.first_floor_bathroom_occupancy
-    - sensor.first_floor_bathroom_temperature
-    - media_player.first_floor_bathroom_ecobee_switch
+#    - binary_sensor.first_floor_bathroom_occupancy
+#    - sensor.first_floor_bathroom_temperature
+#    - media_player.first_floor_bathroom_ecobee_switch
 
-backhallway:
+back_hallway:
   view: yes
   name: Back Hallway
   icon: mdi:walk
   entities:
-    - binary_sensor.hallway_nest_protect_online
-    - binary_sensor.hallway_nest_protect_battery_health
-    - binary_sensor.hallway_nest_protect_smoke_status
-    - binary_sensor.hallway_nest_protect_co_status
-    - binary_sensor.hallway_nest_protect_status
-    - sensor.hallway_nest_protect_battery_health
-    - sensor.hallway_nest_protect_smoke_status
-    - sensor.hallway_nest_protect_co_status
-    - sensor.hallway_nest_protect_color_status
+#    - binary_sensor.hallway_nest_protect_online
+#    - binary_sensor.hallway_nest_protect_battery_health
+#    - binary_sensor.hallway_nest_protect_smoke_status
+#    - binary_sensor.hallway_nest_protect_co_status
+#    - binary_sensor.hallway_nest_protect_status
+#    - sensor.hallway_nest_protect_battery_health
+#    - sensor.hallway_nest_protect_smoke_status
+#    - sensor.hallway_nest_protect_co_status
+#    - sensor.hallway_nest_protect_color_status
     - switch.back_hallway_bathroom_switch
     - switch.back_hallway_picture_switch
     - light.back_hallway_picture_hue_color
-    - binary_sensor.back_hallway_motion_switch_motion
-    - binary_sensor.back_hallway_motion_switch_occupancy
+#    - binary_sensor.back_hallway_motion_switch_motion
+#    - binary_sensor.back_hallway_motion_switch_occupancy
     - switch.back_hallway_motion_switch
-    - sensor.back_hallway_motion_switch_alarm_level
-    - sensor.back_hallway_motion_switch_alarm_type
-    - sensor.back_hallway_motion_switch_burglar
-    - sensor.back_hallway_motion_switch_sourcenodeid
+#    - sensor.back_hallway_motion_switch_alarm_level
+#    - sensor.back_hallway_motion_switch_alarm_type
+#    - sensor.back_hallway_motion_switch_burglar
+#    - sensor.back_hallway_motion_switch_sourcenodeid
 
-laundryroom:
+laundry_room:
   view: yes
   name: Laundry room
   icon: mdi:washing-machine
   entities:
-    - binary_sensor.laundry_room_motion
+#    - binary_sensor.laundry_room_motion
     - switch.laundry_room
-    - sensor.laundry_room_light_level
-    - sensor.laundry_room_temperature_2
-    - binary_sensor.laundry_room_occupancy
-    - sensor.laundry_room_temperature
+#    - sensor.laundry_room_light_level
+#    - sensor.laundry_room_temperature_2
+#    - binary_sensor.laundry_room_occupancy
+#    - sensor.laundry_room_temperature
     - switch.dryer
-    - sensor.dryer_completion_time
-    - sensor.dryer_job_state
-    - sensor.dryer_machine_state
-    - sensor.dryer_mode
+#    - sensor.dryer_completion_time
+#    - sensor.dryer_job_state
+#    - sensor.dryer_machine_state
+#    - sensor.dryer_mode
     - switch.washer
-    - sensor.washer_completion_time
-    - sensor.washer_job_state
-    - sensor.washer_machine_state
-    - sensor.washer_mode
-    - media_player.laundry_room_ecobee_switch
+#    - sensor.washer_completion_time
+#    - sensor.washer_job_state
+#    - sensor.washer_machine_state
+#    - sensor.washer_mode
+#    - media_player.laundry_room_ecobee_switch
 
 office:
   view: yes
   name: Office
   icon: mdi:desk-lamp
   entities:
-    - binary_sensor.office_occupancy
-    - binary_sensor.office_occupancy_2
-    - binary_sensor.office_motion
-    - sensor.office_temperature
-    - sensor.office_temperature_2
-    - sensor.office_humidity
-    - climate.office
-    - fan.office_fan_control_switch_level
-    - binary_sensor.office_nest_protect_online
-    - binary_sensor.office_nest_protect_battery_health
-    - binary_sensor.office_nest_protect_smoke_status
-    - binary_sensor.office_nest_protect_co_status
-    - binary_sensor.office_nest_protect_status
-    - sensor.office_nest_protect_battery_health
-    - sensor.office_nest_protect_smoke_status
-    - sensor.office_nest_protect_co_status
-    - sensor.office_nest_protect_color_status
+#    - binary_sensor.office_occupancy
+#    - binary_sensor.office_occupancy_2
+#    - binary_sensor.office_motion
+#    - sensor.office_temperature
+#    - sensor.office_temperature_2
+#    - sensor.office_humidity
+#    - climate.office
+#    - fan.office_fan_control_switch_level
+#    - binary_sensor.office_nest_protect_online
+#    - binary_sensor.office_nest_protect_battery_health
+#    - binary_sensor.office_nest_protect_smoke_status
+#    - binary_sensor.office_nest_protect_co_status
+#    - binary_sensor.office_nest_protect_status
+#    - sensor.office_nest_protect_battery_health
+#    - sensor.office_nest_protect_smoke_status
+#    - sensor.office_nest_protect_co_status
+#    - sensor.office_nest_protect_color_status
     - light.office_hue_lightstrip_plus
     - switch.office_closet_main_lights
     - switch.office_switch
-    - sensor.office_switch_light_level
-    - sensor.office_switch_temperature
+#    - sensor.office_switch_light_level
+#    - sensor.office_switch_temperature
     - switch.office_wemo
-    - media_player.office_echo_plus
-    - media_player.office_ecobee4
-    - media_player.office_ecobee_switch
+#    - media_player.office_echo_plus
+#    - media_player.office_ecobee4
+#    - media_player.office_ecobee_switch
 
 #---------
 # Second floor
 #---------
-secondfloor:
+second_floor:
   view: yes
   name: Second Floor
   icon: mdi:floor-plan
   entities:
-    - group.upstairshallway
-    - group.masterbedroom
-    - group.masterbathroom
-    - group.masterwatercloset
-    - group.kid1bedroom
-    - group.kid2bedroom
-    - group.kidsbathroom
+    - group.upstairs_hallway
+    - group.master_bedroom
+    - group.master_bathroom
+    - group.master_water_closet
+    - group.kid_one_bedroom
+    - group.kid_two_bedroom
+    - group.kids_bathroom
 
-upstairshallway:
+upstairs_hallway:
   view: yes
   name: Upstairs Hallway
   icon: mdi:walk
   entities:
-    - binary_sensor.upstairs_nest_protect_online
-    - binary_sensor.upstairs_nest_protect_online_2
-    - binary_sensor.upstairs_nest_protect_battery_health
-    - binary_sensor.upstairs_nest_protect_battery_health_2
-    - binary_sensor.upstairs_nest_protect_smoke_status
-    - binary_sensor.upstairs_nest_protect_smoke_status_2
-    - binary_sensor.upstairs_nest_protect_co_status
-    - binary_sensor.upstairs_nest_protect_co_status_2
-    - binary_sensor.upstairs_nest_protect_status
-    - binary_sensor.upstairs_nest_protect_status_2
-    - sensor.upstairs_nest_protect_battery_health
-    - sensor.upstairs_nest_protect_battery_health_2
-    - sensor.upstairs_nest_protect_smoke_status
-    - sensor.upstairs_nest_protect_smoke_status_2
-    - sensor.upstairs_nest_protect_co_status
-    - sensor.upstairs_nest_protect_co_status_2
-    - sensor.upstairs_nest_protect_color_status
-    - sensor.upstairs_nest_protect_color_status_2
-    - binary_sensor.upstairs_hallway_motion_switch_motion
-    - binary_sensor.upstairs_hallway_motion_switch_occupancy
+#    - binary_sensor.upstairs_nest_protect_online
+#    - binary_sensor.upstairs_nest_protect_online_2
+#    - binary_sensor.upstairs_nest_protect_battery_health
+#    - binary_sensor.upstairs_nest_protect_battery_health_2
+#    - binary_sensor.upstairs_nest_protect_smoke_status
+#    - binary_sensor.upstairs_nest_protect_smoke_status_2
+#    - binary_sensor.upstairs_nest_protect_co_status
+#    - binary_sensor.upstairs_nest_protect_co_status_2
+#    - binary_sensor.upstairs_nest_protect_status
+#    - binary_sensor.upstairs_nest_protect_status_2
+#    - sensor.upstairs_nest_protect_battery_health
+#    - sensor.upstairs_nest_protect_battery_health_2
+#    - sensor.upstairs_nest_protect_smoke_status
+#    - sensor.upstairs_nest_protect_smoke_status_2
+#    - sensor.upstairs_nest_protect_co_status
+#    - sensor.upstairs_nest_protect_co_status_2
+#    - sensor.upstairs_nest_protect_color_status
+#    - sensor.upstairs_nest_protect_color_status_2
+#    - binary_sensor.upstairs_hallway_motion_switch_motion
+#    - binary_sensor.upstairs_hallway_motion_switch_occupancy
     - switch.upstairs_hallway_motion_switch
-    - sensor.upstairs_hallway_motion_switch_alarm_level
-    - sensor.upstairs_hallway_motion_switch_alarm_type
-    - sensor.upstairs_hallway_motion_switch_burglar
-    - sensor.upstairs_hallway_motion_switch_sourcenodeid
+#    - sensor.upstairs_hallway_motion_switch_alarm_level
+#    - sensor.upstairs_hallway_motion_switch_alarm_type
+#    - sensor.upstairs_hallway_motion_switch_burglar
+#    - sensor.upstairs_hallway_motion_switch_sourcenodeid
 
-masterbedroom:
+master_bedroom:
   view: yes
   name: Master Bedroom
   icon: mdi:hotel
   entities:
-    - binary_sensor.master_bedroom_nest_protect_online
-    - binary_sensor.master_bedroom_nest_protect_battery_health
-    - binary_sensor.master_bedroom_nest_protect_smoke_status
-    - binary_sensor.master_bedroom_nest_protect_co_status
-    - binary_sensor.master_bedroom_nest_protect_status
-    - sensor.master_bedroom_nest_protect_battery_health
-    - sensor.master_bedroom_nest_protect_smoke_status
-    - sensor.master_bedroom_nest_protect_co_status
-    - sensor.master_bedroom_nest_protect_color_status
-    - binary_sensor.upstairs_occupancy
-    - sensor.upstairs_temperature
-    - sensor.upstairs_humidity
-    - climate.upstairs
-    - fan.master_bedroom_fan_control_switch_level
+#    - binary_sensor.master_bedroom_nest_protect_online
+#    - binary_sensor.master_bedroom_nest_protect_battery_health
+#    - binary_sensor.master_bedroom_nest_protect_smoke_status
+#    - binary_sensor.master_bedroom_nest_protect_co_status
+#    - binary_sensor.master_bedroom_nest_protect_status
+#    - sensor.master_bedroom_nest_protect_battery_health
+#    - sensor.master_bedroom_nest_protect_smoke_status
+#    - sensor.master_bedroom_nest_protect_co_status
+#    - sensor.master_bedroom_nest_protect_color_status
+#    - binary_sensor.upstairs_occupancy
+#    - sensor.upstairs_temperature
+#    - sensor.upstairs_humidity
+#    - climate.upstairs
+#    - fan.master_bedroom_fan_control_switch_level
     - light.master_bedroom_main_lights
     - light.left_hue_color_lamp
     - light.right_hue_color_lamp
-    - binary_sensor.master_bedroom_closet_motion_switch_motion
-    - binary_sensor.master_bedroom_closet_motion_switch_occupancy
+#    - binary_sensor.master_bedroom_closet_motion_switch_motion
+#    - binary_sensor.master_bedroom_closet_motion_switch_occupancy
     - light.master_bedroom_closet_motion_dimmer_level
-    - sensor.master_bedroom_closet_motion_dimmer_alarm_level
-    - sensor.master_bedroom_closet_motion_dimmer_alarm_type
-    - sensor.master_bedroom_closet_motion_dimmer_burglar
-    - sensor.master_bedroom_closet_motion_dimmer_sourcenodeid
-    - media_player.master_bedroom_echo_plus
-    - media_player.upstairs_ecobee4
+#    - sensor.master_bedroom_closet_motion_dimmer_alarm_level
+#    - sensor.master_bedroom_closet_motion_dimmer_alarm_type
+#    - sensor.master_bedroom_closet_motion_dimmer_burglar
+#    - sensor.master_bedroom_closet_motion_dimmer_sourcenodeid
+#    - media_player.master_bedroom_echo_plus
+#    - media_player.upstairs_ecobee4
 
-masterbathroom:
+master_bathroom:
   view: yes
   name: Master Bathroom
   icon: mdi:shower
   entities:
-    - binary_sensor.master_bathroom_motion
+#    - binary_sensor.master_bathroom_motion
     - switch.master_bathroom
-    - sensor.master_bathroom_light_level
-    - sensor.master_bathroom_temperature_2
-    - binary_sensor.master_bathroom_occupancy
-    - sensor.master_bathroom_temperature
+#    - sensor.master_bathroom_light_level
+#    - sensor.master_bathroom_temperature_2
+#    - binary_sensor.master_bathroom_occupancy
+#    - sensor.master_bathroom_temperature
     - light.master_bathroom_shower_lights
     - light.master_bathroom_tub_lights
     - switch.master_bathroom_shower
-    - media_player.master_bathroom_ecobee_switch
-    - media_player.master_bathroom_left_mirror
-    - media_player.master_bathroom_right_mirror
+#    - media_player.master_bathroom_ecobee_switch
+#    - media_player.master_bathroom_left_mirror
+#    - media_player.master_bathroom_right_mirror
 
-masterwatercloset:
+master_water_closet:
   view: yes
   name: Master Water Closet
   icon: mdi:toilet
   entities:
-    - binary_sensor.master_water_closet_motion
+#    - binary_sensor.master_water_closet_motion
     - switch.master_water_closet
-    - sensor.master_water_closet_light_level
-    - sensor.master_water_closet_temperature_2
-    - binary_sensor.master_water_closet_occupancy
-    - sensor.master_water_closet_temperature
-    - climate.master_water_closet_floor
+#    - sensor.master_water_closet_light_level
+#    - sensor.master_water_closet_temperature_2
+#    - binary_sensor.master_water_closet_occupancy
+#    - sensor.master_water_closet_temperature
+#    - climate.master_water_closet_floor
     - switch.master_bathroom_water_closet
-    - media_player.master_water_closet_ecobee_switch
+#    - media_player.master_water_closet_ecobee_switch
 
-kid1bedroom:
+kid_one_bedroom:
   view: yes
   name: Kid 1 Bedroom
   icon: mdi:desk-lamp
   entities:
-    - binary_sensor.kids_room_one_motion
+#    - binary_sensor.kids_room_one_motion
     - switch.kids_room_one
-    - sensor.kids_room_one_light_level
-    - sensor.kids_room_one_temperature_2
-    - binary_sensor.kids_room_one_occupancy
-    - sensor.kids_room_one_temperature
-    - fan.kids_room_one_fan_control_switch
+#    - sensor.kids_room_one_light_level
+#    - sensor.kids_room_one_temperature_2
+#    - binary_sensor.kids_room_one_occupancy
+#    - sensor.kids_room_one_temperature
+#    - fan.kids_room_one_fan_control_switch
     - switch.kids_room_one_closet_main_lights
-    - binary_sensor.kids_bedroom_one_nest_protect_online
-    - binary_sensor.kids_bedroom_one_nest_protect_battery_health
-    - binary_sensor.kids_bedroom_one_nest_protect_smoke_status
-    - binary_sensor.kids_bedroom_one_nest_protect_co_status
-    - binary_sensor.kids_bedroom_one_nest_protect_status
-    - sensor.kids_bedroom_one_nest_protect_battery_health
-    - sensor.kids_bedroom_one_nest_protect_smoke_status
-    - sensor.kids_bedroom_one_nest_protect_co_status
-    - sensor.kids_bedroom_one_nest_protect_color_status
-    - media_player.kids_bedroom_one_ecobee_switch
-    - media_player.kids_bathroom_mirror
+#    - binary_sensor.kids_bedroom_one_nest_protect_online
+#    - binary_sensor.kids_bedroom_one_nest_protect_battery_health
+#    - binary_sensor.kids_bedroom_one_nest_protect_smoke_status
+#    - binary_sensor.kids_bedroom_one_nest_protect_co_status
+#    - binary_sensor.kids_bedroom_one_nest_protect_status
+#    - sensor.kids_bedroom_one_nest_protect_battery_health
+#    - sensor.kids_bedroom_one_nest_protect_smoke_status
+#    - sensor.kids_bedroom_one_nest_protect_co_status
+#    - sensor.kids_bedroom_one_nest_protect_color_status
+#    - media_player.kids_bedroom_one_ecobee_switch
+#    - media_player.kids_bathroom_mirror
 
-kid2bedroom:
+kid_two_bedroom:
   view: yes
   name: Kid 2 Bedroom
   icon: mdi:desk-lamp
   entities:
-    - binary_sensor.kids_room_two_motion
+#    - binary_sensor.kids_room_two_motion
     - switch.kids_room_two
-    - sensor.kids_room_two_light_level
-    - sensor.kids_room_two_temperature_2
-    - binary_sensor.kids_room_two_occupancy
-    - sensor.kids_room_two_temperature
-    - fan.kids_room_two_fan_control_switch
+#    - sensor.kids_room_two_light_level
+#    - sensor.kids_room_two_temperature_2
+#    - binary_sensor.kids_room_two_occupancy
+#    - sensor.kids_room_two_temperature
+#    - fan.kids_room_two_fan_control_switch
     - switch.kids_room_two_closet_main_lights
     - light.left_hue_white_lamp
     - light.right_hue_white_lamp
-    - binary_sensor.kids_bedroom_two_nest_protect_online
-    - binary_sensor.kids_bedroom_two_nest_protect_battery_health
-    - binary_sensor.kids_bedroom_two_nest_protect_smoke_status
-    - binary_sensor.kids_bedroom_two_nest_protect_co_status
-    - binary_sensor.kids_bedroom_two_nest_protect_status
-    - sensor.kids_bedroom_two_nest_protect_battery_health
-    - sensor.kids_bedroom_two_nest_protect_smoke_status
-    - sensor.kids_bedroom_two_nest_protect_co_status
-    - sensor.kids_bedroom_two_nest_protect_color_status
-    - media_player.kids_bedroom_two_ecobee_switch
+#    - binary_sensor.kids_bedroom_two_nest_protect_online
+#    - binary_sensor.kids_bedroom_two_nest_protect_battery_health
+#    - binary_sensor.kids_bedroom_two_nest_protect_smoke_status
+#    - binary_sensor.kids_bedroom_two_nest_protect_co_status
+#    - binary_sensor.kids_bedroom_two_nest_protect_status
+#    - sensor.kids_bedroom_two_nest_protect_battery_health
+#    - sensor.kids_bedroom_two_nest_protect_smoke_status
+#    - sensor.kids_bedroom_two_nest_protect_co_status
+#    - sensor.kids_bedroom_two_nest_protect_color_status
+#    - media_player.kids_bedroom_two_ecobee_switch
 
-kidsbathroom:
+kids_bathroom:
   view: yes
   name: Kids Bathroom
   icon: mdi:toilet
   entities:
-    - binary_sensor.kids_bathroom_motion
+#    - binary_sensor.kids_bathroom_motion
     - switch.kids_bathroom
-    - sensor.kids_bathroom_light_level
-    - sensor.kids_bathroom_temperature_2
+#    - sensor.kids_bathroom_light_level
+#    - sensor.kids_bathroom_temperature_2
     - light.kids_bathroom_tub_lights
     - switch.kids_bathroom_exhaust_fan
-    - binary_sensor.kids_bathroom_occupancy
-    - sensor.kids_bathroom_temperature
-    - media_player.kids_bathroom_ecobee_switch
+#    - binary_sensor.kids_bathroom_occupancy
+#    - sensor.kids_bathroom_temperature
+#    - media_player.kids_bathroom_ecobee_switch
