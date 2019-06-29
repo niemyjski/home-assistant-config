@@ -11,6 +11,11 @@
 - platform: opensky
   radius: 5
 
+- platform: zestimate
+  api_key: !secret zestimate_api_key
+  zpid:
+    - !secret zestimate_zpid
+
 #- platform: co2signal
 #  token: !secret co2signal_token
 

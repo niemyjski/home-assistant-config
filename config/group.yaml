@@ -272,6 +272,10 @@ front_foyer:
 #    - binary_sensor.front_door_camera_sound_detected
 #    - binary_sensor.front_foyer_motion_switch_motion
 #    - binary_sensor.front_foyer_motion_switch_occupancy
+    - switch.front_foyer_wall_lights
+#    - binary_sensor.front_foyer_motion_detected
+#    - sensor.front_foyer_light_level
+#    - sensor.front_foyer_temperature
     - switch.front_foyer_motion_switch
 #    - sensor.front_foyer_motion_switch_alarm_level
 #    - sensor.front_foyer_motion_switch_alarm_type
@@ -311,6 +315,10 @@ living_room:
 #    - sensor.living_room_temperature
 #    - sensor.fireplace_temperature
 #    - fan.living_room_fan_control_switch_level
+    - switch.living_room_wall_lights
+#    - binary_sensor.living_room_motion_detected
+#    - sensor.living_room_light_level
+#    - sensor.living_room_temperature_2
     - light.living_room_spot_lights
     - light.living_room_main_lights_inner
     - light.living_room_main_lights_outter

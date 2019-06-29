@@ -179,7 +179,6 @@
       friendly_name: 'Upstairs Hallway Occupancy'
       value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
 
-
 - platform: template
   sensors:
     basement_utility_room_nest_protect_battery_health:
