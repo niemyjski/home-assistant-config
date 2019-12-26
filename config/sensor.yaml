@@ -1,15 +1,79 @@
-#- platform: glances
-#  host: !secret glances_host
-#  username: !secret glances_username
-#  password: !secret glances_password
-#  version: 3
-#  resources:
-#    - 'disk_use_percent'
-#    - 'memory_use_percent'
-#    - 'processor_load'
+#- platform: weatheralerts
+#  sameid: !secret weatheralerts_sameid
 
 - platform: opensky
+  altitude: 4000
   radius: 5
+
+#- platform: average
+#  name: 'Average Outside Temperature'
+#  duration: 00:00:30
+#  entities:
+#    - sensor.dark_sky_temperature
+
+#- platform: average
+#  name: 'Average Basement Temperature'
+#  duration: 00:00:30
+#  entities:
+#    - sensor.basement_temperature
+#    - sensor.storage_room_temperature
+#    - sensor.bedroom_temperature
+#    - sensor.basement_bedroom_temperature
+#    - sensor.family_room_temperature
+
+#- platform: average
+#  name: 'Average First Floor Temperature'
+#  duration: 00:00:30
+#  entities:
+#    - sensor.main_floor_temperature
+#    - sensor.living_room_temperature
+#    - sensor.fireplace_temperature
+#    - sensor.foyer_temperature
+#    - sensor.front_foyer_temperature
+#    - sensor.entertainment_room_temperature
+#    - sensor.back_foyer_temperature
+#    - sensor.first_floor_bathroom_temperature
+#    - sensor.master_bathroom_temperature
+#    - sensor.laundry_room_temperature
+#    - sensor.office_temperature
+
+#- platform: average
+#  name: 'Average Second Floor Temperature'
+#  duration: 00:00:30
+#  entities:
+#    - sensor.upstairs_temperature
+#    - sensor.master_bathroom_temperature
+#    - sensor.master_water_closet_temperature
+#    - sensor.kids_bathroom_temperature
+#    - sensor.kids_room_one_temperature
+#    - sensor.kids_room_two_temperature
+
+#- platform: average
+#  name: 'Average Inside Temperature'
+#  duration: 00:00:30
+#  entities:
+#    - sensor.basement_temperature
+#    - sensor.storage_room_temperature
+#    - sensor.bedroom_temperature
+#    - sensor.basement_bedroom_temperature
+#    - sensor.family_room_temperature
+#    - sensor.basement_bedroom_temperature
+#    - sensor.main_floor_temperature
+#    - sensor.living_room_temperature
+#    - sensor.fireplace_temperature
+#    - sensor.foyer_temperature
+#    - sensor.front_foyer_temperature
+#    - sensor.entertainment_room_temperature
+#    - sensor.back_foyer_temperature
+#    - sensor.first_floor_bathroom_temperature
+#    - sensor.laundry_room_temperature
+#    - sensor.office_temperature
+#    - sensor.upstairs_temperature
+#    - sensor.master_bathroom_temperature
+#    - sensor.master_water_closet_temperature
+#    - sensor.kids_bathroom_temperature
+#    - sensor.kids_room_one_temperature
+#    - sensor.kids_room_two_temperature
 
 - platform: zestimate
   api_key: !secret zestimate_api_key
@@ -35,34 +99,34 @@
           {%- endif -%}
         {%- endfor -%}
 
-- platform: template
-  sensors:
-    packages_in_transit:
-      friendly_name: "Packages in Transit"
-      value_template: >
-        {% macro in_transit(sensor) %}
-          {{sensor.state|int - delivered(sensor)|int}}
-        {% endmacro %}
-        {% macro delivered(sensor) %}
-          {% if 'delivered' in sensor.attributes %}
-            {{sensor.attributes.delivered}}
-          {% else %}
-              0
-          {% endif %}
-        {% endmacro %}
-        {{in_transit(states.sensor.ups)|int}}
+#- platform: template
+#  sensors:
+#    packages_in_transit:
+#      friendly_name: "Packages in Transit"
+#      value_template: >
+#        {% macro in_transit(sensor) %}
+#          {{sensor.state|int - delivered(sensor)|int}}
+#        {% endmacro %}
+#        {% macro delivered(sensor) %}
+#          {% if 'delivered' in sensor.attributes %}
+#            {{sensor.attributes.delivered}}
+#          {% else %}
+#              0
+#          {% endif %}
+#        {% endmacro %}
+#        {{in_transit(states.sensor.ups)|int}}
 
-    deliveries_today:
-      friendly_name: "Today's Deliveries"
-      value_template: >
-        {% macro delivered(sensor) %}
-          {% if 'delivered' in sensor.attributes %}
-            {{sensor.attributes.delivered}}
-          {% else %}
-              0
-          {% endif %}
-        {% endmacro %}
-        {{delivered(states.sensor.ups)|int}}
+#    deliveries_today:
+#      friendly_name: "Today's Deliveries"
+#      value_template: >
+#        {% macro delivered(sensor) %}
+#          {% if 'delivered' in sensor.attributes %}
+#            {{sensor.attributes.delivered}}
+#          {% else %}
+#              0
+#          {% endif %}
+#        {% endmacro %}
+#        {{delivered(states.sensor.ups)|int}}
 
 - platform: template
   sensors:

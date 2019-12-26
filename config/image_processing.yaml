@@ -1,0 +1,34 @@
+#- platform: facebox
+#  ip_address: !secret facebox_ip_address
+#  port: 8080
+#  username: !secret facebox_username
+#  password: !secret facebox_password
+#  source:
+#    - entity_id: camera.front_door
+#      name: facebox_front_door
+#    - entity_id: camera.storage_room
+#      name: facebox_storage_room
+- platform: microsoft_face_identify
+  group: family
+  source:
+    - entity_id: camera.front_door
+      name: family_front_door
+    - entity_id: camera.storage_room
+      name: family_storage_room
+- platform: microsoft_face_identify
+  group: friends
+  source:
+    - entity_id: camera.front_door
+      name: friends_front_door
+    - entity_id: camera.storage_room
+      name: friends_storage_room
+- platform: microsoft_face_detect
+  attributes:
+    - age
+    - gender
+    - glasses
+  source:
+    - entity_id: camera.front_door
+      name: detect_camera_front_door
+    - entity_id: camera.storage_room
+      name: detect_camera_storage_room

@@ -1,0 +1,4 @@
+- platform: xiaomi_miio
+  host: !secret vaccum_host
+  name: !secret vacuum_name
+  token: !secret vacuum_token

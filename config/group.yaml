@@ -53,6 +53,9 @@ christmas_lights:
     - switch.front_north_outside_outlets_switch
     - switch.living_room_west_outlets_switch
     - switch.living_room_top_mantle_receptacle
+    - switch.entertainment_room_receptacle
+    - switch.living_room_wemo
+    - switch.outside_outlet_switch
 
 #---------
 # Other
@@ -191,6 +194,7 @@ exercise_room:
   name: Exercise Room
   icon: mdi:dumbbell
   entities:
+    - switch.exercise_room_motion_switch
 #    - lock.exercise_room_door_locked
 #    - binary_sensor.exercise_room_door_locked_battery_level
 #    - binary_sensor.exercise_room_door_locked

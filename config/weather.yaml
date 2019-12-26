@@ -1,2 +1,4 @@
 - platform: darksky
   api_key: !secret darksky_key
+- platform: nws
+  api_key: !secret nws_key

@@ -24,6 +24,7 @@ alexa_media: !include config/alexa_media.yaml
 amcrest: !include config/amcrest.yaml
 august: !include config/august.yaml
 binary_sensor: !include config/binary_sensor.yaml
+bond: !include config/bond.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
@@ -33,6 +34,7 @@ hacs: !include config/hacs.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
+#image_processing: !include config/image_processing.yaml
 #influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
@@ -40,6 +42,7 @@ light: !include_dir_list config/lights/
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 media_player: !include config/media_player.yaml
+microsoft_face: !include config/microsoft_face.yaml
 mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
 notify: !include config/notify.yaml
@@ -53,7 +56,9 @@ speedtestdotnet: !include config/speedtestdotnet.yaml
 tesla: !include config/tesla.yaml
 tts: !include config/tts.yaml
 #usps: !include config/usps.yaml
+#vacuum: !include config/vacuum.yaml
 weather: !include config/weather.yaml
 wemo: !include config/wemo.yaml
+wwlln:
 zone: !include config/zones.yaml
 zwave: !include config/zwave.yaml

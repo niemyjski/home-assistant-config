@@ -1,0 +1,2 @@
+api_key: !secret microsoft_face_api_key
+azure_region: !secret microsoft_face_azure_region
