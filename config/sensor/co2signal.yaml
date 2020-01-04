@@ -1,0 +1,2 @@
+#- platform: co2signal
+#  token: !secret co2signal_token

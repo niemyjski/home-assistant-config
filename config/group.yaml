@@ -155,6 +155,10 @@ guest_bathroom:
   name: Guest Bathroom
   icon: mdi:toilet
   entities:
+    - switch.guest_bathroom
+#    - binary_sensor.guest_bathroom_motion
+#    - sensor.guest_bathroom_light_level
+#    - sensor.guest_bathroom_temperature_2
     - switch.guest_bathroom_exhaust_fan
 
 guest_bedroom:

@@ -1,0 +1,2 @@
+platform: hd_powerview
+host: !secret hunterdouglas_powerview_host

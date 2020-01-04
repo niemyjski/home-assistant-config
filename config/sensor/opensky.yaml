@@ -1,0 +1,3 @@
+- platform: opensky
+  altitude: 4000
+  radius: 5

@@ -1,0 +1,2 @@
+#- platform: weatheralerts
+#  sameid: !secret weatheralerts_sameid

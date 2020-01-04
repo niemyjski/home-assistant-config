@@ -9,3 +9,54 @@
     service_template: '{{ trigger.event.data.service }}'
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
+
+- alias: Perform Auto Backup
+  trigger:
+    platform: time_pattern # Perform backup every 4 hours.
+    hours: "/4"
+  action:
+    service: auto_backup.snapshot_partial # Only perform a partial snapshot to save storage.
+    data_template:
+      name: "AutoBackup: {{ now().strftime('%a, %-I:%M %p (%d/%m/%Y)') }}"
+      addons:
+        - core_mariadb
+        - core_mosquitto
+        - a0d7b954_nodered
+      folders:
+        - homeassistant
+        - share
+        - ssl
+      keep_days: 2
+
+- alias: Perform Daily Backup
+  trigger:
+    platform: time
+    at: "02:30:00"
+  condition:
+    condition: time # Perform backup every day except Mondays.
+    weekday:
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+  action:
+    service: auto_backup.snapshot_full
+    data_template:
+      name: "DailyBackup: {{ now().strftime('%A, %B %-d, %Y') }}"
+      keep_days: 7
+
+- alias: Perform Weekly Backup
+  trigger:
+    platform: time
+    at: "02:30:00"
+  condition:
+    condition: time # On Mondays perform a weekly backup
+    weekday:
+      - mon
+  action:
+    service: auto_backup.snapshot_full
+    data_template:
+      name: "WeeklyBackup: {{ now().strftime('%A, %B %-d, %Y') }}"
+      keep_days: 28 # Store backup for a month, basically perform 1 backup each week and store for 4 weeks.

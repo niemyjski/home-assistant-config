@@ -7,7 +7,6 @@ homeassistant:
 
   time_zone: !secret time_zone
   unit_system: imperial
-  temperature_unit: F
 
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
@@ -23,7 +22,8 @@ automation: !include config/automation.yaml
 alexa_media: !include config/alexa_media.yaml
 amcrest: !include config/amcrest.yaml
 august: !include config/august.yaml
-binary_sensor: !include config/binary_sensor.yaml
+auto_backup: !include config/auto_backup.yaml
+binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
@@ -34,7 +34,7 @@ hacs: !include config/hacs.yaml
 http: !include config/http.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
-#image_processing: !include config/image_processing.yaml
+image_processing: !include config/image_processing.yaml
 #influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
@@ -48,15 +48,18 @@ nest: !include config/nest.yaml
 notify: !include config/notify.yaml
 nuheat: !include config/nuheat.yaml
 #octoprint: !include config/octoprint.yaml
+panel_custom: !include config/panel_custom.yaml
 recorder: !include config/recorder.yaml
 scene: !include_dir_list config/scene/
-sensor: !include config/sensor.yaml
+sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
 speedtestdotnet: !include config/speedtestdotnet.yaml
 tesla: !include config/tesla.yaml
 tts: !include config/tts.yaml
+unifi: !include config/unifi.yaml
+unifiprotect: !include config/unifiprotect.yaml
 #usps: !include config/usps.yaml
-#vacuum: !include config/vacuum.yaml
+vacuum: !include config/vacuum.yaml
 weather: !include config/weather.yaml
 wemo: !include config/wemo.yaml
 wwlln:
