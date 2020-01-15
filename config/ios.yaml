@@ -1,0 +1,335 @@
+push:
+  categories:
+    - name: Welcome Home
+      identifier: 'welcome_home'
+      actions:
+        - identifier: 'DISABLE_SECURITY'
+          title: 'Yes'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Alarm
+      identifier: 'alarm'
+      actions:
+        - identifier: 'SOUND_ALARM'
+          title: 'Trigger Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'SILENCE_ALARM'
+          title: 'Disable Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+    - name: Disable Alarm
+      identifier: 'disable_alarm'
+      actions:
+        - identifier: 'DISABLE_ALARM'
+          title: 'Disable Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+    - name: Enable Alarm
+      identifier: 'enable_alarm'
+      actions:
+        - identifier: 'ENABLE_ALARM'
+          title: 'Enable Alarm'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+    - name: Activate Siren
+      identifier: 'activate_siren'
+      actions:
+        - identifier: 'ENABLE_SIREN'
+          title: 'Turn On Siren'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Disable Siren
+      identifier: 'disable_siren'
+      actions:
+        - identifier: 'DISABLE_SIREN'
+          title: 'Turn off Siren'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: sleep
+      identifier: 'sleep'
+      actions:
+        - identifier: 'SLEEP_LOCK_DOORS_AND_TURN_OFF_LIGHTS'
+          title: 'Lock Doors and Turn Off Lights'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+        - identifier: 'SLEEP_LOCK_DOORS'
+          title: 'Lock Doors'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+        - identifier: 'SLEEP_TURN_OFF_LIGHTS'
+          title: 'Turn Off Lights'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+    - name: Locks
+      identifier: 'locks'
+      actions:
+        - identifier: 'UNLOCK_DOORS'
+          title: 'Unlock Doors'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'LOCK_DOORS'
+          title: 'Lock Doors'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'
+    - name: Front Door Lock
+      identifier: 'front_door_lock'
+      actions:
+        - identifier: 'FRONT_DOOR_UNLOCK'
+          title: 'Unlock Front Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Back Foyer Door Lock
+      identifier: 'back_foyer_door_lock'
+      actions:
+        - identifier: 'BACK_FOYER_DOOR_UNLOCK'
+          title: 'Unlock Back Foyer Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Garage Door Lock
+      identifier: 'garage_door_lock'
+      actions:
+        - identifier: 'GARAGE_DOOR_UNLOCK'
+          title: 'Unlock Garage Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: House Left Garage Door
+      identifier: 'house_left_garage_door_close'
+      actions:
+        - identifier: 'CLOSE_HOUSE_LEFT_GARAGE_DOOR'
+          title: 'Close House Left Garage Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: House Right Garage Door
+      identifier: 'house_right_garage_door_close'
+      actions:
+        - identifier: 'CLOSE_HOUSE_RIGHT_GARAGE_DOOR'
+          title: 'Close House Right Garage Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Left Garage Door
+      identifier: 'left_garage_door_close'
+      actions:
+        - identifier: 'CLOSE_LEFT_GARAGE_DOOR'
+          title: 'Close Left Garage Door'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Fireplace
+      identifier: 'fireplace'
+      actions:
+        - identifier: 'FIREPLACE_OFF'
+          title: 'Turn Off Fireplace'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Smoke & CO2 Alarm
+      identifier: 'smoke_co2_alarm'
+      actions:
+        - identifier: 'SMOKE_CO2_ALARM'
+          title: 'Open Doors and Turn On Path Lighting'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Washing Machine Started
+      identifier: 'washer_started'
+      actions:
+        - identifier: 'WASHER_STARTED'
+          title: 'Washing Machine Started'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Washing Machine Completed
+      identifier: 'washer_completed'
+      actions:
+        - identifier: 'WASHER_DONE'
+          title: 'Done'
+          activationMode: 'background'
+          destructive: no
+        - identifier: 'WASHER_NOT_EMPTIED'
+          title: 'Snooze'
+          activationMode: 'background'
+          destructive: yes
+    - name: Dryer Started
+      identifier: 'washer_started'
+      actions:
+        - identifier: 'DRYER_STARTED'
+          title: 'Dryer Started'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Dryer Completed
+      identifier: 'dryer_completed'
+      actions:
+        - identifier: 'DRYER_DONE'
+          title: 'Done'
+          activationMode: 'background'
+          destructive: no
+        - identifier: 'DRYER_NOT_EMPTIED'
+          title: 'Snooze'
+          activationMode: 'background'
+          destructive: yes
+    - name: Vacuum Now
+      identifier: 'vacuum'
+      actions:
+        - identifier: 'VACUUM_NOW'
+          title: 'Yes'
+          authenticationRequired: yes
+          behavior: 'default'
+        - identifier: 'VACUUM_LATER'
+          title: 'Snooze'
+          activationMode: 'background'
+        - identifier: 'VACUUM_STOP_ASKING'
+          title: 'Stop asking'
+          activationMode: 'background'
+          destructive: yes
+    - name: Clean Litterbox
+      identifier: 'clean_litterbox'
+      actions:
+        - identifier: 'CLEANING_LITTERBOX_DONE'
+          title: 'Done'
+          authenticationRequired: yes
+          activationMode: 'background'            
+          behavior: 'default'
+        - identifier: 'CLEANING_LITTERBOX_NOT_DONE'
+          title: 'Snooze'
+          activationMode: 'background'
+          destructive: yes
+    - name: Feed Cats
+      identifier: 'feed_cats'
+      actions:
+        - identifier: 'CATS_FED'
+          title: 'Done'
+          authenticationRequired: yes
+          activationMode: 'background'
+          behavior: 'default'
+        - identifier: 'CATS_NOT_FED'
+          title: 'Snooze'
+          activationMode: 'background'
+          destructive: yes
+    - name: Let Cats Inside
+      identifier: 'let_in_cats'
+      actions:
+        - identifier: 'CATS_LET_IN'
+          title: 'Done'
+          authenticationRequired: yes
+          activationMode: 'background'
+          behavior: 'default'
+        - identifier: 'CATS_NOT_LET_IN'
+          title: 'Snooze'
+          activationMode: 'background'
+          destructive: yes
+    - name: Waste
+      identifier: 'waste'
+      actions:
+        - identifier: 'WASTE_LEFT'
+          title: 'Done'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'TRASH_REMIND_LATER'
+          title: 'Remind Later'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Waste & Recycle
+      identifier: 'waste_recycle'
+      actions:
+        - identifier: 'WASTE_RECYCLE_LEFT'
+          title: 'Done'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'WASTE_RECYCLE_REMIND_LATER'
+          title: 'Remind Later'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Low Battery
+      identifier: 'low_battery'
+      actions:
+        - identifier: 'LOW_BATTERY_REPLACED'
+          title: 'Replaced'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'LOW_BATTERY_REMIND_LATER'
+          title: 'Remind Later'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Tesla Low Battery
+      identifier: 'tesla_low_battery'
+      actions:
+        - identifier: 'TESLA_LOW_BATTERY_CHARGING'
+          title: 'Charging'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'TESLA_LOW_BATTERY_REMIND_LATER'
+          title: 'Remind Later'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+    - name: Sport Notifications
+      identifier: 'sport_notification'
+      actions:
+        - identifier: 'SPORT_START_WATCHING'
+          title: 'Turn On TV & Turn off Lights'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: yes
+          behavior: 'default'
+        - identifier: 'SPORT_REMIND_LATER'
+          title: 'Remind Later'
+          activationMode: 'background'
+          authenticationRequired: yes
+          destructive: no
+          behavior: 'default'

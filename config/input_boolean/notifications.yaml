@@ -2,10 +2,6 @@ automation_notifications:
   name: Notify when an automation is triggered
   icon: mdi:home-automation
 
-arriving_home_notifications:
-  name: Notify when someone arrives home
-  icon: mdi:car
-
 speech_notifications:
   name: Speech Notifications
   icon: mdi:speaker-wireless
@@ -22,6 +18,66 @@ weather_notifications:
   name: Weather Notifications
   icon: mdi:weather-lightning
 
+calendar_notifications:
+  name: Calendar Notifications
+  icon: mdi:calendar
+
 welcome_notifications:
   name: Welcome people when they arrive
   icon: mdi:speaker-wireless
+
+arriving_home_notifications:
+  name: Notify when someone arrives home
+  icon: mdi:car
+
+sleep_notifications:
+  name: Sleep Notifications
+  icon: mdi:sleep
+
+alarm_notifications:
+  name: Alarm Notifications
+  icon: mdi:alarm-light
+
+smoke_co2_notifications:
+  name: Smoke & CO2 Notifications
+  icon: mdi:alarm-light
+
+lock_notifications:
+  name: Lock Notifications
+  icon: mdi:door-closed-lock
+
+door_notifications:
+  name: Open Door Notifications
+  icon: mdi:door-open
+
+fireplace_notifications:
+  name: Fireplace Notifications
+  icon: mdi:fireplace
+
+washer_dryer_notifications:
+  name: Washing Machine and Dryer Notifications
+  icon: mdi:washing-machine
+
+vacuum_notifications:
+  name: Vacuum Notifications
+  icon: mdi:robot-vacuum
+
+cat_notifications:
+  name: Cat Notifications
+  icon: mdi:cat
+
+waste_recycle_notifications:
+  name: Waste & Recycling Notifications
+  icon: mdi:trash-can-outline
+
+low_battery_notifications:
+  name: Low Battery Notifications
+  icon: mdi:battery-10
+
+tesla_notifications:
+  name: Tesla Notifications
+  icon: mdi:car-electric
+
+sport_notifications:
+  name: Sport Notifications
+  icon: mdi:football

@@ -27,6 +27,7 @@ binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
+device_tracker: !include config/device_tracker.yaml
 ecobee: !include config/ecobee.yaml
 frontend: !include config/frontend.yaml
 group: !include config/group.yaml
@@ -38,6 +39,7 @@ image_processing: !include config/image_processing.yaml
 #influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
+ios: !include config/ios.yaml
 #iqvia: !include config/iqvia.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml

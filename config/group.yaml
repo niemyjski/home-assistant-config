@@ -590,7 +590,7 @@ master_bathroom:
 #    - sensor.master_bathroom_temperature
     - light.master_bathroom_shower_lights
     - light.master_bathroom_tub_lights
-    - switch.master_bathroom_shower
+#    - switch.master_bathroom_shower_fan
 #    - media_player.master_bathroom_ecobee_switch
 #    - media_player.master_bathroom_left_mirror
 #    - media_player.master_bathroom_right_mirror
@@ -607,7 +607,7 @@ master_water_closet:
 #    - binary_sensor.master_water_closet_occupancy
 #    - sensor.master_water_closet_temperature
 #    - climate.master_water_closet_floor
-    - switch.master_bathroom_water_closet
+#    - switch.master_bathroom_water_closet_fan
 #    - media_player.master_water_closet_ecobee_switch
 
 kid_one_bedroom:

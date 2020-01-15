@@ -2,6 +2,14 @@ guest_mode:
   name: Guest Mode
   icon: mdi:hotel
 
+home_mode:
+  name: Home Mode
+  icon: mdi:home
+
+sleep_mode:
+  name: Sleep Mode
+  icon: mdi:sleep
+
 do_not_disturb_mode:
   name: Do Not Disturb
   icon: mdi:bell-off

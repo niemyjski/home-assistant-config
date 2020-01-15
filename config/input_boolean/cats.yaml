@@ -1,0 +1,11 @@
+cats_outside:
+  name: Cats Outside
+  icon: mdi:cat
+
+cats_litterbox:
+  name: Cats Litterbox
+  icon: mdi:package-variant
+
+cats_fed:
+  name: Cats Fed
+  icon: mdi:mouse-variant

@@ -1,10 +1,10 @@
-  - name: home
-    platform: group
-    services:
-      - service: html5
-  - name: garbage
-    platform: group
-    services:
-      - service: html5
-  - name: ecobee
-    platform: ecobee
+- platform: group
+  name: home
+  services:
+    - service: !secret notify_person_1
+    - service: !secret notify_person_2
+
+- platform: group
+  name: audit
+  services:
+    - service: !secret notify_person_1

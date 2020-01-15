@@ -46,6 +46,10 @@ automation_inside_lights_on_motion:
   name: Automation - Turn On/Off Inside Lights (Motion)
   icon: mdi:lightbulb-on
 
+automation_inside_multiple_lights_on_state_change:
+  name: Automation - Turn On/Off Multiple Inside Lights On State Change
+  icon: mdi:lightbulb-on
+
 automation_inside_closet_lights:
   name: Automation - Turn Off Lights closet lights
   icon: mdi:lightbulb-on

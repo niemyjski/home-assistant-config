@@ -1,0 +1,7 @@
+
+- platform: template
+  sensors:
+    guest_count:
+      friendly_name: Guest Count
+      value_template: >-
+        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | list | count }}

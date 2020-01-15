@@ -6,18 +6,20 @@ known_devices.yaml
 # folders
 custom_components
 deps
+faces
 glances
+icloud
 node-red
-www/github/custom-cards/*
+themes
+www/community
+tts
 
 # files
 *.pickle
-customize.yaml
-ecobee.conf
-home-assistant*.*
-options.xml
-OZW_Log.txt
+*.conf
+*.xml
 *.sqlite
+home-assistant*.*
+customize.yaml
+OZW_Log.txt
 zwave_device_config.yaml
-zwcfg_0xc9ca9ef3.xml
-zwscene.xml
