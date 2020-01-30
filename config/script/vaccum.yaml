@@ -1,0 +1,112 @@
+vacuum_first_floor_rooms:
+  alias: Vacuum First Floor Rooms
+  fields:
+    rooms:
+      description: "A list of rooms to clean"
+      example: "[16,17,18,19,20,21,22,23,25]"
+  sequence:
+    - service: vacuum.send_command
+      data_template:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: >
+          {{ rooms }}
+
+vacuum_first_floor:
+  alias: Vacuum First Floor
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [16,17,18,19,20,21,22,23,25]
+
+vacuum_first_floor_main_areas:
+  alias: Vacuum First Floor Main Areas
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [17,18,19,21,22,23,25]
+
+vacuum_entertainment_room:
+  alias: Vacuum Entertainment Room
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [21]
+
+vacuum_front_foyer:
+  alias: Front Foyer
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [22]
+
+vacuum_living_room:
+  alias: Vacuum Living Room
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [17]
+
+vacuum_kitchen:
+  alias: Vacuum Kitchen
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [19]
+
+vacuum_back_foyer:
+  alias: Back Foyer
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [18]
+
+vacuum_first_floor_bathroom:
+  alias: Vacuum First Floor Bathroom
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [16]
+
+vacuum_back_hallway:
+  alias: Back Hallway
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [25]
+
+vacuum_laundry_room:
+  alias: Laundry Room
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [20]
+
+vacuum_office:
+  alias: Office
+  sequence:
+    - service: vacuum.send_command
+      data:
+        entity_id: vacuum.roborock_s6
+        command: app_segment_clean
+        params: [23]

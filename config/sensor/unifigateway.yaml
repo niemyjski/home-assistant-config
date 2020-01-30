@@ -18,12 +18,6 @@
       unit_of_measurement: percentage
       icon_template: mdi:memory
 
-    unifi_gateway_wan_cpu_temp:
-      friendly_name: 'CPU temperature'
-      value_template: "{{ states.sensor.unifi_gateway_wan.attributes['gw_system-stats']['temps']['CPU']|replace('C', '') }}"
-      unit_of_measurement: degrees
-      icon_template: mdi:temperature-fahrenheit
-
     unifi_gateway_wan_ip:
       friendly_name: 'WAN IP'
       value_template: '{{ states.sensor.unifi_gateway_wan.attributes.wan_ip }}'

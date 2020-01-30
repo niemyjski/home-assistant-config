@@ -4,7 +4,10 @@
   password: !secret camera_password
   resolution: high
   stream_source: rtsp
+  control_light: false
   binary_sensors:
     - motion_detected
+    - online
   sensors:
     - sdcard
+    - ptz_preset

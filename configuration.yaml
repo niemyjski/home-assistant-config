@@ -15,7 +15,6 @@ homeassistant:
 # Base configuration
 default_config:
 hassio:
-ios:
 
 # Includes
 automation: !include config/automation.yaml
@@ -27,20 +26,22 @@ binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
-device_tracker: !include config/device_tracker.yaml
 ecobee: !include config/ecobee.yaml
 frontend: !include config/frontend.yaml
 group: !include config/group.yaml
 hacs: !include config/hacs.yaml
 http: !include config/http.yaml
+homeconnect: !include config/homeconnect.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
 image_processing: !include config/image_processing.yaml
 #influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
+icloud: !include config/icloud.yaml
 ios: !include config/ios.yaml
 #iqvia: !include config/iqvia.yaml
+kohler: !include config/kohler.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 media_player: !include config/media_player.yaml
@@ -53,6 +54,7 @@ nuheat: !include config/nuheat.yaml
 panel_custom: !include config/panel_custom.yaml
 recorder: !include config/recorder.yaml
 scene: !include_dir_list config/scene/
+script: !include_dir_merge_named config/script/
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
 speedtestdotnet: !include config/speedtestdotnet.yaml
@@ -62,7 +64,9 @@ unifi: !include config/unifi.yaml
 unifiprotect: !include config/unifiprotect.yaml
 #usps: !include config/usps.yaml
 vacuum: !include config/vacuum.yaml
+wake_on_lan:
 weather: !include config/weather.yaml
+webostv: !include config/webostv.yaml
 wemo: !include config/wemo.yaml
 wwlln:
 zone: !include config/zones.yaml
