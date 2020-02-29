@@ -10,7 +10,6 @@ homeassistant:
 
   customize: !include customize.yaml
   customize_glob: !include customize_glob.yaml
-  packages: !include_dir_named packages
 
 # Base configuration
 default_config:
@@ -24,6 +23,7 @@ august: !include config/august.yaml
 auto_backup: !include config/auto_backup.yaml
 binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
+browser_mod:
 camera: !include_dir_list config/cameras/
 cover: !include_dir_list config/covers/
 ecobee: !include config/ecobee.yaml
@@ -44,7 +44,6 @@ ios: !include config/ios.yaml
 kohler: !include config/kohler.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
-media_player: !include config/media_player.yaml
 microsoft_face: !include config/microsoft_face.yaml
 mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
@@ -58,6 +57,7 @@ script: !include_dir_merge_named config/script/
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
 speedtestdotnet: !include config/speedtestdotnet.yaml
+spotify: !include config/spotify.yaml
 tesla: !include config/tesla.yaml
 tts: !include config/tts.yaml
 unifi: !include config/unifi.yaml

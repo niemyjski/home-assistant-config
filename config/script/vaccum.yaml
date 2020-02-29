@@ -1,3 +1,38 @@
+vacuum_first_floor_stop:
+  alias: Stop First Floor Vacuumimg
+  sequence:
+    - service: vacuum.stop
+      data:
+        entity_id: vacuum.roborock_s6
+
+vacuum_first_floor_pause:
+  alias: Pause First Floor Vacuumimg
+  sequence:
+    - service: vacuum.pause
+      data:
+        entity_id: vacuum.roborock_s6
+
+vacuum_first_floor_resume:
+  alias: Resume First Floor Vacuumimg
+  sequence:
+    - service: vacuum.start
+      data:
+        entity_id: vacuum.roborock_s6
+
+vacuum_first_floor_dock:
+  alias: Dock First Floor Vacuum
+  sequence:
+    - service: vacuum.return_to_base
+      data:
+        entity_id: vacuum.roborock_s6
+
+vacuum_first_floor_location:
+  alias: Where is the First Floor Vacuum
+  sequence:
+    - service: vacuum.locate
+      data:
+        entity_id: vacuum.roborock_s6
+
 vacuum_first_floor_rooms:
   alias: Vacuum First Floor Rooms
   fields:

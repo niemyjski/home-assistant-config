@@ -1,1 +1,2 @@
 host: !secret kohler_host
+accept_liability_terms: True

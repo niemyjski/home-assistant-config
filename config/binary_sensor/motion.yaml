@@ -131,3 +131,51 @@
       entity_id: sensor.upstairs_hallway_motion_switch_burglar
       friendly_name: 'Upstairs Hallway Occupancy'
       value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
+
+    garage_foyer_motion_switch_motion:
+      device_class: motion
+      entity_id: sensor.garage_foyer_motion_switch_burglar
+      friendly_name: 'Garage Foyer Motion'
+      value_template: "{{ is_state('sensor.garage_foyer_motion_switch_burglar', '8') }}"
+
+    garage_foyer_motion_switch_occupancy:
+      device_class: occupancy
+      entity_id: sensor.garage_foyer_motion_switch_burglar
+      friendly_name: 'Garage Foyer Occupancy'
+      value_template: "{{ is_state('sensor.garage_foyer_motion_switch_burglar', '8') }}"
+
+    garage_small_bay_bench_motion_switch_motion:
+      device_class: motion
+      entity_id: sensor.garage_small_bay_bench_motion_switch_burglar
+      friendly_name: 'Garage Small Bay Bench Motion'
+      value_template: "{{ is_state('sensor.garage_small_bay_bench_motion_switch_burglar', '8') }}"
+
+    garage_small_bay_bench_motion_switch_occupancy:
+      device_class: occupancy
+      entity_id: sensor.garage_small_bay_bench_motion_switch_burglar
+      friendly_name: 'Garage Small Bay Bench Occupancy'
+      value_template: "{{ is_state('sensor.garage_small_bay_bench_motion_switch_burglar', '8') }}"
+
+    game_room_poker_table_motion_switch_motion:
+      device_class: motion
+      entity_id: sensor.game_room_poker_table_motion_switch_burglar
+      friendly_name: 'Game Room Poker Table Motion'
+      value_template: "{{ is_state('sensor.game_room_poker_table_motion_switch_burglar', '8') }}"
+
+    game_room_poker_table_motion_switch_occupancy:
+      device_class: occupancy
+      entity_id: sensor.game_room_poker_table_motion_switch_burglar
+      friendly_name: 'Game Room Poker Table Occupancy'
+      value_template: "{{ is_state('sensor.game_room_poker_table_motion_switch_burglar', '8') }}"
+
+    game_room_stairs_motion_switch_motion:
+      device_class: motion
+      entity_id: sensor.game_room_stairs_motion_switch_burglar
+      friendly_name: 'Game Room Stairs Motion'
+      value_template: "{{ is_state('sensor.game_room_stairs_motion_switch_burglar', '8') }}"
+
+    game_room_stairs_motion_switch_occupancy:
+      device_class: occupancy
+      entity_id: sensor.game_room_stairs_motion_switch_burglar
+      friendly_name: 'Game Room Stairs Occupancy'
+      value_template: "{{ is_state('sensor.game_room_stairs_motion_switch_burglar', '8') }}"

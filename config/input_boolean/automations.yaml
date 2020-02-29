@@ -38,6 +38,10 @@ automation_inside_lock_doors_on_garage_door_close:
   name: Automation - Automatically Lock doors Garage Door Close
   icon: mdi:lock
 
+automation_inside_unlock_doors_on_garage_door_open:
+  name: Automation - Automatically Unlock doors Garage Door Open
+  icon: mdi:lock
+
 automation_inside_lights_on_garage_door_activity:
   name: Automation - Turn On/Off Inside Lights on Garage Door Activity
   icon: mdi:lightbulb-on
@@ -50,12 +54,20 @@ automation_inside_multiple_lights_on_state_change:
   name: Automation - Turn On/Off Multiple Inside Lights On State Change
   icon: mdi:lightbulb-on
 
+automation_inside_entertainment_lights:
+  name: Automation - Automatically Turn On/Off Lights when watching entertainment.
+  icon: mdi:lightbulb-on
+
 automation_inside_closet_lights:
   name: Automation - Turn Off Lights closet lights
   icon: mdi:lightbulb-on
 
 automation_inside_turn_off_lights_inactivity:
   name: Automation - Turn Off Lights on inactivity.
+  icon: mdi:lightbulb-on
+
+automation_inside_sleep_mode:
+  name: Automation - Turn Off/On Devices During Sleep Mode.
   icon: mdi:lightbulb-on
 
 automation_inside_fireplace:
@@ -67,8 +79,16 @@ automation_inside_bathroom_fans:
   icon: mdi:fan
 
 automation_inside_master_bedroom_fan:
-  name: Automation - Master Bedroom Fan
+  name: Automation - Automatically Turn On/Off Master Bedroom Fan
   icon: mdi:fan
+
+automation_inside_bedroom_fans:
+  name: Automation - Automatically Turn On/Off Bedroom Fans
+  icon: mdi:fan
+
+automation_inside_window_covers:
+  name: Automation - Automatically Open/Close Blinds
+  icon: mdi:window-shutter-open
 
 automation_emergency_lights_on:
   name: Turn on Lights during emergency

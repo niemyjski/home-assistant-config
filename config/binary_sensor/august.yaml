@@ -7,10 +7,17 @@
       friendly_name: 'Front Door Lock Battery Level'
       value_template: >
         {% if states.zwave.front_door_lock.attributes.battery_level is defined %}
-          {{ states.zwave.front_door_lock.attributes.battery_level|float <= 15 }}
+          {{ states.zwave.front_door_lock.attributes.battery_level|float > 10 }}
         {% else %}
           false
         {% endif %}
+      attribute_templates:
+        "Battery Level": >-
+          {% if states.zwave.front_door_lock.attributes.battery_level is defined %}
+            {{ states.zwave.front_door_lock.attributes.battery_level|float }}
+          {% else %}
+            0
+          {% endif %}
 
     front_door_locked:
       device_class: lock
@@ -30,10 +37,17 @@
       friendly_name: 'Back Foyer Door Lock Battery Level'
       value_template: >
         {% if states.zwave.back_foyer_door_lock.attributes.battery_level is defined %}
-          {{ states.zwave.back_foyer_door_lock.attributes.battery_level|float <= 15 }}
+          {{ states.zwave.back_foyer_door_lock.attributes.battery_level|float > 10 }}
         {% else %}
           false
         {% endif %}
+      attribute_templates:
+        "Battery Level": >-
+          {% if states.zwave.back_foyer_door_lock.attributes.battery_level is defined %}
+            {{ states.zwave.back_foyer_door_lock.attributes.battery_level|float }}
+          {% else %}
+            0
+          {% endif %}
 
     back_foyer_door_locked:
       device_class: lock
@@ -47,10 +61,17 @@
       friendly_name: 'Exercise Room Door Lock Battery Level'
       value_template: >
         {% if states.zwave.exercise_room_door_lock.attributes.battery_level is defined %}
-          {{ states.zwave.exercise_room_door_lock.attributes.battery_level|float <= 15 }}
+          {{ states.zwave.exercise_room_door_lock.attributes.battery_level|float > 10 }}
         {% else %}
           false
         {% endif %}
+      attribute_templates:
+        "Battery Level": >-
+          {% if states.zwave.exercise_room_door_lock.attributes.battery_level is defined %}
+            {{ states.zwave.exercise_room_door_lock.attributes.battery_level|float }}
+          {% else %}
+            0
+          {% endif %}
 
     exercise_room_door_locked:
       device_class: lock

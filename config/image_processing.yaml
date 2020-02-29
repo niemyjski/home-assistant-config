@@ -1,29 +1,29 @@
-- platform: microsoft_face_identify
-  scan_interval: 10000
-  group: family
-  source:
-    - entity_id: camera.front_door
-      name: family_front_door
-    - entity_id: camera.living_room
-      name: family_living_room
-    - entity_id: camera.storage_room
-      name: family_storage_room
-    - entity_id: camera.game_room
-      name: family_game_room
-- platform: microsoft_face_identify
-  scan_interval: 10000
-  group: friends
-  source:
-    - entity_id: camera.front_door
-      name: friends_front_door
-    - entity_id: camera.living_room
-      name: friends_living_room
-    - entity_id: camera.storage_room
-      name: friends_storage_room
-    - entity_id: camera.game_room
-      name: friends_game_room
+#- platform: microsoft_face_identify
+#  scan_interval: 30000
+#  group: family
+#  source:
+#    - entity_id: camera.front_door
+#      name: family_front_door
+#    - entity_id: camera.living_room
+#      name: family_living_room
+#    - entity_id: camera.storage_room
+#      name: family_storage_room
+#    - entity_id: camera.game_room
+#      name: family_game_room
+#- platform: microsoft_face_identify
+#  scan_interval: 60000
+#  group: friends
+#  source:
+#    - entity_id: camera.front_door
+#      name: friends_front_door
+#    - entity_id: camera.living_room
+#      name: friends_living_room
+#    - entity_id: camera.storage_room
+#      name: friends_storage_room
+#    - entity_id: camera.game_room
+#      name: friends_game_room
 - platform: microsoft_face_detect
-  scan_interval: 10000
+  scan_interval: 60000
   attributes:
     - age
     - gender

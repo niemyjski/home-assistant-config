@@ -2,7 +2,6 @@
 # Automations
 #---------
 automations:
-  view: yes
   name: Automations
   icon: mdi:home-automation
   entities:
@@ -19,7 +18,6 @@ automations:
     - input_boolean.automation_christmas_lights
 
 modes:
-  view: yes
   name: Modes
   icon: mdi:home-automation
   entities:
@@ -29,7 +27,6 @@ modes:
     - input_boolean.facial_recognition_mode
 
 notifications:
-  view: yes
   name: Notifications
   icon: mdi:bell
   entities:
@@ -46,7 +43,6 @@ notifications:
 # Seasonal
 #---------
 christmas_lights:
-  view: yes
   name: Christmas Lights
   icon: mdi:pine-tree
   entities:
@@ -61,7 +57,6 @@ christmas_lights:
 # Other
 #---------
 packages:
-  view: yes
   name: Packages Arriving
   icon: mdi:package
   entities:
@@ -70,7 +65,6 @@ packages:
 #    - sensor.fedex
 
 printer:
-  view: yes
   name: 3D Printer
   icon: mdi:printer-3d
 
@@ -78,7 +72,6 @@ printer:
 # Garage
 #---------
 garage:
-  view: yes
   name: Garage
   icon: mdi:gamepad
   entities:
@@ -86,7 +79,6 @@ garage:
     - cover.left_garage_door
 
 game_room:
-  view: yes
   name: Game Room
   icon: mdi:garage
   entities:
@@ -100,7 +92,6 @@ game_room:
 # Outside
 #---------
 outside:
-  view: yes
   name: Outside
   icon: mdi:tree
   entities:
@@ -108,7 +99,6 @@ outside:
     - group.backoutside
 
 front_outside:
-  view: yes
   name: Front Outside
   icon: mdi:tree
   entities:
@@ -120,26 +110,30 @@ front_outside:
 #    - binary_sensor.front_door_can_motion_switch_motion
 #    - binary_sensor.front_door_can_motion_switch_occupancy
     - switch.front_door_can_motion_switch
+    - switch.front_foyer_wall_lights
 #    - sensor.front_door_can_motion_switch_alarm_level
 #    - sensor.front_door_can_motion_switch_alarm_type
 #    - sensor.front_door_can_motion_switch_burglar
 #    - sensor.front_door_can_motion_switch_sourcenodeid
 #    - sensor.foyer_temperature
 #    - media_player.foyer_ecobee_switch
+    - switch.garage_front_foyer_wall_light_switch
 
 back_outside:
-  view: yes
   name: Outside
   icon: mdi:tree
   entities:
     - light.living_room_spot_lights
+    - switch.living_room_wall_lights
 #    - media_player.living_room_ecobee_switch
+    - switch.garage_back_outside_switch
+    - switch.garage_big_bay_back_switch
+
 
 #---------
 # Basement
 #---------
 basement:
-  view: yes
   name: Basement
   icon: mdi:floor-plan
   entities:
@@ -151,7 +145,6 @@ basement:
     - group.storage_room
 
 guest_bathroom:
-  view: yes
   name: Guest Bathroom
   icon: mdi:toilet
   entities:
@@ -162,7 +155,6 @@ guest_bathroom:
     - switch.guest_bathroom_exhaust_fan
 
 guest_bedroom:
-  view: yes
   name: Guest Bedroom
   icon: mdi:hotel
   entities:
@@ -178,7 +170,6 @@ guest_bedroom:
     - switch.basement_bedroom_closet_main_lights
 
 utility_room:
-  view: yes
   name: Utility Room
   icon: mdi:wrench
   entities:
@@ -194,7 +185,6 @@ utility_room:
 #    - sensor.basement_utility_room_nest_protect_color_status
 
 exercise_room:
-  view: yes
   name: Exercise Room
   icon: mdi:dumbbell
   entities:
@@ -214,7 +204,6 @@ exercise_room:
 #    - media_player.basement_window_echo
 
 family_room:
-  view: yes
   name: Family Room
   icon: mdi:television
   entities:
@@ -230,7 +219,6 @@ family_room:
 #    - sensor.family_room_motion_switch_sourcenodeid
 
 storage_room:
-  view: yes
   name: Stroage room
   icon: mdi:wrench
   entities:
@@ -248,7 +236,6 @@ storage_room:
 # First floor
 #---------
 firstfloor:
-  view: yes
   name: First Floor
   icon: mdi:floor-plan
   entities:
@@ -263,7 +250,6 @@ firstfloor:
     - group.back_foyer
 
 front_foyer:
-  view: yes
   name: Foyer
   icon: mdi:sofa
   entities:
@@ -280,7 +266,6 @@ front_foyer:
 #    - binary_sensor.front_door_camera_sound_detected
 #    - binary_sensor.front_foyer_motion_switch_motion
 #    - binary_sensor.front_foyer_motion_switch_occupancy
-    - switch.front_foyer_wall_lights
 #    - binary_sensor.front_foyer_motion_detected
 #    - sensor.front_foyer_light_level
 #    - sensor.front_foyer_temperature
@@ -309,7 +294,6 @@ front_foyer:
 #    - media_player.foyer_ecobee_switch
 
 living_room:
-  view: yes
   name: Living Room
   icon: mdi:walk
   entities:
@@ -323,7 +307,7 @@ living_room:
 #    - sensor.living_room_temperature
 #    - sensor.fireplace_temperature
 #    - fan.living_room_fan_control_switch_level
-    - switch.living_room_wall_lights
+#    - switch.living_room_wall_lights
 #    - binary_sensor.living_room_motion_detected
 #    - sensor.living_room_light_level
 #    - sensor.living_room_temperature_2
@@ -342,7 +326,6 @@ living_room:
 #    - media_player.living_room_echo_dot
 
 entertainment_room:
-  view: yes
   name: Entertainment Room
   icon: mdi:television
   entities:
@@ -356,7 +339,6 @@ entertainment_room:
 #    - media_player.entertainment_room_ecobee_switch
 
 kitchen:
-  view: yes
   name: Kitchen
   icon: mdi:fridge-outline
   entities:
@@ -385,7 +367,6 @@ kitchen:
 #    - media_player.main_floor_ecobee4
 
 back_foyer:
-  view: yes
   name: Back Foyer
   icon: mdi:walk
   entities:
@@ -405,7 +386,6 @@ back_foyer:
 #    - media_player.back_foyer_ecobee_switch
 
 bathroom:
-  view: yes
   name: Bathroom
   icon: mdi:toilet
   entities:
@@ -419,7 +399,6 @@ bathroom:
 #    - media_player.first_floor_bathroom_ecobee_switch
 
 back_hallway:
-  view: yes
   name: Back Hallway
   icon: mdi:walk
   entities:
@@ -444,7 +423,6 @@ back_hallway:
 #    - sensor.back_hallway_motion_switch_sourcenodeid
 
 laundry_room:
-  view: yes
   name: Laundry room
   icon: mdi:washing-machine
   entities:
@@ -467,7 +445,6 @@ laundry_room:
 #    - media_player.laundry_room_ecobee_switch
 
 office:
-  view: yes
   name: Office
   icon: mdi:desk-lamp
   entities:
@@ -502,7 +479,6 @@ office:
 # Second floor
 #---------
 second_floor:
-  view: yes
   name: Second Floor
   icon: mdi:floor-plan
   entities:
@@ -515,7 +491,6 @@ second_floor:
     - group.kids_bathroom
 
 upstairs_hallway:
-  view: yes
   name: Upstairs Hallway
   icon: mdi:walk
   entities:
@@ -546,7 +521,6 @@ upstairs_hallway:
 #    - sensor.upstairs_hallway_motion_switch_sourcenodeid
 
 master_bedroom:
-  view: yes
   name: Master Bedroom
   icon: mdi:hotel
   entities:
@@ -578,7 +552,6 @@ master_bedroom:
 #    - media_player.upstairs_ecobee4
 
 master_bathroom:
-  view: yes
   name: Master Bathroom
   icon: mdi:shower
   entities:
@@ -596,7 +569,6 @@ master_bathroom:
 #    - media_player.master_bathroom_right_mirror
 
 master_water_closet:
-  view: yes
   name: Master Water Closet
   icon: mdi:toilet
   entities:
@@ -611,7 +583,6 @@ master_water_closet:
 #    - media_player.master_water_closet_ecobee_switch
 
 kid_one_bedroom:
-  view: yes
   name: Kid 1 Bedroom
   icon: mdi:desk-lamp
   entities:
@@ -636,7 +607,6 @@ kid_one_bedroom:
 #    - media_player.kids_bathroom_mirror
 
 kid_two_bedroom:
-  view: yes
   name: Kid 2 Bedroom
   icon: mdi:desk-lamp
   entities:
@@ -662,7 +632,6 @@ kid_two_bedroom:
 #    - media_player.kids_bedroom_two_ecobee_switch
 
 kids_bathroom:
-  view: yes
   name: Kids Bathroom
   icon: mdi:toilet
   entities:

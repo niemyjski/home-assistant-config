@@ -1,0 +1,3 @@
+- platform: illuminance
+  name: Illuminance
+  entity_id: weather.dark_sky
