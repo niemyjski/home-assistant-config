@@ -91,15 +91,15 @@ game_room:
 #---------
 # Outside
 #---------
-outside:
-  name: Outside
+outside_lights:
+  name: Outside Lights
   icon: mdi:tree
   entities:
     - group.frontoutside
     - group.backoutside
 
-front_outside:
-  name: Front Outside
+front_outside_lights:
+  name: Front Outside Lights
   icon: mdi:tree
   entities:
     - switch.front_north_outside_outlets_switch
@@ -119,8 +119,8 @@ front_outside:
 #    - media_player.foyer_ecobee_switch
     - switch.garage_front_foyer_wall_light_switch
 
-back_outside:
-  name: Outside
+back_outside_lights:
+  name: Back Outside Lights
   icon: mdi:tree
   entities:
     - light.living_room_spot_lights
@@ -152,7 +152,7 @@ guest_bathroom:
 #    - binary_sensor.guest_bathroom_motion
 #    - sensor.guest_bathroom_light_level
 #    - sensor.guest_bathroom_temperature_2
-    - switch.guest_bathroom_exhaust_fan
+#    - switch.guest_bathroom_exhaust_fan
 
 guest_bedroom:
   name: Guest Bedroom
@@ -283,7 +283,7 @@ front_foyer:
 #    - sensor.front_foyer_right_closet_motion_switch_sourcenodeid
 #    - binary_sensor.front_door_can_motion_switch_motion
 #    - binary_sensor.front_door_can_motion_switch_occupancy
-    - switch.front_door_can_motion_switch
+#    - switch.front_door_can_motion_switch
 #    - sensor.front_door_can_motion_switch_alarm_level
 #    - sensor.front_door_can_motion_switch_alarm_type
 #    - sensor.front_door_can_motion_switch_burglar
@@ -311,7 +311,6 @@ living_room:
 #    - binary_sensor.living_room_motion_detected
 #    - sensor.living_room_light_level
 #    - sensor.living_room_temperature_2
-    - light.living_room_spot_lights
     - light.living_room_main_lights_inner
     - light.living_room_main_lights_outter
     - light.living_room_table_dimmer_level
@@ -393,7 +392,7 @@ bathroom:
     - switch.first_floor_bathroom
 #    - sensor.first_floor_bathroom_light_level
 #    - sensor.first_floor_bathroom_temperature_2
-    - switch.first_floor_bathroom_exhaust_fan
+#    - switch.first_floor_bathroom_exhaust_fan
 #    - binary_sensor.first_floor_bathroom_occupancy
 #    - sensor.first_floor_bathroom_temperature
 #    - media_player.first_floor_bathroom_ecobee_switch
@@ -640,7 +639,7 @@ kids_bathroom:
 #    - sensor.kids_bathroom_light_level
 #    - sensor.kids_bathroom_temperature_2
     - light.kids_bathroom_tub_lights
-    - switch.kids_bathroom_exhaust_fan
+#    - switch.kids_bathroom_exhaust_fan
 #    - binary_sensor.kids_bathroom_occupancy
 #    - sensor.kids_bathroom_temperature
 #    - media_player.kids_bathroom_ecobee_switch

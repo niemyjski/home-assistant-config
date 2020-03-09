@@ -38,10 +38,6 @@ automation_inside_lock_doors_on_garage_door_close:
   name: Automation - Automatically Lock doors Garage Door Close
   icon: mdi:lock
 
-automation_inside_unlock_doors_on_garage_door_open:
-  name: Automation - Automatically Unlock doors Garage Door Open
-  icon: mdi:lock
-
 automation_inside_lights_on_garage_door_activity:
   name: Automation - Turn On/Off Inside Lights on Garage Door Activity
   icon: mdi:lightbulb-on

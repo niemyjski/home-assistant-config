@@ -1,2 +1,2 @@
-usb_path: /dev/ttyACM0
+usb_path: !secret zwave_usb_path
 network_key: !secret zwave_network_key
