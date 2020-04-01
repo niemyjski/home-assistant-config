@@ -4,3 +4,6 @@ controllers:
     ssid_filter:
       - !secret unifi_ssid_filter_one
       - !secret unifi_ssid_filter_two
+    dont_track_wired_clients: true
+    dont_track_devices: true
+    

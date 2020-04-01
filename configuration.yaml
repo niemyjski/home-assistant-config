@@ -31,7 +31,6 @@ frontend: !include config/frontend.yaml
 group: !include config/group.yaml
 hacs: !include config/hacs.yaml
 http: !include config/http.yaml
-homeconnect: !include config/homeconnect.yaml
 hue: !include config/hue.yaml
 ifttt: !include config/ifttt.yaml
 image_processing: !include config/image_processing.yaml
@@ -50,7 +49,7 @@ nest: !include config/nest.yaml
 notify: !include config/notify.yaml
 nuheat: !include config/nuheat.yaml
 #octoprint: !include config/octoprint.yaml
-panel_custom: !include config/panel_custom.yaml
+panel_iframe: !include config/panel_iframe.yaml
 recorder: !include config/recorder.yaml
 scene: !include_dir_list config/scene/
 script: !include_dir_merge_named config/script/
@@ -70,4 +69,4 @@ webostv: !include config/webostv.yaml
 wemo: !include config/wemo.yaml
 wwlln:
 zone: !include config/zones.yaml
-zwave: !include config/zwave.yaml
+#zwave: !include config/zwave.yaml

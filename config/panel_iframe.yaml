@@ -1,0 +1,4 @@
+zwave2mqtt:
+  title: Z-Wave to MQTT
+  icon: "mdi:z-wave"
+  url: !secret zwave_panel_url

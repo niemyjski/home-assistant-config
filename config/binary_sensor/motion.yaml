@@ -1,181 +1,113 @@
 - platform: template
   sensors:
-    exercise_room_motion_switch_motion:
+    back_hallway_motion:
       device_class: motion
-      entity_id: sensor.exercise_room_motion_switch_burglar
-      friendly_name: 'Exercise Room Motion'
-      value_template: "{{ is_state('sensor.exercise_room_motion_switch_burglar', '8') }}"
-
-    exercise_room_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.exercise_room_motion_switch_burglar
-      friendly_name: 'Exercise Room Occupancy'
-      value_template: "{{ is_state('sensor.exercise_room_motion_switch_burglar', '8') }}"
-
-    family_room_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.family_room_motion_switch_burglar
-      friendly_name: 'Family Room Motion'
-      value_template: "{{ is_state('sensor.family_room_motion_switch_burglar', '8') }}"
-
-    family_room_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.family_room_motion_switch_burglar
-      friendly_name: 'Family Room Occupancy'
-      value_template: "{{ is_state('sensor.family_room_motion_switch_burglar', '8') }}"
-
-    storage_room_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.storage_room_motion_switch_burglar
-      friendly_name: 'Storage Room Motion'
-      value_template: "{{ is_state('sensor.storage_room_motion_switch_burglar', '8') }}"
-
-    storage_room_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.storage_room_motion_switch_burglar
-      friendly_name: 'Storage Room Occupancy'
-      value_template: "{{ is_state('sensor.storage_room_motion_switch_burglar', '8') }}"
-
-    back_hallway_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.back_hallway_motion_switch_burglar
+      entity_id: sensor.back_hallway_motion_light_alarm_home_security
       friendly_name: 'Back Hallway Motion'
-      value_template: "{{ is_state('sensor.back_hallway_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.back_hallway_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.back_hallway_motion_light_alarm_home_security else False }}"
 
-    back_hallway_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.back_hallway_motion_switch_burglar
-      friendly_name: 'Back Hallway Occupancy'
-      value_template: "{{ is_state('sensor.back_hallway_motion_switch_burglar', '8') }}"
-
-    front_door_can_motion_switch_motion:
+    exercise_room_motion:
       device_class: motion
-      entity_id: sensor.front_door_can_motion_switch_burglar
+      entity_id: sensor.exercise_room_motion_light_alarm_home_security
+      friendly_name: 'Exercise Room Motion'
+      value_template: "{{ states('sensor.exercise_room_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.exercise_room_motion_light_alarm_home_security else False }}"
+
+    family_room_motion:
+      device_class: motion
+      entity_id: sensor.family_room_motion_light_alarm_home_security
+      friendly_name: 'Family Room Motion'
+      value_template: "{{ states('sensor.family_room_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.family_room_motion_light_alarm_home_security else False }}"
+
+    front_door_motion:
+      device_class: motion
+      entity_id: sensor.front_door_can_motion_light_alarm_home_security
       friendly_name: 'Front Door Can Motion'
-      value_template: "{{ is_state('sensor.front_door_can_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.front_door_can_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.front_door_can_motion_light_alarm_home_security else False }}"
 
-    front_door_can_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.front_door_can_motion_switch_burglar
-      friendly_name: 'Front Door Can Occupancy'
-      value_template: "{{ is_state('sensor.front_door_can_motion_switch_burglar', '8') }}"
-
-    front_foyer_motion_switch_motion:
+    front_foyer_motion:
       device_class: motion
-      entity_id: sensor.front_foyer_motion_switch_burglar
+      entity_id: sensor.front_foyer_motion_light_alarm_home_security
       friendly_name: 'Front Foyer Motion'
-      value_template: "{{ is_state('sensor.front_foyer_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.front_foyer_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.front_foyer_motion_light_alarm_home_security else False }}"
 
-    front_foyer_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.front_foyer_motion_switch_burglar
-      friendly_name: 'Front Foyer Occupancy'
-      value_template: "{{ is_state('sensor.front_foyer_motion_switch_burglar', '8') }}"
-
-    front_foyer_right_closet_motion_switch_motion:
+    front_foyer_right_closet_motion:
       device_class: motion
-      entity_id: sensor.front_foyer_right_closet_motion_switch_burglar
+      entity_id: sensor.front_foyer_right_closet_motion_light_alarm_home_security
       friendly_name: 'Front Foyer Right Closet Motion'
-      value_template: "{{ is_state('sensor.front_foyer_right_closet_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.front_foyer_right_closet_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.front_foyer_right_closet_motion_light_alarm_home_security else False }}"
 
-    front_foyer_right_closet_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.front_foyer_right_closet_motion_switch_burglar
-      friendly_name: 'Front Foyer Right Closet Occupancy'
-      value_template: "{{ is_state('sensor.front_foyer_right_closet_motion_switch_burglar', '8') }}"
-
-    kitchen_main_lights_motion_switch_motion:
+    game_room_accent_motion:
       device_class: motion
-      entity_id: sensor.kitchen_main_lights_motion_switch_burglar
-      friendly_name: 'Kitchen Main Lights Motion'
-      value_template: "{{ is_state('sensor.kitchen_main_lights_motion_switch_burglar', '8') }}"
+      entity_id: sensor.game_room_accent_motion_light_alarm_home_security
+      friendly_name: 'Game Room Accent Motion'
+      value_template: "{{ states('sensor.game_room_accent_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.game_room_accent_motion_light_alarm_home_security else False }}"
 
-    kitchen_main_lights_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.kitchen_main_lights_motion_switch_burglar
-      friendly_name: 'Kitchen Main Lights Occupancy'
-      value_template: "{{ is_state('sensor.kitchen_main_lights_motion_switch_burglar', '8') }}"
-
-    kitchen_sink_lights_motion_switch_motion:
+    game_room_poker_table_motion:
       device_class: motion
-      entity_id: sensor.kitchen_sink_lights_motion_dimmer_burglar
-      friendly_name: 'Kitchen Sink Lights Motion'
-      value_template: "{{ is_state('sensor.kitchen_sink_lights_motion_dimmer_burglar', '8') }}"
-
-    kitchen_sink_lights_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.kitchen_sink_lights_motion_dimmer_burglar
-      friendly_name: 'Kitchen Sink Lights Occupancy'
-      value_template: "{{ is_state('sensor.kitchen_sink_lights_motion_dimmer_burglar', '8') }}"
-
-    master_bedroom_closet_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.master_bedroom_closet_motion_dimmer_burglar
-      friendly_name: 'Master Bedroom Closet Motion'
-      value_template: "{{ is_state('sensor.master_bedroom_closet_motion_dimmer_burglar', '8') }}"
-
-    master_bedroom_closet_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.master_bedroom_closet_motion_dimmer_burglar
-      friendly_name: 'Master Bedroom Closet Occupancy'
-      value_template: "{{ is_state('sensor.master_bedroom_closet_motion_dimmer_burglar', '8') }}"
-
-    upstairs_hallway_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.upstairs_hallway_motion_switch_burglar
-      friendly_name: 'Upstairs Hallway Motion'
-      value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
-
-    upstairs_hallway_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.upstairs_hallway_motion_switch_burglar
-      friendly_name: 'Upstairs Hallway Occupancy'
-      value_template: "{{ is_state('sensor.upstairs_hallway_motion_switch_burglar', '8') }}"
-
-    garage_foyer_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.garage_foyer_motion_switch_burglar
-      friendly_name: 'Garage Foyer Motion'
-      value_template: "{{ is_state('sensor.garage_foyer_motion_switch_burglar', '8') }}"
-
-    garage_foyer_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.garage_foyer_motion_switch_burglar
-      friendly_name: 'Garage Foyer Occupancy'
-      value_template: "{{ is_state('sensor.garage_foyer_motion_switch_burglar', '8') }}"
-
-    garage_small_bay_bench_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.garage_small_bay_bench_motion_switch_burglar
-      friendly_name: 'Garage Small Bay Bench Motion'
-      value_template: "{{ is_state('sensor.garage_small_bay_bench_motion_switch_burglar', '8') }}"
-
-    garage_small_bay_bench_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.garage_small_bay_bench_motion_switch_burglar
-      friendly_name: 'Garage Small Bay Bench Occupancy'
-      value_template: "{{ is_state('sensor.garage_small_bay_bench_motion_switch_burglar', '8') }}"
-
-    game_room_poker_table_motion_switch_motion:
-      device_class: motion
-      entity_id: sensor.game_room_poker_table_motion_switch_burglar
+      entity_id: sensor.game_room_poker_table_motion_light_alarm_home_security
       friendly_name: 'Game Room Poker Table Motion'
-      value_template: "{{ is_state('sensor.game_room_poker_table_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.game_room_poker_table_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.game_room_poker_table_motion_light_alarm_home_security else False }}"
 
-    game_room_poker_table_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.game_room_poker_table_motion_switch_burglar
-      friendly_name: 'Game Room Poker Table Occupancy'
-      value_template: "{{ is_state('sensor.game_room_poker_table_motion_switch_burglar', '8') }}"
-
-    game_room_stairs_motion_switch_motion:
+    game_room_stairs_motion:
       device_class: motion
-      entity_id: sensor.game_room_stairs_motion_switch_burglar
+      entity_id: sensor.game_room_stairs_motion_light_alarm_home_security
       friendly_name: 'Game Room Stairs Motion'
-      value_template: "{{ is_state('sensor.game_room_stairs_motion_switch_burglar', '8') }}"
+      value_template: "{{ states('sensor.game_room_stairs_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.game_room_stairs_motion_light_alarm_home_security else False }}"
 
-    game_room_stairs_motion_switch_occupancy:
-      device_class: occupancy
-      entity_id: sensor.game_room_stairs_motion_switch_burglar
-      friendly_name: 'Game Room Stairs Occupancy'
-      value_template: "{{ is_state('sensor.game_room_stairs_motion_switch_burglar', '8') }}"
+    garage_foyer_motion:
+      device_class: motion
+      entity_id: sensor.garage_foyer_motion_light_alarm_home_security
+      friendly_name: 'Garage Foyer Motion'
+      value_template: "{{ states('sensor.garage_foyer_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.garage_foyer_motion_light_alarm_home_security else False }}"
+
+    garage_small_bay_bench_motion:
+      device_class: motion
+      entity_id: sensor.garage_small_bay_bench_motion_light_alarm_home_security
+      friendly_name: 'Garage Small Bay Bench Motion'
+      value_template: "{{ states('sensor.garage_small_bay_bench_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.garage_small_bay_bench_motion_light_alarm_home_security else False }}"
+
+    kitchen_main_motion:
+      device_class: motion
+      entity_id: sensor.kitchen_main_motion_light_alarm_home_security
+      friendly_name: 'Kitchen Main Motion'
+      value_template: "{{ states('sensor.kitchen_main_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.kitchen_main_motion_light_alarm_home_security else False }}"
+
+    kitchen_sink_motion:
+      device_class: motion
+      entity_id: sensor.kitchen_sink_motion_light_alarm_home_security
+      friendly_name: 'Kitchen Sink Motion'
+      value_template: "{{ states('sensor.kitchen_sink_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.kitchen_sink_motion_light_alarm_home_security else False }}"
+
+    master_bedroom_closet_motion:
+      device_class: motion
+      entity_id: sensor.master_bedroom_closet_motion_light_alarm_home_security
+      friendly_name: 'Master Bedroom Closet Motion'
+      value_template: "{{ states('sensor.master_bedroom_closet_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.master_bedroom_closet_motion_light_alarm_home_security else False }}"
+
+    storage_room_motion:
+      device_class: motion
+      entity_id: sensor.storage_room_motion_light_alarm_home_security
+      friendly_name: 'Storage Room Motion'
+      value_template: "{{ states('sensor.storage_room_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.storage_room_motion_light_alarm_home_security else False }}"
+
+    upstairs_hallway_motion:
+      device_class: motion
+      entity_id: sensor.upstairs_hallway_motion_light_alarm_home_security
+      friendly_name: 'Upstairs Hallway Motion'
+      value_template: "{{ states('sensor.upstairs_hallway_motion_light_alarm_home_security').lower().startswith('motion detected') }}"
+      availability_template: "{{ True if sensor.upstairs_hallway_motion_light_alarm_home_security else False }}"
