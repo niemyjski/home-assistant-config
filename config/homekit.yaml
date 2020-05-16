@@ -1,0 +1,9 @@
+filter:
+  include_domains:
+    - alarm_control_panel
+    - camera
+    - cover
+    - light
+    - lock
+    - scene
+    - vaccum

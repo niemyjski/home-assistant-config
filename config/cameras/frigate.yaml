@@ -1,0 +1,47 @@
+- platform: mqtt
+  name: Living Room Last Cat
+  topic: frigate/living_room/cat/snapshot
+- platform: mqtt
+  name: Living Room Last Person
+  topic: frigate/living_room/person/snapshot
+
+- platform: mqtt
+  name: Storage Room Last Cat
+  topic: frigate/storage_room/cat/snapshot
+- platform: mqtt
+  name: Storage Room Last Mouse
+  topic: frigate/storage_room/mouse/snapshot
+- platform: mqtt
+  name: Storage Room Last Person
+  topic: frigate/storage_room/person/snapshot
+
+#- platform: mqtt
+#  name: Front Door Last Cat
+#  topic: frigate/front_door/cat/snapshot
+#- platform: mqtt
+#  name: Front Door Last Mouse
+#  topic: frigate/front_door/mouse/snapshot
+#- platform: mqtt
+#  name: Front Door Last Person
+#  topic: frigate/front_door/person/snapshot
+#- platform: mqtt
+#  name: Front Door Last Bicycle
+#  topic: frigate/front_door/bicycle/snapshot
+#- platform: mqtt
+#  name: Front Door Last Motorcycle
+#  topic: frigate/front_door/motorcycle/snapshot
+#- platform: mqtt
+#  name: Front Door Last Car
+#  topic: frigate/front_door/car/snapshot
+#- platform: mqtt
+#  name: Front Door Last Truck
+#  topic: frigate/front_door/truck/snapshot
+#- platform: mqtt
+#  name: Front Door Last Bus
+#  topic: frigate/front_door/bus/snapshot
+#- platform: mqtt
+#  name: Front Door Last Bird
+#  topic: frigate/front_door/bird/snapshot
+#- platform: mqtt
+#  name: Front Door Last Dog
+#  topic: frigate/front_door/dog/snapshot

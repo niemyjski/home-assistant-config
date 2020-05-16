@@ -8,6 +8,8 @@
 #      name: family_living_room
 #    - entity_id: camera.storage_room
 #      name: family_storage_room
+#    - entity_id: camera.garage_door
+#      name: family_garage_door
 #    - entity_id: camera.game_room
 #      name: family_game_room
 #- platform: microsoft_face_identify
@@ -20,6 +22,8 @@
 #      name: friends_living_room
 #    - entity_id: camera.storage_room
 #      name: friends_storage_room
+#    - entity_id: camera.garage_door
+#      name: friends_garage_door
 #    - entity_id: camera.game_room
 #      name: friends_game_room
 - platform: microsoft_face_detect
@@ -35,5 +39,7 @@
       name: detect_camera_living_room
     - entity_id: camera.storage_room
       name: detect_camera_storage_room
+    - entity_id: camera.garage_door
+      name: detect_camera_garage_door
     - entity_id: camera.game_room
       name: detect_camera_game_room
