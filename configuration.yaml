@@ -1,68 +1,46 @@
-homeassistant:
-  name: Home
-
-  latitude: !secret latitude
-  longitude: !secret longitude
-  elevation: !secret elevation
-
-  time_zone: !secret time_zone
-  unit_system: imperial
-
 # Base configuration
 default_config:
 hassio:
 
 # Includes
-alexa_media: !include config/alexa_media.yaml
+automation: !include automations.yaml
 amcrest: !include config/amcrest.yaml
-august: !include config/august.yaml
 auto_backup: !include config/auto_backup.yaml
 binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
 browser_mod:
 camera: !include_dir_merge_list config/cameras/
 cover: !include_dir_list config/covers/
-ecobee: !include config/ecobee.yaml
 frontend: !include config/frontend.yaml
 group: !include config/group.yaml
 hacs: !include config/hacs.yaml
 homekit: !include config/homekit.yaml
 http: !include config/http.yaml
-hue: !include config/hue.yaml
-ifttt: !include config/ifttt.yaml
 image_processing: !include config/image_processing.yaml
 influxdb: !include config/influxdb.yaml
 input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
-icloud: !include config/icloud.yaml
 ios: !include config/ios.yaml
-#iqvia: !include config/iqvia.yaml
 kohler: !include config/kohler.yaml
 logger: !include config/logger.yaml
 lutron_caseta: !include config/lutron_caseta.yaml
 microsoft_face: !include config/microsoft_face.yaml
-mqtt: !include config/mqtt.yaml
 nest: !include config/nest.yaml
 notify: !include config/notify.yaml
-nuheat: !include config/nuheat.yaml
 octoprint: !include config/octoprint.yaml
 panel_iframe: !include config/panel_iframe.yaml
 recorder: !include config/recorder.yaml
-scene: !include_dir_list config/scene/
-script: !include_dir_merge_named config/script/
+scene: !include scenes.yaml
+script: !include scripts.yaml
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
 speedtestdotnet: !include config/speedtestdotnet.yaml
 spotify: !include config/spotify.yaml
 stream:
-tesla: !include config/tesla.yaml
 tts: !include config/tts.yaml
 unifiprotect: !include config/unifiprotect.yaml
-#usps: !include config/usps.yaml
 vacuum: !include config/vacuum.yaml
 wake_on_lan:
 weather: !include config/weather.yaml
 webostv: !include config/webostv.yaml
-wemo: !include config/wemo.yaml
 wwlln:
-zone: !include config/zones.yaml

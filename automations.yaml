@@ -1,0 +1,30 @@
+- id: '1589625805641'
+  alias: Call Service from IFTTT Incoming Webhook
+  trigger:
+    platform: event
+    event_type: ifttt_webhook_received
+    event_data:
+      action: call_service
+  action:
+    service_template: '{{ trigger.event.data.service }}'
+    data_template:
+      entity_id: '{{ trigger.event.data.entity_id }}'
+- id: '1589626031994'
+  alias: Perform Daily Backup
+  trigger:
+    platform: time
+    at: "02:30:00"
+  condition:
+    condition: time # Perform backup every day except Mondays.
+    weekday:
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+      - sun
+  action:
+    service: auto_backup.snapshot_full
+    data_template:
+      name: "DailyBackup: {{ now().strftime('%A, %B %-d, %Y') }}"
+      keep_days: 7
