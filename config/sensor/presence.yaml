@@ -1,12 +1,13 @@
-
 - platform: template
   sensors:
     guest_count:
       friendly_name: Guest Count
+      entity_id: sensor.time
       value_template: >-
         {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('state', 'ne', 'not_home') | list | count }}
     
     guest_names:
       friendly_name: Guest Names
+      entity_id: sensor.time
       value_template: >-
         {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('state', 'ne', 'not_home') | map(attribute='name') | list }}

@@ -9,22 +9,35 @@
     service_template: '{{ trigger.event.data.service }}'
     data_template:
       entity_id: '{{ trigger.event.data.entity_id }}'
+
 - id: '1589626031994'
   alias: Perform Daily Backup
   trigger:
     platform: time
-    at: "02:30:00"
+    at: 00:00:00
   condition:
-    condition: time # Perform backup every day except Mondays.
+    condition: time
     weekday:
-      - tue
-      - wed
-      - thu
-      - fri
-      - sat
-      - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    - sun
   action:
     service: auto_backup.snapshot_full
     data_template:
-      name: "DailyBackup: {{ now().strftime('%A, %B %-d, %Y') }}"
+      name: 'DailyBackup: {{ now().strftime(''%A, %B %-d, %Y'') }}'
       keep_days: 7
+
+- id: '1590333653446'
+  alias: Notify Snapshot Failure
+  trigger:
+    platform: event
+    event_type: auto_backup.snapshot_failed
+  action:
+    service: persistent_notification.create
+    data_template:
+      title: "Snapshot Failed."
+      message: "Name: {{ trigger.event.data.name }}\nError: {{ trigger.event.data.error }}"

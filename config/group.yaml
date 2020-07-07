@@ -9,7 +9,7 @@ christmas_lights:
     - switch.living_room_west_outlets_switch
     - switch.living_room_top_mantle_receptacle
     - switch.entertainment_room_receptacle
-    - switch.living_room_wemo
+#    - switch.living_room_wemo
     - switch.outside_outlet_switch
 
 #---------
@@ -153,7 +153,7 @@ living_room:
   entities:
     - light.living_room_main_lights_inner
     - light.living_room_main_lights_outter
-    - light.living_room_table_light
+    - light.living_room_table
 #    - switch.living_room_top_mantle_receptacle
 #    - switch.living_room_bottom_mantle_receptacle
     - switch.living_room_top_wet_bar_light

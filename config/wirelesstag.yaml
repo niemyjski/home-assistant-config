@@ -1,0 +1,2 @@
+username: !secret wirelesstag_username
+password: !secret wirelesstag_password

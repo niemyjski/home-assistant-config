@@ -1,0 +1,13 @@
+- platform: wirelesstag
+  monitored_conditions:
+    - presence
+    - motion
+    - door
+    - cold
+    - heat
+    - dry
+    - wet
+    - light
+    - moisture
+    - presence
+    - battery

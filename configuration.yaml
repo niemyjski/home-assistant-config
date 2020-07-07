@@ -3,8 +3,9 @@ default_config:
 hassio:
 
 # Includes
-automation: !include automations.yaml
+alarm_control_panel: !include config/alarm_control_panel.yaml
 amcrest: !include config/amcrest.yaml
+automation: !include automations.yaml
 auto_backup: !include config/auto_backup.yaml
 binary_sensor: !include_dir_merge_list config/binary_sensor/
 bond: !include config/bond.yaml
@@ -14,6 +15,7 @@ cover: !include_dir_list config/covers/
 frontend: !include config/frontend.yaml
 group: !include config/group.yaml
 hacs: !include config/hacs.yaml
+homeassistant: !include config/homeassistant.yaml
 homekit: !include config/homekit.yaml
 http: !include config/http.yaml
 image_processing: !include config/image_processing.yaml
@@ -34,13 +36,11 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
-speedtestdotnet: !include config/speedtestdotnet.yaml
 spotify: !include config/spotify.yaml
 stream:
 tts: !include config/tts.yaml
-unifiprotect: !include config/unifiprotect.yaml
 vacuum: !include config/vacuum.yaml
 wake_on_lan:
 weather: !include config/weather.yaml
 webostv: !include config/webostv.yaml
-wwlln:
+wirelesstag: !include config/wirelesstag.yaml

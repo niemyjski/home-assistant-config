@@ -1,0 +1,15 @@
+- platform: manual
+  name: Home Alarm
+  delay_time: 30 # Time to disarm the alarm
+  trigger_time: 3600 # Amount of time the siren is running for
+  disarmed:
+    trigger_time: 0
+    delay_time: 0
+  armed_home:
+    arming_time: 0
+    delay_time: 0
+    trigger_time: 10
+  armed_night:
+    arming_time: 0
+    delay_time: 0
+    trigger_time: 10
