@@ -36,6 +36,7 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
+smartweather: !include config/smartweather.yaml
 spotify: !include config/spotify.yaml
 stream:
 tts: !include config/tts.yaml
