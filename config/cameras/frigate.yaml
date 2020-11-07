@@ -15,33 +15,64 @@
   name: Storage Room Last Person
   topic: frigate/storage_room/person/snapshot
 
-#- platform: mqtt
-#  name: Front Door Last Cat
-#  topic: frigate/front_door/cat/snapshot
-#- platform: mqtt
-#  name: Front Door Last Mouse
-#  topic: frigate/front_door/mouse/snapshot
-#- platform: mqtt
-#  name: Front Door Last Person
-#  topic: frigate/front_door/person/snapshot
-#- platform: mqtt
-#  name: Front Door Last Bicycle
-#  topic: frigate/front_door/bicycle/snapshot
-#- platform: mqtt
-#  name: Front Door Last Motorcycle
-#  topic: frigate/front_door/motorcycle/snapshot
-#- platform: mqtt
-#  name: Front Door Last Car
-#  topic: frigate/front_door/car/snapshot
-#- platform: mqtt
-#  name: Front Door Last Truck
-#  topic: frigate/front_door/truck/snapshot
-#- platform: mqtt
-#  name: Front Door Last Bus
-#  topic: frigate/front_door/bus/snapshot
-#- platform: mqtt
-#  name: Front Door Last Bird
-#  topic: frigate/front_door/bird/snapshot
-#- platform: mqtt
-#  name: Front Door Last Dog
-#  topic: frigate/front_door/dog/snapshot
+- platform: mqtt
+  name: Front Door Last Cat
+  topic: frigate/front_door/cat/snapshot
+- platform: mqtt
+  name: Front Door Last Mouse
+  topic: frigate/front_door/mouse/snapshot
+- platform: mqtt
+  name: Front Door Last Person
+  topic: frigate/front_door/person/snapshot
+- platform: mqtt
+  name: Front Door Last Bicycle
+  topic: frigate/front_door/bicycle/snapshot
+- platform: mqtt
+  name: Front Door Last Motorcycle
+  topic: frigate/front_door/motorcycle/snapshot
+- platform: mqtt
+  name: Front Door Last Car
+  topic: frigate/front_door/car/snapshot
+- platform: mqtt
+  name: Front Door Last Truck
+  topic: frigate/front_door/truck/snapshot
+- platform: mqtt
+  name: Front Door Last Bus
+  topic: frigate/front_door/bus/snapshot
+- platform: mqtt
+  name: Front Door Last Bird
+  topic: frigate/front_door/bird/snapshot
+- platform: mqtt
+  name: Front Door Last Dog
+  topic: frigate/front_door/dog/snapshot
+
+- platform: mqtt
+  name: Garage Small Bay Last Cat
+  topic: frigate/garage_small_bay/cat/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Mouse
+  topic: frigate/garage_small_bay/mouse/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Person
+  topic: frigate/garage_small_bay/person/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Bicycle
+  topic: frigate/garage_small_bay/bicycle/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Motorcycle
+  topic: frigate/garage_small_bay/motorcycle/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Car
+  topic: frigate/garage_small_bay/car/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Truck
+  topic: frigate/garage_small_bay/truck/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Bus
+  topic: frigate/garage_small_bay/bus/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Bird
+  topic: frigate/garage_small_bay/bird/snapshot
+- platform: mqtt
+  name: Garage Small Bay Last Dog
+  topic: frigate/garage_small_bay/dog/snapshot

@@ -8,7 +8,6 @@ amcrest: !include config/amcrest.yaml
 automation: !include automations.yaml
 auto_backup: !include config/auto_backup.yaml
 binary_sensor: !include_dir_merge_list config/binary_sensor/
-bond: !include config/bond.yaml
 browser_mod:
 camera: !include_dir_merge_list config/cameras/
 cover: !include_dir_list config/covers/
@@ -36,7 +35,6 @@ scene: !include scenes.yaml
 script: !include scripts.yaml
 sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
-smartweather: !include config/smartweather.yaml
 spotify: !include config/spotify.yaml
 stream:
 tts: !include config/tts.yaml

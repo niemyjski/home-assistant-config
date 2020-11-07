@@ -1,2 +1,0 @@
-host: !secret bond_host
-token: !secret bond_token

@@ -1,1 +1,6 @@
-- platform: smartweather
+- platform: filter
+  name: "Illuminance"
+  entity_id: sensor.smartweather_illuminance
+  filters:
+    - filter: time_simple_moving_average
+      window_size: "00:30"

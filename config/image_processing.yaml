@@ -41,5 +41,7 @@
       name: detect_camera_storage_room
     - entity_id: camera.garage_door
       name: detect_camera_garage_door
+    - entity_id: camera.garage_small_bay
+      name: detect_camera_garage_small_bay
     - entity_id: camera.game_room
       name: detect_camera_game_room

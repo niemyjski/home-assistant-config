@@ -2,25 +2,31 @@
 - platform: template
   sensors:
     front_door_locked:
+      unique_id: front_door_locked
       device_class: lock
-      entity_id: lock.front_door
       friendly_name: 'Front Door Locked'
       value_template: "{{ is_state('lock.front_door', 'unlocked') }}"
 
     back_foyer_door_locked:
+      unique_id: back_foyer_door_locked
       device_class: lock
-      entity_id: lock.back_foyer_door
       friendly_name: 'Back Foyer Door Locked'
       value_template: "{{ is_state('lock.back_foyer_door', 'unlocked') }}"
 
     exercise_room_door_locked:
+      unique_id: exercise_room_door_locked
       device_class: lock
-      entity_id: lock.exersize_room_door
       friendly_name: 'Exercise Room Door Locked'
       value_template: "{{ is_state('lock.exersize_room_door', 'unlocked') }}"
 
     garage_door_locked:
+      unique_id: garage_door_locked
       device_class: lock
-      entity_id: lock.garage_door
       friendly_name: 'Garage Door Locked'
       value_template: "{{ is_state('lock.garage_door', 'unlocked') }}"
+    
+    garage_side_door_locked:
+      unique_id: garage_side_door_locked
+      device_class: lock
+      friendly_name: 'Garage Door Locked'
+      value_template: "{{ is_state('lock.garage_side_door', 'unlocked') }}"

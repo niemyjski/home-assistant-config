@@ -1,4 +1,2 @@
 - platform: darksky
   api_key: !secret darksky_key
-- platform: smartweather
-  api_key: !secret darksky_key

@@ -1,0 +1,6 @@
+- platform: template
+  sensors:
+    entertainment_room_tv_volume_level:
+      value_template: "{{ state_attr('media_player.entertainment_room_tv', 'volume_level') | float }}"
+    entertainment_room_tv_source:
+      value_template: "{{ state_attr('media_player.entertainment_room_tv', 'source') }}"

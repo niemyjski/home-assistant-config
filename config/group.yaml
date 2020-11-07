@@ -46,12 +46,18 @@ game_room:
 #---------
 # Outside
 #---------
+outside:
+  name: Outside
+  icon: mdi:tree
+  entities:
+    - group.outside_lights
+
 outside_lights:
   name: Outside Lights
   icon: mdi:tree
   entities:
-    - group.frontoutside
-    - group.backoutside
+    - group.front_outside_lights
+    - group.back_outside_lights
 
 front_outside_lights:
   name: Front Outside Lights
@@ -59,6 +65,13 @@ front_outside_lights:
   entities:
     - switch.front_door_north_outside_receptacle
     - switch.front_door_can_motion_light
+    - switch.front_foyer_wall_lights
+    - switch.garage_front_outside_wall_light
+
+front_outside_wall_lights:
+  name: Front Outside Wall Lights
+  icon: mdi:tree
+  entities:
     - switch.front_foyer_wall_lights
     - switch.garage_front_outside_wall_light
 
@@ -207,7 +220,7 @@ office:
   name: Office
   icon: mdi:desk-lamp
   entities:
-    - light.office_hue_lightstrip_plus
+    - light.office_lightstrip
     - switch.office_closet_main_lights
     - switch.office_switch
     - switch.office_wemo

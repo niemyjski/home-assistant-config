@@ -1,2 +1,0 @@
-station_id: !secret smartweather_station_id
-api_key: !secret smartweather_api_key

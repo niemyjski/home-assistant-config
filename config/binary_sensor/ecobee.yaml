@@ -1,7 +1,7 @@
 - platform: template
   sensors:
     climate_basement_fan:
-      entity_id: climate.basement
+      unique_id: climate_basement_fan
       friendly_name: Climate Basement Fan
       value_template: "{{ state_attr('climate.basement', 'fan') == 'on' }}"
       icon_template: >-
@@ -11,7 +11,7 @@
           mdi:fan-off
         {%- endif -%}
     climate_main_floor_fan:
-      entity_id: climate.main_floor
+      unique_id: climate_main_floor_fan
       friendly_name: Climate Main Floor Fan
       value_template: "{{ state_attr('climate.main_floor', 'fan') == 'on' }}"
       icon_template: >-
@@ -21,7 +21,7 @@
           mdi:fan-off
         {%- endif -%}
     climate_office_fan:
-      entity_id: climate.office
+      unique_id: climate_office_fan
       friendly_name: Climate Office Fan
       value_template: "{{ state_attr('climate.office', 'fan') == 'on' }}"
       icon_template: >-
@@ -31,7 +31,7 @@
           mdi:fan-off
         {%- endif -%}
     climate_upstairs_fan:
-      entity_id: climate.upstairs
+      unique_id: climate_upstairs_fan
       friendly_name: Climate Upstairs Fan
       value_template: "{{ state_attr('climate.upstairs', 'fan') == 'on' }}"
       icon_template: >-
@@ -41,11 +41,7 @@
           mdi:fan-off
         {%- endif -%}
     climate_house_fan:
-      entity_id: 
-        - binary_sensor.climate_basement_fan
-        - binary_sensor.climate_main_floor_fan
-        - binary_sensor.climate_office_fan
-        - binary_sensor.climate_upstairs_fan
+      unique_id: climate_house_fan
       friendly_name: Climate House Fan
       value_template: >-
         {{ is_state('binary_sensor.climate_basement_fan', 'on')
@@ -62,32 +58,28 @@
           mdi:fan-off
         {%- endif -%}
     climate_basement_heat:
+      unique_id: climate_basement_heat
       device_class: heat
-      entity_id: climate.basement
       friendly_name: Climate Basement Aux Heat
       value_template: "{{ state_attr('climate.basement', 'aux_heat') == 'on' }}"
     climate_main_floor_heat:
+      unique_id: climate_main_floor_heat
       device_class: heat
-      entity_id: climate.main_floor
       friendly_name: Climate Main Floor Aux Heat
       value_template: "{{ state_attr('climate.main_floor', 'aux_heat') == 'on' }}"
     climate_office_heat:
+      unique_id: climate_office_heat
       device_class: heat
-      entity_id: climate.office
       friendly_name: Climate Office Aux Heat
       value_template: "{{ state_attr('climate.office', 'aux_heat') == 'on' }}"
     climate_upstairs_heat:
+      unique_id: climate_upstairs_heat
       device_class: heat
-      entity_id: climate.upstairs
       friendly_name: Climate Upstairs Aux Heat
       value_template: "{{ state_attr('climate.upstairs', 'aux_heat') == 'on' }}"
     climate_house_heat:
+      unique_id: climate_house_heat
       device_class: heat
-      entity_id: 
-        - binary_sensor.climate_basement_heat
-        - binary_sensor.climate_main_floor_heat
-        - binary_sensor.climate_office_heat
-        - binary_sensor.climate_upstairs_heat
       friendly_name: Climate House Aux Heat
       value_template: >-
         {{ is_state('binary_sensor.climate_basement_heat', 'on')

@@ -24,3 +24,4 @@ customize.yaml
 OZW_Log.txt
 zwave_device_config.yaml
 frigate/config.yaml
+config/homeassistant.yaml

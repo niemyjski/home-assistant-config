@@ -15,12 +15,11 @@
     - wind_speed
     - visibility
   scan_interval:
-    minutes: 5
+    minutes: 15
 
 - platform: template
   sensors:
     dark_sky_alert_text:
-      entity_id: sensor.dark_sky_alerts
       friendly_name: "Weather Alert Text"
       value_template: >-
         {% if is_state("sensor.dark_sky_alerts", "0") %}

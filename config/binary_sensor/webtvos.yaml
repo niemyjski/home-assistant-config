@@ -1,0 +1,7 @@
+- platform: template
+  sensors:
+    entertainment_room_tv_is_volume_muted:
+      unique_id: entertainment_room_tv_is_volume_muted
+      device_class: sound
+      friendly_name: Entertainment Room TV Is Volume Muted
+      value_template: "{{ state_attr('media_player.entertainment_room_tv', 'is_volume_muted') == True }}"

@@ -1,4 +1,4 @@
 platform: circadian_lighting
 name: Office Circadian
 lights_ct:
-  - light.office_hue_lightstrip_plus
+  - light.office_lightstrip
