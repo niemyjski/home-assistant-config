@@ -25,3 +25,7 @@ OZW_Log.txt
 zwave_device_config.yaml
 frigate/config.yaml
 config/homeassistant.yaml
+frigate.yml
+google_calendars.yaml
+images/mail_and_packages
+www/tmp
