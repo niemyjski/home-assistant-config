@@ -5,12 +5,12 @@ christmas_lights:
   name: Christmas Lights
   icon: mdi:pine-tree
   entities:
-    - switch.front_north_outside_outlets_switch
-    - switch.living_room_west_outlets_switch
+    - switch.front_door_north_outside_receptacle
+    - switch.living_room_west_receptacle
     - switch.living_room_top_mantle_receptacle
-    - switch.entertainment_room_receptacle
+#    - switch.entertainment_room_receptacle
 #    - switch.living_room_wemo
-    - switch.outside_outlet_switch
+#    - switch.outside_receptacle
 
 #---------
 # Other
@@ -51,6 +51,7 @@ outside:
   icon: mdi:tree
   entities:
     - group.outside_lights
+    - switch.outside_receptacle
 
 outside_lights:
   name: Outside Lights
@@ -147,6 +148,7 @@ firstfloor:
     - group.living_room
     - group.entertainment_room
     - group.kitchen
+    - group.wet_bar
     - group.laundry_room
     - group.office
     - group.bathroom
@@ -169,10 +171,15 @@ living_room:
     - light.living_room_table
 #    - switch.living_room_top_mantle_receptacle
 #    - switch.living_room_bottom_mantle_receptacle
+    - switch.living_room_west_receptacle
+#    - switch.front_door_north_outside_receptacle
+
+wet_bar:
+  name: Wet Bar
+  icon: mdi:beer-outline
+  entities:
     - switch.living_room_top_wet_bar_light
     - switch.living_room_bottom_wet_bar_light
-    - switch.living_room_west_receptacle
-    - switch.front_door_north_outside_receptacle
 
 entertainment_room:
   name: Entertainment Room
@@ -251,9 +258,9 @@ master_bedroom:
   icon: mdi:hotel
   entities:
     - light.master_bedroom_main_lights
-    - light.left_hue_color_lamp
-    - light.right_hue_color_lamp
-    - light.master_bedroom_closet_motion_light
+    - light.master_bedroom_left_lamp
+    - light.master_bedroom_right_lamp
+    - light.master_bedroom_closet
 
 master_bathroom:
   name: Master Bathroom

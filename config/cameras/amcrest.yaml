@@ -1,1 +1,10 @@
 - platform: amcrest
+  binary_sensors:
+    - audio_detected
+    - audio_detected_polled
+    - motion_detected
+    - motion_detected_polled
+    - online
+  sensors:
+    - sdcard
+    - ptz_preset

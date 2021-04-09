@@ -1,0 +1,72 @@
+blueprint:
+  name: Turn the light on when motion is detected
+  description: Turn on a light when motion is detected and Illuminance is low.
+  domain: automation
+  source_url: https://github.com/niemyjski/home-assistant-config/tree/master/blueprints/automation/niemyjski/motion_light.yaml
+  input:
+    motion:
+      name: Motion Sensor
+      description: The motion sensor wich triggers the light to turn on
+      selector:
+        target:
+          entity:
+            domain: binary_sensor
+            device_class: motion
+    light:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    illuminance:
+      name: Illuminance
+      description: The illuminance sensor
+      selector:
+        entity:
+          domain: sensor
+          device_class: illuminance
+    illuminance_threshold_below:
+      name: Illuminance Threshold
+      description: Turn on the light after motion is detected and illuminance is below lx 
+      default: 3000
+      selector:
+        number:
+          min: 0
+          max: 100000
+          unit_of_measurement: lx
+    sleep_mode:
+      name: Sleep Mode (Optional)
+      default: false
+      selector:
+        entity:
+          domain: input_boolean
+
+variables: 
+  motion_entities: !input motion
+  sleep_mode_input: !input sleep_mode
+
+trigger:
+- platform: state
+  entity_id: !input motion
+  from: 'off'
+  to: 'on'
+- platform: state
+  entity_id: !input illuminance
+- platform: state
+  entity_id: !input sleep_mode
+  from: 'on'
+  to: 'off'
+
+condition:
+  - condition: state
+    entity_id: !input motion
+    state: 'on'
+  - "{{ expand(motion_entities) | selectattr('state', 'eq', 'on') | list | count > 0 }}"
+  - condition: numeric_state
+    entity_id: !input illuminance
+    below: !input illuminance_threshold_below
+  - "{{ not sleep_mode_input or is_state(sleep_mode_input, 'off') }}"
+
+action:
+  - service: light.turn_on
+    target: !input light

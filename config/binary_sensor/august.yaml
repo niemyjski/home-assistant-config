@@ -1,4 +1,3 @@
-
 - platform: template
   sensors:
     front_door_locked:

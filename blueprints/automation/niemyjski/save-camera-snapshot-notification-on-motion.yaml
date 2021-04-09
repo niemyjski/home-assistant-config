@@ -1,0 +1,51 @@
+blueprint:
+  name: Save a camera snapshot when motion is detected
+  description: Save a camera snapshot with archive when motion is detected
+  domain: automation
+  source_url: https://gist.github.com/niemyjski/08c566a4fe64fb2e70998ee4f38c9d1e
+  input:
+    motion_sensor:
+      name: Motion sensor
+      description: The sensor wich triggers the snapshot creation
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: motion
+    camera:
+      name: Camera
+      description: The camera which creates the snapshot
+      selector:
+        entity:
+          domain: camera
+    file:
+      name: File Path
+      description: The file path to store the most current snapshot.
+      default: '/media/CAMERA_NAME/last_motion.jpg'
+    archive_file:
+      name: Archive File Path
+      description: The file path to store the snapshot in an archive folder.
+      default: '/media/CAMERA_NAME/archive/motion_{{ now().strftime("%Y%m%d-%H%M%S") }}.jpg'
+    delay:
+      name: Delay (Optional)
+      description: Wait before creating camera snapshot
+      default: 0
+      selector:
+        number:
+          min: 0
+          max: 60
+          unit_of_measurement: seconds
+trigger:
+  platform: state
+  entity_id: !input motion_sensor
+  from: 'off'
+  to: 'on'
+action:
+- delay: !input delay
+- service: camera.snapshot
+  entity_id: !input camera
+  data:
+    filename: !input file
+- service: camera.snapshot
+  entity_id: !input 'camera'
+  data:
+    filename: !input archive_file

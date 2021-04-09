@@ -1,4 +1,0 @@
-platform: myq
-username: !secret chamberlain_username
-password: !secret chamberlain_password
-type: chamberlain

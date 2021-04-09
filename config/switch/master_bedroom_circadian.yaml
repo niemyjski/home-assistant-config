@@ -1,5 +1,0 @@
-platform: circadian_lighting
-name: Master Bedroom Circadian
-lights_ct:
-  - light.left_hue_color_lamp
-  - light.right_hue_color_lamp

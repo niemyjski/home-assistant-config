@@ -3,9 +3,9 @@
     guest_count:
       friendly_name: Guest Count
       value_template: >-
-        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('state', 'ne', 'not_home') | list | count }}
+        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('attributes.ip', 'ne', '10.30.0.7') | selectattr('attributes.ip', 'ne', '10.30.0.160') | selectattr('state', 'ne', 'not_home') | list | count }}
     
     guest_names:
       friendly_name: Guest Names
       value_template: >-
-        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('state', 'ne', 'not_home') | map(attribute='name') | list }}
+        {{ states.device_tracker | selectattr('attributes.is_guest', 'eq', true) | selectattr('attributes.ip', 'ne', '10.30.0.7') | selectattr('attributes.ip', 'ne', '10.30.0.160') | selectattr('state', 'ne', 'not_home') | map(attribute='name') | list }}

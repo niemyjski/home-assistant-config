@@ -6,12 +6,14 @@ hassio:
 alarm_control_panel: !include config/alarm_control_panel.yaml
 amcrest: !include config/amcrest.yaml
 automation: !include automations.yaml
-auto_backup: !include config/auto_backup.yaml
 binary_sensor: !include_dir_merge_list config/binary_sensor/
 browser_mod:
 camera: !include_dir_merge_list config/cameras/
-cover: !include_dir_list config/covers/
+cover: !include_dir_merge_list config/covers/
+ffmpeg:
+folder_watcher: !include config/folder_watcher.yaml
 frontend: !include config/frontend.yaml
+google: !include config/google.yaml
 group: !include config/group.yaml
 hacs: !include config/hacs.yaml
 homeassistant: !include config/homeassistant.yaml
@@ -19,7 +21,6 @@ homekit: !include config/homekit.yaml
 http: !include config/http.yaml
 image_processing: !include config/image_processing.yaml
 influxdb: !include config/influxdb.yaml
-input_boolean: !include_dir_merge_named config/input_boolean/
 light: !include_dir_list config/lights/
 ios: !include config/ios.yaml
 kohler: !include config/kohler.yaml
@@ -28,7 +29,7 @@ lutron_caseta: !include config/lutron_caseta.yaml
 microsoft_face: !include config/microsoft_face.yaml
 nest: !include config/nest.yaml
 notify: !include config/notify.yaml
-octoprint: !include config/octoprint.yaml
+#octoprint: !include config/octoprint.yaml
 panel_iframe: !include config/panel_iframe.yaml
 recorder: !include config/recorder.yaml
 scene: !include scenes.yaml
@@ -37,8 +38,8 @@ sensor: !include_dir_merge_list config/sensor/
 shell_command: !include config/shell_command.yaml
 spotify: !include config/spotify.yaml
 stream:
+switch: !include_dir_merge_list config/switch/
 tts: !include config/tts.yaml
-vacuum: !include config/vacuum.yaml
 wake_on_lan:
 weather: !include config/weather.yaml
 webostv: !include config/webostv.yaml
