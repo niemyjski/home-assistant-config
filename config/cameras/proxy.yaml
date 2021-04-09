@@ -1,0 +1,10 @@
+- platform: proxy
+  entity_id: camera.front_door
+  name: Mailbox
+  mode: crop
+  max_image_width: 265
+  max_image_height: 125
+  max_stream_width: 265
+  max_stream_height: 125
+  image_top: 580
+  image_left: 750
