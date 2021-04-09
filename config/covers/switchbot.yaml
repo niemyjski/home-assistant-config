@@ -1,0 +1,7 @@
+- platform: switchbot-curtain
+  name: Master Bedroom Left Curtain
+  mac:  !secret master_bedroom_left_curtain_mac
+
+- platform: switchbot-curtain
+  name: Master Bedroom Right Curtain
+  mac:  !secret master_bedroom_right_curtain_mac
