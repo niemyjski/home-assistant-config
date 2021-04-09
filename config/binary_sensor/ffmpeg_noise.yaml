@@ -1,0 +1,47 @@
+- platform: ffmpeg_noise
+  name: Storage Room Noise
+  input: !secret ffmpeg_input_storage_room
+  peak: -65
+  reset: 1
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_family_room
+  name: Family Room Noise
+  peak: -25
+  reset: 1
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_living_room
+  name: Living Room Noise
+  peak: -25
+  reset: 1
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_baby_room
+  name: Baby Room Noise
+  peak: -20
+  reset: 1
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_front_door
+  name: Front Door Noise
+  peak: -30
+  reset: 5
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_garage_door
+  name: Garage Door Noise
+  peak: -35
+  reset: 5
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_garage_small_bay
+  name: Garage Small Bay Noise
+  peak: -25
+  reset: 1
+
+- platform: ffmpeg_noise
+  input: !secret ffmpeg_input_game_room
+  name: Family Room Noise
+  peak: -25
+  reset: 1
