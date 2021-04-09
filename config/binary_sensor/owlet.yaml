@@ -5,7 +5,7 @@
       device_class: problem
     owlet_battery_low_alert:
       value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_BATT_ALRT'}}"
-      device_class: problem
+      device_class: battery
     owlet_heart_rate_low_alert:
       value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_HR_ALRT'}}"
       device_class: problem
