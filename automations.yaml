@@ -1,10 +1,10 @@
 - id: '1589626031994'
-  alias: Perform Daily Backup
+  alias: Maintenance - Perform Daily Backup
   trigger:
-    platform: time
+  - platform: time
     at: 00:00:00
   condition:
-    condition: time
+  - condition: time
     weekday:
     - mon
     - tue
@@ -14,19 +14,2954 @@
     - sat
     - sun
   action:
-    service: auto_backup.snapshot_full
+  - service: auto_backup.snapshot_full
     data_template:
       name: 'DailyBackup: {{ now().strftime(''%A, %B %-d, %Y'') }}'
       keep_days: 7
+  mode: single
 - id: '1590333653446'
-  alias: Notify Snapshot Failure
+  alias: Maintenance - Notify on snapshot failure
   trigger:
-    platform: event
+  - platform: event
     event_type: auto_backup.snapshot_failed
   action:
-    service: persistent_notification.create
+  - service: persistent_notification.create
     data_template:
       title: Snapshot Failed.
       message: 'Name: {{ trigger.event.data.name }}
 
         Error: {{ trigger.event.data.error }}'
+  mode: single
+- id: '1605235367370'
+  alias: Master Bedroom - Turn on the Fan at 9pm when Home
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: fan.turn_on
+    data: {}
+    target:
+      entity_id: fan.master_bedroom
+  mode: single
+- id: '1605235480492'
+  alias: Master Bedroom - Turn off the Fan at 9am
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'on'
+    to: 'off'
+    for: 01:00:00
+  - platform: time
+    at: 09:00:00
+  - platform: time
+    at: '11:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleep_mode
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: time
+        after: 09:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: sun
+        before: sunset
+    - condition: and
+      conditions:
+      - condition: time
+        after: '11:00:00'
+        weekday:
+        - sat
+        - sun
+      - condition: sun
+        before: sunset
+  action:
+  - service: fan.turn_off
+    entity_id: fan.master_bedroom
+    data: {}
+  mode: single
+- id: '1605237474058'
+  alias: Master Bedroom - Turn off Master Suite lights when light turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.master_bedroom_main_lights
+    from: 'on'
+    to: 'off'
+    for: 0:00:03
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_closet
+    data: {}
+  mode: single
+- id: '1605239250580'
+  alias: Presence - Turn on Guest mode when guests arrive
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.guest_count
+    above: 0
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.guest_mode
+    data: {}
+  mode: single
+- id: '1605239614027'
+  alias: Presence - Set Home mode when arriving
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.person1
+    zone: zone.home
+    event: enter
+  - platform: zone
+    entity_id: person.person2
+    zone: zone.home
+    event: enter
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'on'
+    from: 'off'
+  condition: []
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.home_mode
+    data: {}
+  mode: single
+- id: '1605240122913'
+  alias: Presence - Turn off Guest mode when guests leave
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.guest_count
+    below: 1
+  condition: []
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.guest_mode
+    data: {}
+  mode: single
+- id: '1605240515408'
+  alias: Presence - Set Away mode when leaving
+  description: ''
+  trigger:
+  - platform: zone
+    entity_id: person.person1
+    zone: zone.home
+    event: leave
+  - platform: zone
+    entity_id: person.person2
+    zone: zone.home
+    event: leave
+  - platform: state
+    entity_id: input_boolean.guest_mode
+    to: 'off'
+    from: 'on'
+  condition:
+  - condition: not
+    conditions:
+    - condition: zone
+      entity_id: person.person1
+      zone: zone.home
+    - condition: zone
+      entity_id: person.person2
+      zone: zone.home
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.home_mode
+    data: {}
+  mode: single
+- id: '1605241451517'
+  alias: Presence - Turn off Sleep mode when phones are unplugged
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.person1s_iphone_battery_state
+    to: Not Charging
+    from: Full
+    for: 00:05:00
+  - platform: state
+    entity_id: sensor.person1_lastname_iphone_battery_state
+    to: Unplugged
+    from: Charging
+    for: 00:05:00
+  - platform: state
+    entity_id: sensor.person2s_iphone_battery_state
+    to: Not Charging
+    from: Full
+    for: 00:05:00
+  - platform: state
+    entity_id: sensor.person2_lastname_iphone_battery_state
+    to: Unplugged
+    from: Charging
+    for: 00:05:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.person1s_iphone_battery_state
+      state: Not Charging
+    - condition: state
+      entity_id: sensor.person1_lastname_iphone_battery_state
+      state: Unplugged
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.person2s_iphone_battery_state
+      state: Not Charging
+    - condition: state
+      entity_id: sensor.person2_lastname_iphone_battery_state
+      state: Unplugged
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: input_boolean.turn_off
+    entity_id: input_boolean.sleep_mode
+    data: {}
+  mode: single
+- id: '1605242357343'
+  alias: Security - Arm Home when arriving
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_mode
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: alarm_control_panel.alarm_arm_home
+    entity_id: alarm_control_panel.home_alarm
+    data: {}
+  mode: single
+- id: '1605242367376'
+  alias: Security - Arm Away when leaving
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.home_mode
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: alarm_control_panel.alarm_arm_away
+    entity_id: alarm_control_panel.home_alarm
+    data: {}
+  mode: single
+- id: '1605242820295'
+  alias: Security - Trigger Alarm when armed and doors open
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_door_sensor
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.back_foyer_door_open
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.exercise_room_door_open
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.front_door_open
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.garage_door_open
+    from: 'off'
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.side_garage_door_open
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: disarmed
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+    data: {}
+  mode: restart
+- id: '1605242980877'
+  alias: Security - Trigger Alarm when armed and garge doors open
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.back_garage_door
+    to: opening
+  - platform: state
+    entity_id: cover.house_left_garage_door_opener
+    to: opening
+  - platform: state
+    entity_id: cover.house_right_garage_door_opener
+    to: opening
+  - platform: state
+    entity_id: cover.left_garage_door
+    to: opening
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: disarmed
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    entity_id: alarm_control_panel.home_alarm
+    data: {}
+  mode: restart
+- id: '1605243281572'
+  alias: Security - Trigger Alarm when armed and locks change
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: lock.back_foyer_door
+    to: unlocked
+    from: locked
+  - platform: state
+    entity_id: lock.exercise_room_door
+    to: unlocked
+    from: locked
+  - platform: state
+    entity_id: lock.front_door
+    to: unlocked
+    from: locked
+  - platform: state
+    entity_id: lock.garage_door
+    to: unlocked
+    from: locked
+  - platform: state
+    entity_id: lock.garage_side_door
+    to: unlocked
+    from: locked
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: alarm_control_panel.home_alarm
+      state: disarmed
+  action:
+  - service: alarm_control_panel.alarm_trigger
+    data: {}
+    entity_id: alarm_control_panel.home_alarm
+  mode: restart
+- id: '1605244719919'
+  alias: Christmas - Turn on lights at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ now().month == 11 }}'
+    - condition: template
+      value_template: '{{ now().month == 12 }}'
+    - condition: template
+      value_template: '{{ now().month == 1 }}'
+  action:
+  - service: homeassistant.turn_on
+    entity_id: group.christmas_lights
+    data: {}
+  mode: single
+- id: '1605324410981'
+  alias: Outside - Turn on Garage wall lights when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_doorbell_motion
+    from: 'off'
+    to: 'on'
+    for: 00:00:10
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '1000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  - condition: state
+    entity_id: switch.garage_front_outside_wall_light
+    state: 'off'
+    for: 00:00:15
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: single
+- id: '1605324481124'
+  alias: Outside - Turn on House wall lights when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_doorbell_motion
+    from: 'off'
+    to: 'on'
+    for: 00:00:05
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '1000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  - condition: state
+    entity_id: switch.front_foyer_wall_lights
+    for: 00:00:15
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_wall_lights
+    data: {}
+  mode: restart
+- id: '1605325678968'
+  alias: Office - Turn off Closet lights after 15 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.office_closet_main_lights
+    from: 'off'
+    to: 'on'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.office_closet_main_lights
+    data: {}
+  mode: single
+- id: '1605325842831'
+  alias: Master Bedroom - Turn off Closet lights after 35 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.master_bedroom_closet
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 35
+      seconds: 0
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_closet
+    data: {}
+  mode: single
+- id: '1605326114209'
+  alias: Kids Room One - Turn off Closet lights after 45 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.kids_room_one_closet_main_lights
+    from: 'off'
+    to: 'on'
+    for: 00:45:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kids_room_one_closet_main_lights
+    data: {}
+  mode: single
+- id: '1605326193355'
+  alias: Kids Room Two - Turn off Closet lights after 45 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.kids_room_two_closet_main_lights
+    from: 'off'
+    to: 'on'
+    for: 00:45:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kids_room_two_closet_main_lights
+    data: {}
+  mode: single
+- id: '1605326263400'
+  alias: Guest Bedroom - Turn off Closet lights after 15 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.basement_bedroom_closet_light
+    from: 'off'
+    to: 'on'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.basement_bedroom_closet_light
+    data: {}
+  mode: single
+- id: '1605326349037'
+  alias: Front Foyer - Turn off Right Closet lights after 15 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.front_foyer_right_closet_motion_light
+    from: 'off'
+    to: 'on'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.front_foyer_right_closet_motion_light
+    data: {}
+  mode: single
+- id: '1605326802469'
+  alias: Christmas - Turn off lights at 9pm
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:00:00'
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ now().month == 11 }}'
+    - condition: template
+      value_template: '{{ now().month == 12 }}'
+    - condition: template
+      value_template: '{{ now().month == 1 }}'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.christmas_lights
+    data: {}
+  mode: single
+- id: '1605327027797'
+  alias: Outside - Turn on Garage wall lights at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: single
+- id: '1605327387915'
+  alias: Outside - Turn off House wall lights
+  description: Turn off two hours after sunset or 15 minutes after last activity
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_doorbell_motion
+    from: 'on'
+    to: 'off'
+    for: 00:10:00
+  - platform: state
+    entity_id: binary_sensor.front_door_noise
+    from: 'on'
+    to: 'off'
+    for: 00:10:00
+  - platform: sun
+    event: sunset
+    offset: 02:15:00
+  - platform: sun
+    event: sunrise
+  - platform: state
+    entity_id: switch.front_foyer_wall_lights
+    from: 'off'
+    to: 'on'
+    for: '2:00:00'
+  - platform: state
+    entity_id: switch.front_door_can_motion_light
+    from: 'off'
+    to: 'on'
+    for: '2:00:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.front_doorbell_motion
+    state: 'off'
+    for: 00:10:00
+  - condition: state
+    entity_id: binary_sensor.front_door_noise
+    state: 'off'
+    for: 00:10:00
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id:
+      - switch.front_foyer_wall_lights
+      - switch.front_door_can_motion_light
+  mode: single
+- id: '1605327871007'
+  alias: Outside - Turn on House wall lights at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_wall_lights
+    data: {}
+  mode: single
+- id: '1605328294408'
+  alias: Outside - Turn off Garage wall lights
+  description: Turn off two hours after sunset or 15 minutes after last activity
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_doorbell_motion
+    from: 'on'
+    to: 'off'
+    for: 00:10:00
+  - platform: state
+    entity_id: binary_sensor.garage_door_noise
+    from: 'on'
+    to: 'off'
+    for: 00:10:00
+  - platform: sun
+    event: sunset
+    offset: 02:15:00
+  - platform: sun
+    event: sunrise
+  - platform: state
+    entity_id: switch.garage_front_outside_wall_light
+    from: 'off'
+    to: 'on'
+    for: '2:00:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.garage_doorbell_motion
+    state: 'off'
+    for: 00:10:00
+  - condition: state
+    entity_id: binary_sensor.garage_door_noise
+    state: 'off'
+    for: 00:10:00
+  action:
+  - service: switch.turn_off
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: restart
+- id: '1605364042255'
+  alias: First Floor Bathroom - Turn off exhaust fan after 15 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.first_floor_bathroom_exhaust_fan
+    from: 'off'
+    to: 'on'
+    for: 0:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.first_floor_bathroom_exhaust_fan
+    data: {}
+  mode: single
+- id: '1605364154242'
+  alias: Kids Bathroom - Turn off exhaust fan after 45 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.kids_bathroom_exhaust_fan
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 45
+      seconds: 0
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kids_bathroom_exhaust_fan
+    data: {}
+  mode: single
+- id: '1605364277878'
+  alias: Master Bathroom - Turn off exhaust fan after 30 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.master_bathroom_shower_fan
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id: water_heater.kohler_shower
+    from: 'on'
+    to: 'off'
+    for: 00:30:00
+  condition:
+  - condition: state
+    entity_id: water_heater.kohler_shower
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.master_bathroom_shower_fan
+    data: {}
+  mode: single
+- id: '1605364375292'
+  alias: Master Water Closet - Turn off exhaust fan after 5 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.master_bathroom_water_closet_fan
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.master_bathroom_water_closet_fan
+    data: {}
+  mode: single
+- id: '1605364445899'
+  alias: Guest Bathroom - Turn off exhaust fan after 5 minutes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.guest_bathroom_exhaust_fan
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.guest_bathroom_exhaust_fan
+    data: {}
+  mode: single
+- id: '1605364749303'
+  alias: Kids Bathroom - Turn on exhaust fan when tub lights turn on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.kids_bathroom_tub_lights
+    from: 'off'
+    to: 'on'
+    for: 0:00:05
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kids_bathroom_exhaust_fan
+    data: {}
+  mode: single
+- id: '1605365080620'
+  alias: Master Bathroom - Turn on exhaust fan when shower or tub lights turn on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.master_bathroom_shower_lights
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - platform: state
+    entity_id: light.master_bathroom_tub_lights
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - platform: state
+    entity_id: water_heater.kohler_shower
+    to: 'on'
+    for: 00:00:05
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.master_bathroom_shower_fan
+    data: {}
+  mode: single
+- id: '1605366062623'
+  alias: Audio - Normalize levels to 20% at 9am
+  description: ''
+  trigger:
+  - platform: time
+    at: 09:00:00
+  condition: []
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.2
+    target:
+      entity_id: media_player.kitchen_dash_wand,media_player.everywhere,media_player.basement_bedroom_ecobee_switch,media_player.living_room_echo_dot,media_player.master_bedroom_echo_plus,media_player.garage_echo_plus,media_player.kids_bedroom_one_ecobee_switch,media_player.kids_bedroom_two_ecobee_switch,media_player.kids_bathroom_ecobee_switch,media_player.master_water_closet_ecobee_switch,media_player.master_bathroom_ecobee_switch,media_player.basement_ecobee4,media_player.office_ecobee_switch,media_player.laundry_room_ecobee_switch,media_player.main_floor_ecobee4,media_player.upstairs_ecobee4,media_player.office_ecobee4,media_player.foyer_ecobee_switch,media_player.living_room_ecobee_switch,media_player.entertainment_room_ecobee_switch,media_player.back_foyer_ecobee_switch,media_player.first_floor_bathroom_ecobee_switch,media_player.master_bathroom_right_mirror,media_player.master_bathroom_left_mirror,media_player.basement_window_echo,media_player.basement_echo,media_player.kids_bathroom_mirror,media_player.guest_bathroom_ecobee_switch,media_player.person1_s_echo_auto,media_player.entertainment_room_tv2,media_player.living_room_echo,media_player.kitchen_echo_plus,media_player.office_echo_plus,media_player.person1_s_alexa_apps
+  mode: single
+- id: '1605366631205'
+  alias: Audio - Normalize levels to 10% at 9pm
+  description: ''
+  trigger:
+  - platform: time
+    at: '21:00:00'
+  condition: []
+  action:
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.1
+    entity_id: media_player.kitchen_dash_wand,media_player.everywhere,media_player.basement_bedroom_ecobee_switch,media_player.living_room_echo_dot,media_player.master_bedroom_echo_plus,media_player.garage_echo_plus,media_player.kids_bedroom_one_ecobee_switch,media_player.kids_bedroom_two_ecobee_switch,media_player.kids_bathroom_ecobee_switch,media_player.master_water_closet_ecobee_switch,media_player.master_bathroom_ecobee_switch,media_player.basement_ecobee4,media_player.office_ecobee_switch,media_player.laundry_room_ecobee_switch,media_player.main_floor_ecobee4,media_player.upstairs_ecobee4,media_player.office_ecobee4,media_player.foyer_ecobee_switch,media_player.living_room_ecobee_switch,media_player.entertainment_room_ecobee_switch,media_player.back_foyer_ecobee_switch,media_player.first_floor_bathroom_ecobee_switch,media_player.master_bathroom_right_mirror,media_player.master_bathroom_left_mirror,media_player.basement_window_echo,media_player.basement_echo,media_player.kids_bathroom_mirror,media_player.guest_bathroom_ecobee_switch,media_player.person1_s_echo_auto,media_player.entertainment_room_tv2,media_player.living_room_echo,media_player.kitchen_echo_plus,media_player.office_echo_plus,media_player.person1_s_alexa_apps
+  mode: single
+- id: '1605367045043'
+  alias: Family Room - Turn on lamp when guests are here at sunset
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'on'
+  action:
+  - service: light.turn_on
+    entity_id: light.family_room_lamp
+    data: {}
+  mode: single
+- id: '1605367221255'
+  alias: Family Room - Turn off lamp at 10mp
+  description: ''
+  trigger:
+  - platform: time
+    at: '22:00:00'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.family_room_occupancy
+    state: 'off'
+    for: 00:15:00
+  action:
+  - service: light.turn_off
+    entity_id: light.family_room_lamp
+    data: {}
+  mode: single
+- id: '1605367649153'
+  alias: Living Room - Turn off fireplace after 4 hours
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.fireplace
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 4
+      minutes: 0
+      seconds: 0
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.fireplace
+    data: {}
+  mode: single
+- id: '1605368010295'
+  alias: Back Foyer - Unlock door when left garage door opens
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.house_left_garage_door_opener
+    to: opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: lock.unlock
+    entity_id: lock.back_foyer_door
+    data: {}
+  mode: single
+- id: '1605368213397'
+  alias: Back Foyer - Lock door when left garage door closes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.house_left_garage_door_opener
+    to: closed
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: device_tracker.model_3_location_tracker
+      state: home
+  action:
+  - service: lock.lock
+    data: {}
+    target:
+      entity_id: lock.back_foyer_door
+  mode: single
+- id: '1605368280452'
+  alias: Back Foyer - Unlock door when right garage door opens
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.house_right_garage_door_opener
+    to: opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: lock.unlock
+    data: {}
+    target:
+      entity_id:
+      - lock.back_foyer_door
+  mode: single
+- id: '1605368316605'
+  alias: Back Foyer - Lock door when right garage door closes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.house_right_garage_door_opener
+    to: closed
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: device_tracker.model_3_location_tracker
+      state: home
+  action:
+  - service: lock.lock
+    data: {}
+    target:
+      entity_id: lock.back_foyer_door
+  mode: single
+- id: '1605368791297'
+  alias: Garage Small Bay - Unlock door when front garage door opens
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.left_garage_door
+    to: opened
+  condition:
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: lock.unlock
+    entity_id: lock.garage_door
+    data: {}
+  mode: single
+- id: '1605368854476'
+  alias: Garage Small Bay - Lock door when front garage door closes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: cover.left_garage_door
+    to: closed
+  condition: []
+  action:
+  - service: lock.lock
+    entity_id: lock.garage_door
+    data: {}
+  mode: single
+- id: '1605368963290'
+  alias: Living Room - Turn on fan when fireplace turns on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.fireplace
+    from: 'off'
+    to: 'on'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  condition: []
+  action:
+  - service: fan.turn_on
+    entity_id: fan.living_room
+    data: {}
+  mode: single
+- id: '1605369046395'
+  alias: Living Room - Turn off fan a half hour after fireplace turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.fireplace
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  condition: []
+  action:
+  - service: fan.turn_off
+    entity_id: fan.living_room
+    data: {}
+  mode: single
+- id: '1605370491270'
+  alias: Front Foyer - Turn off lights when Entertainment Room lights turn off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.entertainment_room
+    from: 'on'
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.front_foyer_motion_detected
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 30
+  action:
+  - service: switch.turn_off
+    entity_id: switch.front_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1605370975747'
+  alias: ' Entertainment Room - Turn off lights when TV is unmuted'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.entertainment_room_tv_is_volume_muted
+    to: 'on'
+    from: 'off'
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1605375217730'
+  alias: Exercise Room - Turn the light on when the door or lock activity detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.exercise_room_door_open
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.exercise_room_door_open
+    to: 'off'
+    from: 'on'
+  - platform: state
+    entity_id: lock.exercise_room_door
+    to: locked
+    from: unlocked
+  - platform: state
+    entity_id: lock.exercise_room_door
+    to: unlocked
+    from: locked
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.exercise_room_motion_light
+    data: {}
+  mode: single
+- id: '1605375283841'
+  alias: Family Room - Turn the light on when motion is detected
+  description: Between two hours after sunrise and 9:30pm and no guests
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.family_room_motion
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  - condition: sun
+    after_offset: 02:00:00
+    after: sunrise
+  - condition: time
+    before: '21:30:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.family_room_motion_light
+    data: {}
+  mode: single
+- id: '1605376174072'
+  alias: Family Room - Turn the light off when no occupancy is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.family_room_motion
+    to: 'off'
+    for: 00:15:00
+  - platform: state
+    entity_id: binary_sensor.family_room_occupancy
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id: switch.exercise_room_motion_light
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: binary_sensor.family_room_motion
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.family_room_occupancy
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.family_room_motion_light
+    data: {}
+  mode: single
+- id: '1605376467466'
+  alias: Exercise Room - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.exercise_room_motion
+    to: 'off'
+    for: 00:15:00
+    from: 'on'
+  - platform: state
+    entity_id: switch.exercise_room_motion_light
+    from: 'off'
+    to: 'on'
+    for: '1:00:00'
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'on'
+    to: 'off'
+    for: 00:15:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.exercise_room_motion
+    state: 'off'
+  - condition: state
+    entity_id: calendar.person2_workout
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.exercise_room_motion_light
+    data: {}
+  mode: single
+- id: '1605376802297'
+  alias: Exercise Room - Turn the light on when motion is detected
+  description: Between two hours after sunrise and 9:30pm and no guests
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.exercise_room_motion
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.guest_mode
+    state: 'off'
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  - condition: sun
+    after_offset: 02:00:00
+    after: sunrise
+  - condition: time
+    before: '21:30:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.exercise_room_motion_light
+    data: {}
+  mode: single
+- id: '1605379513694'
+  alias: Storage Room - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.storage_room_motion
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.storage_room_cat_motion
+    to: 'on'
+    from: 'off'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.storage_room_motion_light
+    data: {}
+  mode: single
+- id: '1605380218946'
+  alias: Storage Room - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.storage_room_motion
+    to: 'off'
+    from: 'on'
+    for: 00:15:00
+  - platform: state
+    entity_id: binary_sensor.storage_room_cat_motion
+    to: 'off'
+    from: 'on'
+    for: 00:15:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.storage_room_motion
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.storage_room_motion_light
+    data: {}
+  mode: single
+- id: '1605382246618'
+  alias: Back Hallway - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_hallway_motion
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '3000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.back_hallway_motion_light
+    data: {}
+  mode: single
+- id: '1605382622935'
+  alias: Back Hallway - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_hallway_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.back_hallway_motion_light
+    data: {}
+  mode: single
+- id: '1605383071463'
+  alias: Back Hallway Closet - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_hallway_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.back_hallway_closet_light
+    data: {}
+  mode: single
+- id: '1605383134474'
+  alias: Back Hallway Closet - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_hallway_motion
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '3000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.back_hallway_closet_light
+    data: {}
+  mode: single
+- id: '1605383225198'
+  alias: Back Hallway Closet - Turn the light on when the door or lock activity detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.back_foyer_door_open
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.back_foyer_door_open
+    to: 'off'
+    from: 'on'
+  - platform: state
+    entity_id: lock.back_foyer_door
+    to: locked
+    from: unlocked
+  - platform: state
+    entity_id: lock.back_foyer_door
+    to: unlocked
+    from: locked
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.back_hallway_closet_light
+    data: {}
+  mode: single
+- id: '1605383445237'
+  alias: Kitchen - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_main_motion
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.kitchen_sink_motion
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.living_room_motion_detected
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '5000'
+  action:
+  - choose:
+    - conditions:
+      - condition: sun
+        before: sunrise
+        before_offset: '2:00:00'
+      sequence:
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.kitchen_sink_motion_light
+    - conditions:
+      - condition: sun
+        after: sunrise
+        after_offset: '2:00:00'
+      sequence:
+      - service: switch.turn_on
+        entity_id: switch.kitchen_main_motion_light
+        data: {}
+      - service: light.turn_on
+        data: {}
+        target:
+          entity_id: light.kitchen_sink_motion_light
+      - service: switch.turn_on
+        entity_id: switch.kitchen_bar_light
+        data: {}
+    default: []
+  mode: single
+- id: '1605383927302'
+  alias: Kitchen - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.kitchen_main_motion
+    to: 'off'
+    for: 00:20:00
+  - platform: state
+    entity_id: binary_sensor.kitchen_sink_motion
+    to: 'off'
+    for: 00:20:00
+  - platform: state
+    entity_id: binary_sensor.living_room_motion_detected
+    to: 'off'
+    for: 00:20:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.kitchen_main_motion
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.kitchen_sink_motion
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.living_room_motion_detected
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kitchen_main_motion_light
+    data: {}
+  - service: light.turn_off
+    entity_id: light.kitchen_sink_motion_light
+    data: {}
+  - service: switch.turn_off
+    entity_id: switch.kitchen_bar_light
+    data: {}
+  mode: single
+- id: '1605384445037'
+  alias: Kitchen - Turn the light on when door activity detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room_door_sensor
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.living_room_door_sensor
+    to: 'off'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '3000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kitchen_main_motion_light
+    data: {}
+  mode: single
+- id: '1605384756108'
+  alias: Upstairs Hallway - Turn the light on when motion is detected
+  description: Between two hours after sunrise and 10:30pm or currently sleeping
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.upstairs_hallway_motion
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleep_mode
+    state: 'off'
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  - condition: sun
+    after_offset: 02:00:00
+    after: sunrise
+  - condition: time
+    before: '22:30:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.upstairs_hallway_motion_light
+    data: {}
+  mode: single
+- id: '1605384777266'
+  alias: Upstairs Hallway - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.upstairs_hallway_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.upstairs_hallway_motion_light
+    data: {}
+  mode: single
+- id: '1605385143235'
+  alias: Front Foyer - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_foyer_motion
+    to: 'off'
+    for: 00:15:00
+  - platform: state
+    entity_id: binary_sensor.foyer
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 10
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: binary_sensor.foyer
+    state: 'off'
+  - condition: state
+    entity_id: binary_sensor.front_foyer_motion
+    state: 'off'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.front_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1605385189675'
+  alias: Front Foyer - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_foyer_motion
+    to: 'on'
+  - platform: state
+    entity_id: binary_sensor.front_foyer_motion_detected
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  - condition: state
+    entity_id: media_player.entertainment_room_tv
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1605388518829'
+  alias: Front Foyer - Turn the light on when the door or lock activity detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door_open
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.front_door_open
+    to: 'off'
+    from: 'on'
+  - platform: state
+    entity_id: lock.front_door
+    to: locked
+    from: unlocked
+  - platform: state
+    entity_id: lock.front_door
+    to: unlocked
+    from: locked
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2500'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1605396183862'
+  alias: Master Bedroom - Turn the light on when motion is detected
+  description: Between 9:30am and 9:30pm
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_closet_motion
+    to: 'on'
+    from: 'off'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleep_mode
+    state: 'off'
+  - condition: time
+    before: '21:30:00'
+    after: 09:30:00
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  - condition: or
+    conditions:
+    - condition: numeric_state
+      entity_id: sensor.illuminance
+      below: '2500'
+    - condition: state
+      entity_id: cover.master_bedroom_shade
+      state: closed
+  - condition: time
+    before: '21:30:00'
+    after: '12:00:00'
+    weekday:
+    - sat
+    - sun
+  action:
+  - service: light.turn_on
+    entity_id: light.master_bedroom_main_lights
+    data: {}
+  mode: single
+- id: '1605396205438'
+  alias: Master Bedroom - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_closet_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_main_lights
+    data: {}
+  mode: single
+- id: '1605397058679'
+  alias: Office - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.office_motion
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.office_switch
+    data: {}
+  mode: single
+- id: '1605408838019'
+  alias: iOS - Test Alarm Notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.motion_storage_room
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.ios_person1s_iphone
+    data:
+      title: Alarm Triggered
+      message: Storage Room Motion was triggered
+      data:
+        attachment:
+          content-type: jpeg
+        entity_id: camera.living_room
+        push:
+          category: camera
+        action_data:
+        - identifier: SOUND_ALARM
+          title: Trigger Alarm
+        - identifier: SILENCE_ALARM
+          title: Disable Alarm
+  mode: single
+- id: '1605409228336'
+  alias: iOS - Sound Alarm Notification Handler
+  description: ''
+  trigger:
+  - platform: event
+    event_type: ios.notification_action_fired
+    event_data:
+      actionName: SOUND_ALARM
+  condition: []
+  action:
+  - service: notify.ios_person1s_iphone
+    data:
+      title: Sounding the Alarm
+      message: Ok, I triggered the alarm!
+  - service: light.toggle
+    entity_id: light.office_lightstrip
+    data: {}
+  mode: single
+- id: '1605411970452'
+  alias: Entertainment Room - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.entertainment_room
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: media_player.entertainment_room_tv
+    state: 'off'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1605411984498'
+  alias: Entertainment Room - Turn the light off when no motion is detected
+  description: Or the light has been on for an hour and there is no occupancy or motion
+  trigger:
+  - platform: state
+    entity_id: switch.entertainment_room
+    from: 'off'
+    to: 'on'
+    for: '1:00:00'
+  - platform: state
+    entity_id: binary_sensor.entertainment_room
+    from: 'on'
+    to: 'off'
+    for: 0:45:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.entertainment_room
+    state: 'off'
+    for: 00:15:00
+  action:
+  - service: switch.turn_off
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1605413083181'
+  alias: Entertainment Room - Turn the light on when TV is turned off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: media_player.entertainment_room_tv
+    to: 'off'
+    from: 'on'
+    for: 00:00:02
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1605480676369'
+  alias: Master Bedroom - Turn off the Fan during the day when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_closet_motion
+    from: 'on'
+    to: 'off'
+    for: 00:45:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: time
+      after: 09:30:00
+      before: '21:30:00'
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    - condition: time
+      after: '12:00:00'
+      before: '21:30:00'
+      weekday:
+      - sat
+      - sun
+  action:
+  - service: fan.turn_off
+    entity_id: fan.master_bedroom
+    data: {}
+  mode: single
+- id: '1605915027628'
+  alias: Living Room - Turn off fan when no occupancy
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.living_room
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  condition:
+  - condition: state
+    entity_id: light.fireplace
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 30
+      seconds: 0
+  action:
+  - service: fan.turn_off
+    entity_id: fan.living_room
+    data: {}
+  mode: single
+- id: '1605915512523'
+  alias: Master Bathroom - Turn off when Master Bedroom lights when light turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.master_bedroom_main_lights
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+  condition:
+  - condition: state
+    entity_id: binary_sensor.master_bathroom_motion
+    state: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 5
+  - condition: state
+    entity_id: water_heater.kohler_shower
+    state: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.master_bathroom
+    data: {}
+  mode: single
+- id: '1605915671748'
+  alias: Master Water Closet - Turn off lights when Master Bedroom light turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: light.master_bedroom_main_lights
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 3
+  condition:
+  - condition: state
+    entity_id: binary_sensor.master_water_closet
+    state: 'off'
+  action:
+  - service: homeassistant.turn_off
+    entity_id: group.master_water_closet
+    data: {}
+  mode: single
+- id: '1605926759089'
+  alias: Office - Play relaxing music
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.office_closet_main_lights
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: media_player.office_echo_plus
+      state: paused
+    - condition: state
+      entity_id: media_player.office_echo_plus
+      state: standby
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: media_player.spotify
+      state: paused
+    - condition: state
+      entity_id: media_player.spotify
+      state: standby
+    - condition: state
+      entity_id: media_player.spotify
+      state: idle
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: media_player.office_echo_plus
+        state: standby
+      sequence:
+      - service: media_player.play_media
+        entity_id: media_player.office_echo_plus
+        data:
+          media_content_type: SPOTIFY
+          media_content_id: Peaceful Meditation by spotify
+    - conditions:
+      - condition: state
+        entity_id: media_player.office_echo_plus
+        state: paused
+      sequence:
+      - service: media_player.media_play_pause
+        entity_id: media_player.office_echo_plus
+        data: {}
+    default: []
+  mode: single
+- id: '1605928267962'
+  alias: Office - Stop playing white noise
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.office_closet_main_lights
+    from: 'on'
+    to: 'off'
+    for: 04:00:00
+  condition: []
+  action:
+  - service: media_player.media_stop
+    entity_id: media_player.office_echo_plus
+    data: {}
+  mode: single
+- id: '1605928482791'
+  alias: Master Bedroom - Play white noise
+  description: ''
+  trigger:
+  - device_id: 855879d755bf742b6866c4351ae5fe85
+    domain: hue
+    platform: device
+    type: remote_button_short_release
+    subtype: turn_on
+  condition: []
+  action:
+  - service: media_player.play_media
+    entity_id: media_player.master_bedroom_echo_plus
+    data:
+      media_content_type: SPOTIFY
+      media_content_id: let it snow
+  mode: single
+- id: '1605928520044'
+  alias: Master Bedroom - Stop playing white noise
+  description: ''
+  trigger:
+  - device_id: 855879d755bf742b6866c4351ae5fe85
+    domain: hue
+    platform: device
+    type: remote_button_short_release
+    subtype: turn_off
+  condition: []
+  action:
+  - service: media_player.media_stop
+    entity_id: media_player.master_bedroom_echo_plus
+    data: {}
+  mode: single
+- id: '1605998868078'
+  alias: Presence - Turn on Sleep mode when phones are charging
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.person1s_iphone_battery_state
+    to: Charging
+    from: Not Charging
+    for: 00:05:00
+  - platform: state
+    entity_id: sensor.person1_lastname_iphone_battery_state
+    to: Charging
+    from: Unplugged
+    for: 00:05:00
+  - platform: state
+    entity_id: sensor.person2s_iphone_battery_state
+    from: Not Charging
+    for: 00:05:00
+    to: Charging
+  - platform: state
+    entity_id: sensor.person2_lastname_iphone_battery_state
+    to: Charging
+    from: Unplugged
+    for: 00:05:00
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.person1s_iphone_battery_state
+      state: Charging
+    - condition: state
+      entity_id: sensor.person1_lastname_iphone_battery_state
+      state: Charging
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: sensor.person2s_iphone_battery_state
+      state: Charging
+    - condition: state
+      entity_id: sensor.person2_lastname_iphone_battery_state
+      state: Charging
+  - condition: state
+    entity_id: input_boolean.home_mode
+    state: 'on'
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.sleep_mode
+    data: {}
+  mode: single
+- id: '1606060067447'
+  alias: Master Bathroom - Turn on shower lights when shower turns on
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: water_heater.kohler_shower
+    to: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    entity_id: light.master_bathroom_shower_lights
+    data: {}
+  mode: single
+- id: '1606060138284'
+  alias: Master Bathroom - Turn off shower lights when shower turns off
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: water_heater.kohler_shower
+    to: 'off'
+    for: 00:05:00
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bathroom_shower_lights
+    data: {}
+  mode: single
+- id: '1606099232502'
+  alias: 'House: Play chime when doorbell is pressed'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_doorbell
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.back_foyer_ecobee_switch
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.master_bedroom_echo_plus
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.master_water_closet_ecobee_switch
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.office_echo_plus
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.basement_window_echo
+  mode: single
+- id: '1606099879404'
+  alias: 'Entertainment Room: Pause TV when doorbell is pressed'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_doorbell
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: webostv.button
+    entity_id: media_player.entertainment_room_tv
+    data:
+      button: PAUSE
+  mode: single
+- id: '1606099995013'
+  alias: 'House: Play chime when garage doorbell is pressed'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_doorbell
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_buzz_01
+      media_content_type: sound
+    entity_id: media_player.back_foyer_ecobee_switch
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_buzz_01
+      media_content_type: sound
+    entity_id: media_player.master_bedroom_echo_plus
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_buzz_01
+      media_content_type: sound
+    entity_id: media_player.master_water_closet_ecobee_switch
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_buzz_01
+      media_content_type: sound
+    entity_id: media_player.office_echo_plus
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_buzz_01
+      media_content_type: sound
+    entity_id: media_player.basement_window_echo
+  mode: single
+- id: '1606100069936'
+  alias: 'Garage: Play chime when doorbell is pressed'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_doorbell
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.play_media
+    data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.garage_echo_plus
+  mode: single
+- id: '1606101849704'
+  alias: Laundry Room - Send Notification when washer is done
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: switch.washer
+    from: 'on'
+    to: 'off'
+  condition: []
+  action:
+  - service: notify.mobile_app_person1_s_iphone
+    data:
+      title: Washer has finished
+      message: The washing machine has finished
+      data:
+        push:
+          category: WASHER_COMPLETED
+  - service: notify.mobile_app_person2_s_iphone
+    data:
+      title: Washer has finished
+      message: The washing machine has finished
+      data:
+        push:
+          category: WASHER_COMPLETED
+  mode: single
+- id: '1606102808967'
+  alias: Laundry Room - Send Notification when dryer is finished
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.dryer_dryer_machine_state
+    to: stop
+  condition: []
+  action:
+  - service: notify.mobile_app_person1_s_iphone
+    data:
+      title: Dryer has finished
+      message: The dryer has finished
+      data:
+        push:
+          category: DRYER_COMPLETED
+  - service: notify.mobile_app_person2_s_iphone
+    data:
+      title: Dryer has finished
+      message: The dryer has finished
+      data:
+        push:
+          category: DRYER_COMPLETED
+  mode: single
+- id: '1606338827538'
+  alias: Garage - Unlock Door when Garage Door Tag is read
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 7db31598-dbdf-41c1-a356-4720e02fca1b
+  condition:
+  - condition: state
+    entity_id: lock.garage_door
+    state: locked
+  action:
+  - service: lock.unlock
+    entity_id: lock.garage_door
+    data: {}
+  mode: single
+- id: '1606338853368'
+  alias: Garage - Lock Door when Garage Door Tag is read
+  description: ''
+  trigger:
+  - platform: tag
+    tag_id: 7db31598-dbdf-41c1-a356-4720e02fca1b
+  condition:
+  - condition: state
+    entity_id: lock.garage_door
+    state: unlocked
+  action:
+  - service: lock.lock
+    entity_id: lock.garage_door
+    data: {}
+  mode: single
+- id: '1606339011517'
+  alias: Garage - Turn on Garage wall lights when door state changes
+  description: Lock/Unlock or Open/Closed
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_door_open
+    to: opened
+  - platform: state
+    entity_id: binary_sensor.garage_door_open
+  - platform: state
+    entity_id: lock.garage_door
+  condition:
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: single
+- id: '1606344017334'
+  alias: Garage Small Bay - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_bench_motion
+    to: 'off'
+    for: 00:15:00
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_camera_motion
+    from: 'on'
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.garage_small_bay_light
+    data: {}
+  mode: single
+- id: '1606344293546'
+  alias: Garage Small Bay - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_bench_motion
+    to: 'on'
+    from: 'off'
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_camera_motion
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '10000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_small_bay_light
+    data: {}
+  mode: single
+- id: '1606344358594'
+  alias: Garage Small Bay Bench - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_bench_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.garage_small_bay_bench_motion_light
+    data: {}
+  mode: single
+- id: '1606344392997'
+  alias: Garage Small Bay Bench - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_small_bay_bench_motion
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '10000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_small_bay_bench_motion_light
+    data: {}
+  mode: single
+- id: '1606344535993'
+  alias: Garage Big Bay - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_big_bay_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.garage_big_bay_light
+    data: {}
+  mode: single
+- id: '1606344825725'
+  alias: Garage Big Bay - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_big_bay_motion
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '10000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_big_bay_light
+    data: {}
+  mode: single
+- id: '1606345137931'
+  alias: Garage Foyer - Turn the light on when motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_foyer_motion
+    to: 'on'
+    from: 'off'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '10000'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1606345203682'
+  alias: Garage Foyer - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_foyer_motion
+    to: 'off'
+    for: 00:15:00
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.garage_foyer_motion_light
+    data: {}
+  mode: single
+- id: '1606830392087'
+  alias: Exercise Room - Turn the light on when it is exercise time
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.exercise_room_motion_light
+    data: {}
+  mode: single
+- id: '1606830465936'
+  alias: Family Room - Turn the light on when it is exercise time
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.family_room_motion_light
+    data: {}
+  mode: single
+- id: '1606831376276'
+  alias: Exercise Room - Play end of workout music
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+    for: 00:45:00
+  condition: []
+  action:
+  - service: media_player.play_media
+    entity_id: media_player.basement_echo
+    data:
+      media_content_type: SPOTIFY
+      media_content_id: Europe - The Final Countdown
+  mode: single
+- id: '1606831471295'
+  alias: Exercise Room - Play start of workout music
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+    for: 00:05:00
+  condition: []
+  action:
+  - service: media_player.play_media
+    entity_id: media_player.basement_echo
+    data:
+      media_content_type: SPOTIFY
+      media_content_id: Bill Conti - Gonna Fly Now
+  mode: single
+- id: '1606832089534'
+  alias: Exercise Room - Play inspirational Alexa quote during workout
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+    for: 00:30:00
+  condition: []
+  action:
+  - service: notify.alexa_media_basement_echo
+    data:
+      message: Hey good looking, you got this!
+      data:
+        type: tts
+  mode: single
+- id: '1606832893899'
+  alias: Exercise Room - Start of workout
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: media_player.volume_set
+    entity_id: media_player.basement_echo
+    data:
+      volume_level: 0.4
+  mode: single
+- id: '1606860636719'
+  alias: Exercise Room - Play inspirational Alexa quote after workout
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: calendar.person2_workout
+    from: 'off'
+    to: 'on'
+    for: 01:00:00
+  condition: []
+  action:
+  - service: notify.alexa_media_basement_echo
+    data:
+      message: Great job my love! Keep it up!
+      data:
+        type: tts
+  mode: single
+- id: '1607369884692'
+  alias: Office - Turn the light off when no motion is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.office_motion
+    from: 'on'
+    to: 'off'
+    for:
+      hours: 1
+      minutes: 0
+      seconds: 0
+  - platform: state
+    entity_id: binary_sensor.office
+    from: 'on'
+    to: 'off'
+    for: 0:10:00
+  condition:
+  - condition: state
+    entity_id: binary_sensor.office
+    state: 'off'
+    for: 00:10:00
+  action:
+  - service: switch.turn_off
+    entity_id: switch.office_switch
+    data: {}
+  - service: light.turn_off
+    target:
+      entity_id: light.office_lightstrip
+  mode: single
+- id: '1607375688210'
+  alias: Mailbox Opened - Audio notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.mailbox_motion
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.alexa_media
+    data:
+      title: You got mail
+      message: You got mail
+      data:
+        method: all
+        type: announce
+      target:
+      - media_player.office_echo_plus
+      - media_player.kitchen_echo_plus
+      - media_player.living_room_echo
+      - media_player.master_bedroom_echo_plus
+      - media_player.garage_echo_plus
+  mode: single
+- id: '1607912773818'
+  alias: Mailbox - Send person1 a camera snapshot when mailbox is opened.
+  description: ''
+  use_blueprint:
+    path: vorion/send-camera-snapshot-notification-on-motion.yaml
+    input:
+      delay: '0'
+      motion_sensor: binary_sensor.mailbox_motion
+      camera: camera.mailbox
+      notify_device: 3a0b36466318922a0d70e1baf39449b6
+      is_ios: true
+      notification_title: Mailbox opened
+      notification_message: Expecting {{ states("sensor.mail_usps_mail") }} items
+        to be delivered.
+- id: '1607916012176'
+  alias: Mailbox - Send person2 a camera snapshot when mailbox is opened.
+  description: ''
+  use_blueprint:
+    path: vorion/send-camera-snapshot-notification-on-motion.yaml
+    input:
+      delay: '0'
+      motion_sensor: binary_sensor.mailbox_motion
+      camera: camera.mailbox
+      notify_device: adb8e9e27b7b4622a077017ebb270ece
+      is_ios: true
+      notification_title: Mailbox opened
+      notification_message: Expecting {{ states("sensor.mail_usps_mail") }} items
+        to be delivered.
+- id: '1608149192611'
+  alias: Mailbox - Save a camera snapshot when motion is detected
+  description: ''
+  use_blueprint:
+    path: lastname/save-camera-snapshot-notification-on-motion.yaml
+    input:
+      camera: camera.mailbox
+      file: /media/mail/last_opened.jpg
+      archive_file: /media/mail/archive/opened_{{ now().strftime("%Y%m%d-%H%M%S")
+        }}.jpg
+      motion_sensor: binary_sensor.mailbox_motion
+      delay: '0'
+- id: '1608265572524'
+  alias: ' Entertainment Room - Turn off lights when TV source changes'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.entertainment_room_tv_source
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1608265591745'
+  alias: ' Entertainment Room - Turn off lights when TV volume changes'
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.entertainment_room_tv_volume_level
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.entertainment_room
+    data: {}
+  mode: single
+- id: '1609284680616'
+  alias: Master Bathroom - Turn off shower lights after an hour
+  description: Turn the shower lights off if they were not triggered by the shower
+    turning on.
+  trigger:
+  - platform: state
+    entity_id: light.master_bathroom_shower_lights
+    to: 'on'
+    for: 01:00:00
+    from: 'off'
+  condition:
+  - condition: state
+    entity_id: water_heater.kohler_shower
+    state: 'off'
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bathroom_shower_lights
+    data: {}
+  mode: single
+- id: '1611194294912'
+  alias: Office Closet - Turn the light on when the door opens
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.office_closet_door
+    to: 'on'
+    from: 'off'
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.office_closet_main_lights
+    data: {}
+  mode: single
+- id: '1611194325219'
+  alias: Office Closet - Turn the light off when the door closes
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.office_closet_door
+    to: 'off'
+    from: 'on'
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.office_closet_main_lights
+    data: {}
+  mode: single
+- id: '1611196772731'
+  alias: Master Bedroom - Turn off house lights when bedroom door closes after 9:00pm
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.master_bedroom_door
+    to: 'off'
+    from: 'on'
+  - platform: time
+    at: '21:00:00'
+  condition:
+  - condition: time
+    after: '21:00:00'
+  - condition: state
+    entity_id: binary_sensor.master_bedroom_door
+    state: 'off'
+  action:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.guest_mode
+        state: 'off'
+      sequence:
+      - service: homeassistant.turn_off
+        data: {}
+        entity_id: group.basement
+      - service: homeassistant.turn_off
+        data: {}
+        entity_id: group.firstfloor
+    default: []
+  - service: switch.turn_off
+    data: {}
+    entity_id: switch.upstairs_hallway_motion_light
+  mode: single
+- id: '1611230180089'
+  alias: Master Bedroom - Turn off Master Suite lights when lamps turns off
+  description: ''
+  trigger:
+  - device_id: 855879d755bf742b6866c4351ae5fe85
+    domain: hue
+    platform: device
+    type: remote_button_short_release
+    subtype: turn_off
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.master_bedroom_main_lights
+    data: {}
+  - service: light.turn_off
+    entity_id: light.master_bedroom_closet
+    data: {}
+  mode: single
+- id: '1611491845580'
+  alias: Master Bedroom - Open the shade in the morning
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'on'
+    to: 'off'
+    for: 00:05:00
+  - platform: time
+    at: 09:30:00
+  - platform: time
+    at: '11:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleep_mode
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: time
+        after: 09:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: sun
+        before: sunset
+    - condition: and
+      conditions:
+      - condition: time
+        after: '11:00:00'
+        weekday:
+        - sat
+        - sun
+      - condition: sun
+        before: sunset
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_shade
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_left_curtain
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.master_bedroom_right_curtain
+  mode: single
+- id: '1611492618196'
+  alias: Master Bedroom - Close the shade at sunset
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'off'
+    to: 'on'
+    for: 00:05:00
+  - platform: sun
+    event: sunset
+    offset: 00:15:00
+  - platform: numeric_state
+    entity_id: sensor.illuminance
+    below: '1000'
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.master_bedroom_shade
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.master_bedroom_left_curtain
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.master_bedroom_right_curtain
+  mode: single
+- id: '1613053196583'
+  alias: Tesla - Update Available Audio notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.model_3_update_available
+    from: 'off'
+    to: 'on'
+  condition: []
+  action:
+  - service: notify.alexa_media
+    data:
+      title: Tesla Update Available
+      message: Tesla Update Available
+      data:
+        method: all
+        type: announce
+      target:
+      - media_player.office_echo_plus
+      - media_player.kitchen_echo_plus
+      - media_player.living_room_echo
+      - media_player.master_bedroom_echo_plus
+      - media_player.garage_echo_plus
+  mode: single
+- id: '1614392874419'
+  alias: Living Room - Close the shade at sunset
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'off'
+    to: 'on'
+    for: 00:05:00
+  - platform: sun
+    event: sunset
+  - platform: numeric_state
+    entity_id: sensor.illuminance
+    below: '3000'
+  condition: []
+  action:
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.living_room_left_blind
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.living_room_middle_blind
+  - service: cover.close_cover
+    data: {}
+    entity_id: cover.living_room_right_blind
+  mode: single
+- id: '1614393009781'
+  alias: Living Room - Open the shade in the morning
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: input_boolean.sleep_mode
+    from: 'on'
+    to: 'off'
+    for: 00:30:00
+  - platform: time
+    at: 09:00:00
+  - platform: time
+    at: '10:00:00'
+  condition:
+  - condition: state
+    entity_id: input_boolean.sleep_mode
+    state: 'off'
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: time
+        after: 09:00:00
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+      - condition: sun
+        before: sunset
+    - condition: and
+      conditions:
+      - condition: time
+        after: '11:00:00'
+        weekday:
+        - sat
+        - sun
+      - condition: sun
+        before: sunset
+  action:
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.living_room_left_blind
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.living_room_middle_blind
+  - service: cover.open_cover
+    data: {}
+    entity_id: cover.living_room_right_blind
+  mode: single
+- id: '1614942759708'
+  alias: Outside - Turn on House wall lights when sound is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door_noise
+    from: 'off'
+    to: 'on'
+    for: 00:00:05
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '1000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_wall_lights
+    data: {}
+  mode: restart
+- id: '1614942801525'
+  alias: Outside - Turn on Garage wall lights when sound is detected
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_door_noise
+    from: 'off'
+    to: 'on'
+    for: 00:00:05
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '1000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: single
+- id: '1615250060382'
+  alias: 'Trash Day - Audio notification '
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.waste
+    from: '1'
+    to: '0'
+    attribute: days
+    for: 06:30:00
+  condition:
+  - condition: not
+    conditions:
+    - condition: state
+      entity_id: sensor.recycling
+      attribute: days
+      state: '0'
+  action:
+  - service: notify.alexa_media
+    data:
+      title: Trash Day
+      message: Remember to take out the trash bin
+      data:
+        method: all
+        type: announce
+      target:
+      - media_player.office_echo_plus
+      - media_player.kitchen_echo_plus
+      - media_player.garage_echo_plus
+  mode: single
+- id: '1615250148157'
+  alias: Trash & Recycling Day - Audio notification
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: sensor.recycling
+    from: '1'
+    to: '0'
+    attribute: days
+    for: 06:30:00
+  condition: []
+  action:
+  - service: notify.alexa_media
+    data:
+      title: Trash and Recycling Day
+      message: Remember to take out the trash & recycling bins
+      data:
+        method: all
+        type: announce
+      target:
+      - media_player.office_echo_plus
+      - media_player.kitchen_echo_plus
+      - media_player.garage_echo_plus
+  mode: single
+- id: '1617018700754'
+  alias: Outside - Turn on House wall lights when front door is opened
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.front_door_open
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_on
+    entity_id: switch.front_foyer_wall_lights
+    data: {}
+  mode: restart
+- id: '1617018773642'
+  alias: Outside - Turn on Garage wall lights when door is opened
+  description: ''
+  trigger:
+  - platform: state
+    entity_id: binary_sensor.garage_door_open
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: numeric_state
+    entity_id: sensor.illuminance
+    below: '2000'
+  - condition: state
+    entity_id: sun.sun
+    state: below_horizon
+  action:
+  - service: switch.turn_on
+    entity_id: switch.garage_front_outside_wall_light
+    data: {}
+  mode: single
