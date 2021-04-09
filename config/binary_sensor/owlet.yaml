@@ -1,0 +1,20 @@
+- platform: template
+  sensors:
+    owlet_low_integration_reading:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_INTEG_READ')}}"
+      device_class: problem
+    owlet_battery_low_alert:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_BATT_ALRT'}}"
+      device_class: problem
+    owlet_heart_rate_low_alert:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_HR_ALRT'}}"
+      device_class: problem
+    owlet_heart_rate_high_alert:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'HIGH_HR_ALRT'}}"
+      device_class: problem
+    owlet_oxygen_saturation_low_alert:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'LOW_OX_ALRT'}}"
+      device_class: problem
+    owlet_disconnected:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'SOCK_DISCON_ALRT'}}"
+      device_class: connectivity

@@ -1,0 +1,30 @@
+- platform: owlet
+  username: !secret owlet_username
+  password: !secret owlet_password
+  region: "world"
+
+- platform: template
+  sensors:
+    owlet_heart_rate:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'heart_rate')}}"
+      unit_of_measurement: BPM
+    owlet_oxygen_saturation:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'oxygen_saturation'}}"
+      unit_of_measurement: SPO2
+    owlet_movement:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'movement'}}"
+      unit_of_measurement: '%'
+    owlet_battery:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'battery'}}"
+      device_class: battery
+      unit_of_measurement: '%'
+    owlet_rssi:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'ble_rssi'}}"
+      device_class: signal_strength
+      unit_of_measurement: dBm
+    owlet_monitoring_status:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'ble_rssi'}}"
+      device_class: signal_strength
+      unit_of_measurement: dBm
+    owlet_alert_status:
+      value_template: "{{state_attr('sensor.owlet_smart_sock_serial', 'RED_ALERT_SUMMARY'}}"
